@@ -1,5 +1,5 @@
 {
-  "schema_version": "presentation-monthly-complete-v1",
+  "schema_version": "civic-monthly-complete-v1",
   "cohort": {
     "start_month": "2025-01",
     "end_month": "2026-05",

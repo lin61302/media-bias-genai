@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reproduce presentation aggregates using Python 3.9+ standard library only.
+"""Reproduce civic news aggregates using Python 3.9+ standard library only.
 
 Default: validate the included snapshot and regenerate three summary files.
 --check: verify those files without writing. --verify-upstream: also download
@@ -20,7 +20,7 @@ from urllib.request import urlopen
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 SNAPSHOT = DATA / "monthly_complete_snapshot.json"
-SNAPSHOT_SHA256 = "a2e381d347693cc5c026b7b882f4e76f900f17a65091f9dc387f7045f6eaba4e"
+SNAPSHOT_SHA256 = "75688202b63d8c28786a030193570e23efe9673caaba87e5fe58f7e25e50902e"
 AXES = ("align", "rep", "frame")
 LABELS = ("-1", "0", "1", "null")
 MEANINGS = {
@@ -38,7 +38,7 @@ def require(condition, message):
 
 
 def validate(snapshot):
-    require(snapshot["schema_version"] == "presentation-monthly-complete-v1", "Unexpected schema")
+    require(snapshot["schema_version"] == "civic-monthly-complete-v1", "Unexpected schema")
     version = json.loads((ROOT / "prompts" / "version.json").read_text(encoding="utf-8"))
     prompt = (ROOT / "prompts" / version["prompt_file"]).read_bytes()
     require(version["release"] == snapshot["cohort"]["prompt_version"], "Prompt version mismatch")

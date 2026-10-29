@@ -1,88 +1,63 @@
-# Beyond Sentiment
+# Media Bias in Civic News
 
-## Actions, reputation, and political bias in civic news
+This project studies how news outlets cover national governments. It uses language models to identify reported actions and distinguish their political alignment, reputational implications, and treatment in the article's own wording.
 
-Research materials for the **November 11, 2026 PDRI/DevLab presentation**. This project uses generative AI to distinguish an action's political direction, its implication for an incumbent government's reputation, and the article's own evaluative presentation. The aim is to study how news portrays governments without collapsing these different constructs into a single sentiment score.
+The research examines how these measures vary across outlets and political settings, and how they relate to media ownership, regulation, and government accountability.
 
-**Status:** work in progress. The descriptive tables below use a frozen October 29 checkpoint. Structural checks and independent database readback establish processing integrity; representative human semantic validation remains unfinished. These results do not yet establish outlet bias, public opinion effects, or societal polarization.
+## Measures
 
-### Start here
+Each record refers to one selected action and one national incumbent government at the article's publication date.
 
-- [HTML presentation](https://lin61302.github.io/media-bias-genai/slides/) — the talk draft, with keyboard navigation and speaker notes. An [offline copy](slides/index.html) is included.
-- [Research design and political implications](docs/research-design.md) — questions, competing explanations, and identification needs.
-- [Codebook](docs/codebook.md) — the unit of analysis and the meaning of each output field.
-- [Data card](docs/data-card.md) — coverage, denominators, provenance, and exclusions.
-- [Validation plan](docs/validation.md) — what has been checked and what remains to establish scientific validity.
-- [Presentation preparation](docs/presentation-plan.md) — proposed discussion sequence and next analyses.
-
-### Why this distinction matters
-
-A report of coercion against peaceful government opponents can describe an action that strengthens the incumbent's position while damaging its perceived legitimacy. The journalist can describe that event without endorsing it. Conversely, a narrator can praise the same conduct. Treating all three as “positive” or “negative sentiment” would obscure politically meaningful differences.
-
-The current design therefore labels each article against **one national incumbent government at the publication date**:
-
-| Construct | Field | Question |
+| Measure | Field | Definition |
 |---|---|---|
-| Action alignment | `align` | Does the selected action support or oppose the incumbent? |
-| Reputational implication | `rep` | What do the action and directly tied facts imply about government performance or legitimacy? |
-| Article orientation | `frame` | Does the title or narrator add an explicit government-favoring or government-critical presentation cue? |
+| Action alignment | `align` | Whether the action supports or opposes the incumbent government |
+| Reputational implication | `rep` | What the action and directly related facts imply about government performance or legitimacy |
+| Article framing | `frame` | Whether the title or narrator adds explicit favorable or critical evaluation of the government |
 
-All use `-1`, `0`, `+1`, or `null`. **Zero combines neutral, mixed, and insufficient directional evidence.** Null means the dimension is not codable under the rules. Reputation is an implication coded from the supplied report, not a measured change in anyone's attitudes. Article orientation is narrower than media bias: it does not by itself capture story selection, omitted sources, ownership influence, or ideology.
+The measures use `-1`, `0`, `+1`, and `null`. Zero includes neutral, mixed, and insufficient directional evidence. Null means the dimension cannot be coded. A negative reputational implication does not necessarily indicate critical framing, and neither measure directly estimates changes in public opinion.
 
-### A fixed descriptive cohort
+The [codebook](docs/codebook.md) describes action selection, government identification, evidence requirements, and the full output structure.
 
-The presentation uses **542,981 structurally valid, independently stored outcomes** from the **complete prompt** for **January 2025–May 2026**, a fixed 17-month window. Counts refer to selected articles, not unique real-world events or a representative sample of all news. June 2026 remains older-prompt data in this checkpoint and is excluded.
+## Project materials
 
-| Model-coded dimension | Negative | Zero: no clear direction / mixed | Positive | Not codable |
-|---|---:|---:|---:|---:|
-| Action alignment | 8.27% | 76.70% | 7.24% | 7.78% |
-| Reputational implication | 9.68% | 78.56% | 3.97% | 7.78% |
-| Article orientation | 4.96% | 86.70% | 3.01% | 5.33% |
+| Location | Contents |
+|---|---|
+| [Project status](docs/status.md) | Available work and remaining tasks |
+| [Research design](docs/research-design.md) | Research questions, comparisons, and political interpretation |
+| [Codebook](docs/codebook.md) | Coding definitions and field descriptions |
+| [Data documentation](docs/data-card.md) | Corpus scope, inclusion rules, coverage, and limitations |
+| [Validation](docs/validation.md) | Completed checks and planned human evaluation |
+| [Data](data/) | Monthly aggregates and summary tables |
+| [Prompts](prompts/) | Current coding prompt and version metadata |
+| [Scripts](scripts/) | Reproduction of the aggregate tables |
+| [References](references/references.bib) | Research bibliography |
 
-Denominator for every row: all 542,981 valid outcomes, including null labels. Percentages are rounded independently. Exact counts and unrounded percentages are in [label_summary.csv](data/label_summary.csv). This cohort contains 370 source domains and 71 publication-country codes plus the international/regional `ALL` category; those are coverage descriptors, not equal country weights. See the [data card](docs/data-card.md) for how they differ from the target-government variable.
+## Available data
 
-The observed negative reputational share exceeds the positive share. That is a **descriptive feature of model-coded coverage**. It could reflect events, selection, source composition, translation, or coding error. Separate marginal distributions do not reveal how labels combine within articles, so they cannot demonstrate reputationally harmful actions receiving favorable framing.
+The current aggregate snapshot covers **542,981 structurally valid records from January 2025 through May 2026**, using the same complete prompt. It was verified on **October 29, 2026**. It is a processed subset of the broader project corpus, whose current target period is January 2012 through June 2026.
 
-### Reproduce the tables
+The [data documentation](docs/data-card.md) records the sampling boundaries, prompt versions, missing values, and processing coverage. The repository contains aggregate data; article text and record-level outputs are not included.
 
-Python 3.10+ is sufficient for the aggregate calculations. No API key, database access, or paid model call is required.
+## Reproduce the summaries
+
+Use Python 3.9 or later. The script uses only the standard library.
 
 ```sh
 python3 scripts/reproduce_summary.py
 ```
 
-The script checks the frozen monthly counts and regenerates the CSV/JSON summaries. To regenerate the presentation figures and HTML after editing their source:
+To check the existing summaries without changing them:
 
 ```sh
-python3 -m venv .venv
-.venv/bin/pip install -r requirements-figures.txt
-.venv/bin/python scripts/build_presentation.py
+python3 scripts/reproduce_summary.py --check
 ```
 
-Open `slides/index.html` in a browser. Use the arrow keys, Home/End, or the visible controls. Press **N** for speaker notes and **A** to show all slides. Browser printing produces one slide per page.
+Add `--verify-upstream` to compare the snapshot with its archived public source files. This option requires internet access. The script does not run model inference or connect to the project database.
 
-This is a reproduction package for the released aggregates and presentation. It is not a full corpus release or a runnable production extraction pipeline. The complete frozen prompt is included for methodological inspection.
+## Current work
 
-### Repository structure
+Corpus processing, human validation, and entity standardization are in progress. The available results describe model-coded articles. Source composition, translation quality, and coding error still need to be evaluated before interpreting differences as outlet bias or political effects.
 
-```text
-README.md
-docs/                  Research design, codebook, data card, validation, talk plan
-data/                  Frozen monthly aggregates and regenerated summaries
-prompts/               Exact complete prompt and public version metadata
-references/            Primary-source bibliography
-scripts/               Offline summary and presentation builders
-slides/                HTML presentation and generated figures
-```
+The next analyses require joint label tables and comparable outlet, government, and time groups. Ownership and regulatory data would support research on media institutions; audience data would be needed to study effects on political attitudes. See [project status](docs/status.md) for the current priorities.
 
-### What this release contains
-
-This repository contains aggregate counts, methods, a prompt with synthetic calibration examples, and the presentation. It excludes article text, article identifiers, raw model responses, private conversations, credentials, internal paths, financial ledgers, and operational state. The illustrative cases in the slides are **synthetic calibration examples**, not empirical evidence about the named countries.
-
-The next research steps are blinded human validation, a versioned entity crosswalk, article-level joint tables, and composition-sensitive source/country analyses. Ownership and regulation measures, comparable events, and audience data would be needed for stronger political claims. See [research design](docs/research-design.md).
-
-### Provenance and citation
-
-The independent storage checkpoint is **2026-10-29 05:20:31 UTC**. [Snapshot metadata](data/monthly_complete_snapshot.json) records source hashes and immutable source URLs. The complete prompt release is `civic-complete-prompt-release-20261020-v1`; it must remain distinct from earlier minimal-prompt outcomes.
-
-For discussion, cite this repository as *Beyond Sentiment: Actions, Reputation, and Political Bias in Civic News*, research-in-progress materials, October 29, 2026 snapshot, and include the Git commit used. Authorship order and a formal release citation remain to be agreed by the research team. No blanket redistribution license for the underlying news corpus is implied.
+Data snapshots and prompt versions are documented separately. Analyses should identify the snapshot and Git commit used, and keep older prompt versions distinct.
