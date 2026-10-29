@@ -1,0 +1,31 @@
+{
+  "cohort": {
+    "start_month": "2025-01",
+    "end_month": "2026-05",
+    "months": 17,
+    "prompt_version": "civic_20261020_complete_v1",
+    "prompt_text_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+    "analysis_unit": "one article request, one selected primary action, one evaluated national incumbent government"
+  },
+  "independently_verified_at_utc": "2026-10-29T05:20:31.624176+00:00",
+  "snapshot_sha256": "a2e381d347693cc5c026b7b882f4e76f900f17a65091f9dc387f7045f6eaba4e",
+  "cohort_composition": {
+    "source_domains_distinct": 370,
+    "publication_countries_distinct_excluding_ALL": 71,
+    "publication_ALL_outcomes": 29512,
+    "government_country_codes_distinct_excluding_null": 187,
+    "government_null_outcomes": 28896,
+    "denominator_valid": 542981,
+    "note": "Distinct source domains and publication-country labels describe composition, not representativeness. Evaluated government countries can differ from publication countries."
+  },
+  "totals": {
+    "saved": 552208,
+    "valid": 542981,
+    "mechanical_failures": 9175,
+    "api_failures": 52,
+    "input_clear": 624751
+  },
+  "valid_percent_of_input_clear": 86.911586,
+  "failure_percent_of_saved": 1.670928,
+  "interpretation": "Descriptive marginals among structurally valid stored complete-prompt outputs; neither accuracy nor population estimates."
+}

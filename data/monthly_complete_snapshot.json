@@ -1,0 +1,533 @@
+{
+  "schema_version": "presentation-monthly-complete-v1",
+  "cohort": {
+    "start_month": "2025-01",
+    "end_month": "2026-05",
+    "months": 17,
+    "prompt_version": "civic_20261020_complete_v1",
+    "prompt_text_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+    "analysis_unit": "one article request, one selected primary action, one evaluated national incumbent government"
+  },
+  "independently_verified_at_utc": "2026-10-29T05:20:31.624176+00:00",
+  "audit_sha256": "8923ee5dc63b0ee88f5d3a4729f0ba3c75e22feb7b29895a73325aefa1bccf05",
+  "upstream_provenance": {
+    "space": "zungru/media-bias-reported-polarization",
+    "commit": "629858da596e9391090beb6facc0003e9e053528",
+    "remote_publication_verified_at_utc": "2026-10-29T05:32:32.147420+00:00",
+    "files": {
+      "monthly_analytics.json": {
+        "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/629858da596e9391090beb6facc0003e9e053528/monthly_analytics.json",
+        "sha256": "ee1b1fb7bddab9f1e3cd4914106d4092600d0cfbbcbaa386a69b1bfa4012ec9d"
+      },
+      "monthly_progress.json": {
+        "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/629858da596e9391090beb6facc0003e9e053528/monthly_progress.json",
+        "sha256": "7e2889b9ad0bdab0511ec9827df9cef86fec994c31b0cc25642cc04cef20f2e4"
+      }
+    }
+  },
+  "definitions": {
+    "saved": "Independently verified stored complete-prompt outcomes, including failed outcomes.",
+    "valid": "Stored complete-prompt outputs passing structural checks; not semantic validation.",
+    "mechanical_failures": "Stored complete-prompt outcomes failing mechanical output checks.",
+    "api_failures": "Stored complete-prompt provider failures.",
+    "input_clear": "Frozen monthly source inventory minus current input holds; includes all prompt cohorts and protected claim categories, not proof of live submission eligibility.",
+    "axes": "Marginal counts over valid complete-prompt outcomes. Every axis retains -1, 0, 1, and null separately.",
+    "zero": "Applicable but neutral, mixed, or insufficient evidence for either directional label.",
+    "null": "Dimension not codable; distinct from neutral/zero and from failed output.",
+    "coverage": "valid / input_clear; coverage of this prompt and snapshot, not semantic accuracy."
+  },
+  "limitations": [
+    "Supplied stored English can omit or corrupt original article content; retaining every supplied segment is not full-original-article coverage.",
+    "No human gold-standard or population semantic accuracy certification.",
+    "January 2025–May 2026 is a dated descriptive cohort with uneven source/country composition.",
+    "June 2026 older-prompt outcomes and all other months are excluded.",
+    "Marginals do not reveal joint relationships, outlet bias, causal effects, or societal polarization."
+  ],
+  "months": [
+    {
+      "month": "2025-01",
+      "saved": 33041,
+      "valid": 32532,
+      "mechanical_failures": 508,
+      "api_failures": 1,
+      "axes": {
+        "align": {
+          "-1": 2855,
+          "0": 24660,
+          "1": 2365,
+          "null": 2652
+        },
+        "rep": {
+          "-1": 3275,
+          "0": 25461,
+          "1": 1145,
+          "null": 2651
+        },
+        "frame": {
+          "-1": 1551,
+          "0": 28251,
+          "1": 906,
+          "null": 1824
+        }
+      },
+      "input_clear": 36081
+    },
+    {
+      "month": "2025-02",
+      "saved": 34051,
+      "valid": 33498,
+      "mechanical_failures": 551,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 2749,
+          "0": 25443,
+          "1": 2558,
+          "null": 2748
+        },
+        "rep": {
+          "-1": 3256,
+          "0": 26349,
+          "1": 1146,
+          "null": 2747
+        },
+        "frame": {
+          "-1": 1772,
+          "0": 29087,
+          "1": 889,
+          "null": 1750
+        }
+      },
+      "input_clear": 37082
+    },
+    {
+      "month": "2025-03",
+      "saved": 35733,
+      "valid": 35145,
+      "mechanical_failures": 584,
+      "api_failures": 4,
+      "axes": {
+        "align": {
+          "-1": 3118,
+          "0": 26485,
+          "1": 2587,
+          "null": 2955
+        },
+        "rep": {
+          "-1": 3542,
+          "0": 27534,
+          "1": 1116,
+          "null": 2953
+        },
+        "frame": {
+          "-1": 1861,
+          "0": 30431,
+          "1": 846,
+          "null": 2007
+        }
+      },
+      "input_clear": 38773
+    },
+    {
+      "month": "2025-04",
+      "saved": 34056,
+      "valid": 33457,
+      "mechanical_failures": 597,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 3069,
+          "0": 25009,
+          "1": 2670,
+          "null": 2709
+        },
+        "rep": {
+          "-1": 3458,
+          "0": 26022,
+          "1": 1269,
+          "null": 2708
+        },
+        "frame": {
+          "-1": 1798,
+          "0": 28774,
+          "1": 925,
+          "null": 1960
+        }
+      },
+      "input_clear": 37069
+    },
+    {
+      "month": "2025-05",
+      "saved": 34733,
+      "valid": 34138,
+      "mechanical_failures": 594,
+      "api_failures": 1,
+      "axes": {
+        "align": {
+          "-1": 3066,
+          "0": 25766,
+          "1": 2638,
+          "null": 2668
+        },
+        "rep": {
+          "-1": 3423,
+          "0": 26677,
+          "1": 1372,
+          "null": 2666
+        },
+        "frame": {
+          "-1": 1767,
+          "0": 29219,
+          "1": 1192,
+          "null": 1960
+        }
+      },
+      "input_clear": 38781
+    },
+    {
+      "month": "2025-06",
+      "saved": 30424,
+      "valid": 29915,
+      "mechanical_failures": 506,
+      "api_failures": 3,
+      "axes": {
+        "align": {
+          "-1": 2924,
+          "0": 22507,
+          "1": 2385,
+          "null": 2099
+        },
+        "rep": {
+          "-1": 3390,
+          "0": 23163,
+          "1": 1263,
+          "null": 2099
+        },
+        "frame": {
+          "-1": 1696,
+          "0": 25831,
+          "1": 955,
+          "null": 1433
+        }
+      },
+      "input_clear": 34470
+    },
+    {
+      "month": "2025-07",
+      "saved": 33260,
+      "valid": 32640,
+      "mechanical_failures": 618,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 2820,
+          "0": 25021,
+          "1": 2486,
+          "null": 2313
+        },
+        "rep": {
+          "-1": 3446,
+          "0": 25500,
+          "1": 1384,
+          "null": 2310
+        },
+        "frame": {
+          "-1": 1898,
+          "0": 28031,
+          "1": 1077,
+          "null": 1634
+        }
+      },
+      "input_clear": 39547
+    },
+    {
+      "month": "2025-08",
+      "saved": 34383,
+      "valid": 33783,
+      "mechanical_failures": 598,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 2641,
+          "0": 26107,
+          "1": 2346,
+          "null": 2689
+        },
+        "rep": {
+          "-1": 3167,
+          "0": 26646,
+          "1": 1283,
+          "null": 2687
+        },
+        "frame": {
+          "-1": 1725,
+          "0": 29088,
+          "1": 1086,
+          "null": 1884
+        }
+      },
+      "input_clear": 38676
+    },
+    {
+      "month": "2025-09",
+      "saved": 32691,
+      "valid": 32150,
+      "mechanical_failures": 537,
+      "api_failures": 4,
+      "axes": {
+        "align": {
+          "-1": 2575,
+          "0": 24793,
+          "1": 2070,
+          "null": 2712
+        },
+        "rep": {
+          "-1": 3047,
+          "0": 25118,
+          "1": 1274,
+          "null": 2711
+        },
+        "frame": {
+          "-1": 1583,
+          "0": 27680,
+          "1": 910,
+          "null": 1977
+        }
+      },
+      "input_clear": 36730
+    },
+    {
+      "month": "2025-10",
+      "saved": 33792,
+      "valid": 33252,
+      "mechanical_failures": 527,
+      "api_failures": 13,
+      "axes": {
+        "align": {
+          "-1": 2457,
+          "0": 25815,
+          "1": 2194,
+          "null": 2786
+        },
+        "rep": {
+          "-1": 2935,
+          "0": 26116,
+          "1": 1415,
+          "null": 2786
+        },
+        "frame": {
+          "-1": 1581,
+          "0": 28608,
+          "1": 1102,
+          "null": 1961
+        }
+      },
+      "input_clear": 37816
+    },
+    {
+      "month": "2025-11",
+      "saved": 34996,
+      "valid": 34421,
+      "mechanical_failures": 569,
+      "api_failures": 6,
+      "axes": {
+        "align": {
+          "-1": 2474,
+          "0": 26735,
+          "1": 2106,
+          "null": 3106
+        },
+        "rep": {
+          "-1": 3127,
+          "0": 26850,
+          "1": 1339,
+          "null": 3105
+        },
+        "frame": {
+          "-1": 1645,
+          "0": 29865,
+          "1": 1074,
+          "null": 1837
+        }
+      },
+      "input_clear": 39302
+    },
+    {
+      "month": "2025-12",
+      "saved": 31393,
+      "valid": 30872,
+      "mechanical_failures": 519,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 2346,
+          "0": 24041,
+          "1": 2103,
+          "null": 2382
+        },
+        "rep": {
+          "-1": 2834,
+          "0": 24412,
+          "1": 1245,
+          "null": 2381
+        },
+        "frame": {
+          "-1": 1372,
+          "0": 26976,
+          "1": 872,
+          "null": 1652
+        }
+      },
+      "input_clear": 36655
+    },
+    {
+      "month": "2026-01",
+      "saved": 30165,
+      "valid": 29691,
+      "mechanical_failures": 471,
+      "api_failures": 3,
+      "axes": {
+        "align": {
+          "-1": 2258,
+          "0": 23138,
+          "1": 2001,
+          "null": 2294
+        },
+        "rep": {
+          "-1": 2683,
+          "0": 23615,
+          "1": 1100,
+          "null": 2293
+        },
+        "frame": {
+          "-1": 1339,
+          "0": 26018,
+          "1": 804,
+          "null": 1530
+        }
+      },
+      "input_clear": 34181
+    },
+    {
+      "month": "2026-02",
+      "saved": 30704,
+      "valid": 30157,
+      "mechanical_failures": 546,
+      "api_failures": 1,
+      "axes": {
+        "align": {
+          "-1": 2381,
+          "0": 23524,
+          "1": 2110,
+          "null": 2142
+        },
+        "rep": {
+          "-1": 2715,
+          "0": 24058,
+          "1": 1244,
+          "null": 2140
+        },
+        "frame": {
+          "-1": 1247,
+          "0": 26583,
+          "1": 973,
+          "null": 1354
+        }
+      },
+      "input_clear": 34728
+    },
+    {
+      "month": "2026-03",
+      "saved": 29339,
+      "valid": 28866,
+      "mechanical_failures": 471,
+      "api_failures": 2,
+      "axes": {
+        "align": {
+          "-1": 2229,
+          "0": 22246,
+          "1": 2226,
+          "null": 2165
+        },
+        "rep": {
+          "-1": 2473,
+          "0": 22884,
+          "1": 1345,
+          "null": 2164
+        },
+        "frame": {
+          "-1": 1211,
+          "0": 25261,
+          "1": 912,
+          "null": 1482
+        }
+      },
+      "input_clear": 33357
+    },
+    {
+      "month": "2026-04",
+      "saved": 29027,
+      "valid": 28563,
+      "mechanical_failures": 463,
+      "api_failures": 1,
+      "axes": {
+        "align": {
+          "-1": 2343,
+          "0": 22082,
+          "1": 2099,
+          "null": 2039
+        },
+        "rep": {
+          "-1": 2898,
+          "0": 22373,
+          "1": 1253,
+          "null": 2039
+        },
+        "frame": {
+          "-1": 1516,
+          "0": 24690,
+          "1": 931,
+          "null": 1426
+        }
+      },
+      "input_clear": 36052
+    },
+    {
+      "month": "2026-05",
+      "saved": 30420,
+      "valid": 29901,
+      "mechanical_failures": 516,
+      "api_failures": 3,
+      "axes": {
+        "align": {
+          "-1": 2612,
+          "0": 23103,
+          "1": 2377,
+          "null": 1809
+        },
+        "rep": {
+          "-1": 2910,
+          "0": 23811,
+          "1": 1371,
+          "null": 1809
+        },
+        "frame": {
+          "-1": 1383,
+          "0": 26376,
+          "1": 899,
+          "null": 1243
+        }
+      },
+      "input_clear": 35451
+    }
+  ],
+  "cohort_composition": {
+    "source_domains_distinct": 370,
+    "publication_countries_distinct_excluding_ALL": 71,
+    "publication_ALL_outcomes": 29512,
+    "government_country_codes_distinct_excluding_null": 187,
+    "government_null_outcomes": 28896,
+    "denominator_valid": 542981,
+    "note": "Distinct source domains and publication-country labels describe composition, not representativeness. Evaluated government countries can differ from publication countries."
+  }
+}

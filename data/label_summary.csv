@@ -1,0 +1,13 @@
+axis,label,meaning,count,denominator_valid,percent_of_valid
+align,-1,negative direction,44917,542981,8.272297
+align,0,"neutral, mixed, or insufficient directional evidence",416475,542981,76.701579
+align,1,positive direction,39321,542981,7.241690
+align,null,not codable,42268,542981,7.784434
+rep,-1,negative direction,52579,542981,9.683396
+rep,0,"neutral, mixed, or insufficient directional evidence",426589,542981,78.564259
+rep,1,positive direction,21564,542981,3.971410
+rep,null,not codable,42249,542981,7.780935
+frame,-1,negative direction,26945,542981,4.962420
+frame,0,"neutral, mixed, or insufficient directional evidence",470769,542981,86.700824
+frame,1,positive direction,16353,542981,3.011708
+frame,null,not codable,28914,542981,5.325048

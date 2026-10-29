@@ -1,0 +1,51 @@
+{
+  "release": "civic_20261020_complete_v1",
+  "approved_release_date": "2026-10-20",
+  "prompt_file": "civic_20261020_complete_v1.txt",
+  "prompt_text_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+  "model": "gpt-6-luna",
+  "reasoning_effort": "medium",
+  "max_output_tokens": 3072,
+  "cache_profile": "static-prefix-v1",
+  "input_policy": "english-document-usable-v3",
+  "input_policy_sha256": "01e09d36bde53954e119af71f5ebd3697ea8c28e2987e0cb535a1dd55609c710",
+  "supplied_input_fields": [
+    "title_translated",
+    "maintext_translated"
+  ],
+  "input_policy_summary": {
+    "invalid_or_empty_body": "held",
+    "confidently_wholly_non_english_body": "held unless substantive English prose is detected",
+    "uncertain_language": "warning, not automatic exclusion",
+    "blank_title": "warning, not automatic exclusion",
+    "minimum_sentence_count": 0,
+    "minimum_article_length": null,
+    "minor_translation_defects": "tolerated with warnings",
+    "source_language_or_country_exclusions": false,
+    "fallback_to_original_fields": false,
+    "translation_fidelity_certified": false
+  },
+  "output_fields": [
+    "id",
+    "act",
+    "tags",
+    "react",
+    "actor",
+    "ac",
+    "target",
+    "tc",
+    "gov",
+    "align",
+    "rep",
+    "frame",
+    "rep_ev",
+    "frame_ev",
+    "q"
+  ],
+  "national_incumbent_scope": true,
+  "example_note": "Calibration examples in the prompt are instructional examples, not empirical observations.",
+  "cohort_rule": "Do not pool this release with older minimal-prompt outcomes without explicit version analysis.",
+  "semantic_accuracy_certified": false,
+  "source_policy_sha256": "fcd40c51ebb8875a8eeb639e8cd09f486b207660ababf258bb1a1cdec1acae13",
+  "metadata_note": "Recorded production configuration; no credentials or live runtime controls. Prompt bytes copied exactly; original documents and private review comments are not included."
+}
