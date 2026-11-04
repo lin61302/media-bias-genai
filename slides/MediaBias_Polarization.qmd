@@ -12,7 +12,7 @@ author:
 date: today
 date-format: long
 
-bibliography: media_bias_project.bib
+bibliography: references.bib
 csl: american-political-science-association.csl
 link-citations: true
 
@@ -93,57 +93,169 @@ format:
 ## The Puzzle {.smaller}
 
 - Polarization is understood as a common feature of politics across the world
-- Big Question: Is it (polarization) a cause or a consequence of democratic backsliding?
-
+- Big Question: Is it a cause or a consequence of democratic backsliding?
+  * Theory runs both ways: polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]; incumbents deepen polarization strategically [@mccoy_etal_2018]
 - Most research is on the US (+ a few others)
+- Cross-national evidence linking polarization to backsliding is largely correlational and slow-moving [cites]
 - Can we measure polarization systematically across countries and over time to answer the big question? 
 
 ::: notes
 - general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
+- Orhan (2022): affective polarization across 53 countries correlates with backsliding; ideological polarization does not. Cross-national, survey based.
 :::
 
 
-## Existing work on the US {.smaller}
+## Existing work on the US (need to cite Matt!) {.smaller}
 
-- Measures of legislative polarization over time are crap
+- **Substantive debate:** is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]. The field has since shifted from ideology to affect [@iyengar_etal_2019]
+- **Measures of polarization:**
+  * Legislative: distance between parties on roll-call ideal points [@poole_rosenthal_1985; @mccarty_etal_2006]
+  * Public opinion: issue-position distributions; party feeling thermometers [cites]
+  * Speech: partisanship of congressional speech [@gentzkow_etal_2019]
+  * Media:....Gentzow, Shapiro, Taddy
+- **Key findings:**
+  * Roll-call polarization has risen steadily since the 1970s [@mccarty_etal_2006]
+  * Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
+  * Media: partisan news shifts votes and can raise polarization [@martin_yurukoglu_2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior_2013]
 
 ::: notes
+- Measures of legislative polarization over time are crap
 - measured as the distance between the two parties on an ideology scale estimated from roll-call votes.
 - NOMINATE, DW-NOMINATE, etc.: members who serve in many Congresses link the scale across years. Does anyone think they (and the agenda and what makes it to a floor vote) are consistent over time?
 :::
 
-
 ## Existing comparative work {.smaller}
 
-## Analytical challenges
+- **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
+- **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner_2021]; V-Dem "political polarization", near-global [@vdem]
+  * Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
+- **Relational measures:** mass partisan polarization over parties [cite]
+- **Common limits:**
+  * Election-year or annual frequency
+  * Survey coverage thin outside democracies
+  * Party-based scales presume stable, programmatic party systems
 
-## Some analytical priors {.smaller}
+::: notes
+- Duh: expert codings of polarization may be informed by the same events that define backsliding. This argues for a measure built from a different data source.
+:::
 
-- One needs some to measure polarization along (or against) something
-- Posit: the incumbent government provides the reference point
+## Some analytical challenges & priors {.smaller}
+
+- One needs to conceptualize polarization along (or against) some dimension
+- Standard approaches: a) legislative polarization; b) opinion
+- But the dimensionality of conflict varies across countries
+- *Posit: the incumbent government provides the reference point*
   * In polarized settings the opposition paints it v negatively
   * In polarized settings govt supporters paint it v positively
-  * Neutral coverage is declining in polarization
-- The greater the share of overall incumbent coverage that is positive *and* negative, the greater the polarization
-  * Net sentiment won't quite do it
-
-## Empirical challenges
+- Consistent with accounts of "pernicious" polarization, in which politics collapses into two camps for and against a polarizing leader [@mccoy_etal_2018]
+- An incumbent reference point works where party scales don't, i.e. electoral autocracies, fluid party systems  
 
 ## Our approach
 
-## The corpus
+- Media coverage as a tool for measuring polarization
+  * Available daily, for any country with a press, regardless of party system
+- Code individual articles as pro- and anti-incumbent 
+- Aggregate those articles into monthly measures to capture polarization around the incumbent
+- Expectations:
+  * Net sentiment won't quite cut it
+  * Neutral coverage is declining in polarization
+  * The greater the share of overall incumbent coverage that is positive *and* negative, the greater the polarization
+
+
+## From articles to a monthly measure {.smaller}
+
+Note: i need to check this more carefully against Esteban & Ray
+
+For country $c$, month $t$, let $p^+_{ct}$, $p^-_{ct}$, $p^0_{ct}$ be the shares coded $+1$, $-1$, $0$ 
+
+- **Net sentiment** $N = p^+ - p^-$
+  * Equals 0 both for an all-neutral month and for a 50/50 split: can't distinguish consensus from polarization: not helpful!
+- **Two-sided index** $P = 4\,p^+p^- = (1-p^0)^2 - (p^+-p^-)^2$
+  * Zero if either tail is empty; one only if coverage splits evenly with no neutral articles
+  * Rises as neutral coverage falls and as the two pos/neg tails equalize 
+- **Inspiration:** polarization indices over the full distribution [@esteban_ray_1994]
+
+::: notes
+- P directly measures the two expectations on the previous slide: (1 − p0)² is the "less neutral coverage" hyp; (p+ − p−)² penalizes one-sidedness.
+:::
+
+## Empirical challenges (help!)
+
+- What is the 'incumbent'?
+- What is the key action vis the incumbent?
+- What counts as positive or negative sentiment toward the incumbent?
+  * Is it the action itself?
+  * Or how that action reflects on the incumbent?
+  * Or how the article frames the incumbent and action?
+
+- ew: callout box here:
+| Label | Question | Synthetic example: police disperse *peaceful* anti-government march |
+|---|---|---|
+| Does the action support or oppose the incumbent? | 
+| What does it imply about the incumbent's performance or legitimacy? | 
+| Does the narration evaluate favorably or unfavorably? | 
+
+:::notes
+Incumbent: National executive and cabinet (at publication date) & ruling party or coalition. What about courts, legislatures, key departments/agencies, local officials, and security forces?
+:::
+
+## The corpus (need map?)
+
+- *130m+ domestic* news articles from 600+ sources in 71 countries, 2012-July 2026
+- Today's results from 7m+ articles; still processing
+- 38 languages. Processed to English for classification
+- One record per article; repeat coverage of one event yields multiple records (i.e. this ain't event data)
+
+::: notes
+- Source selection and scraping details: pull from the MLEED paper
+:::
+
+- More here. can get this from MLEED project. 
 
 ## The classifier
 
+- More here. I kinda think a figure here would help. 
+
 ## Some descriptives
+
+- Results
 
 ## More descriptives
 
+- Results
+
 ## Media polarization as lag or lead?
+
+- Time allowing i'm going to do a lead/lag analysis wrt VDEM regime changes/backsliding. Maybe an event study around backsliding episodes. 
+- But:
+  * VDem autocratization data is annual; need monthly onset data. This is a chronic problem when I think about applying our MLP data to big stuff in the world.
+
+::: notes 
+VDEM pol polarization: "Is society polarized into antagonistic, political camps?"
+VDEM soc polarization: "How would you characterize the differences of opinions on major political issues in this society?"
+:::
 
 ## Limitations
 
+- Translation could impact the incidence of neutral coding 
+- Our neutral coding bundles neutral, mixed, and insufficient evidence.
+- more here
+
+
+## Some fun stuff to do
+
+- *Polarization in reported coverage* of the incumbent: does it track, precede, or post-date societal polarization?
+- *Source-level variation*: How much of this is within vs. between sources in countries (cite to Adiguzel, Romero, Wibbels)? 
+
+::: notes
+- source level variation ties to Ezgi's doc: capture can homogenize pro-government outlets while widening their gap with independents. Between-outlet is where that shows up. Interesting, this is the opposite of what Serkant, Diego and I find w/legal restrictions in TZA.
+:::
+
 ## Conclusion
+
+- Polarization around the incumbent can be measured monthly, in any country with a press, without party-system scaling
+- Separating the action, its implication, and its narration distinguishes hostile coverage from bad news
+- Next tests: validity against existing polarization measures; outlet-level structure; better wrt timing around backsliding
 
 ## References {.smaller .backup}
 
