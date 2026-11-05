@@ -28,7 +28,9 @@ Slides 6–20 make a roughly 25-minute concepts-and-data section. The full seque
 
 The police example is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. It is not a sampled event or model-accuracy result.
 
-The pipeline diagram is editable Mermaid in the QMD. It shows translation followed by two encoder classifiers, corpus selection, GenAI coding, parsing/storage checks and analytical tables. `pipeline_schematic.png` is the earlier static diagram retained from Erik's original version; the current deck uses the editable diagram.
+The classifier slide restores Erik's overview layout with six numbered boxes, a coded-record example and illustrative monthly distributions. Translation and the two civic encoder classifiers have distinct stages. The editable diagram is in [includes/classifier.qmd](includes/classifier.qmd), styled by [classifier.css](classifier.css). `pipeline_schematic.png` retains Erik's original static figure for reference.
+
+The actor/action/target diagram, framing comparison and larger monthly distribution bars are editable HTML inside the main QMD. [concepts.css](concepts.css) styles only those slides. Positive, zero and negative labels use the same green, gray and orange palette in the examples and label-distribution figure. Keep the `includes` folder and both CSS files with the QMD when editing or sharing the source; the rendered HTML embeds everything needed for viewing.
 
 The four current empirical figures use one fixed [November 4 release](../data/analysis_snapshot.json): January 2022–May 2026, **1,984,402 eligible articles** among 2,157,912 valid complete-prompt records. They do not mix in later processing totals.
 

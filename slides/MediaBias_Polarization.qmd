@@ -31,6 +31,7 @@ format:
     hash-type: number
     preview-links: false
     pdf-separate-fragments: false
+    css: [classifier.css, concepts.css]
     include-in-header:
       - text: |
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -89,12 +90,6 @@ format:
           .reveal .csl-entry { margin-bottom: 0.35em; }
           .reveal .slides section.figure-slide img { max-height: 545px; width: auto; max-width: 100%; object-fit: contain; }
           .reveal .slides section.figure-slide p { margin: 0.2em 0; }
-          .reveal .slides section.pipeline-slide .mermaid { margin: 0 auto; }
-          .reveal .slides section.pipeline-slide svg { max-height: 220px; width: 100%; }
-          .reveal .slides section.pipeline-slide p { margin: 0.15em 0; }
-          .reveal .slides section.pipeline-slide .pipeline-label { font-size: 0.65em; font-weight: 600; color: var(--accent); margin: 0.3em 0 0; }
-          .reveal .slides section.framing-example col:first-child { width: 55% !important; }
-          .reveal .slides section.framing-example col:not(:first-child) { width: 15% !important; }
           .reveal .slides section.literature-detail li { margin-bottom: 0.22em; line-height: 1.23; }
           </style>
 ---
@@ -160,13 +155,15 @@ format:
 - Consistent with accounts of "pernicious" polarization, in which politics collapses into two camps for and against a polarizing leader [@mccoy_etal_2018]
 - An incumbent reference point works where party scales don't, i.e. electoral autocracies, fluid party systems  
 
-## Sentiment about what?
+## Sentiment about what? {.sentiment-intro}
 
-- Sentiment concerns an evaluation: **by whom, of what?**
+::: {.intro-question}
+By whom, of what?
+:::
+
 - In a product review, the target can be the product or a feature, such as battery life
 - In political reporting, negative language need not mean opposition to the incumbent
-- Our earlier disagreements concerned different objects of evaluation
-  * The action, its implication for government, and the article's evaluation
+- We distinguish the action, its implication for government, and the article's evaluation
 
 ::: notes
 Suggested time: 2 minutes. This begins the concepts and data section, roughly 25 minutes through the monthly comparison.
@@ -178,16 +175,24 @@ We should not say that sentiment research rarely defines its purpose. The narrow
 Background for this explanation, not a replacement for the literature section: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html ; Pang, Lee and Vaithyanathan (2002), https://aclanthology.org/W02-1011/ ; Sobhani, Mohammad and Kiritchenko (2016), https://aclanthology.org/S16-2021/ .
 :::
 
-## The action and the government
+## The action and the government {.action-reference-slide}
 
-- Identify the **national incumbent at publication**
-- Select one primary government-relevant action
-- Record **who did what to whom**, using exact text spans
-- Keep institutional role separate from incumbent affiliation
-- Evaluate all three labels relative to the same government
+```{=html}
+<div class="action-example" role="img" aria-label="Synthetic example: police disperse peaceful anti-government demonstrators. The entity target is the demonstrators; the government evaluated is the national incumbent.">
+  <div class="action-chain">
+    <div><span class="entity-label">Actor</span><span class="entity-value">Police</span></div>
+    <div class="relation-arrow" aria-hidden="true">→</div>
+    <div><span class="entity-label">Action</span><span class="entity-value">Disperse</span></div>
+    <div class="relation-arrow" aria-hidden="true">→</div>
+    <div><span class="entity-label">Entity target</span><span class="entity-value">Peaceful anti-government demonstrators</span></div>
+  </div>
+  <div class="government-reference"><strong>Government evaluated</strong>The national incumbent at publication</div>
+</div>
+<p class="action-reminder">One prioritized action per article. All three labels refer to the same government.</p>
+```
 
 ::: {.sample}
-The entity acted upon (`target`) and the government evaluated (`gov`) can differ.
+Synthetic example. Cabinet affiliation is supplied; institutional role alone does not establish it.
 :::
 
 ::: notes
@@ -198,6 +203,8 @@ The national executive and cabinet are the reference, including a ruling party o
 "Primary" does not mean the first event chronologically or whichever event produces the strongest sentiment. The selection hierarchy is a substantive headline action, then the lead, then the earliest repeatedly developed action, with centrality to government breaking a tie. Substantive statements such as accusations and endorsements count as actions. Generic "said" or "reported" does not by itself.
 
 An entity target must be explicit. A policy or budget is not an entity. One article yields one prioritized action, not an exhaustive event inventory or a complete actor network.
+
+The diagram abbreviates the verb to make the relationship readable. The actual stored action span in calibration example 1 is "dispersed peaceful anti-government demonstrators," copied exactly from the supplied text. The entity target and the government evaluated are different fields.
 :::
 
 ## One action, three judgments {.smaller}
@@ -227,16 +234,22 @@ Reputation applies the project's reasonable-observer standard to performance and
 Framing measures an observable evaluative cue. A bad event can receive frame = 0. These are different questions, rather than a universal ranking from objective to subjective.
 :::
 
-## Framing can vary while the action stays the same {.smaller .framing-example}
+## Framing can vary while the action stays the same {.framing-comparison-slide}
 
-| Narration of the same synthetic event | Alignment | Reputation | Framing |
-|---|:---:|:---:|:---:|
-| Police dispersed peaceful anti-government demonstrators | +1 | −1 | 0 |
-| Narrator adds: **“a necessary operation that restored order”** | +1 | −1 | +1 |
-
-- The added phrase legitimates the same conduct
-- Quoted criticism alone does not establish narrator criticism
-- Outlet bias requires comparisons of **what gets covered** and **how it is presented**
+```{=html}
+<div class="framing-rows" role="table" aria-label="Two narrations of the same synthetic event">
+  <div class="framing-head" role="row"><span role="columnheader">Same synthetic event</span><span role="columnheader">Alignment</span><span role="columnheader">Reputation</span><span role="columnheader">Framing</span></div>
+  <div class="framing-row" role="row">
+    <div role="cell"><span class="narration-label">Descriptive narration</span><span class="narration-copy">Police dispersed peaceful anti-government demonstrators.</span></div>
+    <span class="same-score" role="cell">+1</span><span class="same-score" role="cell">−1</span><span class="changed-score zero-score" role="cell">0</span>
+  </div>
+  <div class="framing-row" role="row">
+    <div role="cell"><span class="narration-label">Narrator adds an endorsement</span><span class="narration-copy">“…in a <strong>necessary operation that restored order.</strong>”</span></div>
+    <span class="same-score" role="cell">+1</span><span class="same-score" role="cell">−1</span><span class="changed-score positive-score" role="cell">+1</span>
+  </div>
+</div>
+<p class="framing-takeaway">Outlet comparisons also need to account for <strong>which events receive coverage.</strong></p>
+```
 
 ::: notes
 Suggested time: 2 minutes. Source: complete prompt, calibration examples 1–2 and framing rules.
@@ -297,44 +310,12 @@ A publication-country code describes source provenance. A government code identi
 This explains why governments such as Afghanistan, Andorra and the UAE can appear in the monthly CSV even where MLP does not scrape domestic outlets. Counts are uneven and very small groups do not support stable national estimates. The map describes the analyzed sample, not the full collection or press freedom.
 :::
 
-## The data pipeline {.pipeline-slide}
+## The classifier {.classifier-slide}
 
-::: {.pipeline-label}
-Collection and corpus selection
-:::
-
-```{mermaid}
-%%| fig-align: center
-flowchart LR
-  A["News collection<br/>Preprocessing"] --> B["Translation<br/>Title and body<br/>to English"]
-  B --> C["Civic-event<br/>encoder classifier"]
-  B --> D["Civic-related<br/>encoder classifier"]
-  C --> E["Selected<br/>civic corpus"]
-  D --> E
-  classDef stage fill:#ffffff,stroke:#011F5B,color:#1f2328,font-size:22px;
-  class A,B,C,D,E stage;
-```
-
-::: {.pipeline-label}
-Selected articles continue through coding and analysis
-:::
-
-```{mermaid}
-%%| fig-align: center
-flowchart LR
-  F["Input checks<br/>Fixed prompt"] --> G["GenAI Batch API<br/>One article<br/>per request"]
-  G --> H["Parse and check<br/>Verify storage"]
-  H --> I["Analysis tables<br/>Government<br/>Outlet and month"]
-  classDef stage fill:#ffffff,stroke:#011F5B,color:#1f2328,font-size:22px;
-  class F,G,H,I stage;
-```
-
-::: {.sample}
-Two encoder classifiers select the corpus before GenAI coding. The GenAI step extracts the action, entities and three labels.
-:::
+{{< include includes/classifier.qmd >}}
 
 ::: notes
-Suggested time: 2 minutes. The diagram remains editable in this Quarto source.
+Suggested time: 2 minutes. This restores the original overview layout with six stages. The diagram is editable HTML in includes/classifier.qmd, with styles in classifier.css. Use the top row to orient the audience, then connect the coded example to the monthly distribution. Each component has its own fuller explanation elsewhere in this section.
 
 The two encoder classifiers supply civic-event type and civic relevance. The active selection rule requires affirmative civic relevance and a valid primary civic event. It excludes disaster and missing/invalid primary event codes. A missing secondary event is allowed, while an invalid secondary event is excluded. Do not describe the pair as a "dual encoder" architecture or invent confidence thresholds. This diagram summarizes stages, not every storage operation.
 
@@ -410,17 +391,34 @@ Erik's comparison with polarization theory remains an open task. Distribution-ba
 "Net alignment" and "net reputation" in the point clouds mean the same positive-minus-negative calculation for the relevant field. A net near zero can arise through very different distributions.
 :::
 
-## The same net score can describe different coverage {.smaller}
+## The same net score can describe different coverage {.coverage-examples-slide}
 
-| Synthetic month | Negative | Zero | Positive | Net | Two-sided $P$ |
-|---|---:|---:|---:|---:|---:|
-| All zero-coded | 0% | 100% | 0% | 0 | 0 |
-| Mostly positive | 0% | 40% | 60% | .60 | 0 |
-| Both directions | 45% | 10% | 45% | 0 | .81 |
+```{=html}
+<div class="distribution-example" role="table" aria-label="Three synthetic months with shares, net direction and proposed two-sided index">
+  <div class="distribution-head" role="row"><span role="columnheader">Synthetic month</span><span role="columnheader">Share of articles</span><span class="number-head" role="columnheader">Net</span><span class="number-head" role="columnheader">P</span></div>
+  <div class="distribution-row" role="row">
+    <span class="distribution-name" role="rowheader">All zero-coded</span>
+    <div class="distribution-bar" role="cell" aria-label="100 percent zero"><span class="zero-share" style="width:100%">100%</span></div>
+    <span class="distribution-number" role="cell">0</span><span class="distribution-number" role="cell">0</span>
+  </div>
+  <div class="distribution-row" role="row">
+    <span class="distribution-name" role="rowheader">Mostly positive</span>
+    <div class="distribution-bar" role="cell" aria-label="40 percent zero, 60 percent positive"><span class="zero-share" style="width:40%">40%</span><span class="positive-share" style="width:60%">60%</span></div>
+    <span class="distribution-number" role="cell">.60</span><span class="distribution-number" role="cell">0</span>
+  </div>
+  <div class="distribution-row" role="row">
+    <span class="distribution-name" role="rowheader">Both directions</span>
+    <div class="distribution-bar" role="cell" aria-label="45 percent negative, 10 percent zero, 45 percent positive"><span class="negative-share" style="width:45%">45%</span><span class="zero-share" style="width:10%">10%</span><span class="positive-share" style="width:45%">45%</span></div>
+    <span class="distribution-number" role="cell">0</span><span class="distribution-number" role="cell">.81</span>
+  </div>
+</div>
+<div class="distribution-legend"><span><i class="negative-share"></i>Negative</span><span><i class="zero-share"></i>Zero</span><span><i class="positive-share"></i>Positive</span></div>
+<p class="distribution-takeaway">Net describes direction. P captures the prevalence of <strong>both directions together.</strong></p>
+```
 
-- Net describes **direction**
-- The two-sided index describes the **joint prevalence of both directions**
-- Neither establishes divided public opinion by itself
+::: {.sample}
+Synthetic examples. Zero includes neutral, mixed and insufficient directional evidence.
+:::
 
 ::: notes
 Suggested time: 1 minute. These are arithmetic illustrations, not observed countries. The last row has 4 × .45 × .45 = .81. The first row should not be called "consensus": zero-coded reporting can include mixed or insufficient evidence. The second row shows why a strong one-sided signal can have P = 0. The formula therefore complements rather than replaces shares and net direction.

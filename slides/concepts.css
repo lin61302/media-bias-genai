@@ -1,0 +1,192 @@
+/* Concept diagrams follow the colors and typography of the shared deck. */
+.reveal .slides section.sentiment-intro .intro-question {
+  font-size: 1.3em;
+  color: var(--accent);
+  font-weight: 650;
+  margin: .3em 0 .65em;
+}
+.reveal .slides section.action-reference-slide .action-example,
+.reveal .slides section.framing-comparison-slide .framing-rows,
+.reveal .slides section.coverage-examples-slide .distribution-example {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ink);
+}
+.action-reference-slide .action-example {
+  background: white;
+  border: 1px solid var(--rule);
+  border-top: 6px solid var(--accent);
+  border-radius: 10px;
+  padding: 26px 30px;
+  margin: 24px 0;
+}
+.action-reference-slide .action-chain {
+  display: grid;
+  grid-template-columns: .9fr 44px 1fr 44px 1.6fr;
+  align-items: center;
+  gap: 12px;
+  padding: 24px 0 32px;
+}
+.action-reference-slide .entity-label {
+  display: block;
+  color: var(--muted);
+  font-size: 23px;
+  margin-bottom: 12px;
+}
+.action-reference-slide .entity-value {
+  display: block;
+  color: var(--accent);
+  font-size: 33px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+.action-reference-slide .relation-arrow {
+  color: var(--muted);
+  font-size: 36px;
+  text-align: center;
+}
+.action-reference-slide .government-reference {
+  border-top: 1px solid var(--rule);
+  padding-top: 25px;
+  font-size: 29px;
+  line-height: 1.35;
+}
+.action-reference-slide .government-reference strong {
+  display: block;
+  margin-bottom: 6px;
+}
+.reveal .slides section.action-reference-slide .action-reminder {
+  font-size: 29px;
+  margin: 20px 0 8px;
+}
+.reveal .slides section.action-reference-slide .sample {
+  font-size: 20px;
+}
+.framing-comparison-slide .framing-rows {
+  margin: 30px 0 24px;
+}
+.framing-comparison-slide .framing-head,
+.framing-comparison-slide .framing-row {
+  display: grid;
+  grid-template-columns: 1fr 138px 154px 132px;
+  gap: 12px;
+  align-items: center;
+}
+.framing-comparison-slide .framing-head {
+  padding: 0 20px 12px;
+  font-size: 23px;
+  color: var(--muted);
+}
+.framing-comparison-slide .framing-head > :not(:first-child) {
+  text-align: center;
+}
+.framing-comparison-slide .framing-row {
+  padding: 25px 20px;
+  background: white;
+  border-top: 1px solid var(--rule);
+  min-height: 125px;
+}
+.framing-comparison-slide .framing-row:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+.framing-comparison-slide .narration-label {
+  display: block;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--muted);
+  margin-bottom: 9px;
+}
+.framing-comparison-slide .narration-copy {
+  font-size: 28px;
+  line-height: 1.3;
+}
+.framing-comparison-slide .same-score {
+  text-align: center;
+  color: var(--muted);
+  font-size: 34px;
+  font-weight: 500;
+}
+.framing-comparison-slide .changed-score {
+  justify-self: center;
+  min-width: 75px;
+  border-radius: 32px;
+  padding: 5px 10px;
+  text-align: center;
+  color: white;
+  font-size: 34px;
+  font-weight: 650;
+  line-height: 1.2;
+}
+.framing-comparison-slide .zero-score { background: #8992a3; }
+.framing-comparison-slide .positive-score { background: #009E73; }
+.reveal .slides section.framing-comparison-slide .framing-takeaway {
+  font-size: 29px;
+  line-height: 1.35;
+  margin: 25px 0 0;
+}
+.coverage-examples-slide .distribution-example {
+  margin: 30px 0 24px;
+}
+.coverage-examples-slide .distribution-head,
+.coverage-examples-slide .distribution-row {
+  display: grid;
+  grid-template-columns: 255px 1fr 115px 115px;
+  gap: 22px;
+  align-items: center;
+}
+.coverage-examples-slide .distribution-head {
+  color: var(--muted);
+  font-size: 24px;
+  margin-bottom: 18px;
+}
+.coverage-examples-slide .distribution-row { margin: 25px 0; }
+.coverage-examples-slide .distribution-name {
+  font-size: 29px;
+  font-weight: 600;
+  color: var(--accent);
+}
+.coverage-examples-slide .distribution-bar {
+  display: flex;
+  height: 68px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.coverage-examples-slide .distribution-bar span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+}
+.coverage-examples-slide .negative-share { background: #D55E00; color: white; }
+.coverage-examples-slide .zero-share { background: #cbd0d9; color: #1f2328; }
+.coverage-examples-slide .positive-share { background: #009E73; color: white; }
+.coverage-examples-slide .distribution-number {
+  text-align: center;
+  font-size: 35px;
+  color: var(--accent);
+}
+.coverage-examples-slide .distribution-head .number-head { text-align: center; }
+.coverage-examples-slide .distribution-legend {
+  display: flex;
+  gap: 28px;
+  justify-content: center;
+  margin: 25px 0;
+  font-size: 23px;
+}
+.coverage-examples-slide .distribution-legend i {
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin-right: 8px;
+  vertical-align: -2px;
+}
+.reveal .slides section.coverage-examples-slide .distribution-takeaway {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  margin-top: 25px;
+  font-size: 29px;
+  line-height: 1.35;
+}

@@ -28,7 +28,7 @@ START, END = "2022-01", "2026-05"
 GEOGRAPHY_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson"
 GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb"
 INK, NAVY, MUTED = "#1f2328", "#011F5B", "#6b7280"
-NEG, ZERO, POS = "#D55E00", "#e1e5eb", "#0072B2"
+NEG, ZERO, POS = "#D55E00", "#e1e5eb", "#009E73"
 AXIS_COLORS = {"align": "#0072B2", "rep": "#D55E00", "frame": "#009E73"}
 AXIS_NAMES = {"align": "Action alignment", "rep": "Reputational implication", "frame": "Article framing"}
 
