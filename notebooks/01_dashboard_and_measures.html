@@ -7827,7 +7827,7 @@ a.anchor-link {
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Markdown</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">"figure.dpi"</span><span class="p">:</span> <span class="mi">120</span><span class="p">,</span> <span class="s2">"font.size"</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">"axes.spines.top"</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">"axes.spines.right"</span><span class="p">:</span> <span class="kc">False</span><span class="p">})</span>
 <span class="n">FIG</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"figures"</span><span class="p">;</span> <span class="n">FIG</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">TABLES</span> <span class="o">=</span> <span class="n">ROOT</span> <span class="o">/</span> <span class="s2">"data/analysis"</span><span class="p">;</span> <span class="n">TABLES</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -8268,7 +8268,7 @@ dtype: float64</pre>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">frameon</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span><span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
 <span class="n">save</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span><span class="s2">"04_senegal_monthly"</span><span class="p">)</span>
 <span class="n">event_source</span><span class="o">=</span><span class="nb">next</span><span class="p">(</span><span class="n">e</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">META</span><span class="p">[</span><span class="s2">"events"</span><span class="p">]</span> <span class="k">if</span> <span class="n">e</span><span class="p">[</span><span class="s2">"gov"</span><span class="p">]</span><span class="o">==</span><span class="s2">"SEN"</span> <span class="ow">and</span> <span class="n">e</span><span class="p">[</span><span class="s2">"month"</span><span class="p">]</span><span class="o">==</span><span class="s2">"2024-02"</span><span class="p">)</span>
-<span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">event_source</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">event_source</span><span class="p">[</span><span class="s2">"text"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"</span><span class="se">\n\n</span><span class="s2">Source: ["</span> <span class="o">+</span> <span class="n">event_source</span><span class="p">[</span><span class="s2">"source"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">"]("</span> <span class="o">+</span> <span class="n">event_source</span><span class="p">[</span><span class="s2">"url"</span><span class="p">]</span> <span class="o">+</span> <span class="s2">")"</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8348,14 +8348,9 @@ dtype: float64</pre>
 </div>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>gov                                                     SEN
-month                                               2024-02
-title              Election postponement and court reversal
-text      The election scheduled for February was postpo...
-source    UN Secretary-General report S/2024/521, paragr...
-url       https://documents.un.org/doc/undoc/gen/n24/173...
-dtype: str</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-OutputArea-output" data-mime-type="text/markdown" tabindex="0">
+<p>The election scheduled for February was postponed, followed by protests. The Constitutional Council overturned the postponement on 15 February.</p>
+<p>Source: <a href="https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf">UN Secretary-General report S/2024/521, paragraph 18</a></p>
 </div>
 </div>
 </div>
