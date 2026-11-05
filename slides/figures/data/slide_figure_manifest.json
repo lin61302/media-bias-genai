@@ -2,29 +2,56 @@
   "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
   "source_commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135",
   "article_period": [
-    "2022-01",
+    "2021-01",
     "2026-05"
   ],
+  "valid_records": 2654346,
+  "eligible_records": 2440312,
+  "scope_file": "explore-since2021.json",
+  "scope_sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
+  "source_files": {
+    "explore-since2021.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-since2021.json",
+      "sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
+      "bytes": 681407
+    },
+    "explore-monthly.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-monthly.json",
+      "sha256": "829c1153add92654edbbb66416ef99413321a02c5f200d5e27f58e4c7a2a5e4b",
+      "bytes": 4567893
+    },
+    "explore-meta.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-meta.json",
+      "sha256": "e28aa6b9cf6d3b0267b7417cd4d82ae11de84f64120da7ce011082a644669cdc",
+      "bytes": 126089
+    },
+    "country_context.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/country_context.json",
+      "sha256": "20a7c94a6e4fe998c89ef2be2ff9472468c38409b1cab36ca52947e45e8e7cda",
+      "bytes": 141058
+    }
+  },
+  "scope_note": "Slides use the released January 2021 window from the fixed November 4 audit; the snapshot manifest's dashboard default remains January 2022.",
   "source_manifest": "data/analysis_snapshot.json",
   "coverage": {
-    "eligible_articles": 1984402,
+    "eligible_articles": 2440312,
     "source_domains": 428,
     "source_countries": 71,
     "mapped_source_domains": 402,
     "international_or_mixed_domains": 26,
-    "international_or_mixed_articles": 115165,
-    "evaluated_government_codes": 203,
+    "international_or_mixed_articles": 143391,
+    "evaluated_government_codes": 205,
     "examples": {
-      "AFG": 741,
-      "ARE": 289,
+      "AFG": 1697,
+      "ARE": 386,
       "AND": 2
     }
   },
   "joint": {
-    "correlation_alignment_reputation": 0.33550129926281347,
-    "positive_alignment_n": 158739,
-    "positive_alignment_negative_reputation_n": 30910,
-    "negative_reputation_share_among_positive_alignment": 0.19472215397602355
+    "correlation_alignment_reputation": 0.33786994969358103,
+    "positive_alignment_n": 190409,
+    "positive_alignment_negative_reputation_n": 38322,
+    "negative_reputation_share_among_positive_alignment": 0.20126149499235854
   },
   "senegal_february_2024": {
     "evaluated_government": "SEN",

@@ -6,6 +6,7 @@ article text or model access is used. Cached inputs are verified by SHA-256.
 """
 from collections import Counter
 import csv
+from datetime import datetime
 import hashlib
 import json
 from pathlib import Path
@@ -24,7 +25,9 @@ from analysis_utils import ROOT, AXES, load, cube, marginal, measures, correlati
 
 OUT = ROOT / "slides/figures"
 DATA = OUT / "data"
-START, END = "2022-01", "2026-05"
+SCOPE_FILE = "explore-since2021.json"
+START, END = "2021-01", "2026-05"
+PERIOD = f"{datetime.strptime(START, '%Y-%m'):%b %Y}–{datetime.strptime(END, '%Y-%m'):%b %Y}"
 GEOGRAPHY_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson"
 GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb"
 INK, NAVY, MUTED = "#1f2328", "#011F5B", "#6b7280"
@@ -45,7 +48,7 @@ plt.rcParams.update({
 
 def write_csv(name, rows):
     with (DATA / name).open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(f, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -142,7 +145,7 @@ def coverage(scope, monthly, meta, context, features):
     fig.text(.255, .188, "Number of source domains", ha="center", fontsize=14, color=MUTED)
     fig.text(.75, .188, "Number of eligible articles", ha="center", fontsize=14, color=MUTED)
     fig.text(.5, .105, f"{len(international)} international / mixed-country domains are separate from the publication-country map.", ha="center", fontsize=14)
-    fig.text(.5, .052, "Jan 2022–May 2026 · 1,984,402 eligible articles · gray = no observed value · Natural Earth v5.1.2", ha="center", fontsize=12, color=MUTED)
+    fig.text(.5, .052, f"{PERIOD} · {sum(govt.values()):,} eligible articles · gray = no observed value · Natural Earth v5.1.2", ha="center", fontsize=12, color=MUTED)
     save(fig, "06_coverage_map")
     return {"eligible_articles": sum(govt.values()), "source_domains": len(domains),
             "source_countries": len(source_country), "mapped_source_domains": sum(source_country.values()),
@@ -186,13 +189,14 @@ def distributions(scope):
     ax.tick_params(axis="x", length=0)
     ax.legend(loc="lower center", bbox_to_anchor=(.45, 1.07), ncol=3, frameon=False, fontsize=17)
     fig.text(.5, .09, "Zero includes neutral, mixed or insufficient directional evidence; not-codable labels are excluded.", ha="center", fontsize=14)
-    fig.text(.5, .04, "Jan 2022–May 2026 · n = 1,984,402 · same eligible articles for all three fields", ha="center", fontsize=13, color=MUTED)
+    fig.text(.5, .04, f"{PERIOD} · n = {n:,} · same eligible articles for all three fields", ha="center", fontsize=13, color=MUTED)
     save(fig, "07_label_distributions")
 
 
 def joint(scope):
     ar = cube(scope["overall"]).sum(axis=2)
     shares = ar / ar.sum(axis=1)[:, None]
+    joint_correlation = float(correlation(scope["overall"]))
     rows = [{"alignment": i-1, "reputation": j-1, "count": int(ar[i,j]),
              "alignment_group_denominator": int(ar[i].sum()), "share_within_alignment_group": float(shares[i,j])}
             for i in range(3) for j in range(3)]
@@ -217,11 +221,11 @@ def joint(scope):
     ax.grid(which="minor", color="white", linewidth=3)
     ax.tick_params(which="minor", length=0)
     ax.spines[:].set_visible(False)
-    fig.text(.5, .13, "19.5% of pro-incumbent actions have a negative reputational implication.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
-    fig.text(.5, .074, "Each row sums to 100% · correlation across −1/0/+1 article labels: r = 0.336", ha="center", fontsize=14)
-    fig.text(.5, .03, "Jan 2022–May 2026 · n = 1,984,402 eligible articles · descriptive model classifications", ha="center", fontsize=13, color=MUTED)
+    fig.text(.5, .13, f"{shares[2,0]:.1%} of pro-incumbent actions have a negative reputational implication.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
+    fig.text(.5, .074, f"Each row sums to 100% · correlation across −1/0/+1 article labels: r = {joint_correlation:.3f}", ha="center", fontsize=14)
+    fig.text(.5, .03, f"{PERIOD} · n = {int(ar.sum()):,} eligible articles · descriptive model classifications", ha="center", fontsize=13, color=MUTED)
     save(fig, "08_alignment_reputation_joint")
-    return {"correlation_alignment_reputation": float(correlation(scope["overall"])),
+    return {"correlation_alignment_reputation": joint_correlation,
             "positive_alignment_n": int(ar[2].sum()), "positive_alignment_negative_reputation_n": int(ar[2,0]),
             "negative_reputation_share_among_positive_alignment": float(shares[2,0])}
 
@@ -257,10 +261,10 @@ def timeseries(monthly):
     ax.grid(axis="y", color="#e5e7eb")
     ax.legend(loc="lower center", bbox_to_anchor=(.5, 1.11), ncol=3, frameon=False, fontsize=16)
     ax.axvspan(12.6, 13.4, facecolor=NAVY, alpha=.07)
-    ax.annotate("Election postponement\nand court reversal", xy=(13,.11023), xytext=(9.5,.126),
+    ax.annotate("Election postponement\nand court reversal", xy=(13, rows[13]["align_two_sided"]), xytext=(9.5,.126),
                 ha="center", va="top", fontsize=14, color=NAVY,
                 arrowprops={"arrowstyle": "-", "color": NAVY, "lw": 1})
-    ax.annotate("Election held", xy=(14,.0159), xytext=(15.0,.062), fontsize=14, color=NAVY,
+    ax.annotate("Election held", xy=(14, rows[14]["align_two_sided"]), xytext=(15.0,.062), fontsize=14, color=NAVY,
                 arrowprops={"arrowstyle": "-", "color": NAVY, "lw": 1})
     count_ax.bar(x, n, width=.7, color=["#c3c9d2" if v >= 100 else "#edeef1" for v in n], edgecolor="none")
     count_ax.axhline(100, color=MUTED, linewidth=.8, linestyle="--")
@@ -280,13 +284,21 @@ def timeseries(monthly):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
-    scope, monthly, meta, context = [load(n) for n in ("explore-post2021.json", "explore-monthly.json", "explore-meta.json", "country_context.json")]
+    scope, monthly, meta, context = [load(n) for n in (SCOPE_FILE, "explore-monthly.json", "explore-meta.json", "country_context.json")]
     assert scope["start"] == START and scope["end"] == END
-    assert sum(scope["overall"]["c"]) == 1984402
+    eligible = sum(scope["overall"]["c"])
+    valid = scope["quality"]["valid"]
+    assert eligible == scope["quality"]["complete"]
     manifest = json.loads((ROOT / "data/analysis_snapshot.json").read_text())
     results = {
         "audit_cutoff": manifest["audit_cutoff"], "source_commit": manifest["commit"],
         "article_period": [START, END],
+        "valid_records": valid, "eligible_records": eligible,
+        "scope_file": SCOPE_FILE,
+        "scope_sha256": manifest["files"][SCOPE_FILE]["sha256"],
+        "source_files": {name: manifest["files"][name] for name in
+                         (SCOPE_FILE, "explore-monthly.json", "explore-meta.json", "country_context.json")},
+        "scope_note": "Slides use the released January 2021 window from the fixed November 4 audit; the snapshot manifest's dashboard default remains January 2022.",
         "source_manifest": "data/analysis_snapshot.json",
         "coverage": coverage(scope, monthly, meta, context, geography()),
         "joint": joint(scope), "senegal_february_2024": timeseries(monthly),
@@ -301,22 +313,27 @@ def main():
     (DATA / "slide_figure_manifest.json").write_text(json.dumps(results, indent=2) + "\n")
     (DATA / "figure_notes.txt").write_text(
         "FIGURE SCOPE\nAll four figures use the hash-pinned November 4 release in data/analysis_snapshot.json. "
-        "No current-production totals are substituted. Main period: January 2022–May 2026; "
-        "1,984,402 eligible joint records among 2,157,912 structurally valid records. An eligible record has "
+        f"No current-production totals are substituted. Main period: {PERIOD}; "
+        f"{eligible:,} eligible joint records among {valid:,} structurally valid records. "
+        f"Audit cutoff: {manifest['audit_cutoff']}. Aggregate: {SCOPE_FILE}; SHA-256 "
+        f"{manifest['files'][SCOPE_FILE]['sha256']}. The dashboard-default metadata in the source manifest "
+        "still describes its January 2022 window; this slide build deliberately selects the released January 2021 window. "
+        "New production outcomes must enter a separately pinned, verified analysis release before these figures are updated. An eligible record has "
         "an identified evaluated government and primary action and numeric labels on all three axes. "
         "Zero remains; null/not codable does not. Structural checks are not semantic validation.\n\n"
         "MAP\nPublication countries are metadata of observed source domains, not the governments evaluated. "
         "Use complete monthly groups: display-level aggregate groups omit low-count categories. There are "
-        "428 domains, with 402 assigned to 71 single observed countries and 26 international/mixed domains "
+        f"{results['coverage']['source_domains']} domains, with {results['coverage']['mapped_source_domains']} assigned to "
+        f"{results['coverage']['source_countries']} single observed countries and {results['coverage']['international_or_mixed_domains']} international/mixed domains "
         "shown separately in the CSV. Do not infer a domain's scraped country from its brand or headquarters. "
-        "Evaluated-government records span 203 country/territory codes; Afghanistan, UAE and Andorra "
+        f"Evaluated-government records span {results['coverage']['evaluated_government_codes']} country/territory codes; Afghanistan, UAE and Andorra "
         "need not be scraped locally to appear. Each map has its own scale. Gray means no observed value. "
         "All observed codes map to Natural Earth geometry; tiny territories may not be visually distinguishable.\n\n"
         "DISTRIBUTIONS AND JOINT TABLE\nSame eligible article denominator across all measures. Zero includes "
         "neutral, mixed and insufficient directional evidence. The joint table conditions reputation on "
         "alignment; rows sum to 100%, and this is not a confusion matrix or an accuracy test. The correlation "
         "treats -1/0/+1 as equally spaced scores and is descriptive; article and source dependence remain. "
-        "19.5% of supporting actions are reputation-negative; these are coding implications, not measured "
+        f"{results['joint']['negative_reputation_share_among_positive_alignment']:.1%} of supporting actions are reputation-negative; these are coding implications, not measured "
         "changes in public reputation.\n\n"
         "SENEGAL\nSelected documented episode, not a representative or randomly selected case. Monthly "
         "P is calculated separately for all three measures. Source/month composition can change and repeated "
