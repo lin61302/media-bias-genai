@@ -24,6 +24,7 @@ The [codebook](docs/codebook.md) describes action selection, government identifi
 |---|---|
 | [Project status](docs/status.md) | Available work and remaining tasks |
 | [Dashboard guide](docs/dashboard-guide.md) | Time controls, point size, denominators, clustering and interpretation |
+| [Monthly polarization CSV](data/polarization/) | All available government country-months, three separate scores, shares and article counts |
 | [Analysis notebook](notebooks/01_dashboard_and_measures.ipynb) | Executed examples, figures and reproducible calculations |
 | [Research design](docs/research-design.md) | Research questions, comparisons, and political interpretation |
 | [Codebook](docs/codebook.md) | Coding definitions and field descriptions |

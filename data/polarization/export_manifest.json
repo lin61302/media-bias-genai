@@ -1,0 +1,74 @@
+{
+  "article_period_start": "2021-01",
+  "article_period_end": "2026-05",
+  "country_codes": 205,
+  "months": 65,
+  "rows": 13325,
+  "observed_country_months": 9449,
+  "eligible_articles": 2440312,
+  "coverage_status_counts": {
+    "under_100_articles": 5559,
+    "no_eligible_articles": 3876,
+    "at_least_100_articles": 3890
+  },
+  "default_dashboard_window_eligible_articles": 1984402,
+  "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
+  "prompt_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+  "source_space": "zungru/media-bias-reported-polarization",
+  "source_commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135",
+  "sources": {
+    "explore-monthly.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-monthly.json",
+      "sha256": "829c1153add92654edbbb66416ef99413321a02c5f200d5e27f58e4c7a2a5e4b",
+      "bytes": 4567893
+    },
+    "country_context.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/country_context.json",
+      "sha256": "20a7c94a6e4fe998c89ef2be2ff9472468c38409b1cab36ca52947e45e8e7cda",
+      "bytes": 141058
+    },
+    "explore-since2021.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-since2021.json",
+      "sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
+      "bytes": 681407
+    },
+    "explore-post2021.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-post2021.json",
+      "sha256": "c3ae434485c8c29615c1ccc9949cba365540a61ea94ad5ed381ebf88e78a6e12",
+      "bytes": 628908
+    }
+  },
+  "formula": "4 * negative_share * positive_share",
+  "country_definition": "Country/territory code of the evaluated government, not publication country",
+  "missing_score_policy": "Blank scores/shares/net when eligible_articles=0; never impute a zero score",
+  "columns": [
+    "government_country_code",
+    "government_country_name",
+    "month",
+    "eligible_articles",
+    "polarization_alignment",
+    "polarization_reputation",
+    "polarization_framing",
+    "alignment_nonzero_share",
+    "reputation_nonzero_share",
+    "framing_nonzero_share",
+    "alignment_negative_share",
+    "alignment_zero_share",
+    "alignment_positive_share",
+    "reputation_negative_share",
+    "reputation_zero_share",
+    "reputation_positive_share",
+    "framing_negative_share",
+    "framing_zero_share",
+    "framing_positive_share",
+    "alignment_net",
+    "reputation_net",
+    "framing_net",
+    "coverage_status"
+  ],
+  "output": {
+    "file": "monthly_polarization_all_countries.csv",
+    "bytes": 2903083,
+    "sha256": "9e70e773c22fab5f9d9d365d5344e3669a78afee5a3ac2f7df0f9a6b7775f965"
+  }
+}
