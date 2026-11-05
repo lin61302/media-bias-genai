@@ -23,6 +23,8 @@ The [codebook](docs/codebook.md) describes action selection, government identifi
 | Location | Contents |
 |---|---|
 | [Project status](docs/status.md) | Available work and remaining tasks |
+| [Dashboard guide](docs/dashboard-guide.md) | Time controls, point size, denominators, clustering and interpretation |
+| [Analysis notebook](notebooks/01_dashboard_and_measures.ipynb) | Executed examples, figures and reproducible calculations |
 | [Research design](docs/research-design.md) | Research questions, comparisons, and political interpretation |
 | [Codebook](docs/codebook.md) | Coding definitions and field descriptions |
 | [Data documentation](docs/data-card.md) | Corpus scope, inclusion rules, coverage, and limitations |
@@ -34,9 +36,13 @@ The [codebook](docs/codebook.md) describes action selection, government identifi
 
 ## Available data
 
-The current aggregate snapshot covers **542,981 structurally valid records from January 2025 through May 2026**, using the same complete prompt. It was verified on **October 29, 2026**. It is a processed subset of the broader project corpus, whose current target period is January 2012 through June 2026.
+The [analysis dashboard](https://zungru-media-bias-reported-polarization.static.hf.space/index.html) uses a fixed **January 2022–May 2026** cohort: **2,157,912 structurally valid records**, of which **1,984,402** have an identified government and primary action and all three labels codable. The storage audit is November 4, 2026. An optional 2021-start view includes 2,440,312 eligible records. All comparisons use one complete prompt.
 
-The [data documentation](docs/data-card.md) records the sampling boundaries, prompt versions, missing values, and processing coverage. The repository contains aggregate data; article text and record-level outputs are not included.
+The [snapshot manifest](data/analysis_snapshot.json) pins the public aggregate downloads by commit and SHA-256. The [notebook](notebooks/01_dashboard_and_measures.ipynb) reproduces distributions, joint-label correlations, a country cloud, monthly changes and the proposed [two-sided coverage index](docs/coverage-balance.md). Figures and calculated tables are included. See [notebook instructions](notebooks/README.md) to rerun it.
+
+The original October 29 snapshot of 542,981 valid January 2025–May 2026 records remains in `data/` for historical reproduction. Its marginal tables retain null in their denominators; the newer comparison sample excludes uncodable cases. These are different denominators.
+
+The broader processing target is January 2012–June 2026. [Corpus processing](https://huggingface.co/spaces/zungru/civic-actor-action-sentiment) is tracked separately and can advance without changing the frozen analysis. The [data card](docs/data-card.md) records scope, prompt versions and limitations. Article text and record-level outputs are not included.
 
 ## Reproduce the summaries
 
@@ -58,6 +64,6 @@ Add `--verify-upstream` to compare the snapshot with its archived public source 
 
 Corpus processing, human validation, and entity standardization are in progress. The available results describe model-coded articles. Source composition, translation quality, and coding error still need to be evaluated before interpreting differences as outlet bias or political effects.
 
-The next analyses require joint label tables and comparable outlet, government, and time groups. Ownership and regulatory data would support research on media institutions; audience data would be needed to study effects on political attitudes. See [project status](docs/status.md) for the current priorities.
+Joint label tables, monthly government/outlet comparisons and selected same-outlet checks are available. Matched-event comparisons, stable source panels and independent semantic validation remain needed. Ownership and regulatory data would support research on media institutions; audience data would be needed to study effects on political attitudes. See [project status](docs/status.md) for the current priorities.
 
 Data snapshots and prompt versions are documented separately. Analyses should identify the snapshot and Git commit used, and keep older prompt versions distinct.

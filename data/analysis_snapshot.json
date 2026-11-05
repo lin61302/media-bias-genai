@@ -1,0 +1,71 @@
+{
+  "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
+  "space": "zungru/media-bias-reported-polarization",
+  "commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135",
+  "prompt_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+  "default_period": "2022-01 through 2026-05",
+  "valid_records": 2157912,
+  "eligible_records": 1984402,
+  "files": {
+    "explore-post2021.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-post2021.json",
+      "sha256": "c3ae434485c8c29615c1ccc9949cba365540a61ea94ad5ed381ebf88e78a6e12",
+      "bytes": 628908
+    },
+    "explore-since2021.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-since2021.json",
+      "sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
+      "bytes": 681407
+    },
+    "explore-2024.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-2024.json",
+      "sha256": "c61ccf1246f4819261083e93baca2f483a4a9b097d18daab8c8a7846fc7b280e",
+      "bytes": 385630
+    },
+    "explore-meta.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-meta.json",
+      "sha256": "e28aa6b9cf6d3b0267b7417cd4d82ae11de84f64120da7ce011082a644669cdc",
+      "bytes": 126089
+    },
+    "explore-monthly.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-monthly.json",
+      "sha256": "829c1153add92654edbbb66416ef99413321a02c5f200d5e27f58e4c7a2a5e4b",
+      "bytes": 4567893
+    },
+    "country_context.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/country_context.json",
+      "sha256": "20a7c94a6e4fe998c89ef2be2ff9472468c38409b1cab36ca52947e45e8e7cda",
+      "bytes": 141058
+    },
+    "stories.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/stories.json",
+      "sha256": "c9ece12c21397b9b3076f24120e2442bdc3f0d9a84f12c03ffab3f45efb0611c",
+      "bytes": 7540
+    },
+    "contributors-index.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/contributors-index.json",
+      "sha256": "6bda5f7cede63b67570cfaf67f8ab021d4aa611f80113a99465a1143614f29e0",
+      "bytes": 29603
+    },
+    "contributors-gov-0.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/contributors-gov-0.json",
+      "sha256": "d74a0e7cbccca7d4e69641dd2890751120d76bccea2c937c241926fcf738c0f6",
+      "bytes": 1184721
+    },
+    "contributors-gov-1.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/contributors-gov-1.json",
+      "sha256": "3a00376f8c19ab04a8a52c28bc324537e5f584b975b7f11ba43ef77fba5ad8ff",
+      "bytes": 1129937
+    },
+    "contributors-gov-2.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/contributors-gov-2.json",
+      "sha256": "e60f1342ea3c1a02443a515805d247d3001062e82024ef0b2ba997a9ec8949c1",
+      "bytes": 1881718
+    },
+    "contributors-gov-3.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/contributors-gov-3.json",
+      "sha256": "678ed73f77a139120dac17f354557c65a71d8dfac42872f63b4928efdbac996e",
+      "bytes": 1599477
+    }
+  }
+}

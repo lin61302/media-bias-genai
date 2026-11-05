@@ -1,6 +1,6 @@
 # Validation
 
-Human validation is planned but incomplete. Structural checks and independent database verification establish that outputs conform to the schema and were stored correctly. They do not establish correct action selection, political interpretation, or translation fidelity.
+Human validation is incomplete; a historical human-coded comparison is available, while a representative independent evaluation of all three current constructs remains planned. Structural checks and independent database verification establish that outputs conform to the schema and were stored correctly. They do not establish correct action selection, political interpretation, or translation fidelity.
 
 ## Preliminary reviews
 
@@ -16,6 +16,12 @@ The later sample excluded the earlier 30 records. Both samples concern recent-pe
 The October 26 review identified five clear scope, extraction, or role errors. Across the reviews, observed problems included an event treated as an actor, a destination treated as an entity target, local conflict attributed to the national government without a supplied link, unrelated title/body content, and English text missing substantive original material. Other disagreements concerned interpretation. These small reviews diagnose error types; they do not estimate their population prevalence.
 
 All 70 requests lacked incumbent-context metadata. Exact reconstruction of the supplied English confirmed what the model received, but did not establish fidelity to the original article. These limitations matter when the coding rules prohibit outside facts.
+
+## November 2 historical comparison
+
+A separate comparison processed 266 previously human-coded articles with the complete prompt and full supplied text; 262 outputs were structurally valid and four invalid. An AI-assisted qualitative review retained the original human annotations and recorded proposed corrections separately. It does not constitute an independent human adjudication panel.
+
+This is a historical, selected sample. Its legacy annotation used one sentiment field rather than the current three constructs. Historical inputs were truncated while the new comparison used full supplied text; some titles and bodies differed. Event equivalence, exact-span agreement and political-label agreement therefore answer different questions. Conditional agreement rates from this exercise must not be presented as overall classifier accuracy. No representative human-reference accuracy estimate is established by these checks. Private article texts and review workbooks are not part of this repository.
 
 ## Evaluation layers
 

@@ -39,7 +39,7 @@ The current aggregate snapshot contains **542,981 structurally valid, independen
 Four distinct quantities guide the analysis:
 
 1. **Observed-corpus label shares:** the proportion of records with each label, including `0` and `null`. The current marginal tables support this calculation.
-2. **Within-source and within-government composition:** label shares by source, evaluated government, and publication month, with cell sizes and processing coverage. These tables remain to be extracted.
+2. **Within-source and within-government composition:** label shares by source, evaluated government, and publication month, with cell sizes and processing coverage. The November 4 release supplies grouped and monthly tables plus selected joint government/outlet comparisons; a complete matched-event panel remains to be constructed.
 3. **Differences within matched events:** differences in `frame` among articles reporting the same event within a defined period, after checking that they select the same action. This comparison remains proposed.
 4. **Coverage choice:** whether an outlet covers a defined event opportunity. This requires an external event frame or a bounded union of observed coverage. A missing scraped article cannot automatically be classified as editorial omission.
 
@@ -57,7 +57,7 @@ Every proportion needs an explicit denominator. Shares among all valid outputs, 
 
 ## Analyses requiring additional work
 
-The available marginal tables describe label distributions. Joint `align × rep` and `rep × frame` tables, government–source–month summaries, and action-type distributions require further aggregate extraction. Each analysis needs a dated cohort, explicit inclusion rules, and processing-coverage measures.
+The original marginal tables describe label distributions. The November 4 release adds joint `align × rep × frame` counts, government and source monthly summaries, actor/action/target comparisons and selected joint government/outlet checks. These still do not provide matched events or a complete research panel. Each analysis needs a dated cohort, explicit inclusion rules, and processing-coverage measures.
 
 Comparisons across sources and governments also need human validation, stable-source panels, and sensitivity to article, source, and government weighting. Matched-event comparisons require manual checks that articles concern the same event and selected action.
 
@@ -66,3 +66,9 @@ Ownership or control studies would need dated external data and a separate ident
 ## Interpreting media bias
 
 The `frame` variable measures a narrow form of evaluation. Research on media bias distinguishes distortion from filtering or selection and requires a comparative benchmark ([Gentzkow, Shapiro and Stone, 2014](https://www.nber.org/papers/w19880)). An outlet can select adverse events while describing them without evaluative language, or omit adverse events without using favorable adjectives. `frame = 0` therefore does not establish that an article or outlet is unbiased.
+
+## Available descriptive analysis (November 4, 2026)
+
+The newer fixed analysis provides joint label tables, article-level correlations, government/outlet profiles, monthly changes, common-outlet checks and actor/action contributions. These extend the original marginal tables; see the [dashboard guide](dashboard-guide.md) and [executed notebook](../notebooks/01_dashboard_and_measures.ipynb). Source composition, named-entity standardization, matched events and semantic validity remain unresolved.
+
+The proposed `4 p⁺ p⁻` [coverage-balance index](coverage-balance.md) is implemented as an exploratory calculation for each label separately. It combines directional coverage with balance and is sensitive to the meaning of zero. It is not yet a validated measure of societal polarization. Future country-year comparisons with institutional indicators need a dated design; coloring a multi-year cloud by one institutional year is descriptive context.

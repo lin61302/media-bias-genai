@@ -1,36 +1,27 @@
 # Project status
 
-Updated October 29, 2026. Counts below refer to the dated data snapshot, not live processing totals.
+Updated November 4, 2026. Analysis counts are fixed at the dated storage audit; processing continues separately.
 
-## Available work
-
-| Component | Current state |
+| Component | Available evidence |
 |---|---|
-| Corpus | Articles collected across 71 countries and international/regional sources. Processing of the January 2012–June 2026 target period is incomplete. |
-| Coding framework | One selected action, actor, target, and national incumbent government per article; separate alignment, reputation, and framing labels. |
-| Prompt | Complete October 20 version, with coding rules and synthetic calibration examples. Earlier versions remain distinct. |
-| Aggregate data | 542,981 valid complete-prompt records for January 2025–May 2026, with monthly coverage and missing-value counts. |
-| Reproduction | A script that checks the frozen data and regenerates summary tables. |
-| Preliminary review | Mechanical checks, independent storage verification, and two exploratory AI reviews of 30 and 40 records. |
-| Documentation | Codebook, data description, validation plan, research design, and bibliography. |
+| Coding | Complete prompt, codebook and separate action alignment, reputational implication and article framing labels |
+| Fixed analysis | January 2022–May 2026: 2,157,912 valid records and 1,984,402 eligible comparisons; optional 2021-start window |
+| Relationships | Joint three-label counts, correlations, actor/action/target comparisons and government/outlet groups |
+| Time | Monthly series, prior-three-month changes, common-outlet comparisons and action/actor contribution toggles |
+| Context | Region/subregion and V-Dem country-year indicators; five sourced event accounts, without article-level event matching |
+| Reproduction | Commit/hash-pinned aggregate manifest; executed notebook, exported figures and calculated tables; historical October 29 summaries retained |
+| Review | Structural/storage checks, earlier small AI reviews and a November 2 comparison on 266 previously human-coded articles (262 structurally valid); no representative human-reference accuracy estimate |
 
-The broader processing pipeline is maintained separately. The public code currently reproduces aggregate tables; it does not run collection, translation, model inference, or database storage.
+The [dashboard guide](dashboard-guide.md) explains every view and its denominators. The [notebook](../notebooks/01_dashboard_and_measures.ipynb) reproduces selected findings and the exploratory [coverage-balance index](coverage-balance.md).
 
-## Remaining work
+## Remaining research work
 
-| Task | What is needed |
-|---|---|
-| Human validation | Independent coding of a documented sample, comparison before adjudication, and field-specific error estimates. |
-| Translation review | Paired original-language and supplied-English checks for missing content, attribution, negation, and actor relationships. |
-| Government and entity identification | Date-specific incumbent information and a versioned crosswalk for actor and institution names. |
-| Joint label analysis | Article-level combinations of alignment, reputation, and framing, with nulls retained. |
-| Comparable outlet analyses | Source/government/month tables, stable outlet panels, and sensitivity to different weighting choices. |
-| Media institutions | Dated ownership and regulatory measures, with a defined comparison strategy. |
-| Citizen attitudes | Exposure and survey or experimental data if the research is extended to audience effects. |
-| Data releases | Documented versions as processing and validation advance. |
+- Independent human validation of the three separate constructs on the exact supplied input, with a documented sampling design.
+- Bilingual source/translation review and error analysis by country, source and label.
+- Date-specific incumbent references and standardized named entities; coded actor roles are not resolved individuals.
+- Stable source panels, matched-event comparisons and sensitivity to article versus outlet weighting.
+- A justified and validated interpretation of the proposed two-sided index before treating it as polarization.
+- Country-year research designs for institutional comparisons; fixed-year cloud colors do not supply lag/lead or causal evidence.
+- Dated ownership/regulation data for media-institution questions, and audience data for attitude effects.
 
-## Interpretation
-
-Current percentages describe the processed article sample. They are not accuracy estimates or measures of societal polarization. A high zero share can reflect neutral reporting, mixed evidence, insufficient context, or conservative coding. A negative reputation label can reflect an unfavorable event without critical wording from the narrator.
-
-The [validation documentation](validation.md) separates completed checks from proposed evaluation. The [research design](research-design.md) describes the evidence required for the substantive comparisons.
+The public code reproduces aggregate calculations. It does not run collection, translation, model inference or database storage. Processing status is maintained separately; the historical inventory, current stored totals and eligible analysis sample must remain distinct.
