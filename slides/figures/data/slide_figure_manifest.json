@@ -1,0 +1,62 @@
+{
+  "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
+  "source_commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135",
+  "article_period": [
+    "2022-01",
+    "2026-05"
+  ],
+  "source_manifest": "data/analysis_snapshot.json",
+  "coverage": {
+    "eligible_articles": 1984402,
+    "source_domains": 428,
+    "source_countries": 71,
+    "mapped_source_domains": 402,
+    "international_or_mixed_domains": 26,
+    "international_or_mixed_articles": 115165,
+    "evaluated_government_codes": 203,
+    "examples": {
+      "AFG": 741,
+      "ARE": 289,
+      "AND": 2
+    }
+  },
+  "joint": {
+    "correlation_alignment_reputation": 0.33550129926281347,
+    "positive_alignment_n": 158739,
+    "positive_alignment_negative_reputation_n": 30910,
+    "negative_reputation_share_among_positive_alignment": 0.19472215397602355
+  },
+  "senegal_february_2024": {
+    "evaluated_government": "SEN",
+    "month": "2024-02",
+    "eligible_articles": 934,
+    "align_two_sided": 0.110156862565283,
+    "align_negative": 0.1948608137044968,
+    "align_zero": 0.6638115631691649,
+    "align_positive": 0.14132762312633834,
+    "rep_two_sided": 0.016121858507306647,
+    "rep_negative": 0.31370449678800855,
+    "rep_zero": 0.6734475374732334,
+    "rep_positive": 0.01284796573875803,
+    "frame_two_sided": 0.013852142932472524,
+    "frame_negative": 0.1702355460385439,
+    "frame_zero": 0.8094218415417559,
+    "frame_positive": 0.020342612419700215,
+    "displayed_in_line": true
+  },
+  "geography": {
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson",
+    "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+    "license": "Public domain",
+    "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+    "code_rule": "ISO_A3_EH; Natural Earth KOS explicitly mapped to project XKX; no other substitutions",
+    "note": "Natural Earth boundaries and code matching are cartographic conventions, not a statement of recognition."
+  },
+  "event_source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
+  "figures": [
+    "06_coverage_map",
+    "07_label_distributions",
+    "08_alignment_reputation_joint",
+    "09_senegal_monthly_indices"
+  ]
+}

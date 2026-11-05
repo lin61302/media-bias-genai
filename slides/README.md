@@ -1,26 +1,62 @@
-# Slides
+# Shared slides
 
-`MediaBias_Polarization.qmd` is Erik's Quarto source. `MediaBias_Polarization.html` is the rendered, self-contained Reveal.js deck. Both were pulled from commit `0631974` (November 4, 2026); this documentation update preserves those files unchanged.
-
-Open the HTML directly in a browser. With Quarto installed, render the source from this directory:
+[MediaBias_Polarization.qmd](MediaBias_Polarization.qmd) is the shared Quarto source. [MediaBias_Polarization.html](MediaBias_Polarization.html) is the rendered Reveal.js deck. Edit the QMD, then render the HTML before committing. The HTML embeds its resources for local viewing.
 
 ```sh
+cd slides
 quarto render MediaBias_Polarization.qmd
 ```
 
-The deck contains 17 slides. Its research argument moves from polarization and regime change to incumbent-referenced article coding, monthly aggregation and future comparisons with democracy indicators.
+Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow keys or Space to move, **M** for the menu, and **S** for speaker view. Share the slide window with the audience and keep speaker notes on your own display. If speaker view is blocked for a local file, serve this folder with `python3 -m http.server 8883 --bind 127.0.0.1` and open `http://127.0.0.1:8883/MediaBias_Polarization.html`.
 
-## Evidence available for the draft
+## Structure and timing
 
-| Existing section | Available material | Remaining decision or evidence |
-|---|---|---|
-| From articles to a monthly measure | [Coverage-balance definition](../docs/coverage-balance.md), notebook synthetic examples and monthly calculations | Decide which of the three fields the index represents; justify its relationship to the polarization literature |
-| The corpus | [Data card](../docs/data-card.md), dated snapshot manifest and coverage counts | Separate the broad MLP collection, historical 7.37m extraction inventory, current stored results and the 1.98m eligible analysis sample. The draft's “today 7m+” is not the verified denominator used in these figures |
-| The classifier | [Codebook](../docs/codebook.md), [complete prompt](../prompts/civic_20261020_complete_v1.txt) and [validation](../docs/validation.md) | Show action selection, government reference and the three distinct labels; human-reference accuracy remains unresolved |
-| Some descriptives / More descriptives | [Notebook and exported figures](../notebooks/01_dashboard_and_measures.ipynb): joint labels, government cloud and Senegal monthly example | Choose a small set of findings with scope, denominators and uncertainty clearly stated |
-| Media polarization as lag or lead? | V-Dem country-year context and monthly label tables are available | A fitted, validated lag/lead design is not supplied by the dashboard |
-| Limitations / Conclusion | Measurement limits in the codebook, data card and [dashboard guide](../docs/dashboard-guide.md) | Distinguish coverage patterns from public attitudes and causal effects |
+The deck has 26 slides including the title and references. It keeps the existing design and literature sections. Detailed explanations and qualifications are in the speaker notes.
 
-The classifier and descriptive slides currently contain placeholders. Unresolved citation notes remain in the literature slides and measure proposal. Broad corpus figures in the draft (including the 130m+, 600+ sources and language counts) require a dated MLP source; this update does not certify them. The exported figures describe the fixed November 4 analysis snapshot, not completed processing of the full historical corpus.
+| Slides | Content | Suggested time |
+|---|---|---:|
+| 1–5 | Question, literature and analytical challenges | 12–15 minutes |
+| 6–9 | Sentiment target, action/government reference, three-label example | 7–9 minutes |
+| 10–15 | Approach, corpus, coverage map, pipeline, coding and analytical views | 8–10 minutes |
+| 16–20 | Monthly measure, distributions, joint labels and Senegal example | 7–9 minutes |
+| 21–25 | Validation, research design, limitations and next comparisons | 8–10 minutes |
+| 26 | References | Reference slide |
 
-Figure files are in [figures](../figures/); each caption and its reproduction code are in the notebook. The [dashboard guide](../docs/dashboard-guide.md) explains point size, the two time controls, clustering, exclusions and contributor denominators.
+Slides 6–20 make a roughly 25-minute concepts-and-data section. The full sequence leaves time for discussion within an hour. These are pacing suggestions, not assigned speaking roles.
+
+## Examples and figures
+
+The police example is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. It is not a sampled event or model-accuracy result.
+
+The pipeline diagram is editable Mermaid in the QMD. It shows translation followed by two encoder classifiers, corpus selection, GenAI coding, parsing/storage checks and analytical tables. `pipeline_schematic.png` is the earlier static diagram retained from Erik's original version; the current deck uses the editable diagram.
+
+The four current empirical figures use one fixed [November 4 release](../data/analysis_snapshot.json): January 2022–May 2026, **1,984,402 eligible articles** among 2,157,912 valid complete-prompt records. They do not mix in later processing totals.
+
+| Figure | What it shows |
+|---|---|
+| [06_coverage_map.png](figures/06_coverage_map.png) | 71 publication countries and 203 evaluated-government codes. The maps have different quantities and scales. International/mixed source domains are separate. |
+| [07_label_distributions.png](figures/07_label_distributions.png) | Three marginal distributions on the same eligible denominator. Zero combines neutral, mixed and insufficient directional evidence. |
+| [08_alignment_reputation_joint.png](figures/08_alignment_reputation_joint.png) | Reputation conditional on alignment. Among pro-incumbent actions, 19.5% have negative reputational implications. |
+| [09_senegal_monthly_indices.png](figures/09_senegal_monthly_indices.png) | Monthly two-sided index for each field, article volume and a sourced episode. Lines omit months below 100 articles; this is a display rule, not a reliability guarantee. |
+
+PDF and SVG versions are alongside each PNG. [Plotted CSVs, notes and provenance](figures/data/) accompany the figures. Regenerate them from the repository root:
+
+```sh
+python -m pip install -r requirements-analysis.txt
+python scripts/build_slide_figures.py
+```
+
+The builder verifies the public input hashes and pinned Natural Earth geometry. It uses no database, article text or model calls. The existing [notebook](../notebooks/01_dashboard_and_measures.ipynb) provides additional calculations and explanations.
+
+## Interpretation and remaining work
+
+- **Alignment** describes the political direction of the selected action, rather than moral approval or the actor's private views.
+- **Reputation** describes a coded implication for government performance/legitimacy, rather than a measured change in public opinion.
+- **Framing** describes observable narrator evaluation. Outlet bias requires evidence about coverage selection and comparable events.
+- **Monthly P = 4p⁺p⁻** is a proposed two-sided coverage index, calculated separately for the three fields. Its relationship to societal polarization and to formal polarization indices remains to be justified.
+- The country in the export is the **government evaluated**, which can differ from a source's publication country. Small country-month counts remain unsuitable for strong national claims.
+- Action-based coding can miss adverse conditions without a substantive action. Representative human validation of the three current labels remains incomplete.
+
+Literature and citation completion remain with the speakers developing those sections. Existing unresolved bibliography keys are `martin_yurukoglu_2017`, `mccoy_etal_2018`, `prior_2013` and `wagner_2021`; the literature slides also retain their original citation reminders. The lead/lag slide is a research proposal, not an estimated result.
+
+Method details: [codebook](../docs/codebook.md), [data card](../docs/data-card.md), [validation](../docs/validation.md), [measure definition](../docs/coverage-balance.md), and [dashboard guide](../docs/dashboard-guide.md).

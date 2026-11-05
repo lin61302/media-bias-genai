@@ -87,6 +87,15 @@ format:
           .reveal .slides section.backup h2 { color: #374151; }
           .reveal .references, .reveal #refs { font-size: 0.55em; line-height: 1.3; }
           .reveal .csl-entry { margin-bottom: 0.35em; }
+          .reveal .slides section.figure-slide img { max-height: 545px; width: auto; max-width: 100%; object-fit: contain; }
+          .reveal .slides section.figure-slide p { margin: 0.2em 0; }
+          .reveal .slides section.pipeline-slide .mermaid { margin: 0 auto; }
+          .reveal .slides section.pipeline-slide svg { max-height: 220px; width: 100%; }
+          .reveal .slides section.pipeline-slide p { margin: 0.15em 0; }
+          .reveal .slides section.pipeline-slide .pipeline-label { font-size: 0.65em; font-weight: 600; color: var(--accent); margin: 0.3em 0 0; }
+          .reveal .slides section.framing-example col:first-child { width: 55% !important; }
+          .reveal .slides section.framing-example col:not(:first-child) { width: 15% !important; }
+          .reveal .slides section.literature-detail li { margin-bottom: 0.22em; line-height: 1.23; }
           </style>
 ---
 
@@ -105,7 +114,7 @@ format:
 :::
 
 
-## Existing work on the US (need to cite Matt!) {.smaller}
+## Existing work on the US {.smaller .literature-detail}
 
 - **Substantive debate:** is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]. The field has since shifted from ideology to affect [@iyengar_etal_2019]
 - **Measures of polarization:**
@@ -119,6 +128,7 @@ format:
   * Media: partisan news shifts votes and can raise polarization [@martin_yurukoglu_2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior_2013]
 
 ::: notes
+- Citation completion: add the intended Matt reference and the remaining media literature.
 - Measures of legislative polarization over time are crap
 - measured as the distance between the two parties on an ideology scale estimated from roll-call votes.
 - NOMINATE, DW-NOMINATE, etc.: members who serve in many Congresses link the scale across years. Does anyone think they (and the agenda and what makes it to a floor vote) are consistent over time?
@@ -150,114 +160,383 @@ format:
 - Consistent with accounts of "pernicious" polarization, in which politics collapses into two camps for and against a polarizing leader [@mccoy_etal_2018]
 - An incumbent reference point works where party scales don't, i.e. electoral autocracies, fluid party systems  
 
+## Sentiment about what?
+
+- Sentiment concerns an evaluation: **by whom, of what?**
+- In a product review, the target can be the product or a feature, such as battery life
+- In political reporting, negative language need not mean opposition to the incumbent
+- Our earlier disagreements concerned different objects of evaluation
+  * The action, its implication for government, and the article's evaluation
+
+::: notes
+Suggested time: 2 minutes. This begins the concepts and data section, roughly 25 minutes through the monthly comparison.
+
+Word counts, sentiment dictionaries and embeddings are ways to represent text or estimate a label. They do not define what the label means. Traditional sentiment analysis includes document, sentence, target and aspect-level approaches. Product reviews ask for an evaluation of a product or a feature, not merely a list of descriptive words. Spam detection is a different classification task: whether a message belongs to an unwanted-message class.
+
+We should not say that sentiment research rarely defines its purpose. The narrower point is that a generic positive/negative score can fail to match the political question we intend. We spent a long time discussing "sentiment" while asking different questions. The three fields make those differences explicit.
+
+Background for this explanation, not a replacement for the literature section: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html ; Pang, Lee and Vaithyanathan (2002), https://aclanthology.org/W02-1011/ ; Sobhani, Mohammad and Kiritchenko (2016), https://aclanthology.org/S16-2021/ .
+:::
+
+## The action and the government
+
+- Identify the **national incumbent at publication**
+- Select one primary government-relevant action
+- Record **who did what to whom**, using exact text spans
+- Keep institutional role separate from incumbent affiliation
+- Evaluate all three labels relative to the same government
+
+::: {.sample}
+The entity acted upon (`target`) and the government evaluated (`gov`) can differ.
+:::
+
+::: notes
+Suggested time: 2 minutes. Source: ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, workflow steps 1–2.
+
+The national executive and cabinet are the reference, including a ruling party or coalition when the supplied record establishes the affiliation. Courts, legislatures, local officials and security forces are not automatically incumbent members. Their institutional role and the political direction of their action are separate judgments.
+
+"Primary" does not mean the first event chronologically or whichever event produces the strongest sentiment. The selection hierarchy is a substantive headline action, then the lead, then the earliest repeatedly developed action, with centrality to government breaking a tie. Substantive statements such as accusations and endorsements count as actions. Generic "said" or "reported" does not by itself.
+
+An entity target must be explicit. A policy or budget is not an entity. One article yields one prioritized action, not an exhaustive event inventory or a complete actor network.
+:::
+
+## One action, three judgments {.smaller}
+
+**Synthetic title:** Police disperse peaceful anti-government march\
+**Text:** Police dispersed peaceful anti-government demonstrators outside parliament.
+
+| Measure | Question | Code and reason |
+|---|---|---|
+| **Alignment** | Does the action support or oppose the incumbent? | **+1:** restricts explicit opponents |
+| **Reputational implication** | What does it imply about government performance or legitimacy? | **−1:** coercion against peaceful protesters |
+| **Evaluative framing** | Does the narration add approval or criticism? | **0:** descriptive account |
+
+::: {.sample}
+Assumption: the supplied record establishes direct police affiliation with the national cabinet. Actor: police. Target: demonstrators. Evaluated government: national incumbent.
+:::
+
+::: notes
+Suggested time: 2–3 minutes. Source: complete prompt, calibration example 1. This is a synthetic calibration example, not a sampled article or a claim about a particular country.
+
+The exact synthetic title is "Police disperse peaceful anti-government march." The text is "Police dispersed peaceful anti-government demonstrators outside parliament." The prompt supplies direct cabinet affiliation. "Forcibly disperse peaceful demonstrators" is a useful spoken description of the coercion example.
+
+Alignment is action-grounded, not a claim of complete objectivity or of the actor's private political beliefs. A positive value describes political direction, not moral approval. Identity alone never establishes the code.
+
+Reputation applies the project's reasonable-observer standard to performance and legitimacy. It requires a link to the government and sufficiently clear substantive implications. Different audiences may judge the event differently. The label does not establish that domestic or international opinion actually changed, and it does not use later events to infer an effect.
+
+Framing measures an observable evaluative cue. A bad event can receive frame = 0. These are different questions, rather than a universal ranking from objective to subjective.
+:::
+
+## Framing can vary while the action stays the same {.smaller .framing-example}
+
+| Narration of the same synthetic event | Alignment | Reputation | Framing |
+|---|:---:|:---:|:---:|
+| Police dispersed peaceful anti-government demonstrators | +1 | −1 | 0 |
+| Narrator adds: **“a necessary operation that restored order”** | +1 | −1 | +1 |
+
+- The added phrase legitimates the same conduct
+- Quoted criticism alone does not establish narrator criticism
+- Outlet bias requires comparisons of **what gets covered** and **how it is presented**
+
+::: notes
+Suggested time: 2 minutes. Source: complete prompt, calibration examples 1–2 and framing rules.
+
+The phrase is from a synthetic example. We keep the peaceful status, selected action and government affiliation constant. The narrator adds an endorsement, so only framing changes.
+
+We measure expressed presentation cues rather than the author's private intention or an outlet's permanent political position. Translation can erase or introduce subtle connotations. The conservative prompt generally uses zero when a cue may be a translation artifact.
+
+An article with frame = 0 can still reflect selective reporting. Repeated article comparisons can describe action choice, hostile/favorable coverage shares and narrated evaluation. Attributing those patterns to bias requires a comparison baseline, stable source coverage and ideally matched events. Different outlets may simply report different events. The present aggregates do not match events across outlets.
+:::
+
 ## Our approach
 
-- Media coverage as a tool for measuring polarization
-  * Available daily, for any country with a press, regardless of party system
-- Code individual articles as pro- and anti-incumbent 
-- Aggregate those articles into monthly measures to capture polarization around the incumbent
-- Expectations:
-  * Net sentiment won't quite cut it
-  * Neutral coverage is declining in polarization
-  * The greater the share of overall incumbent coverage that is positive *and* negative, the greater the polarization
+- Use news coverage to study conflict around national incumbents
+- Keep action alignment, reputational implications and framing separate
+- Aggregate each label by **evaluated government and month**
+- Ask whether coverage becomes more one-sided or more divided
+  * Net direction alone cannot distinguish all-zero coverage from equal positive and negative shares
+- Compare these coverage patterns with external measures of polarization
 
+::: notes
+Suggested time: 1 minute. The directly observed object is the composition of coded reporting in our selected sources. Its relationship to societal polarization is a research question. The country series follows the incumbent at each article's publication date, not a single leader throughout the entire series. Government turnover can therefore change the reference actor.
+:::
+
+## The corpus {.smaller}
+
+- MLP collects news from domestic and international sources
+- **7.37 million** article IDs in the historical civic extraction inventory
+  * Production target: January 2012–June 2026, still processing
+- Today's fixed analysis: **January 2022–May 2026**
+  * 2.16 million valid records, **1.98 million eligible joint comparisons**
+- One article, one selected action
+  * Repeated reporting of an event yields multiple observations
+
+::: {.sample}
+Analysis cutoff: November 4, 2026. The collection inventory, processed records and analysis sample are different counts.
+:::
+
+::: notes
+Suggested time: 1 minute. Sources: ../docs/data-card.md and ../data/analysis_snapshot.json.
+
+Exact historical inventory: 7,373,816 unique eligible IDs across 189 partitions and 178 months. This is a dated extraction inventory, not the current input-clear pool or a completed analysis of 7 million articles. The production target covers 174 months. The fixed November 4 default sample contains 2,157,912 valid complete-prompt records and 1,984,402 eligible joint comparisons. A January 2021 start is also available: 2,654,346 valid and 2,440,312 eligible.
+
+Eligibility requires identified government and primary action plus numeric values for all three measures. The 173,510 valid records outside this common sample are not relabeled zero. Source selection, scraping, civic filters, usable supplied English, processing completion and coding rules all affect inclusion. This is not a probability sample of all news or political events.
+
+The broad MLP totals and collection-paper discussion belong with the team’s data-collection introduction. The figures here use the dated, reproducible cohort rather than an unverified current total for the full MLP archive.
+:::
+
+## Source countries and evaluated governments {.figure-slide}
+
+![](figures/06_coverage_map.png){fig-align="center" width="100%"}
+
+::: notes
+Suggested time: 1–2 minutes. Source: frozen November 4 monthly aggregates. Figure and plotted data are reproduced by ../scripts/build_slide_figures.py.
+
+A publication-country code describes source provenance. A government code identifies the national incumbent evaluated in a particular article. These are not interchangeable. Domestic government is the default, but the prompt allows a foreign government when its stated foreign-government conditions hold. International and regional publications can use ALL for provenance, but the evaluated government must be a specific code.
+
+This explains why governments such as Afghanistan, Andorra and the UAE can appear in the monthly CSV even where MLP does not scrape domestic outlets. Counts are uneven and very small groups do not support stable national estimates. The map describes the analyzed sample, not the full collection or press freedom.
+:::
+
+## The data pipeline {.pipeline-slide}
+
+::: {.pipeline-label}
+Collection and corpus selection
+:::
+
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+  A["News collection<br/>Preprocessing"] --> B["Translation<br/>Title and body<br/>to English"]
+  B --> C["Civic-event<br/>encoder classifier"]
+  B --> D["Civic-related<br/>encoder classifier"]
+  C --> E["Selected<br/>civic corpus"]
+  D --> E
+  classDef stage fill:#ffffff,stroke:#011F5B,color:#1f2328,font-size:22px;
+  class A,B,C,D,E stage;
+```
+
+::: {.pipeline-label}
+Selected articles continue through coding and analysis
+:::
+
+```{mermaid}
+%%| fig-align: center
+flowchart LR
+  F["Input checks<br/>Fixed prompt"] --> G["GenAI Batch API<br/>One article<br/>per request"]
+  G --> H["Parse and check<br/>Verify storage"]
+  H --> I["Analysis tables<br/>Government<br/>Outlet and month"]
+  classDef stage fill:#ffffff,stroke:#011F5B,color:#1f2328,font-size:22px;
+  class F,G,H,I stage;
+```
+
+::: {.sample}
+Two encoder classifiers select the corpus before GenAI coding. The GenAI step extracts the action, entities and three labels.
+:::
+
+::: notes
+Suggested time: 2 minutes. The diagram remains editable in this Quarto source.
+
+The two encoder classifiers supply civic-event type and civic relevance. The active selection rule requires affirmative civic relevance and a valid primary civic event. It excludes disaster and missing/invalid primary event codes. A missing secondary event is allowed, while an invalid secondary event is excluded. Do not describe the pair as a "dual encoder" architecture or invent confidence thresholds. This diagram summarizes stages, not every storage operation.
+
+Before GenAI, the pipeline uses the supplied translated title and full supplied English body, including English originals in the same fields. It checks for empty/invalid bodies and wholly non-English input. There is no sentence-count minimum. Usable English does not establish faithful translation.
+
+Production uses one article per request within asynchronous batches, with the complete prompt and recorded model settings. Parsing checks field types, allowed values, IDs and copied evidence. Independent storage readback verifies persistence. These checks cannot establish that the political interpretation is correct.
+
+Public method sources: ../docs/codebook.md, ../prompts/version.json and ../prompts/civic_20261020_complete_v1.txt. Corpus-selection rule was checked against the active civic pipeline policy.
+:::
+
+## Keeping the coding consistent
+
+- Select the government and action **before** assigning labels
+- Apply separate rules to alignment, reputation and framing
+- Require exact text evidence and preserve allegations as allegations
+- Give each request the same complete prompt and input structure
+- Track prompt, model settings and input versions across batches
+
+::: notes
+Suggested time: 2 minutes. Sources: ../prompts/version.json, complete prompt and ../docs/validation.md.
+
+This is the practical result of the conceptual compromise: a more structured record rather than one overloaded sentiment field. The prompt includes explicit distinctions, decision order, null rules and synthetic boundary examples. Nonzero reputation and framing require short exact evidence spans. Actor identity and source-domain identity cannot substitute for evidence. Outlet provenance is not an instruction to infer ideology or credibility. The model uses supplied material, without browsing or outside case knowledge.
+
+Exact evidence makes decisions inspectable, but an exact quote can still be assigned the wrong role or label. Fixed settings and a common prompt constrain variation; they do not guarantee deterministic outputs or remove bias. Static prompt caching is an operational reuse/cost mechanism, not a semantic consistency guarantee. Earlier prompt outputs remain a separate cohort.
+:::
+
+## From output to analytical views
+
+- Match returned IDs and check the JSON schema and exact spans
+- Preserve failed, missing and uncodable outcomes separately
+- Build government, source, actor and action comparisons
+- Freeze a common cohort for joint comparisons
+  * Identified government and action, all three labels codable
+- Report sample size and the positive, zero and negative shares
+
+::: {.sample}
+**0:** no supported direction, mixed evidence or insufficient directional evidence. **Null:** not codable.
+:::
+
+::: notes
+Suggested time: 1–2 minutes. Sources: ../docs/codebook.md, ../docs/dashboard-guide.md, ../docs/data-card.md.
+
+One valid stored record is not necessarily eligible for every analysis. Different dimensions can have different null patterns. The current joint charts and monthly CSV deliberately use a common sample so differences between the three fields are not driven by changing their denominators. Dimension-specific analysis could retain more observations, but must name its denominator explicitly.
+
+Unidentified governments and actions are excluded from substantive group comparisons. Unknown actors and unclassified/residual actions are kept out of similarity and named-contributor comparisons. Null never becomes a neutral score. Zero remains in the denominator, but it combines neutral, mixed and insufficient-evidence cases. It is not a pure class of neutral language.
+
+The dashboard exposes aggregate relationships and contextual stories, while the notebook and export preserve formulas and source manifests. A cloud point summarizes a group; it is not an individual article or a causal effect.
+:::
 
 ## From articles to a monthly measure {.smaller}
 
-Note: i need to check this more carefully against Esteban & Ray
+For each government and month, calculate separately for **alignment, reputation and framing**:
 
-For country $c$, month $t$, let $p^+_{ct}$, $p^-_{ct}$, $p^0_{ct}$ be the shares coded $+1$, $-1$, $0$ 
+- $p^+$, $p^-$, $p^0$: shares coded $+1$, $-1$, $0$ among eligible articles
+- **Net direction:** $N = p^+ - p^-$
+  * Zero for all-zero coverage and for a 50/50 positive–negative split
+- **Proposed two-sided index:**
+  $$P = 4p^+p^- = (1-p^0)^2 - (p^+-p^-)^2$$
+  * High when both directional shares are large and balanced
+  * Zero if either directional share is absent
 
-- **Net sentiment** $N = p^+ - p^-$
-  * Equals 0 both for an all-neutral month and for a 50/50 split: can't distinguish consensus from polarization: not helpful!
-- **Two-sided index** $P = 4\,p^+p^- = (1-p^0)^2 - (p^+-p^-)^2$
-  * Zero if either tail is empty; one only if coverage splits evenly with no neutral articles
-  * Rises as neutral coverage falls and as the two pos/neg tails equalize 
-- **Inspiration:** polarization indices over the full distribution [@esteban_ray_1994]
+::: {.sample}
+Common sample for all three fields. Zeros stay in the denominator. Nulls are excluded. Always inspect the shares and article count alongside the index.
+:::
 
 ::: notes
-- P directly measures the two expectations on the previous slide: (1 − p0)² is the "less neutral coverage" hyp; (p+ − p−)² penalizes one-sidedness.
+Suggested time: 2 minutes. Sources: ../docs/coverage-balance.md, ../data/polarization/README.md and ../scripts/export_monthly_polarization.mjs.
+
+The formula responds both to the prevalence of directional reporting and to its balance. For example, a negative-only month has P = 0 even if every report is negative. Thus P is not overall hostility or a measure of every possible definition of polarization. When both directions are present, a higher nonzero share raises P holding directional balance constant. At a fixed nonzero share, P rises as the two sides approach equality.
+
+Erik's comparison with polarization theory remains an open task. Distribution-based indices motivate the question [@esteban_ray_1994], but this proposed formula is not the full Esteban–Ray measure for a three-category distribution. Its relationship to societal polarization requires validation. The observed zero class is heterogeneous, and treating it as an intermediate position is itself an assumption.
+
+"Net alignment" and "net reputation" in the point clouds mean the same positive-minus-negative calculation for the relevant field. A net near zero can arise through very different distributions.
 :::
 
-## Empirical challenges (help!)
+## The same net score can describe different coverage {.smaller}
 
-- What is the 'incumbent'?
-- What is the key action vis the incumbent?
-- What counts as positive or negative sentiment toward the incumbent?
-  * Is it the action itself?
-  * Or how that action reflects on the incumbent?
-  * Or how the article frames the incumbent and action?
+| Synthetic month | Negative | Zero | Positive | Net | Two-sided $P$ |
+|---|---:|---:|---:|---:|---:|
+| All zero-coded | 0% | 100% | 0% | 0 | 0 |
+| Mostly positive | 0% | 40% | 60% | .60 | 0 |
+| Both directions | 45% | 10% | 45% | 0 | .81 |
 
-- ew: callout box here:
-| Label | Question | Synthetic example: police disperse *peaceful* anti-government march |
-|---|---|---|
-| Does the action support or oppose the incumbent? | 
-| What does it imply about the incumbent's performance or legitimacy? | 
-| Does the narration evaluate favorably or unfavorably? | 
-
-:::notes
-Incumbent: National executive and cabinet (at publication date) & ruling party or coalition. What about courts, legislatures, key departments/agencies, local officials, and security forces?
-:::
-
-## The corpus (need map?)
-
-- *130m+ domestic* news articles from 600+ sources in 71 countries, 2012-July 2026
-- Today's results from 7m+ articles; still processing
-- 38 languages. Processed to English for classification
-- One record per article; repeat coverage of one event yields multiple records (i.e. this ain't event data)
+- Net describes **direction**
+- The two-sided index describes the **joint prevalence of both directions**
+- Neither establishes divided public opinion by itself
 
 ::: notes
-- Source selection and scraping details: pull from the MLEED paper
+Suggested time: 1 minute. These are arithmetic illustrations, not observed countries. The last row has 4 × .45 × .45 = .81. The first row should not be called "consensus": zero-coded reporting can include mixed or insufficient evidence. The second row shows why a strong one-sided signal can have P = 0. The formula therefore complements rather than replaces shares and net direction.
 :::
 
-- More here. can get this from MLEED project. 
+## Most eligible articles have zero-coded labels {.figure-slide}
 
-## The classifier
+![](figures/07_label_distributions.png){fig-align="center" width="100%"}
 
-![](figures\pipeline_schematic.png){fig-align="center" width="100%"}  
+::: notes
+Suggested time: 1 minute. Source: fixed November 4 cohort, January 2022–May 2026, n = 1,984,402 eligible joint comparisons. Reproduction: ../scripts/build_slide_figures.py.
 
-## Some descriptives
+Zero shares are 82.2% for alignment, 85.9% for reputation and 92.1% for framing. The framing rule requires explicit evaluation beyond the event, so its directional share can be much smaller. We cannot infer that 92.1% of articles are unbiased. The conservative rule, translation, article composition and model errors may each contribute. The chart describes model labels on the common sample rather than validated population prevalences.
+:::
 
-- Results
+## Supporting the incumbent can still reflect badly on it {.figure-slide}
 
-## More descriptives
+![](figures/08_alignment_reputation_joint.png){fig-align="center" width="100%"}
 
-- Results
+::: notes
+Suggested time: 1–2 minutes. Same fixed cohort and common denominator as the preceding slide. Reproduction: ../scripts/build_slide_figures.py.
+
+The numeric article-level correlation between alignment and reputation is about .336. Among 158,739 pro-incumbent actions, 30,910 or 19.5% have negative reputational implications. This illustrates why we retain both fields. It does not establish independence, causal effects or human-reference accuracy. Correlation depends on the coding and the large zero category. The joint table is more informative than the coefficient alone.
+
+Country-level averages can have a different correlation than individual articles. Neither level should be substituted for the other. Actor/action composition and source mix are natural next comparisons.
+:::
+
+## Monthly comparisons: Senegal {.figure-slide}
+
+![](figures/09_senegal_monthly_indices.png){fig-align="center" width="100%"}
+
+::: notes
+Suggested time: 2 minutes. Same fixed November 4 release. Figure compares the proposed P for all three fields using the same eligible government-month records. It includes article volume, and low-count periods must be treated cautiously. Senegal is an illustrative case, not selected as a representative estimate or a test of causality.
+
+In February 2024, n = 934 and P is approximately .110 for alignment, .016 for reputation and .014 for framing. Negative shares are 19.5%, 31.4% and 17.0%, respectively. Reputational negativity is much larger than its two-sided index because favorable reputation coding is rare. This answers why "more negative" and "more polarized" need not move together.
+
+The period includes the dispute over delaying Senegal's presidential election. The dashboard's sourced story provides context, but those events are not matched to individual records in this aggregate figure. Changes may reflect event mix, outlet coverage, processing coverage and coding, alongside real political developments. Use the plotted source-data file to examine the shares, not only P.
+:::
+
+## What still needs validation
+
+- Correct government, action and entity roles
+- Consistent interpretation across countries and languages
+- Translation fidelity, especially attribution and evaluative wording
+- Human agreement on the **three current labels**
+- Sensitivity to source mix, repeat reporting and prompt version
+
+::: {.sample}
+Schema checks and verified storage establish mechanical validity. Representative human-reference accuracy remains unmeasured.
+:::
+
+::: notes
+Suggested time: 1 minute, or discuss with the concluding limitations. Source: ../docs/validation.md.
+
+A historical comparison contains 266 previously human-coded articles, with 262 structurally valid current outputs. The old human coding used one sentiment field, not three independently observed current labels. Input lengths and some title/body content also differ. AI-assisted review is not an independent human panel. Consequently, those conditional agreements are not an overall accuracy figure.
+
+The next evaluation should separate action selection, role/government attribution and label interpretation, with blinded human coding, preserved disagreements and subgroup checks. Existing diagnoses include local conflict assigned to national government without a link, incorrect role/target extraction and missing substantive translated content. Claims of robust measurement must survive these checks.
+:::
 
 ## Media polarization as lag or lead?
 
-- Time allowing i'm going to do a lead/lag analysis wrt VDEM regime changes/backsliding. Maybe an event study around backsliding episodes. 
-- But:
-  * VDem autocratization data is annual; need monthly onset data. This is a chronic problem when I think about applying our MLP data to big stuff in the world.
-
-::: notes 
-VDEM pol polarization: "Is society polarized into antagonistic, political camps?"
-VDEM soc polarization: "How would you characterize the differences of opinions on major political issues in this society?"
-:::
-
-## Limitations
-
-- Translation could impact the incidence of neutral coding 
-- Our neutral coding bundles neutral, mixed, and insufficient evidence.
-- more here
-
-
-## Some fun stuff to do
-
-- *Polarization in reported coverage* of the incumbent: does it track, precede, or post-date societal polarization?
-- *Source-level variation*: How much of this is within vs. between sources in countries (cite to Adiguzel, Romero, Wibbels)? 
+- Does divided incumbent coverage precede or follow democratic backsliding?
+- Compare the three monthly measures, rather than choosing one by its result
+- Annual democracy indicators and monthly reporting have different time resolution
+- Government turnover, source changes and event selection complicate timing
+- A lead/lag analysis remains a next step
 
 ::: notes
-- source level variation ties to Ezgi's doc: capture can homogenize pro-government outlets while widening their gap with independents. Between-outlet is where that shows up. Interesting, this is the opposite of what Serkant, Diego and I find w/legal restrictions in TZA.
+This retains the proposed research direction for discussion. No fitted lead/lag result is supplied by the dashboard. An event-study design needs justified onset dates, a stable observation window and appropriate comparison cases. Interpolating an annual regime measure does not create monthly event timing.
+
+V-Dem political polarization asks whether society is divided into antagonistic political camps; this differs from the distribution of labels in selected news articles. The theory and literature comparison can be developed by the speakers leading those sections.
+:::
+
+## Limits of an action-based measure
+
+- A condition such as rising inflation may lack a codable action
+  * Important criticism can be indirect, particularly in repressive settings
+- Zero combines neutral, mixed and insufficient directional evidence
+- Article framing captures expressed evaluation, while selection bias needs a comparison baseline
+- Changing sources and repeated coverage can move a country series
+
+::: notes
+Source: complete prompt, especially no-action rules, and ../docs/research-design.md.
+
+"The central bank reported that inflation is rising" can fall outside action-based reputation coding when no substantive government-relevant action is supplied. Generic reporting verbs do not manufacture an action. A substantive accusation, condemnation or demand can qualify, but an observer's indirect remark requires close reading. If action is null, alignment and reputation are null, although framing can sometimes be coded for an identified government.
+
+This is a real boundary of the present design. A condition-based extension would require a separate documented rule and evaluation. We should not quietly reinterpret the existing output to solve it. The question for the audience is which political information is lost by centering actions, and whether an additional condition field is needed.
+
+Coverage differences are not automatically reporting bias. Bias claims need a defensible universe of events, matched-event evidence or other design that separates selection from event availability.
+:::
+
+## Next comparisons
+
+- **Actors and actions:** which combinations drive the three measures?
+- **Within and between outlets:** common events, different presentation?
+- **Countries over time:** stable source panels and government transitions
+- **External measures:** when does divided coverage track societal polarization?
+
+::: notes
+These are research questions, not completed findings. The source-level argument and relevant literature can be developed with the existing literature sections, including Adiguzel, Romero and Wibbels. Differences between source aggregates may arise from distinct event selection, source coverage and timing, so matched comparisons matter.
+
+The current data provide a way to inspect selected reported relationships among actors, actions, explicit entity targets and governments. They do not yet supply a complete event network, standardized longitudinal actor identities or matched-event panels. Those are possible next data products.
 :::
 
 ## Conclusion
 
-- Polarization around the incumbent can be measured monthly, in any country with a press, without party-system scaling
-- Separating the action, its implication, and its narration distinguishes hostile coverage from bad news
-- Next tests: validity against existing polarization measures; outlet-level structure; better wrt timing around backsliding
+- A national incumbent gives the analysis a common political reference
+- Action alignment, reputational implications and framing answer different questions
+- Monthly shares show coverage patterns that one net score can conceal
+- The next task is to validate the labels and their relationship to polarization
 
-## References {.smaller .backup}
+::: notes
+Return to the shared question: what should count as evidence of polarization, and what can news reporting tell us? The current measures describe the selected reporting. Their relation to public attitudes, political conflict and democratic change is the research agenda.
+:::
+
+## References {.smaller .backup .scrollable}
 
 ::: {#refs}
 :::
