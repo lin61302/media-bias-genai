@@ -214,7 +214,7 @@ Incumbent: National executive and cabinet (at publication date) & ruling party o
 
 ## The classifier
 
-- More here. I kinda think a figure here would help. 
+![](figures\pipeline_schematic.png){fig-align="center" width="100%"}  
 
 ## Some descriptives
 
