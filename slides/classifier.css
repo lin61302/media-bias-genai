@@ -20,7 +20,7 @@
 }
 .classifier-slide .classifier-stage {
   position: relative;
-  min-height: 215px;
+  min-height: 205px;
   padding: 15px 12px 12px;
   background: #fff;
   border: 1.5px solid var(--classifier-rule);
@@ -46,7 +46,7 @@
   grid-template-columns: 27px 1fr;
   align-items: start;
   gap: 7px;
-  min-height: 55px;
+  min-height: 50px;
 }
 .classifier-slide .classifier-number {
   display: flex;
@@ -71,14 +71,14 @@
 }
 .classifier-slide .classifier-stage-copy {
   font-size: 18px;
-  line-height: 1.45;
+  line-height: 1.35;
   letter-spacing: -0.02em;
 }
 .classifier-slide .classifier-stage-note {
   color: var(--classifier-muted);
   font-size: 16px;
   line-height: 1.25;
-  margin-top: 13px;
+  margin-top: 10px;
 }
 .classifier-slide .classifier-encoder {
   font-size: 19px;
@@ -89,39 +89,124 @@
   white-space: nowrap;
   letter-spacing: -0.02em;
 }
-.classifier-slide .classifier-process-notes {
+.classifier-slide .classifier-detail-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 54px;
-  margin-top: 34px;
-  padding-top: 22px;
-  border-top: 2px solid var(--classifier-rule);
+  grid-template-columns: minmax(0, 2.7fr) minmax(0, 1fr);
+  gap: 22px;
+  margin-top: 22px;
 }
-.reveal .slides section.classifier-slide .classifier-note-column h3 {
+.classifier-slide .classifier-record,
+.classifier-slide .classifier-months {
+  border: 1.5px solid var(--classifier-rule);
+  border-radius: 12px;
+  background: #fff;
+  padding: 15px 18px 12px;
+  min-height: 330px;
+}
+.classifier-slide .classifier-panel-heading {
   color: var(--classifier-navy);
-  font-size: 27px;
+  font-size: 23px;
+  line-height: 1.15;
   font-weight: 650;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
-  text-transform: none;
-  margin: 0 0 16px;
 }
-.reveal .slides section.classifier-slide .classifier-note-column ul {
-  display: block;
-  margin: 0 0 0 24px;
-  padding: 0;
-  font-size: 25px;
-  line-height: 1.25;
-}
-.reveal .slides section.classifier-slide .classifier-note-column li {
-  margin: 0 0 15px;
-  padding-left: 2px;
-  font-size: 25px;
-  line-height: 1.25;
-}
-.classifier-slide .classifier-validity-note {
+.classifier-slide .classifier-panel-heading > span {
   color: var(--classifier-muted);
-  font-size: 22px;
-  line-height: 1.25;
-  margin-top: 18px;
+  font-size: 17px;
+  font-weight: 400;
+  margin-left: 8px;
 }
+.classifier-slide .classifier-example {
+  background: #f2f3f6;
+  border-radius: 7px;
+  padding: 10px 14px;
+  margin: 13px 0 17px;
+  font-size: 21px;
+  font-style: italic;
+  line-height: 1.2;
+}
+.classifier-slide .classifier-record-columns {
+  display: grid;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: 18px;
+}
+.classifier-slide .classifier-entities { padding-right: 15px; border-right: 1px solid var(--classifier-rule); }
+.classifier-slide .classifier-detail-label {
+  color: var(--classifier-muted);
+  font-size: 15px;
+  line-height: 1.15;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.classifier-slide .classifier-entity-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 9px;
+  font-size: 17px;
+  line-height: 1.18;
+  margin-bottom: 9px;
+}
+.classifier-slide .classifier-code-row {
+  display: grid;
+  grid-template-columns: 106px 40px minmax(0, 1fr);
+  gap: 9px;
+  align-items: center;
+  font-size: 17px;
+  line-height: 1.15;
+  min-height: 48px;
+}
+.classifier-slide .classifier-code-row strong { color: #1f2328; }
+.classifier-slide .classifier-code {
+  display: flex;
+  width: 40px;
+  height: 28px;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  border-radius: 16px;
+  font-size: 20px;
+  font-weight: 650;
+}
+.classifier-slide .classifier-positive,
+.classifier-slide .classifier-bar-positive { background: #009e73; }
+.classifier-slide .classifier-negative,
+.classifier-slide .classifier-bar-negative { background: #d55e00; }
+.classifier-slide .classifier-zero { background: #8b95a5; }
+.classifier-slide .classifier-bar-zero { background: #cbd1da; }
+.classifier-slide .classifier-record-note {
+  border-top: 1px solid var(--classifier-rule);
+  padding-top: 9px;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--classifier-muted);
+}
+.classifier-slide .classifier-month-head,
+.classifier-slide .classifier-month-data {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px 42px;
+  gap: 12px;
+  align-items: center;
+}
+.classifier-slide .classifier-month-head {
+  font-size: 16px;
+  color: var(--classifier-muted);
+  margin-top: 14px;
+  margin-bottom: 2px;
+  text-align: center;
+}
+.classifier-slide .classifier-month { margin-bottom: 12px; }
+.classifier-slide .classifier-month-name { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.classifier-slide .classifier-month-data { font-size: 19px; text-align: center; }
+.classifier-slide .classifier-distribution { display: flex; height: 22px; overflow: hidden; }
+.classifier-slide .classifier-distribution > span { height: 100%; }
+.classifier-slide .classifier-month-data strong { color: #1f2328; }
+.classifier-slide .classifier-legend { display: flex; gap: 12px; align-items: center; color: var(--classifier-muted); font-size: 16px; margin-top: 15px; }
+.classifier-slide .classifier-legend > span { display: inline-flex; gap: 5px; align-items: center; }
+.classifier-slide .classifier-legend i { display: inline-block; width: 12px; height: 12px; font-style: normal; }
+.classifier-slide .classifier-legend .classifier-formula { margin-left: auto; color: #1f2328; font-size: 16px; white-space: nowrap; }
+.classifier-slide .classifier-footnote { font-size: 16px; color: var(--classifier-muted); line-height: 1.2; margin-top: 12px; }
+
+.classifier-slide .classifier-code-copy { display: block; font-size: 16px; line-height: 1.2; }
+.classifier-slide .classifier-code-copy > span { display: block; }
+.classifier-slide .classifier-question { color: var(--classifier-navy); font-weight: 600; margin-bottom: 4px; }
+.classifier-slide .classifier-formula-row { border-top: 1px solid var(--classifier-rule); padding-top: 9px; margin-top: 12px; color: #1f2328; font-size: 18px; line-height: 1.4; }
