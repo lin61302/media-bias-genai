@@ -1,0 +1,49 @@
+{
+  "input": {
+    "path": "slides/figures/data/13_zimbabwe_source_summary.json",
+    "sha256": "08fc0f05567ab28f64dca950b1af15dcaab2a61c2473c70cfb5e85268a5a3194"
+  },
+  "checks": {
+    "three_cache_hashes": true,
+    "full_population_counts": true,
+    "full_population_27_joint_cells": true,
+    "all_2023_source_month_margins": true
+  },
+  "scope": {
+    "gov": "ZWE",
+    "publication_country": "ZWE",
+    "sources": [
+      "chronicle.co.zw",
+      "zimlive.com"
+    ],
+    "months": [
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12"
+    ]
+  },
+  "frozen_scope_sha256": "1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812",
+  "source_receipts": [
+    {
+      "filename": "records.csv.gz",
+      "sha256": "1544d70d30509b74c2076b7e4c07b2aa756b3bec2f4959bc3763940cc00291d3",
+      "proof_sha256": "a892daf8428de2f37a279e151de74c8829498e142ef42b36fa3033fb3d48766e",
+      "verified": true
+    },
+    {
+      "filename": "additional_records.csv.gz",
+      "sha256": "ef12487dee52fa454c07e4a94467e62a8f6165412e91dc4dc73e9c9b7cd7588a",
+      "proof_sha256": "fb23170ace8245657c8d0a6ed66458a68931f6a2911f35b7dbc87df6c1d0f28c",
+      "verified": true
+    },
+    {
+      "filename": "increment_records.csv.gz",
+      "sha256": "57338d9d50ff7a90ee14325629e5ed08ac5e99e945e157d4d774fc3d353a79fd",
+      "proof_sha256": "ae8d49cecda0c2ecb82a85fe69d5bf6cad02bd2ba336d26c1192abeb41df5643",
+      "verified": true
+    }
+  ],
+  "verified_at": "2026-11-09T22:32:41.600427+00:00"
+}

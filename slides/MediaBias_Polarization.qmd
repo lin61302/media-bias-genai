@@ -159,6 +159,7 @@ format:
   * This connects to accounts of “pernicious” polarization [@somer_etal_2021]
 - News can reveal conflict around the incumbent at a finer time scale
 - The measurement question is what an article's positive or negative content refers to
+- Distinguishing those signals also lets us study **news selection and framing across outlets**
 
 ::: notes
 The national incumbent is a proposed common political reference. Its relationship to societal polarization requires validation. Incumbent identity can change within a country series.
@@ -216,95 +217,101 @@ The base case is +1/−1/0. The new illustrative narrator wording “Police righ
 ::: notes
 The six stages show corpus collection, translation, the two encoder classifiers, GenAI coding, checks, and analytical views. Civic-event type and civic relevance are separate classification tasks; both selection conditions must pass. This is not a dual-encoder architectural claim. GenAI receives the full supplied English text, unlike the earlier encoder classifier's title plus first 600 characters.
 
-Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13: civic-event average out-of-sample accuracy 82%; civic/political relevance overall accuracy 87%. https://zungru.com/assets/papers/civic-space-transformers.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
+Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13: civic-event average out-of-sample accuracy 82%; civic/political relevance overall accuracy 87%. https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
 :::
 
 
-## Prompting: fields and decision rules {.prompt-fields-slide}
+## Prompting: make the political comparison explicit {.prompt-purpose-slide}
 
-```{=html}
-<div class="prompt-columns">
-  <div>
-    <h3>What we retain</h3>
-    <table class="prompt-fields">
-      <tbody>
-        <tr><td>Government</td><td>Which incumbent is evaluated?</td></tr>
-        <tr><td>Action · actor · target</td><td>Who did what to whom?</td></tr>
-        <tr><td>Three judgments</td><td>Alignment · reputation · framing</td></tr>
-        <tr><td>Evidence</td><td>The words supporting each code</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <h3>What the prompt specifies</h3>
-    <ol>
-      <li>Choose one main action and one government.</li>
-      <li>Keep the actor, its target and the government distinct.</li>
-      <li>Code the three judgments separately, using supplied text and worked examples.</li>
-      <li>Require evidence; allow zero or not codable.</li>
-    </ol>
-  </div>
-</div>
-```
+| Prompt choice | Why it matters for the research |
+|---|---|
+| **One government · one main action** | Compare judgments about the same political reference; do not select whichever action looks most polarized. |
+| **Actor · action · target** | Identify who supports or challenges the incumbent, including actions directed at a third party. |
+| **Three separate judgments** | An action can support the incumbent and reflect badly on it. Reporting criticism is not necessarily narrator criticism. |
+| **Textual evidence · worked examples** | Make decisions inspectable. Use the supplied report, not assumptions about the outlet or external accounts. |
+
+::: {.purpose-bottom}
+**Zero is allowed. Not codable stays separate.**<br>
+The result links political relationships and conduct to the way they are reported.
+:::
 
 ::: notes
-The complete prompt and codebook define the fields. Government is selected once for all three judgments. Publication country is the default for domestic government-relevant affairs; a foreign government can be selected under the prompt's focus rule. Incumbent identity refers to the article date. Source domain is provenance, not permission to infer ideology.
+The fields and fixed rules are defined in ../prompts/civic_20261020_complete_v1.txt and ../docs/codebook.md. Government is selected once for all three dimensions. Publication country is the default for domestic government-relevant affairs; a foreign government can be selected under the focus rule. Incumbent identity refers to the article date. The entity target need not be the evaluated government.
 
-The action supplies evidence about the actor's relationship to the incumbent, directly or through an explicitly linked third-party target. One selected action is not a full event inventory. Allegations remain allegations. The prompt forbids external event facts, other reporting and inferred omissions. It distinguishes neutral/mixed/insufficient direction (zero) from not codable (null). Source: ../prompts/civic_20261020_complete_v1.txt, ../docs/codebook.md. Processing and storage controls appear in the preceding pipeline, rather than being repeated on this slide.
+One prioritized action is selected from title/lead/substantive focus rather than from maximum apparent polarization. The three judgments share the selected government, but need not agree in sign. Explicit action and entity fields let us distinguish a change in reported conduct from a change in narrator evaluation. Some saved reputation evidence attaches to the broader episode; that attachment needs validation. One selected action is not a full event inventory.
+
+The model cannot browse, import other reporting, infer outlet ideology, or treat an attributed quotation as the narrator's own position. A fixed prompt, calibration examples and required supporting spans make the intended distinctions explicit; they do not eliminate model variation or establish validity. Zero covers neutral, mixed and insufficient directional evidence. Not identified/not codable is excluded from common comparisons, not relabeled zero. Bias remains a question for comparative research, not a synonym for every positive or negative label.
 :::
 
 
-## GenAI: agreement and Astra’s review {.genai-performance-slide}
+## Same event, different political judgments {.label-review-slide}
 
-```{=html}
-<div class="agreement-summary">
-  <p><strong>79.1%</strong> same-event agreement<br><span>167/211 articles with an action on both sides</span></p>
-  <p><strong>67.9%</strong> including no-action decisions<br><span>178/262 valid model outputs</span></p>
-</div>
-<h3 class="astra-heading">Which action coding did Astra prefer? <span>262 articles</span></h3>
-<div class="astra-preferences" aria-label="Astra preferences on action selection and extraction in 262 valid outputs">
-  <div class="astra-row"><span>Luna</span><div class="astra-track"><div class="astra-fill astra-luna" style="width:46.1832%"></div></div><strong>121 <span>(46.2%)</span></strong></div>
-  <div class="astra-row"><span>Human</span><div class="astra-track"><div class="astra-fill astra-human" style="width:16.7939%"></div></div><strong>44 <span>(16.8%)</span></strong></div>
-  <div class="astra-row"><span>Both defensible</span><div class="astra-track"><div class="astra-fill astra-both" style="width:31.6794%"></div></div><strong>83 <span>(31.7%)</span></strong></div>
-  <div class="astra-row"><span>Unresolved / neither</span><div class="astra-track"><div class="astra-fill astra-unresolved" style="width:5.3435%"></div></div><strong>14 <span>(5.3%)</span></strong></div>
-</div>
-<p class="astra-different">Different selected events: <strong>17 Luna vs 16 human</strong>; 11 with no single preference.</p>
-<p class="astra-caveat">One AI reviewer; historical inputs and coding rules differed.<br>These are action-coding judgments, not accuracy of the three political measures.</p>
-```
-
-::: notes
-This is agreement on the selected event, not overall model accuracy or human-reference accuracy of alignment, reputation and framing. The November 2 comparison sent 266 historical human-coded articles through the complete prompt without providing human labels; 262 outputs passed structure/evidence checks and four did not. Among 211 records where both selected an action, 167 were judged to select the same event (79.1469%). Including 11 shared no-action decisions gives 178/262 (67.9389%); all 40 action/no-action disagreements remain in this denominator. Four invalid outputs are excluded from these valid-output rates, not scored as successes.
-
-Event equivalence and disagreements were reviewed with AI assistance, not an independent human adjudication panel. Legacy human inputs were shorter, definitions differed, and some title/body records differed. The original human sentiment variable does not provide separate labels for all three current constructs. Therefore this is a selected historical comparison, not an end-to-end population accuracy estimate or evidence that the model outperforms humans. Conditional AI-review endorsement rates are deliberately not labeled human accuracy. Aggregated documentation: ../docs/validation.md. Private articles, reviewer text and workbooks stay outside the repository.
-
-Astra's action-selection/extraction preferences among 262 valid outputs: Luna 121 (46.2%), human 44 (16.8%), both defensible 83 (31.7%), unresolved 9 and neither supported 5 (combined 14, 5.3%). An extraction can be preferred even when the selected event matches. Among the 44 different-event cases: Luna 17, human 16, both 5, unresolved 5, neither 1. Thus the near-even 17-versus-16 comparison applies only to disagreements about event choice. It is not the overall preference distribution. Astra had access to both codings and project context; this dependent AI review does not establish model superiority or independent human-reference accuracy. Aggregates exclude four invalid raw outputs; retain those failures separately. Public summary: ../docs/validation.md.
+::: {.review-intro}
+Astra reviewed Luna’s labels in **155 shared-event records** with accepted action selection.
 :::
 
+| Judgment | Supported | Uncertain | Correction proposed | Supported among nonzero labels |
+|---|---:|---:|---:|---:|
+| Alignment | 126 (81.3%) | 20 | 9 | **24 / 37** |
+| Reputation | 122 (78.7%) | 29 | 4 | **7 / 24** |
+| Framing | 143 (92.3%) | 9 | 3 | **8 / 14** |
 
-## MLP coverage and analytical sample {.publication-coverage-slide}
-
-::: {.publication-coverage-line}
-**71 publication countries · 404 source domains**<span>January 2019–May 2026</span>
-:::
-
-![](figures/06a_publication_coverage.png){fig-align="center" width="100%"}
-
-::: {.publication-coverage-total}
-**3,181,113 eligible articles** from 3,464,596 valid records in the full snapshot.
+::: {.review-example}
+**Police beat opposition protesters:** alignment **+1** retained; reputation **0 → −1** proposed. The same action can support the incumbent and reflect badly on it.
 :::
 
 ::: {.sample}
-The full sample also includes **26 international / mixed-country domains**, separate from this map. November 8 snapshot; coverage is uneven across years and sources.
+AI review of existing labels, **not independent accuracy**. Zeros dominate; directional cases need closer review. The historical human sheet has one sentiment field, not three separate reference labels.
 :::
 
 ::: notes
-This map shows publication provenance in the current frozen analytical release: 404 distinct source domains mapped to 71 publication countries, plus 26 international/mixed-country domains kept separate, giving 430 domains in all. Color encodes source-domain count, not article count or political direction. Gray indicates no observed mapped source-domain value in this release. Publication-country assignments follow the frozen metadata and are not a fresh audit of organizational nationality.
+This replaces the previous action-selection headline. The historical comparison has266 inputs,262 valid model outputs,211 records with an action on both sides,167 same-event matches. Of those167, twelve fail Astra's additional action-adequacy gate;155 meet the existing review protocol. Event equivalence was itself reviewed with AI assistance. Same-event matching is not exact-text matching.
 
-The full January2019–May2026 release contains3,464,596 structurally valid records and3,181,113 comparison-eligible records. These totals include the26 international/mixed-country domains. They have not been restricted to domestic-government evaluations or to the404 mapped domains. The difference,283,483, is excluded rather than relabeled zero. An eligible record has an identified government and primary action plus numeric labels on all three fields. One article contributes one prioritized action. Collection, civic selection, supplied English, verified processing and coding determine inclusion. Repeated reporting can yield multiple records of one event.
+Astra assesses Luna's political labels conditional on the selected model action and government. Supported proposals copy Luna's value by construction. These verdicts are therefore dependent evidence review, not independent Astra–Luna agreement and not human-reference accuracy. Supported/uncertain/correction counts: alignment126/20/9; reputation122/29/4; framing143/9/3. All three supported103/155. No uncertain case is credited as supported. Nonzero-only support is24/37,7/24,8/14 respectively; these small selected denominators do not estimate population accuracy, but show how the majority zero class inflates the overall support rate.
 
-Keep the source-coverage discussion here. The separate map of211 evaluated-government country/territory codes and the domestic/foreign research questions appear later, after the country cases. Splitting the maps changes their placement, not the analytical cohort. Earlier-year coverage is uneven. Processing outcomes outside the verified release and separately tracked reruns receive no analytical credit.
+Full167 sensitivity including the twelve disputed actions: alignment133/25/9, reputation128/34/5, framing154/10/3. Current November3 corrections are retained, including the changed reputation review of one case. The historical human sheet supplies one legacy sentiment variable;153of167 shared-event human records lack a government reference, seven differ, five match and two are multiple. It cannot support a human three-axis comparison at a fixed government.
 
-Sources: analysis_snapshot.json, figures/data/06_coverage_map.csv and06_coverage_by_year.csv. Reproduce the separate maps with ../scripts/build_coverage_maps.py, which verifies the existing frozen inputs and geometry. The earlier two-panel asset remains available but is no longer shown.
+The concrete Baku police case is a Reuters October12,2013 report: both codings identify beating/detention after an opposition rally. The saved model record is(+1,0,0). The reviewer retains+1 alignment, proposes−1 reputation and leaves framing unresolved. It is a disagreement for human adjudication, not a corrected production record or ground truth. Private evidence stays outside the repository. Public aggregates/provenance: figures/data/05_same_event_label_review.json and ../docs/validation.md.
+:::
+
+
+## MLP sources and the analytical sample {.publication-coverage-slide .selection-coverage-slide}
+
+::: {.publication-coverage-line}
+**71 publication countries · 404 mapped source domains**<span>January 2019–May 2026</span>
+:::
+
+:::: {.selection-coverage-grid}
+::: {.coverage-map}
+![](figures/06a_publication_coverage.png){width="100%"}
+:::
+::: {.source-selection}
+<h3>How outlets enter MLP</h3>
+
+- Established domestic outlets with original reporting and usable archives.
+- Target **3–5 local sources**, with ownership and political relationships documented.
+- Regional and international reporting supplements domestic sources.
+
+**A curated source collection—not equal pro- and anti-government quotas.**
+:::
+::::
+
+::: {.publication-coverage-total}
+**3,181,113 eligible articles** · **26 international / mixed-country domains** also included.
+:::
+
+::: {.sample}
+The map describes this processed release, not a representative country sample or public news exposure. Source selection: [Moratz et al. (2025)](https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf), p. 7 and Appendix A.
+:::
+
+::: notes
+Publication provenance in the November8 frozen release:404 domains mapped to71 countries, plus26 international/mixed-country domains,430total. Map color counts domains, not articles or political direction. Gray means no observed mapped value. The3,181,113eligible articles come from3,464,596valid records;283,483are excluded rather than relabeled zero. An eligible record identifies government/action and numeric scores on all three dimensions. Full totals include foreign-government evaluations and international sources.
+
+The2025MLPpaper describes65developing countries. It documents identification of domestic sources through media directories, press-freedom resources and local/NGO contacts; original reporting, accessible websites, deep archives and a target of3–5sources per country. Partisan affiliation is reviewed. Appendix A targets at least half of articles from politically independent outlets in restrictive media environments, with quarterly checks and weighting encouraged when the target is not met. That is not equal pro-/anti-government quota sampling or a guarantee that every GenAI country-month meets the target. Current source metadata distinguish government ownership, partisan affiliation and independent reporting. Critical investigative journalism is not automatically opposition affiliation.
+
+No explicit comprehensive country-inclusion algorithm was found in the consulted paper and technical documentation. Do not call the71countries random/representative or say six countries were added to the2025frame without reconciling membership.71is observed publication-country coverage of this processed snapshot, not an independently verified project country-selection rule. Regional/international sources and processing completion affect the analytical release. Source volumes do not equal audience exposure.
+
+Primary full paper: https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf , mainp7; appendixp19(PDFp48). Official source metadata/codebook: https://github.com/DevLab-Duke/mlp-data-intro/tree/main/source_metadata . Snapshot/map data: analysis_snapshot.json, figures/data/06_coverage_map.csv,06_coverage_by_year.csv,06_split_maps_manifest.json. Reproduce with ../scripts/build_coverage_maps.py. The evaluated-government map remains later as a separate research extension.
 :::
 
 
@@ -326,41 +333,35 @@ Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 
 :::
 
 
-## Monthly comparisons: Senegal {.figure-slide .senegal-series-slide}
+## Senegal: coverage shifts across the election crisis {.figure-slide .senegal-series-slide}
 
-![](figures/09_senegal_monthly_indices.png){fig-align="center" width="100%"}
+![](figures/09_senegal_directional_shares.png){fig-align="center" width="100%"}
 
 ::: {.senegal-series-reading}
-**Higher P means positive and negative coverage coexist more often.**<br>
-February → March 2024: protest/march actions **51 → 4**; voting/election actions **14 → 201**.
+February → March: directional alignment falls from **33.6% to 15.0%**.<br>
+The selected actor/action is coded as supporting or challenging the incumbent; this does not measure polarized citizens.
 :::
 
 ::: notes
-Fixed November 8 release, evaluated government SEN, any publication origin. The selected 2023–2024 window contains 5,504 eligible records. All 24 nonempty months are shown, with exact article counts; only no-data months are gaps. Counts range from 64 to 934 (median 166.5). The earlier 100-article display cutoff was arbitrary and has been removed. Volume is not normalized salience or a count of independent events.
+Plot separate positive and negative shares, not P. Shares divide each sign count by all eligible articles in the same month, including zeros. Evaluated government SEN, all publication origins. October2023–June2024 is displayed around the election episode; all24months of2023–2024(n5504) remain in the unchanged public export. No arbitrary minimum-count mask. Small months are shown with denominators; article records are not independent events.
 
-February 2024: n = 934; alignment is 182 negative, 620 zero, 132 positive; P = .11016. March: n = 874; alignment is 101 negative, 743 zero, 30 positive; P = .01587. February negative reputation is 293/934 (31.4%), negative framing 159/934 (17.0%); both have far fewer positive labels, so their P values remain low (.01612 and .01385). A low P can coexist with negative coverage.
+February n934: alignment182negative,620zero,132positive. Directional share314/934=33.6%; negative19.5%,positive14.1%. March n874:101negative,743zero,30positive. Directional share131/874=15.0%; negative11.6%,positive3.4%. February reputation293negative and12positive; framing159negative and19positive. A low P can hide one-sided evaluation, so the main analysis now shows the two shares directly.
 
-The primary-action mix changes substantially: protest_march 51/934 (5.5%) to 4/874 (0.5%); elect_vote 14/934 (1.5%) to 201/874 (23.0%). Parties/politicians become the most frequent March actor role: 357/874 (40.8%), up from 164/934 (17.6%). In February, urge_call (130) and announce_declare (105) lead the specified action tags; court_rule and protest_march each have 51. other_act remains in denominators (116 February, 124 March) but is excluded from named-action rankings. These categories describe the selected primary action, not every topic or action in an article.
+Salience here means the prevalence of coded support/opposition within this selected reporting corpus. It is not general political importance, audience exposure, mobilization volume or population polarization. Changing actions, sources and coded sensitivity can all change the shares. Within-source directional alignment also falls: Xalima65/251→23/231; Sud71/248→23/278; L’As24/90→8/101; France2439/110→19/89. Between-source reweighting alone is therefore insufficient, but events/genres within sources remain uncontrolled.
 
-This is not evidence that political disagreement disappeared. There is more voting coverage, and fewer actions receive a direction relative to the incumbent. A saved BBC March 24 voting report is coded 0/0/0; a New York Times March 25 report of the opposition's victory is coded -1/-1/0. The examples illustrate differing action selection; they do not estimate the accuracy of all election labels.
-
-Source composition changes, but the nonzero-alignment share also falls within the four largest February sources: Xalima 65/251 to 23/231; Sud Quotidien 71/248 to 23/278; L'As 24/90 to 8/101; France24 39/110 to 19/89. These within-source changes mean a pure between-source reweighting explanation is insufficient; story selection within outlets and repeated coverage remain unadjusted. Source publication-country metadata have not been independently audited.
-
-April has only 124 records and a changed source mix. Its positive reputation count is 14 and positive framing count 12; do not interpret their modest P rise as a clean improvement in performance. Faye took office on April 2, so the national-incumbent reference changes. Saved April examples include Faye reversing predecessor-era appointments (+1/0/0) and environmentalists challenging a former Sall decree (0/0/0). A country series is not necessarily a series about the same administration.
-
-Event chronology only: UN S/2024/521, paragraph 18, https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . Sall postponed the election on February 3, parliament rescheduled it on February 5, and the Constitutional Council overturned those moves on February 15. The election was held March 24 and Faye was sworn in April 2. This external chronology contextualizes the corpus; it was not supplied as new evidence to recode articles. Reproduction: ../scripts/build_slide_figures.py and ../scripts/build_senegal_case.py; figures/data/09_senegal_contributors.json and 09_senegal_article_examples.json.
+UN chronology S/2024/521para18: Sall postponed the election February3, parliament rescheduled February5, Constitutional Council overturned February15; election March24; Faye inaugurated April2. https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . The dotted April boundary signals a new incumbent, not a continuous Sall administration. External chronology contextualizes stored coding without recoding it. New plot: ../scripts/build_senegal_directional_shares.py; frozen source: figures/data/09_senegal_monthly_indices.csv; manifest09_senegal_directional_shares_manifest.json. Original P assets are retained as reproducible background.
 :::
 
 
-## Senegal: actors behind the February peak {.senegal-evidence-slide}
+## Senegal: which actors and actions drive the pattern? {.senegal-evidence-slide}
 
 ::: {.senegal-subtitle}
-February 2024 · **934 articles** evaluating Senegal’s government · one selected action per article
+February’s **314 directional records** include both incumbent support and challenges to it.
 :::
 
 :::: {.senegal-evidence-columns}
 ::: {.senegal-roles}
-<h3>Alignment by actor group</h3>
+<h3>February alignment by actor</h3>
 
 | Selected actor groups | +1 | −1 |
 |---|---:|---:|
@@ -370,145 +371,134 @@ February 2024 · **934 articles** evaluating Senegal’s government · one selec
 | Parties / politicians | 17 | 56 |
 | Civic movements / unions | 0 | 37 |
 | Judiciary / prosecutors | 3 | 30 |
-
-::: {.senegal-role-note}
-All actors: **132 positive · 182 negative · 620 zero**. Counts are articles, not distinct actors or events.
-:::
 :::
 
-::: {.senegal-cases}
-<h3>What the recorded articles describe</h3>
+::: {.senegal-action-shift}
+<h3>The reported actions change</h3>
 
-**Sall postpones the election**<br>
-Alignment **+1** · reputation **−1** · framing **0**<br>
-[Xalima, February 4](https://www.xalimasn.com/report-de-lelection-presidentielle-selon-luniversitaire-babacar-gaye-cest-une-decision-qui-ne-repose-sur-aucune-base-juridique/)
+| Selected action | February | March |
+|---|---:|---:|
+| Protest / march | 51 | 4 |
+| Ban / disperse | 28 | 1 |
+| Election / voting | 14 | 201 |
+| All eligible articles | 934 | 874 |
 
-**Police confront protesters**<br>
-Actor: police → target: protesters · alignment **+1**<br>
-[Al Jazeera, February 4](https://www.aljazeera.com/news/2024/2/4/eu-postponed-senegal-election-opens-period-of-uncertainty)
-
-**Court overturns the postponement**<br>
-Alignment **−1** · reputation **−1** · framing **0**<br>
-[France24, February 15](https://www.france24.com/en/africa/20240215-senegal-s-constitutional-council-overturns-macky-sall-s-delay-to-feb-25-presidential-poll)
+**168 of 201 March voting records have zero alignment.** More election coverage need not mean more coded confrontation.
 :::
 ::::
 
 ::: {.senegal-takeaway}
-**83 of 132 positive-alignment articles (62.9%) also have negative reputational implications.** State institutions can act for or against the incumbent.
+**83 of 132 positive-alignment articles also have negative reputation.**<br>
+Support for the incumbent can coincide with negative implications for its image.
 :::
 
 ::: {.sample}
-Frozen November 8 corpus. Model-coded patterns and selected examples; role counts cover all actions, not only the examples shown.
+Counts are article records, not unique events. Actor rows are selected; zeros and “other action” remain in denominators.
 :::
 
 ::: notes
-This slide connects aggregate directions to actor roles and actual saved coding. Selected rows are not exhaustive: their +1 counts total 115/132 and -1 counts total 127/182. Role labels do not establish party membership or permanent allegiance. The court example is important: a state institution can constrain the incumbent, so membership in the state does not automatically imply positive alignment. The coding concerns the reported action.
+Actor rows are not exhaustive: positive counts115/132,negative127/182. AllFebruary labels are132positive,182negative,620zero. Role labels do not establish permanent allegiance: courts can constrain the incumbent, and executive/security actions can support it. The alignment is manifested through the recorded action.
 
-The 83/132 finding is article-level co-occurrence, not a causal estimate of reputational damage. Among these 83 records, framing is negative in 47, zero in 35 and positive in one. Some reputational spans refer to the broader episode rather than strictly to the selected action. In the Al Jazeera example, the selected act is police/protester clashes, but the negative reputation span refers to the indefinite election postponement. We therefore show its actor-target relation and alignment only; this is a concrete reason to validate whether reputation consistently attaches to the intended action.
+The source of the lower March directional share is partly a changed action mix: protest/march51→4; ban/disperse28→1; voting14→201.168/201voting records are zero alignment,32negative and1positive. Parties/politicians rise164/934→357/874. This is descriptive composition, not a causal decomposition or proof that conflict disappeared. Some zero labels may be coding errors. other_act remains included116February,124March.
 
-Other granular results: 26 February records link security-force actors to civic-movement targets. Thirteen are coded positive alignment. The primary actions within those 26 are ban_disperse (13), nonlethal_violence (8), arrest_detain (3), other_act (1), security_operation (1). These are repeated article records, not 26 separate incidents. Among negative-alignment records, the most frequent specified actions are urge_call 53, condemn_accuse 24, court_rule 23, protest_march 19, disagree_oppose 16. There are 42 explicit executive/cabinet targets among the 182 negative-alignment records; 101 have no coded target role. A missing target does not erase the evaluated-government reference, but it limits direct actor-target network analysis.
+Among132positive-alignment February articles,83also have negative reputation(62.9%). Of those83,47have negative framing,35zero and1positive. This captures the conceptual distinction without measuring public reaction. Review attachment: some reputation evidence points to the wider episode rather than the selected action.
 
-The Xalima February 4 story attributes the legal criticism to an academic; its narrator framing is coded zero. Xalima February 7 reports GERDDES-Africa condemning the governing majority as an institutional coup, coded -1/-1/0: quoted criticism is not automatically narrator criticism. In contrast, Sud Quotidien February 7 uses a title translated as Macky Sall's Dangerous Game; the saved record is +1/-1/-1. This is a concrete example of distinct framing, not a matched-event estimate of outlet bias. Links, short evidence spans, selected input lengths and coding are in figures/data/09_senegal_article_examples.json. Several translated inputs in this case set are short excerpts, so neither the examples nor literal span checks establish coding accuracy.
-
-Illustrative records were selected deliberately, not sampled randomly. All figure aggregates retain other_act and zero labels. Unknown/uncodable records remain outside the common eligible denominator. The compact role table and article examples do not establish a causal decomposition of P: P is nonlinear, and duplicate-event/source composition has not been controlled.
+Among182negative-alignment February records, top specified actions include urge/call53, condemn/accuse24, court rule23, protest19, disagree/oppose16.26records link security actors to civic targets;13ban/disperse,8nonlethalviolence,3detention,1other,1securityoperation.13have positive alignment and13zero. Repeated reports are not26independent interventions. Source: figures/data/09_senegal_contributors.json; builder ../scripts/build_senegal_case.py.
 :::
 
 
-## Kenya: outlets differ before and during the protests {.source-series-slide}
+## Senegal: what was being reported? {.senegal-story-slide}
 
-![](figures/13_kenya_source_comparison.png){fig-align="center" width="100%"}
+::: {.story-intro}
+February’s confrontation over postponement → March’s election coverage
+:::
+
+| Reported action | Alignment | Reputation | Framing | What the distinction adds |
+|---|---:|---:|---:|---|
+| **Sall postpones the election** · Sud, Feb. 7 | +1 | −1 | −1 | Executive action supports the incumbent; “Dangerous Game” adds narrator criticism. |
+| **GERDDES-Africa condemns the governing majority** · Xalima, Feb. 7 | −1 | −1 | 0 | An actor’s condemnation is not automatically the journalist’s stance. |
+| **Court overturns the postponement** · France24, Feb. 15 | −1 | −1 | 0 | A state institution constrains the incumbent; reporting this is not itself editorial criticism. |
+| **Voters go to the polls** · BBC, Mar. 24 | 0 | 0 | 0 | Participation is recorded without an explicit pro- or anti-incumbent direction. |
+
+::: {.story-link}
+The fall accompanies a shift from confrontation toward **election coverage**.<br>
+The labels help separate that shift from the narrator’s own evaluation.
+:::
+
+::: {.sample}
+Selected stored model codings, not independently validated cases. Some supplied translations are short excerpts. Links and evidence are in the slide notes and data export.
+:::
+
+::: notes
+These examples explain how reported actions enter the aggregate; they do not estimate label accuracy or causally explain the full monthly shift. One action per article also omits other political material. Event facts are contextualized separately from frozen input evidence. Not every voting record is neutral: the March25NewYorkTimes opposition-victory record is−1/−1/0, while the March24BBC voting record is0/0/0.
+
+SEN-04, SudFebruary7: https://www.sudquotidien.sn/senegal-le-jeu-dangereux-de-macky-sall/ . Saved translated title includes “Dangerous Game”; selected action is presidential postponement; codes+1/−1/−1. Supplied translation405characters, original saved body3515characters. This example relies on the retained translated input and should be checked in fuller source text before strong interpretation.
+
+SEN-03, XalimaFebruary7: https://www.xalimasn.com/report-de-la-presidentielle-le-gerddes-afrique-condamne-un-coup-detat-institutionnel/ . GERDDES-Africa condemns the governing majority, alleging an institutional coup;−1/−1/0. The condemnation is attributed. Supplied text354characters.
+
+SEN-05, France24February15: https://www.france24.com/en/africa/20240215-senegal-s-constitutional-council-overturns-macky-sall-s-delay-to-feb-25-presidential-poll . Court invalidates postponement;−1/−1/0; original English3072characters.
+
+SEN-06, BBCMarch24: stored example/link in figures/data/09_senegal_article_examples.json; voting,0/0/0; supplied English421characters. All displayed examples have exact saved-attempt membership and plan/input hashes checked against the frozen audit. Literal evidence matching is not semantic validation. Do not treat selected four examples as representative frequency estimates. Reproducible public short evidence and URLs:09_senegal_article_examples.json.
+:::
+
+
+## Zimbabwe: the same incumbent, different framing {.source-series-slide .zimbabwe-series-slide}
+
+![](figures/13_zimbabwe_framing_shares.png){fig-align="center" width="100%"}
 
 ::: {.source-series-reading}
-Among June **civic-movement protest actions**, negative framing appears in **8/15 Nation records** and **0/17 Citizen records**. These are still different sets of stories.
+Chronicle, September 14: **“hits the ground running”** → framing **+1**.<br>
+Positive and negative shares show differences that a two-sided index can conceal.
 :::
 
 ::: notes
-Frozen November 8 sample; exact source domains nation.africa, kbc.co.ke, citizen.digital; publication country KEN and evaluated government KEN. This holds the country reference fixed on the incumbent Ruto government; it does not mix evaluations of foreign governments. All common-eligible articles, including zero labels, remain in each denominator. No minimum-count mask. The main chart selects January–August 2024 around the June episode; all 36 January–December source-month cells are exported. December KBC has only three eligible records, so the main figure should not be described as a full-year view. Counts are coded article records, not separate events or independent observations.
+Frozen November8 analytical sample; publication country ZWE and evaluated government ZWE. Exact domains chronicle.co.zw and zimlive.com. August–December2023 holds the incumbent Mnangagwa reference and five overlapping months fixed. This is a selected exploratory case, not a pre-registered comparison. Pooled Chronicle n342:77positive,265zero,0negative framing. ZimLive n230:1positive,123zero,106negative. Positive shares22.5%vs0.4%; negative0%vs46.1%. Each denominator includes zeros and both signs; unknown/not codable stays excluded. Chronicle's positive share exceeds ZimLive's every displayed month. No volume cutoff; monthly denominators25–130 are displayed.
 
-June denominators: Nation224, KBC138, Citizen236. Negative framing is75/224=33.5%,10/138=7.2%,20/236=8.5%; negative reputation91/224=40.6%,25/138=18.1%,34/236=14.4%. The labels are model-coded evaluations of Kenya's incumbent government, not a validated estimate of editorial bias or public opinion. The graph shows negative shares rather than P because one-sided critical coverage may have a low two-sided index. Positive and zero counts remain in the public data.
+The separate signs answer how much favorable versus critical narrator evaluation is observed. They do not by themselves identify media bias, audience exposure, falsehood, public opinion or societal polarization. P=4p+p− would be zero for Chronicle because no negative framing is coded, even with22.5%positive framing. This motivates separating direction and prevalence before asking about polarization. Full-year source-month evidence is preserved in13_zimbabwe_source_summary.json; the chart displays the common five-month period only.
 
-The source difference predates June. Pooled March–May negative framing: Nation76/387=19.6%, KBC6/236=2.5%, Citizen12/307=3.9%. Each rises in June, but the protest episode did not create the pre-existing gap. July framing remains74/250=29.6% at Nation, versus4/138=2.9% KBC and15/279=5.4% Citizen. Same-source comparisons reduce source-composition explanations but do not hold events, genre, duplication or article completeness constant. This case was chosen after exploratory country/source/month screening, not as a pre-specified statistical test.
+The direct positive case is ChronicleSeptember14: https://www.chronicle.co.zw/president-mnangagwa-hits-the-ground-running-with-high-level-meeting-to-propel-zimbabwe-towards-vision-2030/ . Selected actor Mnangagwa meets ministers; alignment+1,reputation0,framing+1. The headline phrase “hits the ground running” presents the president favorably. Original English equals supplied input1812characters. The page now redirects to the group's HeraldOnline site but identifies ChronicleEditor and the originalSeptember14,2023date; source grouping remains the frozen source domain rather than today's redirect.
 
-The source contrast is not only a difference in the frequency of broad actor roles. In June, Nation and Citizen each have 32 records with civic movements/unions as the selected actor; negative framing is16/32 versus2/32. Within the more specific civic-movement + protest/march cell, negative framing is8/15 Nation,0/17 Citizen and0/4 KBC; negative reputation10/15,2/17,0/4. These are small descriptive cells, not matched events. Executive/cabinet records also differ: negative framing15/34 Nation,1/30 KBC,2/27 Citizen. They identify strata for close reading, not a controlled estimate of source effects.
-
-Episode context: June protests concerned the Finance Bill; Ruto announced on June 26 that he would not sign it. The official June 26 Blinken–Ruto readout records praise for de-escalation, a call for security-force restraint and investigations of alleged rights abuses: https://2021-2025.state.gov/secretary-blinkens-call-with-kenyan-president-william-ruto/ . Kenya's Parliament records the subsequent July 25 rejection following presidential reservations: https://www.parliament.go.ke/index.php/node/22244 . These sources contextualize the episode and were not used to add external facts to the stored model coding.
-
-Reproduction: ../scripts/build_kenya_source_comparison.py verifies three private cache hashes and reconciles full population counts and 27 joint cells. ../scripts/build_source_comparison_figure.py renders the public aggregates. Figures/data/13_kenya_source_comparison.json,13_kenya_source_monthly.csv and13_kenya_figure_manifest.json preserve denominators, signs, scope and hashes. The full source/year filter excludes 182 eligible records evaluating other governments.
+Possible contributors include different events, genres, repeated stories, access, source selection, supplied text completeness and model sensitivity. The next slide offers one same-event comparison, not an adjustment of the aggregate gap. Scripts/build_zimbabwe_source_comparison.py verifies hashes and can reconcile all three frozen private caches; public aggregates and sign denominators are in13_zimbabwe_monthly_framing.csv,13_zimbabwe_source_summary.json and13_zimbabwe_manifest.json. Short article evidence with verified audit membership is in13_zimbabwe_article_examples.json. No new model coding or production changes.
 :::
 
 
-## Kenya: what might explain the source gap? {.outlet-context-slide}
-
-| Outlet | Institutional setting in 2024 | Relevant context |
-|---|---|---|
-| **Nation** | Listed private media group, NMG. AKFED was its majority shareholder. | Editorial policy supports accountability and interpretive reporting. |
-| **KBC** | State-owned public broadcaster | Stated mandate for independent, impartial broadcasting. |
-| **Citizen Digital** | Commercial Royal Media Services, founded and chaired by S.K. Macharia | Digital reporting alongside a television and radio network. |
-
-::: {.outlet-context-finding}
-Private ownership alone does not explain the pattern:<br>
-June negative framing is **8.5% at Citizen**, **7.2% at KBC**, and **33.5% at Nation**.
-:::
-
-::: {.outlet-context-test}
-Compare the same events and genres. Then examine **whose voices appear, what the narrator adds, and which action the model selects**.
-:::
-
-::: {.sample}
-Institutional facts and declared policies, not identified causes. Sources: [NMG 2024 report](https://www.nationmedia.com/wp-content/uploads/2025/06/NMG-Annual-Report-9th-June.pdf), [NMG policy](https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf), [KBC 2024 mandate](https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/), [RMS](https://royalmedia.co.ke/).
-:::
-
-::: notes
-The ownership context belongs to the 2024 study period. NMG's 2024 annual report, printed pages 146 and 150, identifies AKFED as majority shareholder and reports 54.08% excluding treasury shares at December 31. That year-end share is not a separately verified June register. A March 2026 announced sale of the controlling vehicle is later and is not used to explain 2024 coverage. Nation is a commercial, listed private-sector multimedia group with newspaper roots. Private ownership is distinct from demonstrated editorial independence.
-
-NMG's editorial policy predating the study supports accountability, civil liberties and human rights, and a mix of reporting, analysis and interpretive journalism. It also requires independence from political/commercial pressure and separation of news and opinion. These are declared standards, not a claim that the measured corpus meets them or that interpretation necessarily means biased reporting. https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf , core values3–6 and editorial objectives2–4.
-
-KBC is a state corporation/public broadcaster. Its February13,2024 managing-director notice describes an independent/impartial broadcasting mandate and commercial responsibilities: https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/ . The contemporaneous strategy also reproduces that mandate: https://www.kbc.co.ke/wp-content/uploads/2024/06/KBC-Draft-Strategic-Plan-2023-2027.pdf . Current corporate ownership confirmation: https://kbc.go.ke/about/ . Ownership alone does not establish a particular article's stance or permanent support for the incumbent.
-
-Citizen Digital is the online platform of commercial Royal Media Services, linked to its television and radio operations. The corporate site names S.K. Macharia as founder. Contemporary sources identify him as chairman and Purity Gathoni Macharia as vice-chair: https://citizen.digital/article/sk-macharia-among-6-members-sworn-in-as-members-of-muranga-county-budget-and-council-forum-n335075 and https://citizen.digital/article/rms-vice-chair-purity-gathoni-macharia-receives-lifetime-achievement-award-n341898 . Exact 2024 ownership percentages and a period-specific RMS editorial policy were not verified. Do not infer an outlet ideology or a specific house style from its corporate structure.
-
-The observed June source shares are75/224Nation,10/138KBC,20/236Citizen. Citizen's proximity to KBC means a simple state/private classification is insufficient. Plausible explanations include topic/event selection, genre, narrative style, quote attribution, audience/commercial incentives, and model action selection. They are hypotheses rather than estimated causes. The next slide gives direct evidence of differences in narrator wording and the model's focal action within one shared episode. Both reports contain praise and human-rights concerns, and both selected inputs exactly match their saved original English. Larger matched-event, genre and input-length checks plus human review are needed.
-:::
-
-
-## The same call, different descriptions and coding {.source-pair-slide}
+## The same court decision, different portrayals {.zimbabwe-pair-slide}
 
 ::: {.source-pair-context}
-**June 27, 2024:** Nation and KBC report the Blinken–Ruto call after the Finance Bill withdrawal. Both report US praise and concerns about security-force conduct.
+**September 15, 2023:** the High Court grants bail to opposition candidate Patrick Cheza.
 :::
 
-| | Nation | KBC |
+| | Chronicle | ZimLive |
 |---|---|---|
-| Wording and attribution | Narrator: **“conceding defeat”** | Ruto quoted: **“I concede”** |
-| Selected actor → action | Ruto → withdraws the bill | US → commends Ruto |
-| Political alignment | **0** | **+1** |
-| Reputational implication | **−1** | **+1** |
-| Framing | **−1** | **0** |
+| Headline wording | **“Sore loser…Road Rage”** | **“ends jail nightmare”** |
+| Emphasis | Ridicules the government’s opponent | Emphasizes the opponent’s detention |
+| Stored model codes | Alignment **0** · reputation **0**<br>Framing **+1** | Alignment **0** · reputation **0**<br>Framing **−1** |
 
-::: {.source-pair-links}
-[Read Nation’s report](https://nation.africa/kenya/news/africa/us-lauds-president-ruto-for-withdrawing-finance-bill-4671282) · [Read KBC’s report](https://www.kbc.co.ke/us-commends-president-ruto-for-withdrawing-finance-bill-2024/)
+::: {.pair-context-line}
+**Institutional context:** Chronicle belongs to government-controlled Zimpapers. EU election observers also documented favorable incumbent coverage in its newspapers.
 :::
 
-::: {.source-pair-takeaway}
-The wording differs, and the model selected different actions. **These codes do not isolate an outlet effect.**
+::: {.pair-research-line}
+Editorial priorities, access and audiences are possible explanations.<br>
+Compare repeated shared events to test **wording, quoted voices and story selection**.
 :::
 
 ::: {.sample}
-Original English reports; stored model labels.
+Original-English reports; selected examples, not a causal estimate. Translating ridicule of an opponent into favorable government framing needs human review. [Chronicle](https://www.chronicle.co.zw/sore-loserroad-rage-losing-ccc-candidate-who-assaulted-zanu-pf-minister-granted-bail/) · [ZimLive](https://www.zimlive.com/court-ends-jail-nightmare-for-ccc-poll-candidate-accused-of-bashing-minister/) · [EU report, pp. 21–23](https://www.ecoi.net/en/file/local/2101116/EU%20EOM%20ZWE%202023%20FR.pdf)
 :::
 
 ::: notes
-Both articles are dated June 27 and cover the June 26 call after Ruto declined to sign the Finance Bill. Their headlines both emphasize US praise: Nation's headline is US lauds President Ruto for withdrawing controversial Finance Bill; KBC's is US commends President Ruto for withdrawing Finance Bill 2024. Both also include calls for restraint and investigations of alleged human-rights violations. Do not describe KBC as omitting every critical element, or Nation as omitting the praise.
+The two saved reports describe the sameSeptember15bail decision, same judge, same candidate target, same primary action tag court_rule, and evaluated government ZWE. Align/rep both0; frame+1Chronicle,−1ZimLive. Judge name has a spelling variation across reports; the event/court/target/date establish the match. Saved English bodies2850and1633characters equal the supplied model input; this removes translation mismatch, not all differences in completeness or genre. Both plan/source-row hashes and exact saved-attempt memberships were verified against the pinned audit. Source: figures/data/13_zimbabwe_article_examples.json. Full texts and private IDs stay outside the repository.
 
-Nation's stored record selects President Ruto withdrawing the bill; align0,rep-1,frame-1. Both negative evidence spans cite the narrator's conceding defeat. KBC selects US endorsement directed toward Ruto; align+1,rep+1,frame0. Its reputation evidence points to withdrawing the bill following opposition. Its I concede wording is a direct quotation from Ruto. The narrator/quotation distinction helps explain the different framing outputs, but does not establish that every human would agree with the model. The near-parallel headlines and different selected focal actions are also a real action-selection sensitivity: a fuller comparison should hold the action fixed and review the evidence manually.
+Do not interpret the court decision as itself pro-government. The model infers a favorable-government narrative from Chronicle's derisive portrayal of an opposition candidate; ZimLive's title emphasizes harmful detention. Those entity-to-government framing links are precisely what requires human validation. This is stronger matching than the former Kenya pair, which selected different actions, but one paired example cannot establish an outlet effect or explain the full aggregate gap. The alleged assault remains an allegation; the slide quotes only the framing cues, not a factual finding of guilt. ZimLive also reports prosecution allegations; neither account is reduced to a single quotation.
 
-The evaluated government in both records is Kenya. The US is an actor in the KBC record, not the evaluated government. Both texts are original English and exactly equal the saved input text: 1,968 characters for Nation and 1,882 for KBC. All selected article IDs, plan hashes and source rows were verified against the frozen audit. Nation's live page fetch returned403; the saved original English was available and verified. KBC's public indexed page agrees with the saved episode. Source URLs, short evidence spans, model outputs and verification hashes are in figures/data/13_source_article_pairs.json. The paired records were chosen deliberately and are not an accuracy sample or a causal test of outlet bias.
+The2023EU Election Observation Mission report printedp21 identifies government control of Zimpapers(51%ownership). Printedp23reports its newspapers gave64%of political printspace to incumbency;58%of that coverage was positive, none negative. Monitoring ranJuly23–September3and used manual printspace/tone coding across ten newspapers(p49), not our article denominator, period or construct. ZimLive was not in that monitored newspaper sample. Thus the observer evidence supplies external institutional context and a related pattern, not validation of our numeric framing rate. Zimpapers broadcast platforms differed, so ownership is not a mechanical explanation. Primary mission report preserved by Austrian Red Cross: https://www.ecoi.net/en/file/local/2101116/EU%20EOM%20ZWE%202023%20FR.pdf .
 
-A secondary Nicaragua February 9,2023 pair is retained in the same evidence file: La Prensa describes the expulsion of 222 political prisoners with dictatorship/banishment wording, coded0/-1/-1; Nuevaya describes 222 people convicted of treason being deported, coded0/0/0. Both refer to the same removal to the United States. It is a useful wording contrast, but Nuevaya has only eight eligible records that month, and the two supplied translations are short excerpts. Do not use it as the stronger time-series case or treat zero framing as proof of neutral language. Event context: https://www.oas.org/en/iachr/jsForm/?File=%2Fen%2Fiachr%2Fmedia_center%2Fpreleases%2F2023%2F021.asp .
+ZimLive's current About page identifies Makhwedini Media Trust, a Zimbabwe-registered company, and publication sinceJuly2018: https://www.zimlive.com/about-us/ . The page is undated and does not verify opposition affiliation or a2023shareholding register. Do not call it opposition-owned from observed negative framing. Zimpapers' current charter declares editorial independence/fairness but is not a verified2023policy snapshot. Ownership, audience incentives, access to official sources, genre and editorial priorities remain explanations to investigate rather than causal findings. A next study would predefine matched events, code quoted sources and narration separately, inspect source originals, and compare within-outlet changes across common event categories.
 :::
 
 
-## Other research questions {.foreign-map-questions-slide}
+## Further questions: foreign governments {.foreign-map-questions-slide}
 
 ::: {.foreign-map-subtitle}
 When the evaluated government differs from the country of publication
@@ -543,7 +533,7 @@ Map source: figures/data/06_coverage_map.csv, the same pinned November8 release 
 :::
 
 
-## Framing and polarization across governments {.foreign-framing-compact-slide}
+## Coverage direction and polarization {.foreign-framing-compact-slide}
 
 ::: {.foreign-intro}
 **The Kyiv Independent:** framing toward Russia and Ukraine
@@ -582,27 +572,28 @@ These pooled comparisons do not hold event, genre, time, translation or politica
 :::
 
 
-## What needs validation {.validation-slide}
+## From coverage patterns to research claims {.validation-slide}
 
-| Question | Required evidence or comparison |
+| What we want to establish | What we need next |
 |---|---|
-| Did we select the right government, action and entity roles? | Stratified human review of the extracted record |
-| Do the labels mean the same thing across contexts? | Separate review of alignment, reputation and framing across countries and languages |
-| Does translation preserve attribution and evaluation? | Compare source text with the supplied English text |
-| What does the action-based design miss? | Review conditions and indirect criticism without a codable action |
-| How stable are the findings? | Sensitivity to source mix, repeated reporting, prompt version and zero codes |
+| **The codes capture the intended distinctions** | Independent human coding of all three dimensions, including enough positive and negative cases and checks against original-language text. |
+| **Outlets systematically portray governments differently** | Repeated comparisons of the same events. Separate action selection, quoted voices and narrator wording. |
+| **The media environment relates to political polarization** | Compare news measures with independent evidence on political actors or citizens. Keep coverage direction, its prevalence and disagreement separate. |
 
 ::: {.sample}
-Representative human-reference accuracy remains unmeasured. Verified storage and valid JSON do not establish semantic validity.
+The current findings identify comparisons worth testing. Source differences alone do not establish bias, its causes or its effects on citizens.
 :::
 
 ::: notes
-Sources: ../docs/validation.md and ../docs/codebook.md. Representative human-reference accuracy of the three current labels remains unmeasured. Historical generic sentiment labels do not constitute separate human labels for all three fields. Dependent AI adjudication is not independent human reference. Selection can omit politically important conditions without a codable action; unknown and uncodable records require separate accounting.
+The progression is measurement validity, comparative coverage, then the link to polarization. Negative coverage may reflect opposition conduct, damaging government behavior, narrator judgment, or selection among events. A claim about media bias needs an explicit benchmark and comparison, rather than equating any negative label with bias. A news-based measure of coexisting positive/negative coverage is also not automatically an estimate of societal polarization. Audience exposure and public attitudes are separate units requiring independent evidence.
+
+Representative human-reference accuracy of the three current labels remains unmeasured. The historical human field cannot serve as three independent labels. Dependent AI review helps select disagreements for adjudication but does not establish performance. Review government/action/entity extraction, narrator attribution and translation, with explicit sampling of minority directional labels. Study sensitivity to source mix, repeated reporting, prompt version, zero codes and the action-based eligibility rule. Preserve unknown/not codable separately. Documentation: ../docs/validation.md and ../docs/codebook.md.
 :::
 
 
 ## Discussion
 
+- What do these signals tell us about the media environment, and what requires an external benchmark for bias?
 - Which patterns in reported action and evaluation should count as evidence of polarization?
 - What comparisons would distinguish political change from changing coverage?
 

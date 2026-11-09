@@ -45,6 +45,24 @@ Astra saw both codings and project context; this is a dependent AI review, not i
 
 This is a historical, selected sample. Its legacy annotation used one sentiment field rather than the current three constructs. Historical inputs were truncated while the new comparison used full supplied text; some titles and bodies differed. Event equivalence, exact-span agreement and political-label agreement therefore answer different questions. Conditional agreement rates from this exercise must not be presented as overall classifier accuracy. No representative human-reference accuracy estimate is established by these checks. Private article texts and review workbooks are not part of this repository.
 
+## Political-label review conditional on a shared event
+
+Action agreement does not establish label reliability. The corrected November 3 review identifies **167 articles in which the human and model codings describe the same event**. Of these, **155** also have model action selection judged compliant or defensible; two have unsupported selection and ten unresolved selection. The following diagnostic uses the 155 accepted selections. Shared-event identity does not certify matching action spans, actors, targets, modality, or evaluated government.
+
+The reviewer assessed the producer's alignment, reputation, and framing labels against the supplied evidence and current definitions. It saw both codings and project context. These are **dependent AI evidence-review verdicts**, not independent labels or human-reference accuracy. They condition on the producer's selected government: 143 of the 155 records lack a human country reference. The historical human sentiment field cannot serve as three separate human labels.
+
+| Dimension | Supported | Ambiguous or boundary | Correction proposed | Supported among directional labels only |
+|---|---:|---:|---:|---:|
+| Alignment | 126 / 155 (81.3%) | 20 | 9 | 24 / 37 (64.9%) |
+| Reputation | 122 / 155 (78.7%) | 29 | 4 | 7 / 24 (29.2%) |
+| Framing | 143 / 155 (92.3%) | 9 | 3 | 8 / 14 (57.1%) |
+
+“Correction proposed” corresponds to the review's *Unsupported* verdict; it is not an independently established error. Ambiguous or boundary cases remain unresolved. All three labels were supported in 103 of 155 articles. Directional denominators include only the producer's −1 and +1 labels; the overall columns also include 118 alignment zeros, 131 reputation zeros, and 141 framing zeros. Their high frequency makes the directional breakdown essential. These small, selected subsets do not estimate population performance.
+
+As a sensitivity check, retaining **all 167 shared-event articles** gives supported / ambiguous / correction-proposed counts of **133 / 25 / 9** for alignment, **128 / 34 / 5** for reputation, and **154 / 10 / 3** for framing. These totals retain the 12 records with action-selection problems; they should not replace the gated diagnostic without that qualification.
+
+The review's numeric proposals are not a third set of independently assigned labels: supported values were copied from the producer, explicit corrections were recorded for unsupported values, and ambiguous cases were left unresolved. A confusion matrix based on those proposals would therefore overstate independence. The [aggregate review data](../slides/figures/data/05_same_event_label_review.json) preserve both denominators, directional counts, review limitations, and source hashes. No article text or individual review records are published.
+
 ## Evaluation layers
 
 | Layer | Question | Evidence |

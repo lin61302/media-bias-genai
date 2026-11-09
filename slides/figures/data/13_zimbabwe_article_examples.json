@@ -1,0 +1,122 @@
+{
+  "scope": "Three purposively selected examples from the same frozen available article cohort; no full article text or private identifiers exported.",
+  "matched_pair": {
+    "date": "2023-09-15",
+    "event": "The Masvingo High Court grants bail to CCC candidate Patrick Cheza.",
+    "same_action_tag": "court_rule",
+    "same_actor_role": "Judiciary/Prosecutors",
+    "same_target": "Patrick Cheza",
+    "same_align_and_rep": {
+      "align": 0,
+      "rep": 0
+    },
+    "different_frame": {
+      "chronicle.co.zw": 1,
+      "zimlive.com": -1
+    },
+    "interpretation": "Chronicle ridicules an incumbent opponent; ZimLive emphasizes his detention. The positive-government direction assigned to opponent ridicule is a coding interpretation that should be examined, not a claim that the court decision itself favors government."
+  },
+  "direct_positive_example": "The September14 Chronicle headline presents the president as energetic and purposeful; the selected action is meeting ministers, with positive alignment, zero reputation and positive framing.",
+  "examples": [
+    {
+      "purpose": "same_bail_decision",
+      "source": "chronicle.co.zw",
+      "date": "2023-09-15",
+      "url": "https://www.chronicle.co.zw/sore-loserroad-rage-losing-ccc-candidate-who-assaulted-zanu-pf-minister-granted-bail/",
+      "title": "Sore loser\u2026Road Rage losing CCC candidate who assaulted Zanu-PF minister, granted bail",
+      "evaluated_government": "ZWE",
+      "publication_country": "ZWE",
+      "action": "granted bail",
+      "primary_action_tag": "court_rule",
+      "actor": "High Court judge Justice Garainashe Mawadze",
+      "actor_role": "F",
+      "target": "Patrick Cheza",
+      "target_role": "C",
+      "labels": {
+        "align": 0,
+        "rep": 0,
+        "frame": 1
+      },
+      "framing_cue": "Sore loser\u2026Road Rage",
+      "framing_cue_field": "title_translated",
+      "original_language": "en",
+      "original_equals_supplied_text": true,
+      "supplied_body_characters": 2850,
+      "plan_sha256": "242660f7372ea10d97753165b2caa6fc415e70bc0cec6be0f5b1cdbcd3cdec3b",
+      "source_rows_sha256": "30f4e8d148e2ecb6847909d856e60824a823919eb3f032fa5e9a2c4335462bcc",
+      "saved_record_membership_verified": true,
+      "live_url_checked": false
+    },
+    {
+      "purpose": "same_bail_decision",
+      "source": "zimlive.com",
+      "date": "2023-09-15",
+      "url": "https://www.zimlive.com/court-ends-jail-nightmare-for-ccc-poll-candidate-accused-of-bashing-minister/",
+      "title": "Court ends jail nightmare for CCC poll candidate accused of bashing minister",
+      "evaluated_government": "ZWE",
+      "publication_country": "ZWE",
+      "action": "has finally been granted bail",
+      "primary_action_tag": "court_rule",
+      "actor": "Masvingo High Court judge Garainesu Mawadze",
+      "actor_role": "F",
+      "target": "Patrick Cheza",
+      "target_role": "C",
+      "labels": {
+        "align": 0,
+        "rep": 0,
+        "frame": -1
+      },
+      "framing_cue": "ends jail nightmare",
+      "framing_cue_field": "title_translated",
+      "original_language": "en",
+      "original_equals_supplied_text": true,
+      "supplied_body_characters": 1633,
+      "plan_sha256": "1f5fa0a35e5c3127fed8a39c3bdb2aa3279c5457225a963af90d363eab535fc8",
+      "source_rows_sha256": "8f74c5de320111ce9679f8d82aaeb3e28c10a577f3a25ff7ea049b29a2cb4eb0",
+      "saved_record_membership_verified": true,
+      "live_url_checked": false
+    },
+    {
+      "purpose": "direct_positive_government_framing",
+      "source": "chronicle.co.zw",
+      "date": "2023-09-14",
+      "url": "https://www.chronicle.co.zw/president-mnangagwa-hits-the-ground-running-with-high-level-meeting-to-propel-zimbabwe-towards-vision-2030/",
+      "title": "President Mnangagwa hits the ground running with high-level meeting to propel Zimbabwe towards Vision 2030",
+      "evaluated_government": "ZWE",
+      "publication_country": "ZWE",
+      "action": "meeting his ministers and senior Government staff",
+      "primary_action_tag": "meet_cooperate",
+      "actor": "President Mnangagwa",
+      "actor_role": "A",
+      "target": "his ministers",
+      "target_role": "A",
+      "labels": {
+        "align": 1,
+        "rep": 0,
+        "frame": 1
+      },
+      "framing_cue": "hits the ground running",
+      "framing_cue_field": "title_translated",
+      "original_language": "en",
+      "original_equals_supplied_text": true,
+      "supplied_body_characters": 1812,
+      "plan_sha256": "5c807149cbd94c9c529b9d946535c3769c816ff9ec8e349d03f5e52811b51bf4",
+      "source_rows_sha256": "be1f099682bf54e6ddb6ba39995fadd4d6d8a5ecd402a31dcffa811f7b6a34a5",
+      "saved_record_membership_verified": true,
+      "live_url_checked": false
+    }
+  ],
+  "membership_audit_sha256": "c6425895cbea8517dd83b1b60e837a8db2702277a528076e3390cb5004a73a63",
+  "private_evidence_receipt_sha256": "3144999ebec8ae3f5dedebe01e01071e04245cc30be13f205fda6c60589014a4",
+  "checks": {
+    "all_three_saved_record_memberships_verified": true,
+    "all_plan_and_source_row_hashes_verified": true,
+    "original_English_equals_supplied_input": true,
+    "all_framing_cues_found_literally": true
+  },
+  "limits": [
+    "A same-decision pair does not establish an outlet-level causal effect or eliminate genre/content selection.",
+    "The same saved original and input text does not prove completeness relative to a live webpage.",
+    "Model labels remain open to human validation, including whether criticism of an opponent supports a positive-government framing label."
+  ]
+}

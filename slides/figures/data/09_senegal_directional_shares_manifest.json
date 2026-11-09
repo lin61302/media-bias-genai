@@ -1,0 +1,30 @@
+{
+  "source": "slides/figures/data/09_senegal_monthly_indices.csv",
+  "source_sha256": "72fccdcdd7b4ffa1e73393c69edb6b2ceb2a6f17dbf196fbcaf374f9dee0e546",
+  "snapshot": "November 8, 2026 frozen analytical release",
+  "filter": {
+    "government": "SEN",
+    "publication_origin": "all",
+    "display_start": "2023-10",
+    "display_end": "2024-06"
+  },
+  "denominator": "All eligible records per month, including zero; unknown/uncodable excluded upstream.",
+  "measure": "Each sign count divided by the eligible monthly count; not P and not public opinion.",
+  "full_export_months": 24,
+  "display_months": 9,
+  "script_sha256": "91c5c9710252179614c0e9ae13584cece8ba39e2b158200f8c11f0cc3d42eaa2",
+  "outputs": [
+    {
+      "path": "slides/figures/09_senegal_directional_shares.png",
+      "sha256": "f7f93fb5739effaa8767aa0ef76557cee1c3bd7dcaea243c6dea51be6aadce18"
+    },
+    {
+      "path": "slides/figures/09_senegal_directional_shares.pdf",
+      "sha256": "aea929b85cf7daedf2e34fbdabac5fda86ddc9f8a4c38eb5356e711849fc3276"
+    },
+    {
+      "path": "slides/figures/09_senegal_directional_shares.svg",
+      "sha256": "fce3f8ee88d4ce83794da4de75f8b1cfe68b8ddc562e9b550f07422241adff2d"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "title": "Political-label review conditional on a shared event",
+  "review_updated_on": "2026-11-03",
+  "aggregates_recomputed_on": "2026-11-09",
+  "unit": "Article with one selected action and an existing producer label in each dimension",
+  "review_nature": {
+    "type": "Dependent AI evidence review",
+    "reviewer_access": "Reviewer saw both historical human coding and producer output, with project context.",
+    "legacy_human_labels": "One legacy sentiment field; not separate human alignment, reputation, and framing labels.",
+    "government_reference": "Verdicts condition on the producer-selected government. Sparse historical human country references do not establish a shared human-model government reference.",
+    "numeric_proposals": "Supported proposals copy producer values; Unsupported proposals record explicit corrections; Ambiguous / boundary cases remain unresolved. Proposals are not independent third-coder labels.",
+    "sampling": "Selected historical comparison sample, not a probability sample of the analytical corpus.",
+    "not_estimated": [
+      "Human-reference accuracy for the three dimensions",
+      "Independent producer-reviewer label agreement",
+      "Population error prevalence"
+    ]
+  },
+  "definitions": {
+    "align": "Alignment with the evaluated incumbent government",
+    "rep": "Reputational implication for the evaluated government",
+    "frame": "Narrator evaluation of the evaluated government",
+    "same_event": "Reviewed event identity shared by historical human and producer coding; does not guarantee matching spans, actors, targets, modality, or government.",
+    "accepted_action_selection": [
+      "Compliant selection",
+      "Defensible alternative"
+    ],
+    "directional_labels": [
+      -1,
+      1
+    ],
+    "overall_denominator": "All articles in the named subset; includes producer zero labels.",
+    "directional_denominator": "Only articles with producer label -1 or +1 for the specified dimension.",
+    "verdicts": {
+      "Supported": "Reviewer considers the existing label supported by supplied evidence and current definitions.",
+      "Ambiguous / boundary": "Reviewer leaves the label unresolved; not counted as a demonstrated error.",
+      "Unsupported": "Reviewer proposes a correction; not an independently established error.",
+      "Not assessable": "Reviewer cannot assess the label."
+    },
+    "shares": "Fractions from 0 to 1, not percentages."
+  },
+  "cohort_funnel": {
+    "historical": 266,
+    "valid_model": 262,
+    "both_human_model_action": 211,
+    "same_event": 167,
+    "same_event_accepted_action": 155
+  },
+  "excluded_from_primary_same_event_subset": {
+    "article_n": 12,
+    "selection_verdict_counts": {
+      "Unsupported selection": 2,
+      "Unresolved selection": 10
+    }
+  },
+  "primary_same_event_accepted_action": {
+    "article_n": 155,
+    "selection_criteria": "Valid producer output; human and producer judged to identify the same event; producer action selection judged Compliant selection or Defensible alternative.",
+    "human_government_reference_counts": {
+      "Missing human reference": 143,
+      "Different country": 6,
+      "Same country": 5,
+      "Multiple human countries": 1
+    },
+    "dimensions": {
+      "align": {
+        "n": 155,
+        "model_label_counts": {
+          "0": 118,
+          "-1": 18,
+          "1": 19
+        },
+        "review_verdict_counts": {
+          "Supported": 126,
+          "Ambiguous / boundary": 20,
+          "Unsupported": 9,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.8129032258064516,
+          "Ambiguous / boundary": 0.12903225806451613,
+          "Unsupported": 0.05806451612903226,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 37,
+        "directional_verdict_counts": {
+          "Supported": 24,
+          "Ambiguous / boundary": 5,
+          "Unsupported": 8,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.6486486486486487
+      },
+      "rep": {
+        "n": 155,
+        "model_label_counts": {
+          "0": 131,
+          "-1": 22,
+          "1": 2
+        },
+        "review_verdict_counts": {
+          "Supported": 122,
+          "Ambiguous / boundary": 29,
+          "Unsupported": 4,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.7870967741935484,
+          "Ambiguous / boundary": 0.1870967741935484,
+          "Unsupported": 0.025806451612903226,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 24,
+        "directional_verdict_counts": {
+          "Supported": 7,
+          "Ambiguous / boundary": 14,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.2916666666666667
+      },
+      "frame": {
+        "n": 155,
+        "model_label_counts": {
+          "0": 141,
+          "-1": 12,
+          "1": 2
+        },
+        "review_verdict_counts": {
+          "Supported": 143,
+          "Ambiguous / boundary": 9,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.9225806451612903,
+          "Ambiguous / boundary": 0.05806451612903226,
+          "Unsupported": 0.01935483870967742,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 14,
+        "directional_verdict_counts": {
+          "Supported": 8,
+          "Ambiguous / boundary": 3,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.5714285714285714
+      }
+    },
+    "all_three_supported_n": 103,
+    "any_correction_proposed_n": 14
+  },
+  "sensitivity_all_same_event": {
+    "article_n": 167,
+    "selection_criteria": "Valid producer output; human and producer judged to identify the same event. Retains 12 records with unsupported or unresolved producer action selection.",
+    "human_government_reference_counts": {
+      "Missing human reference": 153,
+      "Different country": 7,
+      "Same country": 5,
+      "Multiple human countries": 2
+    },
+    "dimensions": {
+      "align": {
+        "n": 167,
+        "model_label_counts": {
+          "0": 129,
+          "-1": 18,
+          "1": 20
+        },
+        "review_verdict_counts": {
+          "Supported": 133,
+          "Ambiguous / boundary": 25,
+          "Unsupported": 9,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.7964071856287425,
+          "Ambiguous / boundary": 0.1497005988023952,
+          "Unsupported": 0.05389221556886228,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 38,
+        "directional_verdict_counts": {
+          "Supported": 25,
+          "Ambiguous / boundary": 5,
+          "Unsupported": 8,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.6578947368421053
+      },
+      "rep": {
+        "n": 167,
+        "model_label_counts": {
+          "0": 142,
+          "-1": 22,
+          "1": 3
+        },
+        "review_verdict_counts": {
+          "Supported": 128,
+          "Ambiguous / boundary": 34,
+          "Unsupported": 5,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.7664670658682635,
+          "Ambiguous / boundary": 0.20359281437125748,
+          "Unsupported": 0.029940119760479042,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 25,
+        "directional_verdict_counts": {
+          "Supported": 8,
+          "Ambiguous / boundary": 14,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.32
+      },
+      "frame": {
+        "n": 167,
+        "model_label_counts": {
+          "0": 152,
+          "-1": 13,
+          "1": 2
+        },
+        "review_verdict_counts": {
+          "Supported": 154,
+          "Ambiguous / boundary": 10,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "review_verdict_shares": {
+          "Supported": 0.9221556886227545,
+          "Ambiguous / boundary": 0.059880239520958084,
+          "Unsupported": 0.017964071856287425,
+          "Not assessable": 0.0
+        },
+        "directional_model_label_n": 15,
+        "directional_verdict_counts": {
+          "Supported": 8,
+          "Ambiguous / boundary": 4,
+          "Unsupported": 3,
+          "Not assessable": 0
+        },
+        "directional_supported_share": 0.5333333333333333
+      }
+    },
+    "all_three_supported_n": 108,
+    "any_correction_proposed_n": 15
+  },
+  "provenance": {
+    "hash_algorithm": "sha256",
+    "source_hashes": {
+      "corrected_review_table": "81fa441f12139b757c193767f37a0da828afdbe9c2787c589895707f4b03613e",
+      "review_extension_protocol": "558ae2ad7233f4ec3352a42b2e5c094752ae537d9f6a6c2607cc548f05272f62",
+      "review_transformation_code": "5c7cac3aa759792bbb7971b7f1ebb720e92a86c09c563f5dc28a9751e503521a",
+      "earlier_evidence_review": "067a6f5f2ab4ce49236599c63294901189162495b12bbe1f9e429fe19cdb014c",
+      "producer_outputs": "3c544649e75878aa425062caeb5ac00fe26ad90b29b12291851f4f269e78f65d",
+      "comparison_input_table": "41a8fb43456fd17bd14ead5e4f06044a226d71fa60595cbe7a86ba7c46498e17",
+      "legacy_annotation_cells": "f53acf92f68d0f9ac3eef12b3cb56d538e29eaca013436cbc476711136eae4d4",
+      "legacy_annotation_inventory": "a1117d9770ca14a2b31beb049c342517d57840dbd12cb9d82681bdb0890b6849"
+    },
+    "source_access": "Private source records; public artifact contains aggregate counts only. Corrected review table governs the reported verdicts."
+  }
+}
