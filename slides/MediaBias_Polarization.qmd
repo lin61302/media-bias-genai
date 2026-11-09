@@ -98,7 +98,7 @@ format:
 
 - Polarization is understood as a common feature of politics across the world
 - Big Question: Is it a cause or a consequence of democratic backsliding?
-  * Theory runs both ways: polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]; incumbents deepen polarization strategically [@mccoy_etal_2018]
+  * Theory runs both ways: polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]; incumbents deepen polarization strategically [@somer_etal_2021]
 - Most research is on the US (+ a few others)
 - Cross-national evidence linking polarization to backsliding is largely correlational and slow-moving [cites]
 - Can we measure polarization systematically across countries and over time to answer the big question? 
@@ -122,7 +122,7 @@ format:
 - **Key findings:**
   * Roll-call polarization has risen steadily since the 1970s [@mccarty_etal_2006]
   * Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
-  * Media: partisan news shifts votes and can raise polarization [@martin_yurukoglu_2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior_2013]
+  * Media: partisan news shifts votes and can raise polarization [@MartinYurukoglu2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior2013media]
 
 ::: notes
 - Citation completion: add the intended Matt reference and the remaining media literature.
@@ -136,7 +136,7 @@ format:
 ## Existing comparative work {.smaller}
 
 - **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
-- **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner_2021]; V-Dem "political polarization", near-global [@vdem]
+- **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization", near-global [@vdem]
   * Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
 - **Relational measures:** mass partisan polarization over parties [cite]
 - **Common limits:**
@@ -156,7 +156,7 @@ format:
 - Party and ideological scales vary across countries and over time
 - We use the **national incumbent government** as a common reference
   * Support and opposition can organize conflict in fluid party systems and autocracies
-  * This connects to accounts of “pernicious” polarization [@mccoy_etal_2018]
+  * This connects to accounts of “pernicious” polarization [@somer_etal_2021]
 - News can reveal conflict around the incumbent at a finer time scale
 - The measurement question is what an article's positive or negative content refers to
 
