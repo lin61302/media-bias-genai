@@ -51,7 +51,7 @@ The four current empirical figures use the fixed [November 8 release](analysis_s
 | [06_coverage_map.png](figures/06_coverage_map.png) | 71 publication countries and 211 evaluated-government codes. The maps have different quantities and scales. International/mixed source domains are separate. |
 | [07_label_distributions.png](figures/07_label_distributions.png) | Three marginal distributions on the same eligible denominator. Zero combines neutral, mixed and insufficient directional evidence. |
 | [08_alignment_reputation_joint.png](figures/08_alignment_reputation_joint.png) | Reputation conditional on alignment. Among pro-incumbent actions, 20.8% have negative reputational implications. |
-| [09_senegal_monthly_indices.png](figures/09_senegal_monthly_indices.png) | Monthly two-sided index for each field, article volume and a sourced episode. Lines omit months below 100 articles; this is a display rule, not a reliability guarantee. |
+| [09_senegal_monthly_indices.png](figures/09_senegal_monthly_indices.png) | Monthly two-sided index for each field, article volume and a sourced episode. All nonempty months are shown with exact article counts. Counts describe coverage volume, not independent events or a guarantee of precision. |
 
 PDF and SVG versions are alongside each PNG. [Plotted CSVs, notes and provenance](figures/data/) accompany the figures. Regenerate them from the repository root:
 

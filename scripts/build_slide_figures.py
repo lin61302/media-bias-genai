@@ -291,7 +291,7 @@ def timeseries(monthly):
             metric = measures(row, axis) if row else {"two_sided": np.nan, "negative": np.nan, "zero": np.nan, "positive": np.nan}
             for field in ("two_sided", "negative", "zero", "positive"):
                 out[f"{axis}_{field}"] = metric[field]
-        out["displayed_in_line"] = n >= 100
+        out["displayed_in_line"] = n > 0
         rows.append(out)
     write_csv("09_senegal_monthly_indices.csv", rows)
     fig, (ax, count_ax) = plt.subplots(2, 1, figsize=(14, 6.8), sharex=True,
@@ -301,7 +301,7 @@ def timeseries(monthly):
     n = np.array([r["eligible_articles"] for r in rows])
     for axis in AXES:
         y = np.array([r[f"{axis}_two_sided"] for r in rows])
-        y[n < 100] = np.nan
+        y[n == 0] = np.nan
         ax.plot(x, y, marker="o", markersize=5, linewidth=2.5, color=AXIS_COLORS[axis], label=AXIS_NAMES[axis])
     ax.set_ylabel("Two-sided index P")
     ax.set_ylim(0, .13)
@@ -314,17 +314,19 @@ def timeseries(monthly):
                 arrowprops={"arrowstyle": "-", "color": NAVY, "lw": 1})
     ax.annotate("Election held", xy=(14, rows[14]["align_two_sided"]), xytext=(15.0,.062), fontsize=14, color=NAVY,
                 arrowprops={"arrowstyle": "-", "color": NAVY, "lw": 1})
-    count_ax.bar(x, n, width=.7, color=["#c3c9d2" if v >= 100 else "#edeef1" for v in n], edgecolor="none")
-    count_ax.axhline(100, color=MUTED, linewidth=.8, linestyle="--")
-    count_ax.text(23.5,100,"100",va="bottom", ha="left",color=MUTED,fontsize=11)
-    count_ax.set_ylabel("Articles", fontsize=14)
-    count_ax.set_yticks([0, 500, 1000], labels=["0", "500", "1,000"], fontsize=12)
-    count_ax.set_xticks([0, 3, 6, 9, 12, 15, 18, 21], ["Jan 2023", "Apr", "Jul", "Oct", "Jan 2024", "Apr", "Jul", "Oct"], fontsize=14)
+    bars = count_ax.bar(x, n, width=.7, color="#c3c9d2", edgecolor="none")
+    count_ax.bar_label(bars, labels=[str(int(v)) for v in n], padding=3, fontsize=13, color=MUTED)
+    count_ax.set_ylim(0, 1150)
+    count_ax.set_ylabel("Eligible\narticles", fontsize=13)
+    count_ax.set_yticks([0, 500, 1000])
+    count_ax.set_yticklabels(["0", "500", "1,000"], fontsize=12)
+    count_ax.set_xticks([0, 3, 6, 9, 12, 15, 18, 21])
+    count_ax.set_xticklabels(["Jan 2023", "Apr", "Jul", "Oct", "Jan 2024", "Apr", "Jul", "Oct"], fontsize=14)
     count_ax.set_xlim(-.5,23.5)
     ax.tick_params(axis="x", length=0)
     count_ax.spines["left"].set_visible(False)
-    fig.text(.5, .09, "Senegal government · P = 4 × positive share × negative share · line gaps: fewer than 100 articles", ha="center", fontsize=14)
-    fig.text(.5, .04, "Selected example; changing coverage and incumbent identity limit inference · episode dates: UN S/2024/521, §18", ha="center", fontsize=12, color=MUTED)
+    fig.text(.5, .09, "Senegal government · P = 4 × positive share × negative share · all months with data shown", ha="center", fontsize=14)
+    fig.text(.5, .04, "Counts show coverage volume, not independent events · selected episode: UN S/2024/521, §18", ha="center", fontsize=12, color=MUTED)
     save(fig, "09_senegal_monthly_indices")
     return next(r for r in rows if r["month"] == "2024-02")
 
@@ -353,6 +355,8 @@ def main():
         "coverage_by_year": yearly_coverage(scope, monthly),
         "label_counts": distributions(scope),
         "joint": joint(scope), "senegal_february_2024": timeseries(monthly),
+        "timeseries_display": {"policy": "all nonempty months", "hide_below_n": None,
+                               "no_data": "gap, not zero", "count_unit": "eligible article records, not unique events"},
         "framing_comparisons": framing_comparisons(scope),
         "geography": {"url": GEOGRAPHY_URL, "sha256": GEOGRAPHY_SHA, "license": "Public domain",
                       "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
@@ -387,9 +391,10 @@ def main():
         "changes in public reputation.\n\n"
         "SENEGAL\nSelected documented episode, not a representative or randomly selected case. Monthly "
         "P is calculated separately for all three measures. Source/month composition can change and repeated "
-        "coverage is not independent events. Lines are withheld below 100 eligible articles (a display "
-        "threshold, not proof of reliability); low-count article volumes remain visible. Missing scores are "
-        "not zero. The February 2024 episode and March election dates come from UN S/2024/521 paragraph 18. "
+        "coverage is not independent events. All nonempty months are shown, with the exact eligible article "
+        "count labeled below. There is no arbitrary minimum-count display cutoff. Low-count months can "
+        "be more sensitive to individual records; volume is not a guarantee of precision. Months with "
+        "no data remain gaps, not zero scores. The count panel is raw coverage volume, not normalized salience. The February 2024 episode and March election dates come from UN S/2024/521 paragraph 18. "
         "An incumbent transition changes the government reference point. No causal/event attribution or "
         "societal polarization estimate is established.\n\n"
         "SOURCE–GOVERNMENT FRAMING\nThe five selected rows in 12_source_government_framing.csv "

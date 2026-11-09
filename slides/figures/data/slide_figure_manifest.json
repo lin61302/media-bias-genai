@@ -211,5 +211,11 @@
     "07_label_distributions",
     "08_alignment_reputation_joint",
     "09_senegal_monthly_indices"
-  ]
+  ],
+  "timeseries_display": {
+    "policy": "all nonempty months",
+    "hide_below_n": null,
+    "no_data": "gap, not zero",
+    "count_unit": "eligible article records, not unique events"
+  }
 }
