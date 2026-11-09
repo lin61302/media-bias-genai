@@ -275,43 +275,30 @@ The concrete Baku police case is a Reuters October12,2013 report: both codings i
 :::
 
 
-## MLP sources and the analytical sample {.publication-coverage-slide .selection-coverage-slide}
+## Source coverage and analytical sample {.publication-coverage-slide .source-scope-slide}
 
 ::: {.publication-coverage-line}
 **71 publication countries · 404 mapped source domains**<span>January 2019–May 2026</span>
 :::
 
-:::: {.selection-coverage-grid}
-::: {.coverage-map}
-![](figures/06a_publication_coverage.png){width="100%"}
-:::
-::: {.source-selection}
-<h3>How outlets enter MLP</h3>
-
-- Established domestic outlets with original reporting and usable archives.
-- Target **3–5 local sources**, with ownership and political relationships documented.
-- Regional and international reporting supplements domestic sources.
-
-**A curated source collection—not equal pro- and anti-government quotas.**
-:::
-::::
+![](figures/06a_publication_coverage.png){fig-align="center" width="100%"}
 
 ::: {.publication-coverage-total}
 **3,181,113 eligible articles** · **26 international / mixed-country domains** also included.
 :::
 
 ::: {.sample}
-The map describes this processed release, not a representative country sample or public news exposure. Source selection: [Moratz et al. (2025)](https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf), p. 7 and Appendix A.
+Color shows the number of source domains. Coverage varies across countries, outlets and time.
 :::
 
 ::: notes
-Publication provenance in the November8 frozen release:404 domains mapped to71 countries, plus26 international/mixed-country domains,430total. Map color counts domains, not articles or political direction. Gray means no observed mapped value. The3,181,113eligible articles come from3,464,596valid records;283,483are excluded rather than relabeled zero. An eligible record identifies government/action and numeric scores on all three dimensions. Full totals include foreign-government evaluations and international sources.
+The map shows publication provenance in this project's November 8 frozen analytical release: 404 source domains mapped to 71 publication countries. A further 26 international or mixed-country domains are recorded separately, giving 430 domains in total. Map color counts domains, not articles, audience exposure or political direction. Gray indicates no observed mapped source-domain value in the release.
 
-The2025MLPpaper describes65developing countries. It documents identification of domestic sources through media directories, press-freedom resources and local/NGO contacts; original reporting, accessible websites, deep archives and a target of3–5sources per country. Partisan affiliation is reviewed. Appendix A targets at least half of articles from politically independent outlets in restrictive media environments, with quarterly checks and weighting encouraged when the target is not met. That is not equal pro-/anti-government quota sampling or a guarantee that every GenAI country-month meets the target. Current source metadata distinguish government ownership, partisan affiliation and independent reporting. Critical investigative journalism is not automatically opposition affiliation.
+The full January 2019–May 2026 snapshot contains 3,464,596 structurally valid records, of which 3,181,113 enter the common comparisons. An eligible record identifies a government and primary action and has numeric labels for alignment, reputation and framing. The remaining 283,483 records are excluded rather than relabeled zero. Full totals include the international/mixed sources and evaluations of both domestic and foreign governments.
 
-No explicit comprehensive country-inclusion algorithm was found in the consulted paper and technical documentation. Do not call the71countries random/representative or say six countries were added to the2025frame without reconciling membership.71is observed publication-country coverage of this processed snapshot, not an independently verified project country-selection rule. Regional/international sources and processing completion affect the analytical release. Source volumes do not equal audience exposure.
+This is observed processed coverage, not a representative country sample or a measure of public news exposure. Uneven archives, collection, processing completion, source mix and repeated reporting affect the sample. The separate evaluated-government map appears later.
 
-Primary full paper: https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf , mainp7; appendixp19(PDFp48). Official source metadata/codebook: https://github.com/DevLab-Duke/mlp-data-intro/tree/main/source_metadata . Snapshot/map data: analysis_snapshot.json, figures/data/06_coverage_map.csv,06_coverage_by_year.csv,06_split_maps_manifest.json. Reproduce with ../scripts/build_coverage_maps.py. The evaluated-government map remains later as a separate research extension.
+Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/data/06_coverage_by_year.csv and figures/data/06_split_maps_manifest.json; ../scripts/build_coverage_maps.py. Map data and analytical scope are unchanged by this layout revision.
 :::
 
 
