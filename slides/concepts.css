@@ -95,3 +95,27 @@
 .source-pair-links { font-size: 22px; margin: 17px 0; }
 .source-pair-takeaway { font-size: 27px; line-height: 1.4; border-top: 1px solid #cbd0d9; padding-top: 17px; }
 .reveal .slides section.source-pair-slide .sample { font-size: 19px; margin-top: 15px; }
+
+/* Foreign-government extension after the domestic cases. */
+.foreign-intro { font-size: 30px; margin: 15px 0 25px; }
+.reveal .slides section.foreign-government-slide table { width: 100%; font-size: 26px; margin-bottom: 30px; }
+.reveal .slides section.foreign-government-slide td, .reveal .slides section.foreign-government-slide th { padding: 15px 12px; }
+.foreign-reading { font-size: 29px; line-height: 1.6; margin: 15px 0 30px; }
+.foreign-question { font-size: 28px; line-height: 1.5; border-top: 1px solid #cbd0d9; padding-top: 20px; }
+.reveal .slides section.foreign-government-slide .sample { font-size: 19px; margin-top: 24px; }
+
+/* Context for interpreting the Kenya comparison. */
+.reveal .slides section.outlet-context-slide table { width: 100%; font-size: 25px; table-layout: fixed; }
+.reveal .slides section.outlet-context-slide th:first-child { width: 18%; }
+.reveal .slides section.outlet-context-slide th:nth-child(2) { width: 43%; }
+.reveal .slides section.outlet-context-slide td, .reveal .slides section.outlet-context-slide th { padding: 15px 14px; vertical-align: top; line-height: 1.35; }
+.outlet-context-finding { font-size: 28px; line-height: 1.45; margin-top: 25px; }
+.outlet-context-test { border-top: 1px solid #cbd0d9; padding-top: 18px; margin-top: 21px; font-size: 25px; line-height: 1.4; }
+.reveal .slides section.outlet-context-slide .sample { font-size: 18px; margin-top: 18px; }
+
+.reveal .slides section.foreign-government-slide table { table-layout: fixed; }
+.reveal .slides section.foreign-government-slide th:first-child, .reveal .slides section.foreign-government-slide col:first-child { width: 26% !important; }
+.reveal .slides section.foreign-government-slide col:not(:first-child) { width: 14.8% !important; }
+.reveal .slides section.outlet-context-slide col:first-child { width: 18% !important; }
+.reveal .slides section.outlet-context-slide col:nth-child(2) { width: 43% !important; }
+.reveal .slides section.outlet-context-slide col:nth-child(3) { width: 39% !important; }

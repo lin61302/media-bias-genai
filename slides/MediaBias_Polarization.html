@@ -594,7 +594,7 @@ margin: 0;
 .reveal .slides section.classifier-slide .classifier-footnote { font-size: 19px; color: var(--classifier-muted); line-height: 1.3; margin: 15px 0 0; }
 .reveal .slides section.polarization-slide .polarization-intro { font-size: 26px; margin: 8px 0 25px; }
 .polarization-slide .polarization-table-head,
-.polarization-slide .polarization-table-row { display: grid; grid-template-columns: 220px minmax(0, 1fr) 115px 145px; gap: 20px; align-items: center; }
+.polarization-slide .polarization-table-row { display: grid; grid-template-columns: 210px minmax(0, 1fr) 130px 105px 110px; gap: 20px; align-items: center; }
 .polarization-slide .polarization-table-head { font-size: 22px; color: var(--classifier-muted); padding-bottom: 14px; border-bottom: 2px solid #7c8593; }
 .polarization-slide .polarization-table-head span:nth-child(n+3) { text-align: center; }
 .polarization-slide .polarization-table-row { font-size: 26px; min-height: 100px; border-bottom: 1px solid #dce1e8; }
@@ -623,6 +623,14 @@ margin: 0;
 .polarization-slide .polarization-formulas span { font-size: 21px; }
 .reveal .slides section.polarization-slide .polarization-takeaway { font-size: 24px; color: var(--accent); font-weight: 600; line-height: 1.4; margin: 20px 0 0; }
 .reveal .slides section.polarization-slide .polarization-note { font-size: 17px; margin-top: 13px; }
+
+.polarization-slide .polarization-table-head, .polarization-slide .polarization-table-row { gap: 15px; }
+.polarization-slide .polarization-table-row { min-height: 70px; font-size: 23px; }
+.polarization-slide .polarization-distribution { height: 41px; }
+.polarization-slide .polarization-distribution > .small-share { font-size: 17px; }
+.polarization-slide .polarization-value { font-size: 28px; }
+.polarization-slide .polarization-formulas { grid-template-columns: 1fr 1.25fr; gap: 30px; }
+.reveal .slides section.polarization-slide .polarization-takeaway { margin-top: 16px; font-size: 25px; }
 </style>
   <style type="text/css">
 .reveal .slides section.validation-slide table, .reveal .slides section.agenda-slide table { width: 100%; font-size: 27px; }
@@ -717,6 +725,27 @@ margin: 0;
 .source-pair-links { font-size: 22px; margin: 17px 0; }
 .source-pair-takeaway { font-size: 27px; line-height: 1.4; border-top: 1px solid #cbd0d9; padding-top: 17px; }
 .reveal .slides section.source-pair-slide .sample { font-size: 19px; margin-top: 15px; }
+
+.foreign-intro { font-size: 30px; margin: 15px 0 25px; }
+.reveal .slides section.foreign-government-slide table { width: 100%; font-size: 26px; margin-bottom: 30px; }
+.reveal .slides section.foreign-government-slide td, .reveal .slides section.foreign-government-slide th { padding: 15px 12px; }
+.foreign-reading { font-size: 29px; line-height: 1.6; margin: 15px 0 30px; }
+.foreign-question { font-size: 28px; line-height: 1.5; border-top: 1px solid #cbd0d9; padding-top: 20px; }
+.reveal .slides section.foreign-government-slide .sample { font-size: 19px; margin-top: 24px; }
+
+.reveal .slides section.outlet-context-slide table { width: 100%; font-size: 25px; table-layout: fixed; }
+.reveal .slides section.outlet-context-slide th:first-child { width: 18%; }
+.reveal .slides section.outlet-context-slide th:nth-child(2) { width: 43%; }
+.reveal .slides section.outlet-context-slide td, .reveal .slides section.outlet-context-slide th { padding: 15px 14px; vertical-align: top; line-height: 1.35; }
+.outlet-context-finding { font-size: 28px; line-height: 1.45; margin-top: 25px; }
+.outlet-context-test { border-top: 1px solid #cbd0d9; padding-top: 18px; margin-top: 21px; font-size: 25px; line-height: 1.4; }
+.reveal .slides section.outlet-context-slide .sample { font-size: 18px; margin-top: 18px; }
+.reveal .slides section.foreign-government-slide table { table-layout: fixed; }
+.reveal .slides section.foreign-government-slide th:first-child, .reveal .slides section.foreign-government-slide col:first-child { width: 26% !important; }
+.reveal .slides section.foreign-government-slide col:not(:first-child) { width: 14.8% !important; }
+.reveal .slides section.outlet-context-slide col:first-child { width: 18% !important; }
+.reveal .slides section.outlet-context-slide col:nth-child(2) { width: 43% !important; }
+.reveal .slides section.outlet-context-slide col:nth-child(3) { width: 39% !important; }
 </style>
   <style type="text/css">.reveal
 div.sourceCode
@@ -1715,37 +1744,26 @@ display:block!important;
 }</style></aside>
 </section>
 <section class="slide level2 polarization-slide center">
-<h2>The same average can hide different coverage</h2>
-<div class="polarization-example" aria-label="Three synthetic months showing positive, zero and negative article shares, net score and proposed polarization index">
-  <p class="polarization-intro">Three hypothetical government-months · 100 codable articles each · one measure at a time</p>
+<h2>Directional coverage and polarization</h2>
+<div class="polarization-example" aria-label="Four synthetic months separating directional share, balance and proposed P">
+  <p class="polarization-intro">100 eligible articles per hypothetical month. One government and one measure at a time.</p>
   <div class="polarization-table">
-    <div class="polarization-table-head"><span>Coverage pattern</span><span>Share of articles</span><span>Net score N</span><span>Proposed P</span></div>
-    <div class="polarization-table-row">
-      <strong>All labels zero</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive articles"><span class="polarization-zero" style="width:100%">100%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>Mostly positive</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 40 zero, 60 positive articles"><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:60%">60%</span></div>
-      <span class="polarization-value">.60</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>Positive and negative</strong>
-      <div class="polarization-distribution" aria-label="45 negative, 10 zero, 45 positive articles"><span class="polarization-negative" style="width:45%">45%</span><span class="polarization-zero" style="width:10%">10%</span><span class="polarization-positive" style="width:45%">45%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">.81</strong>
-    </div>
+    <div class="polarization-table-head"><span>Coverage pattern</span><span>Share of articles</span><span>Directional<br>share S</span><span>Balance<br>B</span><span>Combined<br>P</span></div>
+    <div class="polarization-table-row"><strong>All zero</strong><div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive"><span class="polarization-zero" style="width:100%">100%</span></div><span class="polarization-value">0%</span><span class="polarization-value">—</span><strong class="polarization-value">0</strong></div>
+    <div class="polarization-table-row"><strong>One direction</strong><div class="polarization-distribution" aria-label="60 negative, 40 zero, 0 positive"><span class="polarization-negative" style="width:60%">60%</span><span class="polarization-zero" style="width:40%">40%</span></div><span class="polarization-value">60%</span><span class="polarization-value">0</span><strong class="polarization-value">0</strong></div>
+    <div class="polarization-table-row"><strong>Rare, balanced</strong><div class="polarization-distribution" aria-label="5 negative, 90 zero, 5 positive"><span class="polarization-negative small-share" style="width:5%">5%</span><span class="polarization-zero" style="width:90%">90%</span><span class="polarization-positive small-share" style="width:5%">5%</span></div><span class="polarization-value">10%</span><span class="polarization-value">1</span><strong class="polarization-value">.01</strong></div>
+    <div class="polarization-table-row"><strong>Frequent, balanced</strong><div class="polarization-distribution" aria-label="30 negative, 40 zero, 30 positive"><span class="polarization-negative" style="width:30%">30%</span><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:30%">30%</span></div><span class="polarization-value">60%</span><span class="polarization-value">1</span><strong class="polarization-value">.36</strong></div>
   </div>
   <div class="polarization-legend"><span><i class="polarization-negative"></i>Negative</span><span><i class="polarization-zero"></i>Zero</span><span><i class="polarization-positive"></i>Positive</span></div>
-  <div class="polarization-formulas">
-    <p><strong>N = p⁺ − p⁻</strong><span>Positive share minus negative share</span></p>
-    <p><strong>P = 4p⁺p⁻</strong><span>High when both positive and negative shares are large</span></p>
-  </div>
-  <p class="polarization-takeaway">All-zero coverage and a positive–negative split both have net zero.<br>Read the shares alongside N and P: one score cannot show the whole pattern.</p>
-  <p class="polarization-note">Zero-coded articles stay in the denominator; uncodable records are excluded. These are synthetic examples.</p>
+  <div class="polarization-formulas"><p><strong>P = 4p⁺p⁻ = S² × B</strong><span>S: share with a positive or negative code</span></p><p><strong>B: balance among directional articles</strong><span>0 = one sign only; 1 = equal shares of both signs</span></p></div>
+  <p class="polarization-takeaway">Read directional share and balance separately.<br>Strongly critical coverage can still have P = 0.</p>
+  <p class="polarization-note">B is undefined with no directional articles. Zeros stay in the denominator; uncodable records are excluded. These describe coded coverage, with societal polarization still to validate.</p>
 </div>
 <aside class="notes">
-<p>The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index’s relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.</p>
+<p>These are four synthetic distributions, not observed countries. All have 100 comparison-eligible articles for one measure. Negative/zero/positive counts are 0/100/0, 60/40/0, 5/90/5 and 30/40/30. The last two have the same balance among directional articles but different directional prevalence. The second and fourth have the same directional share but different balance.</p>
+<p>Directional share S = p+ + p−. Balance B = 4q(1−q), where q = p+/S and S &gt; 0. B ranges from 0 (one direction only) to 1 (equal positive and negative shares). B is undefined if S = 0, shown as a dash. Proposed P = 4p+p− = S²B when S &gt; 0; P = 0 when S = 0. These are algebraic decompositions of Erik’s proposed index, not separately validated polarization measures. Net direction N = p+ − p− remains useful alongside the shares. An average near zero can describe all-zero coverage or cancellation of opposite signs.</p>
+<p>The examples have directional counts 0, 60, 10 and 60, so B = 1 alone does not tell us how much directional evidence there is. P can track S closely when B varies little. Directional share is sometimes called salience in discussion, but it is specifically the fraction of the eligible civic corpus with a directional code, not political importance, total news attention or article volume. Keep unknown/not-codable records outside the denominator, report exclusions separately, and retain zeros, which include neutral, mixed and insufficient directional evidence.</p>
+<p>Alternative comparisons should follow the substantive question: positive/negative shares and N for direction; S for prevalence; B for conditional balance; and matched-event, same-government comparisons across sources for between-outlet disagreement. Within- and between-outlet differences are distinct. Actor/action relationships can reveal which groups take opposing positions, but article counts and one extracted action do not measure the size of social camps. Surveys, party positions or conflict evidence are needed to validate a link to societal polarization. Full definitions and sensitivity checks: ../docs/coverage-balance.md.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1788,85 +1806,6 @@ display:block!important;
 </div>
 <aside class="notes">
 <p>Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section class="slide level2 framing-evidence-slide center">
-<h2>Framing across sources and governments</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Source</th>
-<th>Government evaluated</th>
-<th style="text-align: right;">Articles</th>
-<th style="text-align: right;">Negative</th>
-<th style="text-align: right;">Positive</th>
-<th style="text-align: right;">P</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Kyiv Independent</td>
-<td>Russia</td>
-<td style="text-align: right;">1,242</td>
-<td style="text-align: right;">37.7%</td>
-<td style="text-align: right;">0.2%</td>
-<td style="text-align: right;">0.0024</td>
-</tr>
-<tr class="even">
-<td>Kyiv Independent</td>
-<td>Ukraine</td>
-<td style="text-align: right;">9,568</td>
-<td style="text-align: right;">3.1%</td>
-<td style="text-align: right;">3.3%</td>
-<td style="text-align: right;">0.0040</td>
-</tr>
-<tr class="odd">
-<td>BBC</td>
-<td>Russia</td>
-<td style="text-align: right;">1,966</td>
-<td style="text-align: right;">8.5%</td>
-<td style="text-align: right;">0.6%</td>
-<td style="text-align: right;">0.0019</td>
-</tr>
-<tr class="even">
-<td>Reuters</td>
-<td>Russia</td>
-<td style="text-align: right;">3,088</td>
-<td style="text-align: right;">12.8%</td>
-<td style="text-align: right;">0.5%</td>
-<td style="text-align: right;">0.0027</td>
-</tr>
-<tr class="odd">
-<td>The Guardian</td>
-<td>Russia</td>
-<td style="text-align: right;">903</td>
-<td style="text-align: right;">52.5%</td>
-<td style="text-align: right;">0.2%</td>
-<td style="text-align: right;">0.0047</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Strongly directional framing can have a low P when it is mostly one-sided</li>
-<li>The comparison depends on the <strong>source–government relationship</strong>, as well as the prevalence and balance of framing</li>
-</ul>
-<div class="sample">
-<p>January 2019–May 2026, fixed November 8 snapshot. Framing labels on the common eligible sample; the remainder is zero. Selected comparisons, not matched events or estimates of editorial-policy effects.</p>
-</div>
-<aside class="notes">
-<p>Source: interactions.government_outlet in hash-pinned explore-since2019.json, SHA-256 1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812. Reproduced in figures/data/12_source_government_framing.csv. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.</p>
-<p>Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 167/1788/11. Reuters Russia: 396/2676/16. Guardian Russia: 474/427/2. P is calculated before rounding the displayed shares.</p>
-<p>These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2026,6 +1965,66 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
+<section class="slide level2 outlet-context-slide center">
+<h2>Kenya: what might explain the source gap?</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Outlet</th>
+<th>Institutional setting in 2024</th>
+<th>Relevant context</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Nation</strong></td>
+<td>Listed private media group, NMG. AKFED was its majority shareholder.</td>
+<td>Editorial policy supports accountability and interpretive reporting.</td>
+</tr>
+<tr class="even">
+<td><strong>KBC</strong></td>
+<td>State-owned public broadcaster</td>
+<td>Stated mandate for independent, impartial broadcasting.</td>
+</tr>
+<tr class="odd">
+<td><strong>Citizen Digital</strong></td>
+<td>Commercial Royal Media Services, founded and chaired by S.K. Macharia</td>
+<td>Digital reporting alongside a television and radio network.</td>
+</tr>
+</tbody>
+</table>
+<div class="outlet-context-finding">
+<p>Private ownership alone does not explain the pattern:<br> June negative framing is <strong>8.5% at Citizen</strong>, <strong>7.2% at KBC</strong>, and <strong>33.5% at Nation</strong>.</p>
+</div>
+<div class="outlet-context-test">
+<p>Compare the same events and genres. Then examine <strong>whose voices appear, what the narrator adds, and which action the model selects</strong>.</p>
+</div>
+<div class="sample">
+<p>Institutional facts and declared policies, not identified causes. Sources: <a href="https://www.nationmedia.com/wp-content/uploads/2025/06/NMG-Annual-Report-9th-June.pdf">NMG 2024 report</a>, <a href="https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf">NMG policy</a>, <a href="https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/">KBC 2024 mandate</a>, <a href="https://royalmedia.co.ke/">RMS</a>.</p>
+</div>
+<aside class="notes">
+<p>The ownership context belongs to the 2024 study period. NMG’s 2024 annual report, printed pages 146 and 150, identifies AKFED as majority shareholder and reports 54.08% excluding treasury shares at December 31. That year-end share is not a separately verified June register. A March 2026 announced sale of the controlling vehicle is later and is not used to explain 2024 coverage. Nation is a commercial, listed private-sector multimedia group with newspaper roots. Private ownership is distinct from demonstrated editorial independence.</p>
+<p>NMG’s editorial policy predating the study supports accountability, civil liberties and human rights, and a mix of reporting, analysis and interpretive journalism. It also requires independence from political/commercial pressure and separation of news and opinion. These are declared standards, not a claim that the measured corpus meets them or that interpretation necessarily means biased reporting. https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf , core values3–6 and editorial objectives2–4.</p>
+<p>KBC is a state corporation/public broadcaster. Its February13,2024 managing-director notice describes an independent/impartial broadcasting mandate and commercial responsibilities: https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/ . The contemporaneous strategy also reproduces that mandate: https://www.kbc.co.ke/wp-content/uploads/2024/06/KBC-Draft-Strategic-Plan-2023-2027.pdf . Current corporate ownership confirmation: https://kbc.go.ke/about/ . Ownership alone does not establish a particular article’s stance or permanent support for the incumbent.</p>
+<p>Citizen Digital is the online platform of commercial Royal Media Services, linked to its television and radio operations. The corporate site names S.K. Macharia as founder. Contemporary sources identify him as chairman and Purity Gathoni Macharia as vice-chair: https://citizen.digital/article/sk-macharia-among-6-members-sworn-in-as-members-of-muranga-county-budget-and-council-forum-n335075 and https://citizen.digital/article/rms-vice-chair-purity-gathoni-macharia-receives-lifetime-achievement-award-n341898 . Exact 2024 ownership percentages and a period-specific RMS editorial policy were not verified. Do not infer an outlet ideology or a specific house style from its corporate structure.</p>
+<p>The observed June source shares are75/224Nation,10/138KBC,20/236Citizen. Citizen’s proximity to KBC means a simple state/private classification is insufficient. Plausible explanations include topic/event selection, genre, narrative style, quote attribution, audience/commercial incentives, and model action selection. They are hypotheses rather than estimated causes. The next slide gives direct evidence of differences in narrator wording and the model’s focal action within one shared episode. Both reports contain praise and human-rights concerns, and both selected inputs exactly match their saved original English. Larger matched-event, genre and input-length checks plus human review are needed.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
 <section class="slide level2 source-pair-slide center">
 <h2>The same call, different descriptions and coding</h2>
 <div class="source-pair-context">
@@ -2086,6 +2085,74 @@ display:block!important;
 <p>Nation’s stored record selects President Ruto withdrawing the bill; align0,rep-1,frame-1. Both negative evidence spans cite the narrator’s conceding defeat. KBC selects US endorsement directed toward Ruto; align+1,rep+1,frame0. Its reputation evidence points to withdrawing the bill following opposition. Its I concede wording is a direct quotation from Ruto. The narrator/quotation distinction helps explain the different framing outputs, but does not establish that every human would agree with the model. The near-parallel headlines and different selected focal actions are also a real action-selection sensitivity: a fuller comparison should hold the action fixed and review the evidence manually.</p>
 <p>The evaluated government in both records is Kenya. The US is an actor in the KBC record, not the evaluated government. Both texts are original English and exactly equal the saved input text: 1,968 characters for Nation and 1,882 for KBC. All selected article IDs, plan hashes and source rows were verified against the frozen audit. Nation’s live page fetch returned403; the saved original English was available and verified. KBC’s public indexed page agrees with the saved episode. Source URLs, short evidence spans, model outputs and verification hashes are in figures/data/13_source_article_pairs.json. The paired records were chosen deliberately and are not an accuracy sample or a causal test of outlet bias.</p>
 <p>A secondary Nicaragua February 9,2023 pair is retained in the same evidence file: La Prensa describes the expulsion of 222 political prisoners with dictatorship/banishment wording, coded0/-1/-1; Nuevaya describes 222 people convicted of treason being deported, coded0/0/0. Both refer to the same removal to the United States. It is a useful wording contrast, but Nuevaya has only eight eligible records that month, and the two supplied translations are short excerpts. Do not use it as the stronger time-series case or treat zero framing as proof of neutral language. Event context: https://www.oas.org/en/iachr/jsForm/?File=%2Fen%2Fiachr%2Fmedia_center%2Fpreleases%2F2023%2F021.asp .</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2 foreign-government-slide center">
+<h2>Same outlet, different governments</h2>
+<div class="foreign-intro">
+<p><strong>The Kyiv Independent:</strong> framing toward Russia and Ukraine</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Government evaluated</th>
+<th style="text-align: right;">Articles</th>
+<th style="text-align: right;">Negative</th>
+<th style="text-align: right;">Positive</th>
+<th style="text-align: right;">Directional share</th>
+<th style="text-align: right;">P</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Russia (foreign)</td>
+<td style="text-align: right;">1,242</td>
+<td style="text-align: right;">37.7%</td>
+<td style="text-align: right;">0.2%</td>
+<td style="text-align: right;"><strong>37.8%</strong></td>
+<td style="text-align: right;">0.0024</td>
+</tr>
+<tr class="even">
+<td>Ukraine (domestic)</td>
+<td style="text-align: right;">9,568</td>
+<td style="text-align: right;">3.1%</td>
+<td style="text-align: right;">3.3%</td>
+<td style="text-align: right;"><strong>6.3%</strong></td>
+<td style="text-align: right;">0.0040</td>
+</tr>
+</tbody>
+</table>
+<div class="foreign-reading">
+<p><strong>Russia:</strong> 470 directional articles, almost all negative.<br> <strong>Ukraine:</strong> 605 directional articles, roughly balanced between signs.</p>
+</div>
+<div class="foreign-question">
+<p>How does an outlet’s evaluation change with the government it covers?<br> Next: compare <strong>domestic and foreign governments</strong> using similar actions and events.</p>
+</div>
+<div class="sample">
+<p>Available coverage in January 2019–May 2026. Zero labels remain in denominators. Different events, periods and political conduct; these pooled shares do not establish double standards.</p>
+</div>
+<aside class="notes">
+<p>Source: interactions.government_outlet in hash-pinned explore-since2019.json, SHA-256 1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812. Reproduced in figures/data/12_source_government_framing.csv. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.</p>
+<p>Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 167/1788/11. Reuters Russia: 396/2676/16. Guardian Russia: 474/427/2. P is calculated before rounding the displayed shares.</p>
+<p>These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2184,7 +2251,7 @@ display:block!important;
 </tbody>
 </table>
 <aside class="notes">
-<p>These are proposed comparisons. Current aggregates do not match events across outlets. Actor/action contributions are descriptive, not causal effects. Country and regional comparisons require comparable periods and sources. An incumbent transition changes the government reference point. Lead/lag correlations alone cannot identify the causal direction between polarization and democratic change. Model-coded reputation is distinct from measured public-opinion change.</p>
+<p>These are proposed comparisons. Separate directional prevalence, the balance of signs within each outlet, and disagreement between outlets covering the same government and events. None alone establishes societal polarization. Current aggregates do not match events across outlets. Actor/action contributions are descriptive, not causal effects. Country and regional comparisons require comparable periods and sources. An incumbent transition changes the government reference point. Lead/lag correlations alone cannot identify the causal direction between polarization and democratic change. Model-coded reputation is distinct from measured public-opinion change.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

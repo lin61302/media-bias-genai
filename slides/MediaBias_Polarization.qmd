@@ -300,13 +300,20 @@ A source's publication country and the government evaluated in an article are di
 :::
 
 
-## The same average can hide different coverage {.polarization-slide}
+## Directional coverage and polarization {.polarization-slide}
 
 {{< include includes/polarization.qmd >}}
 
 ::: notes
-The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index's relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.
+These are four synthetic distributions, not observed countries. All have 100 comparison-eligible articles for one measure. Negative/zero/positive counts are 0/100/0, 60/40/0, 5/90/5 and 30/40/30. The last two have the same balance among directional articles but different directional prevalence. The second and fourth have the same directional share but different balance.
+
+Directional share S = p+ + p−. Balance B = 4q(1−q), where q = p+/S and S > 0. B ranges from 0 (one direction only) to 1 (equal positive and negative shares). B is undefined if S = 0, shown as a dash. Proposed P = 4p+p− = S²B when S > 0; P = 0 when S = 0. These are algebraic decompositions of Erik's proposed index, not separately validated polarization measures. Net direction N = p+ − p− remains useful alongside the shares. An average near zero can describe all-zero coverage or cancellation of opposite signs.
+
+The examples have directional counts 0, 60, 10 and 60, so B = 1 alone does not tell us how much directional evidence there is. P can track S closely when B varies little. Directional share is sometimes called salience in discussion, but it is specifically the fraction of the eligible civic corpus with a directional code, not political importance, total news attention or article volume. Keep unknown/not-codable records outside the denominator, report exclusions separately, and retain zeros, which include neutral, mixed and insufficient directional evidence.
+
+Alternative comparisons should follow the substantive question: positive/negative shares and N for direction; S for prevalence; B for conditional balance; and matched-event, same-government comparisons across sources for between-outlet disagreement. Within- and between-outlet differences are distinct. Actor/action relationships can reveal which groups take opposing positions, but article counts and one extracted action do not measure the size of social camps. Surveys, party positions or conflict evidence are needed to validate a link to societal polarization. Full definitions and sensitivity checks: ../docs/coverage-balance.md.
 :::
+
 
 
 ## Most eligible articles have zero-coded labels {.figure-slide}
@@ -324,32 +331,6 @@ Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2
 
 ::: notes
 Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
-:::
-
-
-## Framing across sources and governments {.framing-evidence-slide}
-
-| Source | Government evaluated | Articles | Negative | Positive | P |
-|---|---|---:|---:|---:|---:|
-| Kyiv Independent | Russia | 1,242 | 37.7% | 0.2% | 0.0024 |
-| Kyiv Independent | Ukraine | 9,568 | 3.1% | 3.3% | 0.0040 |
-| BBC | Russia | 1,966 | 8.5% | 0.6% | 0.0019 |
-| Reuters | Russia | 3,088 | 12.8% | 0.5% | 0.0027 |
-| The Guardian | Russia | 903 | 52.5% | 0.2% | 0.0047 |
-
-- Strongly directional framing can have a low P when it is mostly one-sided
-- The comparison depends on the **source–government relationship**, as well as the prevalence and balance of framing
-
-::: {.sample}
-January 2019–May 2026, fixed November 8 snapshot. Framing labels on the common eligible sample; the remainder is zero. Selected comparisons, not matched events or estimates of editorial-policy effects.
-:::
-
-::: notes
-Source: interactions.government_outlet in hash-pinned explore-since2019.json, SHA-256 1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812. Reproduced in figures/data/12_source_government_framing.csv. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.
-
-Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 167/1788/11. Reuters Russia: 396/2676/16. Guardian Russia: 474/427/2. P is calculated before rounding the displayed shares.
-
-These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.
 :::
 
 
@@ -463,6 +444,40 @@ Reproduction: ../scripts/build_kenya_source_comparison.py verifies three private
 :::
 
 
+## Kenya: what might explain the source gap? {.outlet-context-slide}
+
+| Outlet | Institutional setting in 2024 | Relevant context |
+|---|---|---|
+| **Nation** | Listed private media group, NMG. AKFED was its majority shareholder. | Editorial policy supports accountability and interpretive reporting. |
+| **KBC** | State-owned public broadcaster | Stated mandate for independent, impartial broadcasting. |
+| **Citizen Digital** | Commercial Royal Media Services, founded and chaired by S.K. Macharia | Digital reporting alongside a television and radio network. |
+
+::: {.outlet-context-finding}
+Private ownership alone does not explain the pattern:<br>
+June negative framing is **8.5% at Citizen**, **7.2% at KBC**, and **33.5% at Nation**.
+:::
+
+::: {.outlet-context-test}
+Compare the same events and genres. Then examine **whose voices appear, what the narrator adds, and which action the model selects**.
+:::
+
+::: {.sample}
+Institutional facts and declared policies, not identified causes. Sources: [NMG 2024 report](https://www.nationmedia.com/wp-content/uploads/2025/06/NMG-Annual-Report-9th-June.pdf), [NMG policy](https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf), [KBC 2024 mandate](https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/), [RMS](https://royalmedia.co.ke/).
+:::
+
+::: notes
+The ownership context belongs to the 2024 study period. NMG's 2024 annual report, printed pages 146 and 150, identifies AKFED as majority shareholder and reports 54.08% excluding treasury shares at December 31. That year-end share is not a separately verified June register. A March 2026 announced sale of the controlling vehicle is later and is not used to explain 2024 coverage. Nation is a commercial, listed private-sector multimedia group with newspaper roots. Private ownership is distinct from demonstrated editorial independence.
+
+NMG's editorial policy predating the study supports accountability, civil liberties and human rights, and a mix of reporting, analysis and interpretive journalism. It also requires independence from political/commercial pressure and separation of news and opinion. These are declared standards, not a claim that the measured corpus meets them or that interpretation necessarily means biased reporting. https://www.nationmedia.com/wp-content/uploads/2018/02/Editorial-policy-online.pdf , core values3–6 and editorial objectives2–4.
+
+KBC is a state corporation/public broadcaster. Its February13,2024 managing-director notice describes an independent/impartial broadcasting mandate and commercial responsibilities: https://www.kbc.co.ke/jobs/re-advertisement-for-position-of-managing-director-refkbc-01-02-2024/ . The contemporaneous strategy also reproduces that mandate: https://www.kbc.co.ke/wp-content/uploads/2024/06/KBC-Draft-Strategic-Plan-2023-2027.pdf . Current corporate ownership confirmation: https://kbc.go.ke/about/ . Ownership alone does not establish a particular article's stance or permanent support for the incumbent.
+
+Citizen Digital is the online platform of commercial Royal Media Services, linked to its television and radio operations. The corporate site names S.K. Macharia as founder. Contemporary sources identify him as chairman and Purity Gathoni Macharia as vice-chair: https://citizen.digital/article/sk-macharia-among-6-members-sworn-in-as-members-of-muranga-county-budget-and-council-forum-n335075 and https://citizen.digital/article/rms-vice-chair-purity-gathoni-macharia-receives-lifetime-achievement-award-n341898 . Exact 2024 ownership percentages and a period-specific RMS editorial policy were not verified. Do not infer an outlet ideology or a specific house style from its corporate structure.
+
+The observed June source shares are75/224Nation,10/138KBC,20/236Citizen. Citizen's proximity to KBC means a simple state/private classification is insufficient. Plausible explanations include topic/event selection, genre, narrative style, quote attribution, audience/commercial incentives, and model action selection. They are hypotheses rather than estimated causes. The next slide gives direct evidence of differences in narrator wording and the model's focal action within one shared episode. Both reports contain praise and human-rights concerns, and both selected inputs exactly match their saved original English. Larger matched-event, genre and input-length checks plus human review are needed.
+:::
+
+
 ## The same call, different descriptions and coding {.source-pair-slide}
 
 ::: {.source-pair-context}
@@ -500,6 +515,40 @@ A secondary Nicaragua February 9,2023 pair is retained in the same evidence file
 :::
 
 
+## Same outlet, different governments {.foreign-government-slide}
+
+::: {.foreign-intro}
+**The Kyiv Independent:** framing toward Russia and Ukraine
+:::
+
+| Government evaluated | Articles | Negative | Positive | Directional share | P |
+|---|---:|---:|---:|---:|---:|
+| Russia (foreign) | 1,242 | 37.7% | 0.2% | **37.8%** | 0.0024 |
+| Ukraine (domestic) | 9,568 | 3.1% | 3.3% | **6.3%** | 0.0040 |
+
+::: {.foreign-reading}
+**Russia:** 470 directional articles, almost all negative.<br>
+**Ukraine:** 605 directional articles, roughly balanced between signs.
+:::
+
+::: {.foreign-question}
+How does an outlet’s evaluation change with the government it covers?<br>
+Next: compare **domestic and foreign governments** using similar actions and events.
+:::
+
+::: {.sample}
+Available coverage in January 2019–May 2026. Zero labels remain in denominators. Different events, periods and political conduct; these pooled shares do not establish double standards.
+:::
+
+::: notes
+Source: interactions.government_outlet in hash-pinned explore-since2019.json, SHA-256 1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812. Reproduced in figures/data/12_source_government_framing.csv. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.
+
+Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 167/1788/11. Reuters Russia: 396/2676/16. Guardian Russia: 474/427/2. P is calculated before rounding the displayed shares.
+
+These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.
+:::
+
+
 ## What needs validation {.validation-slide}
 
 | Question | Required evidence or comparison |
@@ -529,7 +578,7 @@ Sources: ../docs/validation.md and ../docs/codebook.md. Representative human-ref
 | Does divided coverage precede or follow democratic backsliding? | External polarization measures and a design that handles monthly reporting versus annual indicators |
 
 ::: notes
-These are proposed comparisons. Current aggregates do not match events across outlets. Actor/action contributions are descriptive, not causal effects. Country and regional comparisons require comparable periods and sources. An incumbent transition changes the government reference point. Lead/lag correlations alone cannot identify the causal direction between polarization and democratic change. Model-coded reputation is distinct from measured public-opinion change.
+These are proposed comparisons. Separate directional prevalence, the balance of signs within each outlet, and disagreement between outlets covering the same government and events. None alone establishes societal polarization. Current aggregates do not match events across outlets. Actor/action contributions are descriptive, not causal effects. Country and regional comparisons require comparable periods and sources. An incumbent transition changes the government reference point. Lead/lag correlations alone cannot identify the causal direction between polarization and democratic change. Model-coded reputation is distinct from measured public-opinion change.
 :::
 
 

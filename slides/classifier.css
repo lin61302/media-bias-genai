@@ -83,7 +83,7 @@
 
 .reveal .slides section.polarization-slide .polarization-intro { font-size: 26px; margin: 8px 0 25px; }
 .polarization-slide .polarization-table-head,
-.polarization-slide .polarization-table-row { display: grid; grid-template-columns: 220px minmax(0, 1fr) 115px 145px; gap: 20px; align-items: center; }
+.polarization-slide .polarization-table-row { display: grid; grid-template-columns: 210px minmax(0, 1fr) 130px 105px 110px; gap: 20px; align-items: center; }
 .polarization-slide .polarization-table-head { font-size: 22px; color: var(--classifier-muted); padding-bottom: 14px; border-bottom: 2px solid #7c8593; }
 .polarization-slide .polarization-table-head span:nth-child(n+3) { text-align: center; }
 .polarization-slide .polarization-table-row { font-size: 26px; min-height: 100px; border-bottom: 1px solid #dce1e8; }
@@ -113,3 +113,12 @@
 .polarization-slide .polarization-formulas span { font-size: 21px; }
 .reveal .slides section.polarization-slide .polarization-takeaway { font-size: 24px; color: var(--accent); font-weight: 600; line-height: 1.4; margin: 20px 0 0; }
 .reveal .slides section.polarization-slide .polarization-note { font-size: 17px; margin-top: 13px; }
+
+/* Separate prevalence and balance without adding another measure slide. */
+.polarization-slide .polarization-table-head, .polarization-slide .polarization-table-row { gap: 15px; }
+.polarization-slide .polarization-table-row { min-height: 70px; font-size: 23px; }
+.polarization-slide .polarization-distribution { height: 41px; }
+.polarization-slide .polarization-distribution > .small-share { font-size: 17px; }
+.polarization-slide .polarization-value { font-size: 28px; }
+.polarization-slide .polarization-formulas { grid-template-columns: 1fr 1.25fr; gap: 30px; }
+.reveal .slides section.polarization-slide .polarization-takeaway { margin-top: 16px; font-size: 25px; }

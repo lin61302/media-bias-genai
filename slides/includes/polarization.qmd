@@ -1,30 +1,16 @@
 ```{=html}
-<div class="polarization-example" aria-label="Three synthetic months showing positive, zero and negative article shares, net score and proposed polarization index">
-  <p class="polarization-intro">Three hypothetical government-months · 100 codable articles each · one measure at a time</p>
+<div class="polarization-example" aria-label="Four synthetic months separating directional share, balance and proposed P">
+  <p class="polarization-intro">100 eligible articles per hypothetical month. One government and one measure at a time.</p>
   <div class="polarization-table">
-    <div class="polarization-table-head"><span>Coverage pattern</span><span>Share of articles</span><span>Net score N</span><span>Proposed P</span></div>
-    <div class="polarization-table-row">
-      <strong>All labels zero</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive articles"><span class="polarization-zero" style="width:100%">100%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>Mostly positive</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 40 zero, 60 positive articles"><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:60%">60%</span></div>
-      <span class="polarization-value">.60</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>Positive and negative</strong>
-      <div class="polarization-distribution" aria-label="45 negative, 10 zero, 45 positive articles"><span class="polarization-negative" style="width:45%">45%</span><span class="polarization-zero" style="width:10%">10%</span><span class="polarization-positive" style="width:45%">45%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">.81</strong>
-    </div>
+    <div class="polarization-table-head"><span>Coverage pattern</span><span>Share of articles</span><span>Directional<br>share S</span><span>Balance<br>B</span><span>Combined<br>P</span></div>
+    <div class="polarization-table-row"><strong>All zero</strong><div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive"><span class="polarization-zero" style="width:100%">100%</span></div><span class="polarization-value">0%</span><span class="polarization-value">—</span><strong class="polarization-value">0</strong></div>
+    <div class="polarization-table-row"><strong>One direction</strong><div class="polarization-distribution" aria-label="60 negative, 40 zero, 0 positive"><span class="polarization-negative" style="width:60%">60%</span><span class="polarization-zero" style="width:40%">40%</span></div><span class="polarization-value">60%</span><span class="polarization-value">0</span><strong class="polarization-value">0</strong></div>
+    <div class="polarization-table-row"><strong>Rare, balanced</strong><div class="polarization-distribution" aria-label="5 negative, 90 zero, 5 positive"><span class="polarization-negative small-share" style="width:5%">5%</span><span class="polarization-zero" style="width:90%">90%</span><span class="polarization-positive small-share" style="width:5%">5%</span></div><span class="polarization-value">10%</span><span class="polarization-value">1</span><strong class="polarization-value">.01</strong></div>
+    <div class="polarization-table-row"><strong>Frequent, balanced</strong><div class="polarization-distribution" aria-label="30 negative, 40 zero, 30 positive"><span class="polarization-negative" style="width:30%">30%</span><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:30%">30%</span></div><span class="polarization-value">60%</span><span class="polarization-value">1</span><strong class="polarization-value">.36</strong></div>
   </div>
   <div class="polarization-legend"><span><i class="polarization-negative"></i>Negative</span><span><i class="polarization-zero"></i>Zero</span><span><i class="polarization-positive"></i>Positive</span></div>
-  <div class="polarization-formulas">
-    <p><strong>N = p⁺ − p⁻</strong><span>Positive share minus negative share</span></p>
-    <p><strong>P = 4p⁺p⁻</strong><span>High when both positive and negative shares are large</span></p>
-  </div>
-  <p class="polarization-takeaway">All-zero coverage and a positive–negative split both have net zero.<br>Read the shares alongside N and P: one score cannot show the whole pattern.</p>
-  <p class="polarization-note">Zero-coded articles stay in the denominator; uncodable records are excluded. These are synthetic examples.</p>
+  <div class="polarization-formulas"><p><strong>P = 4p⁺p⁻ = S² × B</strong><span>S: share with a positive or negative code</span></p><p><strong>B: balance among directional articles</strong><span>0 = one sign only; 1 = equal shares of both signs</span></p></div>
+  <p class="polarization-takeaway">Read directional share and balance separately.<br>Strongly critical coverage can still have P = 0.</p>
+  <p class="polarization-note">B is undefined with no directional articles. Zeros stay in the denominator; uncodable records are excluded. These describe coded coverage, with societal polarization still to validate.</p>
 </div>
 ```

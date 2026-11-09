@@ -18,3 +18,30 @@ The proposal in the draft still needs comparison with the cited polarization lit
 Pooled country-level P can be high because individual outlets disagree, because each outlet contains opposing coverage, or because events change within the period. These mechanisms require separate comparisons. Article volume is not the number of independent events; simple article-level standard errors would not capture repeated coverage and source dependence.
 
 Government identity is date-dependent. For example, a country series spanning a change of incumbent uses a changing political reference. Lag/lead comparisons with annual democracy indicators also require a country-year design, consistent source coverage, temporal ordering and validation. A fixed-year cloud color cannot establish that relationship.
+
+
+## Directional share, balance and source disagreement
+
+The slides separate three descriptive questions. For each measure, government and period, let `n` be the eligible article count and retain all three sign counts.
+
+| Question | Summary | What it describes |
+|---|---|---|
+| How often is the code directional? | `S = p⁺ + p⁻` | Prevalence within eligible coverage. Show `nS`, the directional count. |
+| Which direction predominates? | `N = p⁺ − p⁻`, plus both sign shares | Net direction. Opposing signs can cancel. |
+| How balanced are the directional labels? | `B = 4q(1−q)`, `q = p⁺/S`, for `S > 0` | Balance conditional on having a directional label. |
+| Are both directions common in the full sample? | `P = 4p⁺p⁻ = S²B` for `S > 0` | A combination of prevalence and conditional balance. |
+
+`B` is undefined when `S = 0`; `P` is still zero. B ranges from zero for one sign only to one for equal positive and negative shares. A high B can rest on very few articles, so always show its directional count. A high correlation of P with S can reflect limited variation in B; it does not by itself establish poor classifier sensitivity. S describes directional prevalence in this selected civic corpus, not issue prominence or national-news salience. Article volume answers a separate coverage question.
+
+The current synthetic slide uses 100 articles in each case:
+
+| Negative | Zero | Positive | S | N | B | P |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0 | 100 | 0 | 0 | 0 | undefined | 0 |
+| 60 | 40 | 0 | .60 | −.60 | 0 | 0 |
+| 5 | 90 | 5 | .10 | 0 | 1 | .01 |
+| 30 | 40 | 30 | .60 | 0 | 1 | .36 |
+
+For **between-source disagreement**, compare each outlet's sign distribution toward the same government over common periods and, where possible, the same events and genres. Report within-source balance separately. A pooled index can hide that every outlet is individually one-sided. Distances between outlet distributions or between their net scores can be explored, but event composition, source weights, repeated stories and coding error need sensitivity checks. These comparisons are a proposed analysis, not an additional validated index already calculated here.
+
+Actor/action patterns can show which groups are reported supporting or opposing the incumbent and whether actions target government institutions or third parties. They do not establish reciprocal alliances, ideological distance, the size of political camps, or how citizens feel about one another. External survey, party-position or conflict evidence is needed to validate a societal-polarization interpretation. Generic entropy or dispersion over all three labels would also depend on treating the heterogeneous zero category as a comparable substantive position.
