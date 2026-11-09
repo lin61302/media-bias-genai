@@ -10,10 +10,12 @@ LABELS = np.array([-1, 0, 1])
 AXES = ("align", "rep", "frame")
 
 
-def load(name):
-    manifest = json.loads((ROOT / "data/analysis_snapshot.json").read_text())
+def load(name, manifest_path=None):
+    manifest = json.loads(Path(manifest_path or ROOT / "data/analysis_snapshot.json").read_text())
     spec = manifest["files"][name]
-    target = ROOT / "data/cache" / name
+    # An explicit release uses its own content-addressed cache. The original
+    # notebook/export cache and its November 4 manifest remain unchanged.
+    target = ROOT / "data/cache" / (f"snapshots/{spec['sha256']}/{name}" if manifest_path else name)
     target.parent.mkdir(parents=True, exist_ok=True)
     if not target.exists():
         with urlopen(spec["url"], timeout=120) as response:

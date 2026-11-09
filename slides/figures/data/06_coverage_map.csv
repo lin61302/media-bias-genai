@@ -1,206 +1,212 @@
 country_code,country_name,publication_source_domains,articles_from_those_domains,articles_evaluating_government
-AFG,Afghanistan,0,0,1697
-AGO,Angola,8,9968,9510
-ALB,Albania,3,29562,30113
-AND,Andorra,0,0,2
-ARE,United Arab Emirates,0,0,386
-ARG,Argentina,0,0,1377
-ARM,Armenia,5,12874,12467
-ATG,Antigua and Barbuda,0,0,9
-AUS,Australia,0,0,601
-AUT,Austria,0,0,378
-AZE,Azerbaijan,8,24040,21391
-BDI,Burundi,0,0,143
-BEL,Belgium,0,0,381
-BEN,Benin,6,4959,4969
-BFA,Burkina Faso,6,6126,7348
-BGD,Bangladesh,7,122903,119142
-BGR,Bulgaria,0,0,541
-BHR,Bahrain,0,0,64
+AFG,Afghanistan,0,0,2341
+AGO,Angola,8,13478,12712
+AIA,Anguilla,0,0,1
+ALB,Albania,3,39199,39596
+AND,Andorra,0,0,6
+ARE,United Arab Emirates,0,0,514
+ARG,Argentina,0,0,1753
+ARM,Armenia,5,16316,15977
+ATG,Antigua and Barbuda,0,0,14
+AUS,Australia,0,0,812
+AUT,Austria,0,0,551
+AZE,Azerbaijan,8,30095,26896
+BDI,Burundi,0,0,263
+BEL,Belgium,0,0,468
+BEN,Benin,6,7233,7151
+BFA,Burkina Faso,6,8133,9735
+BGD,Bangladesh,7,154062,148477
+BGR,Bulgaria,0,0,635
+BHR,Bahrain,0,0,106
 BHS,Bahamas,0,0,10
-BIH,Bosnia and Herzegovina,0,0,471
-BLR,Belarus,5,19322,19729
-BLZ,Belize,0,0,10
-BOL,Bolivia (Plurinational State of),6,12877,13633
-BRA,Brazil,6,45654,48495
-BRB,Barbados,0,0,10
-BRN,Brunei Darussalam,0,0,9
-BTN,Bhutan,0,0,20
-BWA,Botswana,0,0,76
-CAF,Central African Republic,0,0,147
-CAN,Canada,0,0,957
-CHE,Switzerland,0,0,297
-CHL,Chile,0,0,652
-CHN,China,0,0,2982
-CIV,Côte d’Ivoire,0,0,532
-CMR,Cameroon,7,9350,9456
-COD,Democratic Republic of the Congo,9,33353,35533
-COG,Congo,0,0,119
-COL,Colombia,4,53186,55664
-COM,Comoros,0,0,54
-CPV,Cabo Verde,0,0,23
-CRI,Costa Rica,6,11417,11215
-CUB,Cuba,0,0,438
-CYM,Cayman Islands,0,0,3
-CYP,Cyprus,0,0,77
-CZE,Czechia,0,0,391
-DEU,Germany,0,0,2419
-DJI,Djibouti,0,0,36
-DMA,Dominica,0,0,11
-DNK,Denmark,0,0,180
-DOM,Dominican Republic,6,45164,42245
-DZA,Algeria,7,12132,12228
-ECU,Ecuador,5,22819,24402
-EGY,Egypt,4,47827,42287
-ERI,Eritrea,0,0,99
-ESH,Western Sahara,0,0,8
-ESP,Spain,0,0,1225
-EST,Estonia,0,0,134
-ETH,Ethiopia,8,5795,7508
-FIN,Finland,0,0,241
+BIH,Bosnia and Herzegovina,0,0,654
+BLR,Belarus,6,25409,26984
+BLZ,Belize,0,0,14
+BMU,Bermuda,0,0,1
+BOL,Bolivia (Plurinational State of),6,12877,15478
+BRA,Brazil,6,57788,62857
+BRB,Barbados,0,0,14
+BRN,Brunei Darussalam,0,0,13
+BTN,Bhutan,0,0,33
+BWA,Botswana,0,0,140
+CAF,Central African Republic,0,0,230
+CAN,Canada,0,0,1200
+CHE,Switzerland,0,0,418
+CHL,Chile,0,0,1135
+CHN,China,0,0,4060
+CIV,Côte d’Ivoire,0,0,1013
+CMR,Cameroon,7,14690,14984
+COD,Democratic Republic of the Congo,10,43818,46790
+COG,Congo,0,0,170
+COL,Colombia,4,64436,67563
+COM,Comoros,0,0,64
+CPV,Cabo Verde,0,0,31
+CRI,Costa Rica,6,15046,14804
+CUB,Cuba,0,0,501
+CYM,Cayman Islands,0,0,4
+CYP,Cyprus,0,0,122
+CZE,Czechia,0,0,479
+DEU,Germany,0,0,2972
+DJI,Djibouti,0,0,45
+DMA,Dominica,0,0,14
+DNK,Denmark,0,0,220
+DOM,Dominican Republic,6,63545,59903
+DZA,Algeria,7,15156,16942
+ECU,Ecuador,5,30709,32504
+EGY,Egypt,4,59321,52899
+ERI,Eritrea,0,0,119
+ESH,Western Sahara,0,0,11
+ESP,Spain,0,0,1675
+EST,Estonia,0,0,153
+ETH,Ethiopia,8,7286,10003
+FIN,Finland,0,0,275
 FJI,Fiji,0,0,31
-FRA,France,0,0,6461
-FSM,Micronesia (Federated States of),0,0,3
-GAB,Gabon,0,0,126
-GBR,United Kingdom of Great Britain and Northern Ireland,0,0,4533
-GEO,Georgia,2,5897,7375
+FRA,France,0,0,8457
+FSM,Micronesia (Federated States of),0,0,4
+GAB,Gabon,0,0,159
+GBR,United Kingdom of Great Britain and Northern Ireland,0,0,6230
+GEO,Georgia,2,7073,8826
 GGY,Guernsey,0,0,1
-GHA,Ghana,4,37768,38072
-GIN,Guinea,0,0,209
-GMB,Gambia,0,0,79
-GNB,Guinea-Bissau,0,0,115
-GNQ,Equatorial Guinea,0,0,42
-GRC,Greece,0,0,636
+GHA,Ghana,4,47562,47925
+GIN,Guinea,0,0,286
+GMB,Gambia,0,0,114
+GNB,Guinea-Bissau,0,0,143
+GNQ,Equatorial Guinea,0,0,58
+GRC,Greece,0,0,1105
 GRD,Grenada,0,0,8
 GRL,Greenland,0,0,2
-GTM,Guatemala,4,17300,17678
-GUY,Guyana,0,0,18
-HKG,"China, Hong Kong Special Administrative Region",0,0,31
-HND,Honduras,4,25359,25146
-HRV,Croatia,0,0,319
-HTI,Haiti,0,0,736
-HUN,Hungary,5,18023,17759
-IDN,Indonesia,7,94268,93819
-IMN,Isle of Man,0,0,1
-IND,India,6,394164,396119
-IRL,Ireland,0,0,100
-IRN,Iran (Islamic Republic of),0,0,3911
-IRQ,Iraq,5,43993,42285
-ISL,Iceland,0,0,23
-ISR,Israel,0,0,11636
-ITA,Italy,0,0,1078
-JAM,Jamaica,3,5719,5183
+GTM,Guatemala,4,21838,22403
+GUM,Guam,0,0,1
+GUY,Guyana,0,0,33
+HKG,"China, Hong Kong Special Administrative Region",0,0,110
+HND,Honduras,4,31328,31213
+HRV,Croatia,0,0,463
+HTI,Haiti,0,0,831
+HUN,Hungary,5,22503,22002
+IDN,Indonesia,7,123566,123637
+IMN,Isle of Man,0,0,2
+IND,India,6,521025,526938
+IRL,Ireland,0,0,144
+IRN,Iran (Islamic Republic of),0,0,5167
+IRQ,Iraq,5,56878,57310
+ISL,Iceland,0,0,24
+ISR,Israel,0,0,12729
+ITA,Italy,0,0,1534
+JAM,Jamaica,3,7284,6663
 JEY,Jersey,0,0,2
-JOR,Jordan,0,0,232
-JPN,Japan,0,0,828
-KAZ,Kazakhstan,3,5860,6416
-KEN,Kenya,3,20264,21720
-KGZ,Kyrgyzstan,7,34687,33884
-KHM,Cambodia,5,5011,4970
-KIR,Kiribati,0,0,5
-KNA,Saint Kitts and Nevis,0,0,4
-KOR,Republic of Korea,0,0,1087
-KWT,Kuwait,0,0,200
-LAO,Lao People's Democratic Republic,0,0,9
-LBN,Lebanon,0,0,563
-LBR,Liberia,9,11661,11674
-LBY,Libya,4,12759,12747
-LCA,Saint Lucia,0,0,1
-LKA,Sri Lanka,5,23630,24342
-LSO,Lesotho,0,0,21
-LTU,Lithuania,0,0,370
-LUX,Luxembourg,0,0,9
-LVA,Latvia,0,0,188
-MAR,Morocco,5,12601,12848
+JOR,Jordan,0,0,306
+JPN,Japan,0,0,1033
+KAZ,Kazakhstan,3,7982,8746
+KEN,Kenya,3,25509,27424
+KGZ,Kyrgyzstan,7,45389,44608
+KHM,Cambodia,5,6420,6459
+KIR,Kiribati,0,0,10
+KNA,Saint Kitts and Nevis,0,0,5
+KOR,Republic of Korea,0,0,1211
+KWT,Kuwait,0,0,324
+LAO,Lao People's Democratic Republic,0,0,13
+LBN,Lebanon,0,0,960
+LBR,Liberia,9,14107,14162
+LBY,Libya,4,16271,16836
+LCA,Saint Lucia,0,0,2
+LKA,Sri Lanka,5,29564,30809
+LSO,Lesotho,0,0,73
+LTU,Lithuania,0,0,398
+LUX,Luxembourg,0,0,14
+LVA,Latvia,0,0,202
+MAR,Morocco,5,16198,16504
 MCO,Monaco,0,0,3
-MDA,Republic of Moldova,7,25751,25354
-MDG,Madagascar,0,0,43
-MDV,Maldives,0,0,240
-MEX,Mexico,7,80938,83904
-MKD,North Macedonia,5,17711,17328
-MLI,Mali,3,12151,13696
-MLT,Malta,0,0,36
-MMR,Myanmar,0,0,938
-MNE,Montenegro,0,0,507
-MNG,Mongolia,0,0,34
-MOZ,Mozambique,9,9105,9441
-MRT,Mauritania,5,6221,6046
-MUS,Mauritius,0,0,30
-MWI,Malawi,7,9670,9649
-MYS,Malaysia,6,61889,61979
-NAM,Namibia,5,4099,4078
-NER,Niger,8,3440,4650
-NGA,Nigeria,4,81354,83424
-NIC,Nicaragua,8,9730,9624
-NLD,Netherlands (Kingdom of the),0,0,401
-NOR,Norway,0,0,144
-NPL,Nepal,6,28391,27945
-NZL,New Zealand,0,0,101
-OMN,Oman,0,0,54
-PAK,Pakistan,5,122122,121893
-PAN,Panama,4,7968,8002
-PER,Peru,6,26873,26064
-PHL,Philippines,5,37160,37100
-PLW,Palau,0,0,3
-PNG,Papua New Guinea,0,0,29
-POL,Poland,0,0,1744
-PRI,Puerto Rico,0,0,7
-PRK,Democratic People's Republic of Korea,0,0,500
-PRT,Portugal,0,0,296
-PRY,Paraguay,3,22004,21146
-PSE,State of Palestine,0,0,326
+MDA,Republic of Moldova,7,36377,35720
+MDG,Madagascar,0,0,53
+MDV,Maldives,0,0,261
+MEX,Mexico,7,105370,109850
+MHL,Marshall Islands,0,0,2
+MKD,North Macedonia,5,23807,23130
+MLI,Mali,3,18658,20871
+MLT,Malta,0,0,74
+MMR,Myanmar,0,0,1259
+MNE,Montenegro,0,0,694
+MNG,Mongolia,0,0,48
+MOZ,Mozambique,9,11921,12523
+MRT,Mauritania,5,8108,7999
+MSR,Montserrat,0,0,2
+MUS,Mauritius,0,0,35
+MWI,Malawi,7,15135,15355
+MYS,Malaysia,6,83616,84068
+NAM,Namibia,5,4931,5002
+NER,Niger,8,4435,5889
+NGA,Nigeria,4,110035,113233
+NIC,Nicaragua,8,12554,12631
+NIU,Niue,0,0,1
+NLD,Netherlands (Kingdom of the),0,0,575
+NOR,Norway,0,0,172
+NPL,Nepal,6,34099,33685
+NZL,New Zealand,0,0,197
+OMN,Oman,0,0,68
+PAK,Pakistan,5,155021,154251
+PAN,Panama,4,10056,10116
+PER,Peru,6,35921,34274
+PHL,Philippines,5,55435,54856
+PLW,Palau,0,0,4
+PNG,Papua New Guinea,0,0,58
+POL,Poland,0,0,1966
+PRI,Puerto Rico,0,0,35
+PRK,Democratic People's Republic of Korea,0,0,613
+PRT,Portugal,0,0,391
+PRY,Paraguay,3,27200,26275
+PSE,State of Palestine,0,0,415
 PYF,French Polynesia,0,0,1
-QAT,Qatar,0,0,273
-ROU,Romania,0,0,770
-RUS,Russian Federation,0,0,31697
-RWA,Rwanda,4,3127,3486
-SAU,Saudi Arabia,0,0,884
-SDN,Sudan,0,0,1548
-SEN,Senegal,7,8677,9336
-SGP,Singapore,0,0,225
-SLB,Solomon Islands,4,1738,1832
-SLE,Sierra Leone,0,0,93
-SLV,El Salvador,7,22682,22287
+QAT,Qatar,0,0,395
+ROU,Romania,0,0,1035
+RUS,Russian Federation,0,0,34711
+RWA,Rwanda,4,3842,4382
+SAU,Saudi Arabia,0,0,1671
+SDN,Sudan,0,0,2408
+SEN,Senegal,7,9924,10691
+SGP,Singapore,0,0,323
+SLB,Solomon Islands,4,2011,2107
+SLE,Sierra Leone,0,0,107
+SLV,El Salvador,7,30216,29752
 SMR,San Marino,0,0,3
-SOM,Somalia,0,0,511
-SRB,Serbia,4,45695,46052
-SSD,South Sudan,7,14882,14659
-STP,Sao Tome and Principe,0,0,31
-SUR,Suriname,0,0,12
-SVK,Slovakia,0,0,585
-SVN,Slovenia,0,0,140
-SWE,Sweden,0,0,459
-SWZ,Eswatini,0,0,98
-SYC,Seychelles,0,0,14
-SYR,Syrian Arab Republic,0,0,1270
-TCA,Turks and Caicos Islands,0,0,1
-TCD,Chad,0,0,403
-TGO,Togo,0,0,89
-THA,Thailand,0,0,762
-TJK,Tajikistan,0,0,143
-TKM,Turkmenistan,0,0,52
-TLS,Timor-Leste,3,267,341
+SOM,Somalia,0,0,685
+SRB,Serbia,4,55247,55279
+SSD,South Sudan,7,18102,17945
+STP,Sao Tome and Principe,0,0,38
+SUR,Suriname,0,0,15
+SVK,Slovakia,0,0,645
+SVN,Slovenia,0,0,179
+SWE,Sweden,0,0,539
+SWZ,Eswatini,0,0,108
+SYC,Seychelles,0,0,15
+SYR,Syrian Arab Republic,0,0,2145
+TCA,Turks and Caicos Islands,0,0,2
+TCD,Chad,0,0,554
+TGO,Togo,0,0,107
+THA,Thailand,0,0,983
+TJK,Tajikistan,0,0,215
+TKM,Turkmenistan,0,0,70
+TLS,Timor-Leste,3,420,508
 TON,Tonga,0,0,2
-TTO,Trinidad and Tobago,0,0,9
-TUN,Tunisia,4,14338,16854
-TUR,Türkiye,5,56021,60697
-TUV,Tuvalu,0,0,6
-TWN,Taiwan,0,0,120
-TZA,United Republic of Tanzania,7,5941,6318
-UGA,Uganda,6,13799,15017
-UKR,Ukraine,6,101378,102895
-URY,Uruguay,0,0,56
-USA,United States of America,0,0,30310
-UZB,Uzbekistan,9,17611,16064
-VAT,Holy See,0,0,47
+TTO,Trinidad and Tobago,0,0,15
+TUN,Tunisia,4,18974,22470
+TUR,Türkiye,5,73556,82162
+TUV,Tuvalu,0,0,8
+TWN,Taiwan,0,0,172
+TZA,United Republic of Tanzania,7,8480,9118
+UGA,Uganda,6,18309,20015
+UKR,Ukraine,6,125344,126178
+URY,Uruguay,0,0,104
+USA,United States of America,0,0,44083
+UZB,Uzbekistan,9,24618,22521
+VAT,Holy See,0,0,68
 VCT,Saint Vincent and the Grenadines,0,0,13
-VEN,Venezuela (Bolivarian Republic of),0,0,2840
+VEN,Venezuela (Bolivarian Republic of),0,0,4360
 VGB,British Virgin Islands,0,0,2
-VNM,Viet Nam,0,0,103
-VUT,Vanuatu,0,0,15
+VNM,Viet Nam,0,0,138
+VUT,Vanuatu,0,0,17
 WSM,Samoa,0,0,8
-XKX,Kosovo,3,42733,38784
-YEM,Yemen,0,0,171
-ZAF,South Africa,7,35111,37300
-ZMB,Zambia,8,19870,19373
-ZWE,Zimbabwe,11,28182,28292
+XKX,Kosovo,3,47719,44205
+YEM,Yemen,0,0,345
+ZAF,South Africa,7,45883,48881
+ZMB,Zambia,8,23970,23569
+ZWE,Zimbabwe,11,37599,38224

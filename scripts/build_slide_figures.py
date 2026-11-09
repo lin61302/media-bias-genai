@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build slide figures from the fixed public November 4 aggregate release.
+"""Build slide figures from the separate, hash-pinned presentation release.
 
 Run from any directory with Python, numpy and matplotlib installed. No database,
 article text or model access is used. Cached inputs are verified by SHA-256.
@@ -25,8 +25,10 @@ from analysis_utils import ROOT, AXES, load, cube, marginal, measures, correlati
 
 OUT = ROOT / "slides/figures"
 DATA = OUT / "data"
-SCOPE_FILE = "explore-since2021.json"
-START, END = "2021-01", "2026-05"
+MANIFEST_PATH = ROOT / "slides/analysis_snapshot.json"
+MANIFEST = json.loads(MANIFEST_PATH.read_text())
+SCOPE_FILE = MANIFEST["scope_file"]
+START, END = MANIFEST["article_period"]
 PERIOD = f"{datetime.strptime(START, '%Y-%m'):%b %Y}–{datetime.strptime(END, '%Y-%m'):%b %Y}"
 GEOGRAPHY_URL = "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson"
 GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb"
@@ -138,7 +140,7 @@ def coverage(scope, monthly, meta, context, features):
     map_panel(axes[1], features, govt, [100, 1000, 10000], palettes[1])
     axes[0].set_title(f"Where coverage is published\n{len(source_country)} countries · {sum(source_country.values())} source domains", fontsize=18, pad=14)
     axes[1].set_title(f"Which government is evaluated\n{len(govt)} country / territory codes", fontsize=18, pad=14)
-    for ax, pal, labels in zip(axes, palettes, [["1–2", "3–5", "6–8", "9–11"], ["1–99", "100–999", "1,000–9,999", "10,000+"]]):
+    for ax, pal, labels in zip(axes, palettes, [["1–2", "3–5", "6–8", "9+"], ["1–99", "100–999", "1,000–9,999", "10,000+"]]):
         handles = [Patch(color=c, label=l) for c, l in zip(pal, labels)]
         ax.legend(handles=handles, loc="lower center", bbox_to_anchor=(.5, -.28), ncol=4,
                   frameon=False, fontsize=13, handlelength=1.2, columnspacing=1)
@@ -191,6 +193,52 @@ def distributions(scope):
     fig.text(.5, .09, "Zero includes neutral, mixed or insufficient directional evidence; not-codable labels are excluded.", ha="center", fontsize=14)
     fig.text(.5, .04, f"{PERIOD} · n = {n:,} · same eligible articles for all three fields", ha="center", fontsize=13, color=MUTED)
     save(fig, "07_label_distributions")
+    return {axis: {"negative": int(marginal(scope["overall"], axis)[0]),
+                   "zero": int(marginal(scope["overall"], axis)[1]),
+                   "positive": int(marginal(scope["overall"], axis)[2])}
+            for axis in AXES}
+
+
+def framing_comparisons(scope):
+    """Reproduce the selected source–government rows on slide 12."""
+    selected = [("Kyiv Independent", "kyivindependent.com", "RUS"),
+                ("Kyiv Independent", "kyivindependent.com", "UKR"),
+                ("BBC", "bbc.com", "RUS"), ("Reuters", "reuters.com", "RUS"),
+                ("The Guardian", "theguardian.com", "RUS")]
+    available = {(row["source"], row["gov"]): row
+                 for row in scope["interactions"]["government_outlet"]}
+    assert len(available) == len(scope["interactions"]["government_outlet"]), "Duplicate source–government pair"
+    rows = []
+    for label, domain, government in selected:
+        row = available[(domain, government)]
+        counts = marginal(row, "frame")
+        metric = measures(row, "frame")
+        rows.append({"source_label": label, "source_domain": domain,
+                     "evaluated_government": government, "eligible_articles": metric["n"],
+                     "negative_count": int(counts[0]), "zero_count": int(counts[1]),
+                     "positive_count": int(counts[2]), "negative_share": metric["negative"],
+                     "positive_share": metric["positive"],
+                     "nonzero_share": metric["negative"] + metric["positive"],
+                     "two_sided_P": metric["two_sided"]})
+    write_csv("12_source_government_framing.csv", rows)
+    return rows
+
+
+def yearly_coverage(scope, monthly):
+    """Expose uneven coverage without treating observed years as complete."""
+    valid, eligible = Counter(), Counter()
+    for month, n in scope["quality"]["months"].items():
+        if START <= month <= END:
+            valid[month[:4]] += n
+    for row in monthly["groups"]["gov"]:
+        if START <= row["month"] <= END:
+            eligible[row["month"][:4]] += sum(row["c"])
+    assert sum(valid.values()) == scope["quality"]["valid"]
+    assert sum(eligible.values()) == scope["quality"]["complete"]
+    rows = [{"year": y, "valid_records": valid[y], "eligible_records": eligible[y]}
+            for y in sorted(valid)]
+    write_csv("06_coverage_by_year.csv", rows)
+    return rows
 
 
 def joint(scope):
@@ -284,12 +332,13 @@ def timeseries(monthly):
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     DATA.mkdir(parents=True, exist_ok=True)
-    scope, monthly, meta, context = [load(n) for n in (SCOPE_FILE, "explore-monthly.json", "explore-meta.json", "country_context.json")]
+    scope, monthly, meta, context = [load(n, MANIFEST_PATH) for n in (SCOPE_FILE, "explore-monthly.json", "explore-meta.json", "country_context.json")]
     assert scope["start"] == START and scope["end"] == END
     eligible = sum(scope["overall"]["c"])
     valid = scope["quality"]["valid"]
     assert eligible == scope["quality"]["complete"]
-    manifest = json.loads((ROOT / "data/analysis_snapshot.json").read_text())
+    manifest = MANIFEST
+    assert valid == manifest["valid_records"] and eligible == manifest["eligible_records"]
     results = {
         "audit_cutoff": manifest["audit_cutoff"], "source_commit": manifest["commit"],
         "article_period": [START, END],
@@ -298,10 +347,13 @@ def main():
         "scope_sha256": manifest["files"][SCOPE_FILE]["sha256"],
         "source_files": {name: manifest["files"][name] for name in
                          (SCOPE_FILE, "explore-monthly.json", "explore-meta.json", "country_context.json")},
-        "scope_note": "Slides use the released January 2021 window from the fixed November 4 audit; the snapshot manifest's dashboard default remains January 2022.",
-        "source_manifest": "data/analysis_snapshot.json",
+        "scope_note": manifest["scope_note"],
+        "source_manifest": "slides/analysis_snapshot.json",
         "coverage": coverage(scope, monthly, meta, context, geography()),
+        "coverage_by_year": yearly_coverage(scope, monthly),
+        "label_counts": distributions(scope),
         "joint": joint(scope), "senegal_february_2024": timeseries(monthly),
+        "framing_comparisons": framing_comparisons(scope),
         "geography": {"url": GEOGRAPHY_URL, "sha256": GEOGRAPHY_SHA, "license": "Public domain",
                       "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
                       "code_rule": "ISO_A3_EH; Natural Earth KOS explicitly mapped to project XKX; no other substitutions",
@@ -309,15 +361,13 @@ def main():
         "event_source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
         "figures": ["06_coverage_map", "07_label_distributions", "08_alignment_reputation_joint", "09_senegal_monthly_indices"],
     }
-    distributions(scope)
     (DATA / "slide_figure_manifest.json").write_text(json.dumps(results, indent=2) + "\n")
     (DATA / "figure_notes.txt").write_text(
-        "FIGURE SCOPE\nAll four figures use the hash-pinned November 4 release in data/analysis_snapshot.json. "
+        "FIGURE SCOPE\nAll four figures use the hash-pinned release in slides/analysis_snapshot.json. "
         f"No current-production totals are substituted. Main period: {PERIOD}; "
         f"{eligible:,} eligible joint records among {valid:,} structurally valid records. "
         f"Audit cutoff: {manifest['audit_cutoff']}. Aggregate: {SCOPE_FILE}; SHA-256 "
-        f"{manifest['files'][SCOPE_FILE]['sha256']}. The dashboard-default metadata in the source manifest "
-        "still describes its January 2022 window; this slide build deliberately selects the released January 2021 window. "
+        f"{manifest['files'][SCOPE_FILE]['sha256']}. {manifest['scope_note']} "
         "New production outcomes must enter a separately pinned, verified analysis release before these figures are updated. An eligible record has "
         "an identified evaluated government and primary action and numeric labels on all three axes. "
         "Zero remains; null/not codable does not. Structural checks are not semantic validation.\n\n"
@@ -342,6 +392,9 @@ def main():
         "not zero. The February 2024 episode and March election dates come from UN S/2024/521 paragraph 18. "
         "An incumbent transition changes the government reference point. No causal/event attribution or "
         "societal polarization estimate is established.\n\n"
+        "SOURCE–GOVERNMENT FRAMING\nThe five selected rows in 12_source_government_framing.csv "
+        "use the same common eligible cohort. P is computed from exact counts before display rounding. "
+        "These are pooled descriptive comparisons, not matched events or estimates of editorial-policy effects.\n\n"
         "REPRODUCTION\nRun python scripts/build_slide_figures.py with numpy and matplotlib. Public input "
         "hashes are checked by scripts/analysis_utils.py; Natural Earth geometry is version- and hash-pinned. "
         "PNG, PDF, SVG, plotted CSVs and this manifest are regenerated. No paid/model/database access occurs.\n"

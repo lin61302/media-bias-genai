@@ -1,57 +1,116 @@
 {
-  "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
-  "source_commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135",
+  "audit_cutoff": "2026-11-08T13:57:13.923991+00:00",
+  "source_commit": "821e24c66b43d4de15860f5414373da6f3448d63",
   "article_period": [
-    "2021-01",
+    "2019-01",
     "2026-05"
   ],
-  "valid_records": 2654346,
-  "eligible_records": 2440312,
-  "scope_file": "explore-since2021.json",
-  "scope_sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
+  "valid_records": 3464596,
+  "eligible_records": 3181113,
+  "scope_file": "explore-since2019.json",
+  "scope_sha256": "1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812",
   "source_files": {
-    "explore-since2021.json": {
-      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-since2021.json",
-      "sha256": "29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071",
-      "bytes": 681407
+    "explore-since2019.json": {
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/821e24c66b43d4de15860f5414373da6f3448d63/explore-since2019.json",
+      "sha256": "1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812",
+      "bytes": 749563
     },
     "explore-monthly.json": {
-      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-monthly.json",
-      "sha256": "829c1153add92654edbbb66416ef99413321a02c5f200d5e27f58e4c7a2a5e4b",
-      "bytes": 4567893
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/821e24c66b43d4de15860f5414373da6f3448d63/explore-monthly.json",
+      "sha256": "1d9d9741ef1251565d48f83520fdd5a7298b6db105e9365323b61e86466faebb",
+      "bytes": 6222630
     },
     "explore-meta.json": {
-      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/explore-meta.json",
-      "sha256": "e28aa6b9cf6d3b0267b7417cd4d82ae11de84f64120da7ce011082a644669cdc",
-      "bytes": 126089
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/821e24c66b43d4de15860f5414373da6f3448d63/explore-meta.json",
+      "sha256": "ce45f480af359938303307884bb31236e11c27dd5e90ad1903d5633a7127b54c",
+      "bytes": 222956
     },
     "country_context.json": {
-      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/8ce2764cffe71c66222fb46a98d2f8d18f9d0135/country_context.json",
-      "sha256": "20a7c94a6e4fe998c89ef2be2ff9472468c38409b1cab36ca52947e45e8e7cda",
-      "bytes": 141058
+      "url": "https://huggingface.co/spaces/zungru/media-bias-reported-polarization/resolve/821e24c66b43d4de15860f5414373da6f3448d63/country_context.json",
+      "sha256": "048ea40436adba93a151d0699756c8f51f042298cc97e5b661a0be47d51f9113",
+      "bytes": 186752
     }
   },
-  "scope_note": "Slides use the released January 2021 window from the fixed November 4 audit; the snapshot manifest's dashboard default remains January 2022.",
-  "source_manifest": "data/analysis_snapshot.json",
+  "scope_note": "January 2019\u2013May 2026, independently stored records from the same complete prompt. Earlier-year coverage is uneven. Submission progress in 2018 and separately tracked reruns are excluded.",
+  "source_manifest": "slides/analysis_snapshot.json",
   "coverage": {
-    "eligible_articles": 2440312,
-    "source_domains": 428,
+    "eligible_articles": 3181113,
+    "source_domains": 430,
     "source_countries": 71,
-    "mapped_source_domains": 402,
+    "mapped_source_domains": 404,
     "international_or_mixed_domains": 26,
-    "international_or_mixed_articles": 143391,
-    "evaluated_government_codes": 205,
+    "international_or_mixed_articles": 205126,
+    "evaluated_government_codes": 211,
     "examples": {
-      "AFG": 1697,
-      "ARE": 386,
-      "AND": 2
+      "AFG": 2341,
+      "ARE": 514,
+      "AND": 6
+    }
+  },
+  "coverage_by_year": [
+    {
+      "year": "2019",
+      "valid_records": 378323,
+      "eligible_records": 345131
+    },
+    {
+      "year": "2020",
+      "valid_records": 411337,
+      "eligible_records": 376823
+    },
+    {
+      "year": "2021",
+      "valid_records": 517024,
+      "eligible_records": 474757
+    },
+    {
+      "year": "2022",
+      "valid_records": 514714,
+      "eligible_records": 472841
+    },
+    {
+      "year": "2023",
+      "valid_records": 523585,
+      "eligible_records": 482037
+    },
+    {
+      "year": "2024",
+      "valid_records": 576632,
+      "eligible_records": 528811
+    },
+    {
+      "year": "2025",
+      "valid_records": 395803,
+      "eligible_records": 363984
+    },
+    {
+      "year": "2026",
+      "valid_records": 147178,
+      "eligible_records": 136729
+    }
+  ],
+  "label_counts": {
+    "align": {
+      "negative": 315067,
+      "zero": 2614992,
+      "positive": 251054
+    },
+    "rep": {
+      "negative": 352807,
+      "zero": 2722205,
+      "positive": 106101
+    },
+    "frame": {
+      "negative": 175611,
+      "zero": 2929540,
+      "positive": 75962
     }
   },
   "joint": {
-    "correlation_alignment_reputation": 0.33786994969358103,
-    "positive_alignment_n": 190409,
-    "positive_alignment_negative_reputation_n": 38322,
-    "negative_reputation_share_among_positive_alignment": 0.20126149499235854
+    "correlation_alignment_reputation": 0.33891580112951997,
+    "positive_alignment_n": 251054,
+    "positive_alignment_negative_reputation_n": 52218,
+    "negative_reputation_share_among_positive_alignment": 0.20799509268922223
   },
   "senegal_february_2024": {
     "evaluated_government": "SEN",
@@ -71,6 +130,73 @@
     "frame_positive": 0.020342612419700215,
     "displayed_in_line": true
   },
+  "framing_comparisons": [
+    {
+      "source_label": "Kyiv Independent",
+      "source_domain": "kyivindependent.com",
+      "evaluated_government": "RUS",
+      "eligible_articles": 1242,
+      "negative_count": 468,
+      "zero_count": 772,
+      "positive_count": 2,
+      "negative_share": 0.37681159420289856,
+      "positive_share": 0.001610305958132045,
+      "nonzero_share": 0.3784219001610306,
+      "two_sided_P": 0.0024271278209526477
+    },
+    {
+      "source_label": "Kyiv Independent",
+      "source_domain": "kyivindependent.com",
+      "evaluated_government": "UKR",
+      "eligible_articles": 9568,
+      "negative_count": 294,
+      "zero_count": 8963,
+      "positive_count": 311,
+      "negative_share": 0.03072742474916388,
+      "positive_share": 0.03250418060200669,
+      "nonzero_share": 0.06323160535117056,
+      "two_sided_P": 0.003995079053925571
+    },
+    {
+      "source_label": "BBC",
+      "source_domain": "bbc.com",
+      "evaluated_government": "RUS",
+      "eligible_articles": 1966,
+      "negative_count": 167,
+      "zero_count": 1788,
+      "positive_count": 11,
+      "negative_share": 0.0849440488301119,
+      "positive_share": 0.005595116988809766,
+      "nonzero_share": 0.09053916581892167,
+      "two_sided_P": 0.0019010875628305817
+    },
+    {
+      "source_label": "Reuters",
+      "source_domain": "reuters.com",
+      "evaluated_government": "RUS",
+      "eligible_articles": 3088,
+      "negative_count": 396,
+      "zero_count": 2676,
+      "positive_count": 16,
+      "negative_share": 0.12823834196891193,
+      "positive_share": 0.0051813471502590676,
+      "nonzero_share": 0.133419689119171,
+      "two_sided_P": 0.0026577894708582784
+    },
+    {
+      "source_label": "The Guardian",
+      "source_domain": "theguardian.com",
+      "evaluated_government": "RUS",
+      "eligible_articles": 903,
+      "negative_count": 474,
+      "zero_count": 427,
+      "positive_count": 2,
+      "negative_share": 0.5249169435215947,
+      "positive_share": 0.0022148394241417496,
+      "nonzero_share": 0.5271317829457365,
+      "two_sided_P": 0.004650426963646464
+    }
+  ],
   "geography": {
     "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson",
     "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",

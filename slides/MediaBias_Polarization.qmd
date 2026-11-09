@@ -9,7 +9,7 @@ author:
     affiliations: 
   - name: Ezgi Yilmaz
     affiliations: 
-date: today
+date: 2026-11-08
 date-format: long
 
 bibliography: references.bib
@@ -225,19 +225,19 @@ Method sources: ../prompts/version.json, ../prompts/civic_20261020_complete_v1.t
 ## Coverage and analytical sample {.coverage-summary-slide}
 
 ```{=html}
-<div class="coverage-summary-line"><strong>January 2021–May 2026</strong><span>2,654,346 valid records · <b>2,440,312 eligible</b></span></div>
+<div class="coverage-summary-line"><strong>January 2019–May 2026</strong><span>3,464,596 valid records · <b>3,181,113 eligible</b></span></div>
 ```
 
 ![](figures/06_coverage_map.png){fig-align="center" width="100%"}
 
 ::: {.sample}
-Fixed November 4, 2026 snapshot. One article, one prioritized action. Repeated reporting can yield multiple observations of an event.
+Verified November 8, 2026 snapshot. Earlier-year coverage is uneven. One article, one prioritized action.
 :::
 
 ::: notes
-All figures use the hash-pinned explore-since2021.json release in ../data/analysis_snapshot.json, audit 2026-11-04T13:38:01.213139+00:00. The selected period contains 2,654,346 structurally valid records and 2,440,312 comparison-eligible records. The difference, 214,034, is excluded rather than relabeled zero. Complete monthly groups cover 428 domains: 402 mapped to 71 publication countries and 26 international/mixed domains. Evaluated governments span 205 country/territory codes. The two maps show different quantities and scales.
+All figures use the hash-pinned explore-since2019.json release in analysis_snapshot.json, audit 2026-11-08T13:57:13.923991+00:00. The selected period contains 3,464,596 structurally valid records and 3,181,113 comparison-eligible records. The difference, 283,483, is excluded rather than relabeled zero. Complete monthly groups cover 430 domains: 404 mapped to 71 publication countries and 26 international/mixed domains. Evaluated governments span 211 country/territory codes. The two maps show different quantities and scales.
 
-A source's publication country and the government evaluated in an article are different concepts. International reporting can evaluate a government without local source collection there. This is a selected reporting corpus, not a probability sample of events. Collection, civic selection, supplied English, processing completion and coding determine inclusion. Larger production totals must enter a new verified release before figure counts change. Reproduction and plotted CSVs: ../scripts/build_slide_figures.py and figures/data/.
+A source's publication country and the government evaluated in an article are different concepts. International reporting can evaluate a government without local source collection there. This is a selected reporting corpus, not a probability sample of events. Collection, civic selection, supplied English, processing completion and coding determine inclusion. The analytical release adds 810,250 valid records and 740,801 eligible records to the previous snapshot. Earlier-year coverage remains uneven. Processing has reached 2018, but unverified outcomes and separately tracked reruns have no analytical credit here. Repeated reporting can yield multiple observations of the same event. Reproduction and plotted CSVs: ../scripts/build_slide_figures.py and figures/data/.
 :::
 
 
@@ -246,7 +246,7 @@ A source's publication country and the government evaluated in an article are di
 ![](figures/07_label_distributions.png){fig-align="center" width="100%"}
 
 ::: notes
-Fixed January 2021–May 2026 cohort, n = 2,440,312. Zero shares: alignment 82.4%, reputation 85.9%, framing 92.2%. Framing has 190,760 directional records. The zero class combines neutral, mixed and insufficient directional evidence. It is not an estimate of the share of unbiased articles. Strict narration rules, composition, translation and classification error may all affect the distribution. Reproduction: ../scripts/build_slide_figures.py.
+Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2%, reputation 85.6%, framing 92.1%. Framing has 251,573 directional records. The zero class combines neutral, mixed and insufficient directional evidence. It is not an estimate of the share of unbiased articles. Strict narration rules, composition, translation and classification error may all affect the distribution. Reproduction: ../scripts/build_slide_figures.py.
 :::
 
 
@@ -255,7 +255,7 @@ Fixed January 2021–May 2026 cohort, n = 2,440,312. Zero shares: alignment 82.4
 ![](figures/08_alignment_reputation_joint.png){fig-align="center" width="100%"}
 
 ::: notes
-Fixed January 2021–May 2026 cohort. Among 190,409 positive-alignment records, 38,322 (20.1%) have negative reputational implications. Numeric article-level correlation is approximately .338. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
+Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
 :::
 
 
@@ -263,23 +263,23 @@ Fixed January 2021–May 2026 cohort. Among 190,409 positive-alignment records, 
 
 | Source | Government evaluated | Articles | Negative | Positive | P |
 |---|---|---:|---:|---:|---:|
-| Kyiv Independent | Russia | 1,242 | 37.7% | 0.2% | .0024 |
-| Kyiv Independent | Ukraine | 9,568 | 3.1% | 3.3% | .0040 |
-| BBC | Russia | 1,896 | 8.7% | 0.5% | .0018 |
-| Reuters | Russia | 2,736 | 14.0% | 0.5% | .0029 |
-| The Guardian | Russia | 890 | 52.7% | 0.1% | .0024 |
+| Kyiv Independent | Russia | 1,242 | 37.7% | 0.2% | 0.0024 |
+| Kyiv Independent | Ukraine | 9,568 | 3.1% | 3.3% | 0.0040 |
+| BBC | Russia | 1,966 | 8.5% | 0.6% | 0.0019 |
+| Reuters | Russia | 3,088 | 12.8% | 0.5% | 0.0027 |
+| The Guardian | Russia | 903 | 52.5% | 0.2% | 0.0047 |
 
 - Strongly directional framing can have a low P when it is mostly one-sided
 - The comparison depends on the **source–government relationship**, as well as the prevalence and balance of framing
 
 ::: {.sample}
-January 2021–May 2026, fixed November 4 snapshot. Framing labels on the common eligible sample; the remainder is zero. Selected comparisons, not matched events or estimates of editorial-policy effects.
+January 2019–May 2026, fixed November 8 snapshot. Framing labels on the common eligible sample; the remainder is zero. Selected comparisons, not matched events or estimates of editorial-policy effects.
 :::
 
 ::: notes
-Source: interactions.government_outlet in hash-pinned explore-since2021.json, SHA-256 29c4c6bad62dee6f7236d41f85e93dd6a8dc27aab58b88888b1ae22199fc4071. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.
+Source: interactions.government_outlet in hash-pinned explore-since2019.json, SHA-256 1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812. Reproduced in figures/data/12_source_government_framing.csv. Exact domains: kyivindependent.com, bbc.com, reuters.com, theguardian.com. Russia/Ukraine are the evaluated government, not the source country.
 
-Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 165/1721/10. Reuters Russia: 382/2340/14. Guardian Russia: 469/420/1. P is calculated before rounding the displayed shares.
+Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directional 37.8422%; P approximately .00243. Ukraine: negative 294, zero 8,963, positive 311; n 9,568; directional 6.3232%; P approximately .00400. BBC Russia: 167/1788/11. Reuters Russia: 396/2676/16. Guardian Russia: 474/427/2. P is calculated before rounding the displayed shares.
 
 These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.
 :::
@@ -290,7 +290,7 @@ These pooled comparisons do not hold event, genre, time, translation or politica
 ![](figures/09_senegal_monthly_indices.png){fig-align="center" width="100%"}
 
 ::: notes
-Same fixed November 4 release. The figure shows proposed P for all three fields and eligible article volumes, with line gaps below 100 articles. February 2024 n = 934; P is approximately .110 alignment, .016 reputation and .014 framing. Negative shares are 19.5%, 31.4% and 17.0%. More negative coverage need not have a larger two-sided index.
+Same fixed November 8 release. The selected 2023–2024 subwindow is unchanged after recalculation. The figure shows proposed P for all three fields and eligible article volumes, with line gaps below 100 articles. February 2024 n = 934; P is approximately .110 alignment, .016 reputation and .014 framing. Negative shares are 19.5%, 31.4% and 17.0%. More negative coverage need not have a larger two-sided index.
 
 Episode dates: UN S/2024/521 paragraph 18, https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . Election postponement and court reversal occurred in February 2024, with the election in March. This is a selected documented example, not an estimated causal effect. Changing source composition, repeated reporting and incumbent turnover limit interpretation. Reproduction: ../scripts/build_slide_figures.py.
 :::
