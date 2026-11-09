@@ -46,8 +46,8 @@
         </div>
         <div class="classifier-labels">
           <div class="classifier-detail-label">Three judgments about the incumbent</div>
-          <div class="classifier-code-row"><strong>Alignment</strong><span class="classifier-code classifier-positive">+1</span><span class="classifier-code-copy"><span class="classifier-question">Action supports or opposes?</span><span>Restricts explicit opponents</span></span></div>
-          <div class="classifier-code-row"><strong>Reputation</strong><span class="classifier-code classifier-negative">−1</span><span class="classifier-code-copy"><span class="classifier-question">Implication for government?</span><span>Negative legitimacy implication</span></span></div>
+          <div class="classifier-code-row"><strong>Political<br>alignment</strong><span class="classifier-code classifier-positive">+1</span><span class="classifier-code-copy"><span class="classifier-question">Action supports or opposes?</span><span>Restricts explicit opponents</span></span></div>
+          <div class="classifier-code-row"><strong>Reputational<br>implication</strong><span class="classifier-code classifier-negative">−1</span><span class="classifier-code-copy"><span class="classifier-question">Implication for government?</span><span>Negative legitimacy implication</span></span></div>
           <div class="classifier-code-row"><strong>Framing</strong><span class="classifier-code classifier-zero">0</span><span class="classifier-code-copy"><span class="classifier-question">Narrator approval or criticism?</span><span>No added evaluation</span></span></div>
         </div>
       </div>

@@ -165,17 +165,63 @@ The national incumbent is a proposed common political reference. Its relationshi
 :::
 
 
-## Sentiment and its object {.sentiment-purpose-slide}
+## What does “negative” mean? {.sentiment-questions-slide}
 
-In a product review, the evaluation concerns a product or feature. Political reporting can contain several objects of evaluation in the same account.
-
-- **Words and representations are evidence and methods.** Dictionaries, word counts and embeddings do not determine the political meaning of a positive or negative score.
-- **Political direction and evaluation can diverge.** An action may support the incumbent while carrying a negative implication for its legitimacy.
-- **The narration is another layer.** Reporting a damaging event can coexist with restrained wording, attributed criticism or explicit narrator evaluation.
-- **The purpose determines the record.** We keep a government reference, a selected action and its entities, then apply separate judgments and evidence rules.
+```{=html}
+<ol class="sentiment-questions">
+  <li><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(The event or outcome being evaluated still needs to be specified.)</div></li>
+  <li><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
+  <li><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
+  <li><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
+</ol>
+<div class="sentiment-closing-question">Negative in relation to what?</div>
+```
 
 ::: notes
-Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html ; Pang, Lee and Vaithyanathan (2002), https://aclanthology.org/W02-1011/ . Sentiment analysis includes target- and aspect-level approaches. Spam detection is a separate classification task. Project definitions and exact rules: ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt.
+All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project's terminology.
+:::
+
+
+## Sentiment in relation to what? {.sentiment-reference-slide}
+
+```{=html}
+<div class="reference-example"><strong>A product review</strong><p>“The camera is excellent. The battery lasts eight hours.”</p></div>
+<div class="reference-questions">
+  <div><strong>Would this customer recommend the product?</strong><p>A question about overall evaluation. Praise for one feature need not imply a recommendation.</p></div>
+  <div><strong>What does the review tell us about battery life?</strong><p>A question about a feature we care about. Eight hours is information; whether it is good depends on the standard.</p></div>
+</div>
+<div class="reference-bridge"><p>The product remains the reference. <strong>The question determines what we extract.</strong></p><p>In our project, the reference is the <strong>national incumbent government at publication.</strong></p></div>
+<div class="reference-relations">An action’s relationship <strong>to</strong> the government<br>Its implications <strong>for</strong> the government<br>The narrator’s evaluation <strong>of</strong> the government</div>
+```
+
+::: notes
+The product review is synthetic. Extracting a feature or fact is not itself sentiment classification; an evaluative judgment requires a target and criterion. Recommendation and feature-level sentiment are related but distinct questions. Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task.
+
+All three project dimensions refer to the same national incumbent, but the relationship and evidence differ. The actor, action's entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.
+:::
+
+
+## Three judgments about the same government {.sentiment-definitions-slide}
+
+```{=html}
+<div class="definitions-example"><strong>Synthetic report:</strong> Cabinet-affiliated emergency services rescued 20 miners.<br>The title calls the rescue “the government’s cynical publicity stunt.”</div>
+<table class="sentiment-definitions">
+  <thead><tr><th>Term</th><th>What we code</th><th>In this example</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Political alignment</strong></td><td>The selected action’s political direction relative to the incumbent: support, opposition, or no supported direction.</td><td><strong>0:</strong> A successful rescue alone establishes no support–opposition relationship.</td></tr>
+    <tr><td><strong>Reputational implication</strong></td><td>What the action and directly tied facts imply about government performance or legitimacy.</td><td><strong>+1:</strong> Successful rescue by cabinet-affiliated services signals competence.</td></tr>
+    <tr><td><strong>Framing</strong></td><td>Approval or criticism toward the government expressed by the title or narrator, beyond the event or an attributed quotation.</td><td><strong>−1:</strong> “Cynical publicity stunt” adds a negative evaluation.</td></tr>
+  </tbody>
+</table>
+<div class="definitions-note">Reputational implication is a coded interpretation of conduct. It is not an observed change in public opinion.</div>
+```
+
+::: notes
+Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 3–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The rescue is calibration example 6, with supplied direct affiliation to the current national cabinet. No real event, public-opinion effect or validation result is claimed.
+
+Political alignment concerns direction manifested by the selected action, including support for the incumbent or restrictions on its explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. Reputational implication uses a broad reasonable-observer standard and requires a clear government link. It can concern competence, integrity, lawful conduct, rights or responsiveness; performance and legitimacy are not directly measured public beliefs. Framing concerns observable title/narrator cues, not an author's private intent or attributed criticism alone. It is narrower than the wider literature's uses of framing and does not establish outlet bias.
+
+The three values in the rescue example are 0/+1/−1. The following integrated classifier retains the different police example, its definitions, full record and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. The two examples illustrate why these distinctions are retained in the record, not model accuracy.
 :::
 
 

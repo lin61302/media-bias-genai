@@ -35,7 +35,7 @@ GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fde
 INK, NAVY, MUTED = "#1f2328", "#011F5B", "#6b7280"
 NEG, ZERO, POS = "#D55E00", "#e1e5eb", "#009E73"
 AXIS_COLORS = {"align": "#0072B2", "rep": "#D55E00", "frame": "#009E73"}
-AXIS_NAMES = {"align": "Action alignment", "rep": "Reputational implication", "frame": "Article framing"}
+AXIS_NAMES = {"align": "Political alignment", "rep": "Reputational implication", "frame": "Framing"}
 
 plt.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": ["Helvetica Neue", "Arial", "DejaVu Sans"],
@@ -200,7 +200,7 @@ def distributions(scope):
 
 
 def framing_comparisons(scope):
-    """Reproduce the selected source–government rows on slide 12."""
+    """Reproduce the selected source–government rows on slide 14."""
     selected = [("Kyiv Independent", "kyivindependent.com", "RUS"),
                 ("Kyiv Independent", "kyivindependent.com", "UKR"),
                 ("BBC", "bbc.com", "RUS"), ("Reuters", "reuters.com", "RUS"),
@@ -262,7 +262,7 @@ def joint(scope):
     ax.xaxis.set_label_position("top")
     ax.set_xlabel("Reputational implication", labelpad=20, fontsize=19)
     ax.set_yticks(range(3), [f"Opposes (−1)\nn = {ar[0].sum():,}", f"Zero\nn = {ar[1].sum():,}", f"Supports (+1)\nn = {ar[2].sum():,}"], fontsize=17)
-    ax.set_ylabel("Action alignment", fontsize=19, labelpad=18)
+    ax.set_ylabel("Political alignment", fontsize=19, labelpad=18)
     ax.tick_params(length=0, pad=12)
     ax.set_xticks(np.arange(-.5, 3, 1), minor=True)
     ax.set_yticks(np.arange(-.5, 3, 1), minor=True)

@@ -11,20 +11,23 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **17 slides**. Slide 6 is “Sentiment and its object,” and slide 7 is the integrated “The classifier” overview. The classifier contains the field definitions, synthetic record and monthly illustration together. There are no separate duplicate definition, police-example or synthetic monthly-bar slides.
+The current source renders **19 slides**. Slides 6–8 move from four audience questions to “in relation to what?” and then precise definitions with a synthetic rescue example. Slide 9 retains the integrated classifier overview, including its field definitions, different police example and monthly illustration. The audience names are **Political alignment**, **Reputational implication** and **Framing**, mapped to `align`, `rep` and `frame`.
 
 | Slides | Content |
 |---|---|
 | 1–5 | Question, literature and common political reference |
-| 6–8 | Sentiment, integrated classifier and prompting/processing controls |
-| 9 | Coverage and analytical sample |
-| 10–13 | Label distributions, joint labels, source–government framing and monthly context |
-| 14–16 | Validation, research agenda and discussion |
-| 17 | References |
+| 6–8 | Audience questions, reference point and three precise concepts |
+| 9–10 | Integrated classifier and prompting/processing controls |
+| 11 | Coverage and analytical sample |
+| 12–15 | Label distributions, joint labels, source–government framing and monthly context |
+| 16–18 | Validation, research agenda and discussion |
+| 19 | References |
 
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
 ## Examples and figures
+
+The rescue example on slide 8 comes from calibration example 6: cabinet-affiliated services rescue 20 miners, while the title calls the rescue a “cynical publicity stunt.” It illustrates political alignment 0, reputational implication +1 and framing −1. This is a contrast between coding questions, not an observed effect or accuracy result.
 
 The police example is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. It is not a sampled event or model-accuracy result.
 
@@ -52,7 +55,7 @@ The builder verifies the public input hashes and pinned Natural Earth geometry. 
 
 ## Updating coverage and counts
 
-The figures use `explore-since2019.json`, pinned in [analysis_snapshot.json](analysis_snapshot.json). The independent storage cutoff is **November 8, 2026, 13:57:13 UTC**. The [figure manifest](figures/data/slide_figure_manifest.json) records the input hashes and calculated results. [Annual counts](figures/data/06_coverage_by_year.csv) describe the uneven observed coverage. The Senegal case remains a 2023–2024 subwindow. [Source–government counts and framing scores](figures/data/12_source_government_framing.csv) reproduce the editable table on slide 12.
+The figures use `explore-since2019.json`, pinned in [analysis_snapshot.json](analysis_snapshot.json). The independent storage cutoff is **November 8, 2026, 13:57:13 UTC**. The [figure manifest](figures/data/slide_figure_manifest.json) records the input hashes and calculated results. [Annual counts](figures/data/06_coverage_by_year.csv) describe the uneven observed coverage. The Senegal case remains a 2023–2024 subwindow. [Source–government counts and framing scores](figures/data/12_source_government_framing.csv) reproduce the editable table on slide 14.
 
 The repository-wide `data/analysis_snapshot.json`, notebook and earlier exports retain their November 4 release. Slide inputs use a separate hash-addressed cache. The previous deck and figure files remain available at Git revision `118684b0ccd37bbcf4b9ff9c73004f2ca4fe5f48`; their dates have not been relabeled.
 
@@ -60,13 +63,13 @@ When more data are ready, select a verified new release and update the manifest 
 
 ## Interpretation and remaining work
 
-- **Alignment** describes the political direction of the selected action, rather than moral approval or the actor's private views.
-- **Reputation** describes a coded implication for government performance/legitimacy, rather than a measured change in public opinion.
+- **Political alignment** describes the political direction of the selected action, rather than moral approval or the actor's private views.
+- **Reputational implication** describes a coded implication for government performance/legitimacy, rather than a measured change in public opinion.
 - **Framing** describes observable narrator evaluation. Outlet bias requires evidence about coverage selection and comparable events.
 - **Monthly P = 4p⁺p⁻** is a proposed two-sided coverage index, calculated separately for the three fields. Its relationship to societal polarization and to formal polarization indices remains to be justified.
 - The country in the export is the **government evaluated**, which can differ from a source's publication country. Small country-month counts remain unsuitable for strong national claims.
 - Action-based coding can miss adverse conditions without a substantive action. Representative human validation of the three current labels remains incomplete.
 
-Literature and citation completion remain with the speakers developing those sections. Existing unresolved bibliography keys are `martin_yurukoglu_2017`, `mccoy_etal_2018`, `prior_2013` and `wagner_2021`; the literature slides also retain their original citation reminders. The research agenda contains proposed comparisons, not estimated effects.
+The latest shared citation and bibliography updates are included. Literature slides retain citation reminders for the speakers developing those sections. The research agenda contains proposed comparisons, not estimated effects.
 
 Method details: [codebook](../docs/codebook.md), [data card](../docs/data-card.md), [validation](../docs/validation.md), [measure definition](../docs/coverage-balance.md), and [dashboard guide](../docs/dashboard-guide.md).
