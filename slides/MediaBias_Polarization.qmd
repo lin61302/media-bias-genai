@@ -353,14 +353,90 @@ These pooled comparisons do not hold event, genre, time, translation or politica
 :::
 
 
-## Monthly comparisons: Senegal {.figure-slide}
+## Monthly comparisons: Senegal {.figure-slide .senegal-series-slide}
 
 ![](figures/09_senegal_monthly_indices.png){fig-align="center" width="100%"}
 
-::: notes
-Same fixed November 8 release. The selected 2023–2024 subwindow is unchanged after recalculation. The figure shows proposed P for all three fields and eligible article volumes. All nonempty months are shown with exact counts; only no-data months are gaps. The earlier arbitrary 100-article display cutoff was removed. In this 24-month window, counts range from 64 to 934 (median 166.5); the restored months are June, July, August and December 2024 with 64, 77, 95 and 73 articles. Raw article volume is not normalized salience or the number of independent events. A larger count does not by itself establish measurement precision. February 2024 n = 934; P is approximately .110 alignment, .016 reputation and .014 framing. Negative shares are 19.5%, 31.4% and 17.0%. More negative coverage need not have a larger two-sided index.
+::: {.senegal-series-reading}
+**February → March 2024:** protest/march actions **51 → 4**; voting/election actions **14 → 201**. The mix of reported actions changes with the indices.
+:::
 
-Episode dates: UN S/2024/521 paragraph 18, https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . Election postponement and court reversal occurred in February 2024, with the election in March. This is a selected documented example, not an estimated causal effect. Changing source composition, repeated reporting and incumbent turnover limit interpretation. Reproduction: ../scripts/build_slide_figures.py.
+::: notes
+Fixed November 8 release, evaluated government SEN, any publication origin. The selected 2023–2024 window contains 5,504 eligible records. All 24 nonempty months are shown, with exact article counts; only no-data months are gaps. Counts range from 64 to 934 (median 166.5). The earlier 100-article display cutoff was arbitrary and has been removed. Volume is not normalized salience or a count of independent events.
+
+February 2024: n = 934; alignment is 182 negative, 620 zero, 132 positive; P = .11016. March: n = 874; alignment is 101 negative, 743 zero, 30 positive; P = .01587. February negative reputation is 293/934 (31.4%), negative framing 159/934 (17.0%); both have far fewer positive labels, so their P values remain low (.01612 and .01385). A low P can coexist with negative coverage.
+
+The primary-action mix changes substantially: protest_march 51/934 (5.5%) to 4/874 (0.5%); elect_vote 14/934 (1.5%) to 201/874 (23.0%). Parties/politicians become the most frequent March actor role: 357/874 (40.8%), up from 164/934 (17.6%). In February, urge_call (130) and announce_declare (105) lead the specified action tags; court_rule and protest_march each have 51. other_act remains in denominators (116 February, 124 March) but is excluded from named-action rankings. These categories describe the selected primary action, not every topic or action in an article.
+
+This is not evidence that political disagreement disappeared. There is more voting coverage, and fewer actions receive a direction relative to the incumbent. A saved BBC March 24 voting report is coded 0/0/0; a New York Times March 25 report of the opposition's victory is coded -1/-1/0. The examples illustrate differing action selection; they do not estimate the accuracy of all election labels.
+
+Source composition changes, but the nonzero-alignment share also falls within the four largest February sources: Xalima 65/251 to 23/231; Sud Quotidien 71/248 to 23/278; L'As 24/90 to 8/101; France24 39/110 to 19/89. These within-source changes mean a pure between-source reweighting explanation is insufficient; story selection within outlets and repeated coverage remain unadjusted. Source publication-country metadata have not been independently audited.
+
+April has only 124 records and a changed source mix. Its positive reputation count is 14 and positive framing count 12; do not interpret their modest P rise as a clean improvement in performance. Faye took office on April 2, so the national-incumbent reference changes. Saved April examples include Faye reversing predecessor-era appointments (+1/0/0) and environmentalists challenging a former Sall decree (0/0/0). A country series is not necessarily a series about the same administration.
+
+Event chronology only: UN S/2024/521, paragraph 18, https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . Sall postponed the election on February 3, parliament rescheduled it on February 5, and the Constitutional Council overturned those moves on February 15. The election was held March 24 and Faye was sworn in April 2. This external chronology contextualizes the corpus; it was not supplied as new evidence to recode articles. Reproduction: ../scripts/build_slide_figures.py and ../scripts/build_senegal_case.py; figures/data/09_senegal_contributors.json and 09_senegal_article_examples.json.
+:::
+
+
+## Senegal: actors behind the February peak {.senegal-evidence-slide}
+
+::: {.senegal-subtitle}
+February 2024 · **934 articles** evaluating Senegal’s government · one selected action per article
+:::
+
+:::: {.senegal-evidence-columns}
+::: {.senegal-roles}
+<h3>Alignment by actor group</h3>
+
+| Selected actor groups | +1 | −1 |
+|---|---:|---:|
+| Executive / cabinet | 59 | 0 |
+| Legislature | 18 | 4 |
+| Security forces | 18 | 0 |
+| Parties / politicians | 17 | 56 |
+| Civic movements / unions | 0 | 37 |
+| Judiciary / prosecutors | 3 | 30 |
+
+::: {.senegal-role-note}
+All actors: **132 positive · 182 negative · 620 zero**. Counts are articles, not distinct actors or events.
+:::
+:::
+
+::: {.senegal-cases}
+<h3>What the recorded articles describe</h3>
+
+**Sall postpones the election**<br>
+Alignment **+1** · reputation **−1** · framing **0**<br>
+[Xalima, February 4](https://www.xalimasn.com/report-de-lelection-presidentielle-selon-luniversitaire-babacar-gaye-cest-une-decision-qui-ne-repose-sur-aucune-base-juridique/)
+
+**Police confront protesters**<br>
+Actor: police → target: protesters · alignment **+1**<br>
+[Al Jazeera, February 4](https://www.aljazeera.com/news/2024/2/4/eu-postponed-senegal-election-opens-period-of-uncertainty)
+
+**Court overturns the postponement**<br>
+Alignment **−1** · reputation **−1** · framing **0**<br>
+[France24, February 15](https://www.france24.com/en/africa/20240215-senegal-s-constitutional-council-overturns-macky-sall-s-delay-to-feb-25-presidential-poll)
+:::
+::::
+
+::: {.senegal-takeaway}
+**83 of 132 positive-alignment articles (62.9%) also have negative reputational implications.** State institutions can act for or against the incumbent.
+:::
+
+::: {.sample}
+Frozen November 8 corpus. Model-coded patterns and selected examples; role counts cover all actions, not only the examples shown.
+:::
+
+::: notes
+This slide connects aggregate directions to actor roles and actual saved coding. Selected rows are not exhaustive: their +1 counts total 115/132 and -1 counts total 127/182. Role labels do not establish party membership or permanent allegiance. The court example is important: a state institution can constrain the incumbent, so membership in the state does not automatically imply positive alignment. The coding concerns the reported action.
+
+The 83/132 finding is article-level co-occurrence, not a causal estimate of reputational damage. Among these 83 records, framing is negative in 47, zero in 35 and positive in one. Some reputational spans refer to the broader episode rather than strictly to the selected action. In the Al Jazeera example, the selected act is police/protester clashes, but the negative reputation span refers to the indefinite election postponement. We therefore show its actor-target relation and alignment only; this is a concrete reason to validate whether reputation consistently attaches to the intended action.
+
+Other granular results: 26 February records link security-force actors to civic-movement targets. Thirteen are coded positive alignment. The primary actions within those 26 are ban_disperse (13), nonlethal_violence (8), arrest_detain (3), other_act (1), security_operation (1). These are repeated article records, not 26 separate incidents. Among negative-alignment records, the most frequent specified actions are urge_call 53, condemn_accuse 24, court_rule 23, protest_march 19, disagree_oppose 16. There are 42 explicit executive/cabinet targets among the 182 negative-alignment records; 101 have no coded target role. A missing target does not erase the evaluated-government reference, but it limits direct actor-target network analysis.
+
+The Xalima February 4 story attributes the legal criticism to an academic; its narrator framing is coded zero. Xalima February 7 reports GERDDES-Africa condemning the governing majority as an institutional coup, coded -1/-1/0: quoted criticism is not automatically narrator criticism. In contrast, Sud Quotidien February 7 uses a title translated as Macky Sall's Dangerous Game; the saved record is +1/-1/-1. This is a concrete example of distinct framing, not a matched-event estimate of outlet bias. Links, short evidence spans, selected input lengths and coding are in figures/data/09_senegal_article_examples.json. Several translated inputs in this case set are short excerpts, so neither the examples nor literal span checks establish coding accuracy.
+
+Illustrative records were selected deliberately, not sampled randomly. All figure aggregates retain other_act and zero labels. Unknown/uncodable records remain outside the common eligible denominator. The compact role table and article examples do not establish a causal decomposition of P: P is nonlinear, and duplicate-event/source composition has not been controlled.
 :::
 
 

@@ -68,3 +68,18 @@
 .astra-row strong span { font-weight: 400; font-size: 22px; color: #606976; }
 .reveal .slides section.genai-performance-slide .astra-different { font-size: 25px; margin: 21px 0 13px; }
 .reveal .slides section.genai-performance-slide .astra-caveat { font-size: 20px; color: #606976; line-height: 1.4; margin: 0; }
+
+/* Senegal: keep the series readable and show its actor evidence separately. */
+.reveal .slides section.senegal-series-slide img { max-height: 480px; width: auto; }
+.reveal .slides section.senegal-series-slide .senegal-series-reading { font-size: 25px; line-height: 1.35; margin-top: 15px; }
+.senegal-subtitle { font-size: 23px; color: #606976; margin: 3px 0 18px; }
+.senegal-evidence-columns { display: grid; grid-template-columns: 1fr 1.12fr; gap: 42px; text-align: left; }
+.reveal .slides section.senegal-evidence-slide h3 { font-size: 27px; text-transform: none; margin: 0 0 14px; }
+.reveal .slides section.senegal-evidence-slide table { font-size: 24px; width: 100%; }
+.reveal .slides section.senegal-evidence-slide td, .reveal .slides section.senegal-evidence-slide th { padding: 9px 12px; }
+.reveal .slides section.senegal-evidence-slide th:first-child { width: 76%; }
+.senegal-role-note { font-size: 20px; line-height: 1.4; margin-top: 15px; }
+.reveal .slides section.senegal-evidence-slide .senegal-cases p { font-size: 24px; line-height: 1.4; margin: 0 0 21px; }
+.senegal-cases a { font-size: 19px; }
+.senegal-takeaway { border-top: 1px solid #cbd0d9; padding-top: 17px; margin-top: 18px; font-size: 27px; line-height: 1.35; }
+.reveal .slides section.senegal-evidence-slide .sample { font-size: 18px; margin-top: 13px; }

@@ -11,7 +11,7 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **20 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing lead directly to prompting fields/rules and the historical GenAI comparison. The monthly-score illustration follows coverage, introducing how article labels are summarized before the findings.
+The current source renders **21 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing lead directly to prompting fields/rules and the historical GenAI comparison. The monthly-score illustration follows coverage, introducing how article labels are summarized before the findings.
 
 | Slides | Content |
 |---|---|
@@ -23,8 +23,9 @@ The current source renders **20 slides**. Slides 6–7 move from audience questi
 | 11 | Coverage and analytical sample |
 | 12 | Why the same average can hide different coverage; net score and proposed P |
 | 13–16 | Label distributions, joint labels, source–government framing and monthly context |
-| 17–19 | Validation, research agenda and discussion |
-| 20 | References |
+| 17 | Senegal actor groups and verified article examples |
+| 18–20 | Validation, research agenda and discussion |
+| 21 | References |
 
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
@@ -61,6 +62,14 @@ python scripts/build_slide_figures.py
 ```
 
 The builder verifies the public input hashes and pinned Natural Earth geometry. It uses no database, article text or model calls. The existing [notebook](../notebooks/01_dashboard_and_measures.ipynb) provides additional calculations and explanations.
+
+## Senegal case evidence
+
+Slides 16–17 connect the monthly series to actors, primary actions and selected article records. February has 132 positive-alignment and 182 negative-alignment articles; 83 of the positive-alignment records also have negative reputation. From February to March, protest/march actions fall from 51 to 4 and voting/election actions rise from 14 to 201. These are coded article counts, not independent events or a causal decomposition of P.
+
+[Aggregate evidence](figures/data/09_senegal_contributors.json) contains all 24 monthly denominators, actor/action distributions, joint labels and within-source comparisons. [Nine article examples](figures/data/09_senegal_article_examples.json) contain source links, saved model codes, short evidence spans and input lengths. Each example's saved-attempt membership, source plan and input were verified against the frozen extraction evidence. Examples were deliberately selected and are not an accuracy sample. Several translated inputs are short excerpts. In the police example, the negative reputation span concerns the election postponement, so the slide reports only the police–protester link and alignment.
+
+Reproduce the aggregates with [build_senegal_case.py](../scripts/build_senegal_case.py), supplying the three disjoint private extraction caches using repeated `--cache` arguments, plus `--snapshot slides/analysis_snapshot.json`, `--slide-csv slides/figures/data/09_senegal_monthly_indices.csv` and `--output slides/figures/data/09_senegal_contributors.json`. Each cache needs its neighboring `EXTRACTION_VERIFIED.json`; the frozen public scope JSON must be cached or supplied with `--scope`. The script verifies cache hashes, full sample counts and the 27-cell joint distribution, then reconciles every displayed month. It reads existing files and makes no database, network or model calls. Private caches and article texts are not published.
 
 ## Performance figures
 
