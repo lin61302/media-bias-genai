@@ -1,0 +1,29 @@
+```{=html}
+<div class="polarization-example" aria-label="Three synthetic months showing positive, zero and negative article shares, net score and proposed polarization index">
+  <p class="polarization-intro">One measure, 100 codable articles in each illustrative month.</p>
+  <div class="polarization-table">
+    <div class="polarization-table-head"><span>Month</span><span>Share of articles</span><span>Net N</span><span>Proposed P</span></div>
+    <div class="polarization-table-row">
+      <strong>All zero-coded</strong>
+      <div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive articles"><span class="polarization-zero" style="width:100%">100%</span></div>
+      <span class="polarization-value">0</span><strong class="polarization-value">0</strong>
+    </div>
+    <div class="polarization-table-row">
+      <strong>One-sided</strong>
+      <div class="polarization-distribution" aria-label="0 negative, 40 zero, 60 positive articles"><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:60%">60%</span></div>
+      <span class="polarization-value">.60</span><strong class="polarization-value">0</strong>
+    </div>
+    <div class="polarization-table-row">
+      <strong>Both directions</strong>
+      <div class="polarization-distribution" aria-label="45 negative, 10 zero, 45 positive articles"><span class="polarization-negative" style="width:45%">45%</span><span class="polarization-zero" style="width:10%">10%</span><span class="polarization-positive" style="width:45%">45%</span></div>
+      <span class="polarization-value">0</span><strong class="polarization-value">.81</strong>
+    </div>
+  </div>
+  <div class="polarization-legend"><span><i class="polarization-negative"></i>Negative</span><span><i class="polarization-zero"></i>Zero</span><span><i class="polarization-positive"></i>Positive</span></div>
+  <div class="polarization-formulas">
+    <p><strong>N = p⁺ − p⁻</strong><span>Net direction</span></p>
+    <p><strong>P = 4p⁺p⁻</strong><span>Coexistence of positive and negative coverage</span></p>
+  </div>
+  <p class="polarization-note">Zero-coded articles stay in the denominator; uncodable records are excluded. These are synthetic examples.</p>
+</div>
+```

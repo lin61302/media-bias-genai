@@ -1,18 +1,17 @@
-/* Editable reconstruction of Erik's classifier overview. Scoped to this slide. */
-.reveal .slides section.classifier-slide .classifier-diagram {
+/* Editable classifier pipeline and monthly-score illustration. */
+.reveal .slides section.classifier-slide .classifier-diagram,
+.reveal .slides section.polarization-slide .polarization-example {
   --classifier-navy: #011f5b;
   --classifier-muted: #6b7280;
   --classifier-rule: #dce1e8;
   color: #1f2328;
   font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 20px;
-  line-height: 1.25;
+  line-height: 1.28;
   text-align: left;
   width: 100%;
 }
 .classifier-slide .classifier-diagram *,
-.classifier-slide .classifier-diagram *::before,
-.classifier-slide .classifier-diagram *::after { box-sizing: border-box; }
+.polarization-slide .polarization-example * { box-sizing: border-box; }
 .classifier-slide .classifier-stages {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
@@ -20,8 +19,8 @@
 }
 .classifier-slide .classifier-stage {
   position: relative;
-  min-height: 205px;
-  padding: 15px 12px 12px;
+  min-height: 242px;
+  padding: 16px 12px 14px;
   background: #fff;
   border: 1.5px solid var(--classifier-rule);
   border-top: 6px solid var(--classifier-navy);
@@ -32,21 +31,18 @@
   position: absolute;
   z-index: 2;
   right: -20px;
-  top: 101px;
+  top: 112px;
   color: #788393;
   font-size: 22px;
   line-height: 1;
 }
-.classifier-slide .classifier-stage-focus {
-  border-color: var(--classifier-navy);
-  box-shadow: inset 0 0 0 0.5px var(--classifier-navy);
-}
+.classifier-slide .classifier-stage-focus { border-color: var(--classifier-navy); }
 .classifier-slide .classifier-stage-heading {
   display: grid;
   grid-template-columns: 27px 1fr;
   align-items: start;
   gap: 7px;
-  min-height: 50px;
+  min-height: 66px;
 }
 .classifier-slide .classifier-number {
   display: flex;
@@ -62,151 +58,47 @@
 }
 .reveal .slides section.classifier-slide .classifier-stage h3 {
   color: var(--classifier-navy);
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 650;
-  line-height: 1.12;
+  line-height: 1.14;
   letter-spacing: -0.02em;
   text-transform: none;
   margin: 0;
 }
-.classifier-slide .classifier-stage-copy {
-  font-size: 18px;
-  line-height: 1.35;
-  letter-spacing: -0.02em;
-}
-.classifier-slide .classifier-stage-note {
-  color: var(--classifier-muted);
-  font-size: 16px;
-  line-height: 1.25;
-  margin-top: 10px;
-}
-.classifier-slide .classifier-encoder {
-  font-size: 19px;
-  font-weight: 600;
-  color: var(--classifier-navy);
-  padding: 5px 0;
-  border-bottom: 1px solid var(--classifier-rule);
-  white-space: nowrap;
-  letter-spacing: -0.02em;
-}
-.classifier-slide .classifier-detail-row {
-  display: grid;
-  grid-template-columns: minmax(0, 2.7fr) minmax(0, 1fr);
-  gap: 22px;
-  margin-top: 22px;
-}
-.classifier-slide .classifier-record,
-.classifier-slide .classifier-months {
-  border: 1.5px solid var(--classifier-rule);
-  border-radius: 12px;
-  background: #fff;
-  padding: 15px 18px 12px;
-  min-height: 330px;
-}
-.classifier-slide .classifier-panel-heading {
-  color: var(--classifier-navy);
-  font-size: 23px;
-  line-height: 1.15;
-  font-weight: 650;
-}
-.classifier-slide .classifier-panel-heading > span {
-  color: var(--classifier-muted);
-  font-size: 17px;
-  font-weight: 400;
-  margin-left: 8px;
-}
-.classifier-slide .classifier-example {
-  background: #f2f3f6;
-  border-radius: 7px;
-  padding: 10px 14px;
-  margin: 13px 0 17px;
-  font-size: 21px;
-  font-style: italic;
-  line-height: 1.2;
-}
-.classifier-slide .classifier-record-columns {
-  display: grid;
-  grid-template-columns: 0.95fr 1.25fr;
-  gap: 18px;
-}
-.classifier-slide .classifier-entities { padding-right: 15px; border-right: 1px solid var(--classifier-rule); }
-.classifier-slide .classifier-detail-label {
-  color: var(--classifier-muted);
-  font-size: 15px;
-  line-height: 1.15;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-.classifier-slide .classifier-entity-row {
-  display: grid;
-  grid-template-columns: 54px minmax(0, 1fr);
-  gap: 9px;
-  font-size: 17px;
-  line-height: 1.18;
-  margin-bottom: 9px;
-}
-.classifier-slide .classifier-code-row {
-  display: grid;
-  grid-template-columns: 106px 40px minmax(0, 1fr);
-  gap: 9px;
-  align-items: center;
-  font-size: 17px;
-  line-height: 1.15;
-  min-height: 48px;
-}
-.classifier-slide .classifier-code-row strong { color: #1f2328; }
-.classifier-slide .classifier-code {
-  display: flex;
-  width: 40px;
-  height: 28px;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  border-radius: 16px;
-  font-size: 20px;
-  font-weight: 650;
-}
-.classifier-slide .classifier-positive,
-.classifier-slide .classifier-bar-positive { background: #009e73; }
-.classifier-slide .classifier-negative,
-.classifier-slide .classifier-bar-negative { background: #d55e00; }
-.classifier-slide .classifier-zero { background: #8b95a5; }
-.classifier-slide .classifier-bar-zero { background: #cbd1da; }
-.classifier-slide .classifier-record-note {
-  border-top: 1px solid var(--classifier-rule);
-  padding-top: 9px;
-  margin-top: 10px;
-  font-size: 16px;
-  line-height: 1.2;
-  color: var(--classifier-muted);
-}
-.classifier-slide .classifier-month-head,
-.classifier-slide .classifier-month-data {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px 42px;
-  gap: 12px;
-  align-items: center;
-}
-.classifier-slide .classifier-month-head {
-  font-size: 16px;
-  color: var(--classifier-muted);
-  margin-top: 14px;
-  margin-bottom: 2px;
-  text-align: center;
-}
-.classifier-slide .classifier-month { margin-bottom: 12px; }
-.classifier-slide .classifier-month-name { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-.classifier-slide .classifier-month-data { font-size: 19px; text-align: center; }
-.classifier-slide .classifier-distribution { display: flex; height: 22px; overflow: hidden; }
-.classifier-slide .classifier-distribution > span { height: 100%; }
-.classifier-slide .classifier-month-data strong { color: #1f2328; }
-.classifier-slide .classifier-legend { display: flex; gap: 12px; align-items: center; color: var(--classifier-muted); font-size: 16px; margin-top: 15px; }
-.classifier-slide .classifier-legend > span { display: inline-flex; gap: 5px; align-items: center; }
-.classifier-slide .classifier-legend i { display: inline-block; width: 12px; height: 12px; font-style: normal; }
-.classifier-slide .classifier-legend .classifier-formula { margin-left: auto; color: #1f2328; font-size: 16px; white-space: nowrap; }
-.classifier-slide .classifier-footnote { font-size: 16px; color: var(--classifier-muted); line-height: 1.2; margin-top: 12px; }
+.classifier-slide .classifier-stage-copy { font-size: 20px; line-height: 1.42; letter-spacing: -0.02em; }
+.classifier-slide .classifier-stage-note { color: var(--classifier-muted); font-size: 18px; line-height: 1.3; margin-top: 12px; }
+.classifier-slide .classifier-encoder { font-size: 20px; font-weight: 600; color: var(--classifier-navy); padding: 5px 0; border-bottom: 1px solid var(--classifier-rule); letter-spacing: -0.02em; }
+.classifier-slide .classifier-performance { margin-top: 30px; }
+.reveal .slides section.classifier-slide .classifier-performance h3 { font-size: 29px; text-transform: none; margin: 0 0 12px; }
+.reveal .slides section.classifier-slide .classifier-performance table { width: 100%; font-size: 25px; background: transparent; table-layout: fixed; }
+.classifier-slide .classifier-performance th:nth-child(1) { width: 28%; }
+.classifier-slide .classifier-performance th:nth-child(2) { width: 44%; }
+.classifier-slide .classifier-performance th:nth-child(3) { width: 28%; }
+.reveal .slides section.classifier-slide .classifier-performance td,
+.reveal .slides section.classifier-slide .classifier-performance th { padding: 10px 18px 10px 0; vertical-align: middle; line-height: 1.24; }
+.classifier-slide .classifier-performance td:last-child { white-space: nowrap; }
+.classifier-slide .classifier-performance td:last-child strong { display: inline-block; font-size: 33px; min-width: 79px; margin-right: 12px; }
+.classifier-slide .classifier-performance td:last-child span { display: inline-block; font-size: 19px; color: var(--classifier-muted); white-space: normal; max-width: 155px; vertical-align: middle; }
+.reveal .slides section.classifier-slide .classifier-footnote { font-size: 19px; color: var(--classifier-muted); line-height: 1.3; margin: 15px 0 0; }
 
-.classifier-slide .classifier-code-copy { display: block; font-size: 16px; line-height: 1.2; }
-.classifier-slide .classifier-code-copy > span { display: block; }
-.classifier-slide .classifier-question { color: var(--classifier-navy); font-weight: 600; margin-bottom: 4px; }
-.classifier-slide .classifier-formula-row { border-top: 1px solid var(--classifier-rule); padding-top: 9px; margin-top: 12px; color: #1f2328; font-size: 18px; line-height: 1.4; }
+.reveal .slides section.polarization-slide .polarization-intro { font-size: 26px; margin: 8px 0 25px; }
+.polarization-slide .polarization-table-head,
+.polarization-slide .polarization-table-row { display: grid; grid-template-columns: 220px minmax(0, 1fr) 115px 145px; gap: 20px; align-items: center; }
+.polarization-slide .polarization-table-head { font-size: 22px; color: var(--classifier-muted); padding-bottom: 14px; border-bottom: 2px solid #7c8593; }
+.polarization-slide .polarization-table-head span:nth-child(n+3) { text-align: center; }
+.polarization-slide .polarization-table-row { font-size: 26px; min-height: 100px; border-bottom: 1px solid #dce1e8; }
+.polarization-slide .polarization-table-row > strong { color: var(--classifier-navy); }
+.polarization-slide .polarization-distribution { display: flex; height: 46px; overflow: hidden; }
+.polarization-slide .polarization-distribution > span { display: flex; justify-content: center; align-items: center; height: 100%; font-size: 23px; font-weight: 600; }
+.polarization-slide .polarization-negative { background: #d55e00; color: white; }
+.polarization-slide .polarization-zero { background: #cbd1da; color: #263244; }
+.polarization-slide .polarization-positive { background: #009e73; color: white; }
+.polarization-slide .polarization-value { text-align: center; font-size: 31px; }
+.polarization-slide .polarization-legend { display: flex; gap: 30px; justify-content: center; font-size: 22px; margin: 17px 0 22px; }
+.polarization-slide .polarization-legend > span { display: inline-flex; align-items: center; gap: 8px; }
+.polarization-slide .polarization-legend i { display: inline-block; width: 17px; height: 17px; }
+.polarization-slide .polarization-formulas { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; border-top: 1px solid #cbd0d9; padding-top: 16px; }
+.reveal .slides section.polarization-slide .polarization-formulas p { margin: 0; }
+.polarization-slide .polarization-formulas strong { display: block; font-size: 30px; }
+.polarization-slide .polarization-formulas span { display: block; font-size: 23px; margin-top: 5px; }
+.reveal .slides section.polarization-slide .polarization-note { font-size: 19px; color: var(--classifier-muted); line-height: 1.3; margin: 22px 0 0; }

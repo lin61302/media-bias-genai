@@ -11,17 +11,6 @@
 .sentiment-questions-slide .sentiment-example { font-size: 24px; margin-top: 5px; line-height: 1.25; }
 .sentiment-questions-slide .sentiment-purpose { font-size: 21px; color: #606976; margin-top: 3px; }
 .sentiment-questions-slide .sentiment-closing-question { font-size: 29px; color: var(--accent); font-weight: 600; border-top: 1px solid #cbd0d9; padding-top: 16px; margin-top: 20px; }
-.reveal .slides section.sentiment-reference-slide .reference-example-label { font-size: 22px; color: #606976; margin: 18px 0 6px; }
-.reveal .slides section.sentiment-reference-slide .reference-quote { font-size: 29px; margin: 0 0 22px; }
-.reveal .slides section.sentiment-reference-slide table.reference-questions { width: 100%; table-layout: fixed; font-size: 25px; background: transparent; }
-.sentiment-reference-slide .reference-questions th:first-child { width: 44%; }
-.reveal .slides section.sentiment-reference-slide .reference-questions td, .reveal .slides section.sentiment-reference-slide .reference-questions th { padding: 10px 16px 10px 0; line-height: 1.28; vertical-align: top; }
-.reveal .slides section.sentiment-reference-slide .reference-principle { font-size: 24px; color: #606976; margin: 14px 0 23px; }
-.sentiment-reference-slide .reference-bridge { border-top: 1px solid #cbd0d9; padding-top: 18px; }
-.reveal .slides section.sentiment-reference-slide .reference-bridge h3 { font-size: 28px; text-transform: none; margin: 0 0 10px; }
-.reveal .slides section.sentiment-reference-slide .reference-bridge p { font-size: 25px; line-height: 1.32; margin: 8px 0; }
-.reveal .slides section.sentiment-reference-slide .reference-bridge .reference-timing { font-size: 22px; color: #606976; }
-.sentiment-reference-slide .reference-relations { font-size: 23px; line-height: 1.35; margin-top: 22px; }
 .sentiment-definitions-slide .definitions-example { font-size: 25px; line-height: 1.35; padding: 13px 18px; background: #fff; border-left: 4px solid var(--accent); margin: 15px 0 20px; }
 .sentiment-definitions-slide .definitions-context { font-size: 22px; color: #606976; }
 .reveal .slides section.sentiment-definitions-slide table { width: 100%; font-size: 25px; table-layout: fixed; }
@@ -32,11 +21,6 @@
 .reveal .slides section.sentiment-definitions-slide th { padding: 9px 15px; }
 .sentiment-definitions-slide .definitions-variation { font-size: 24px; line-height: 1.3; margin-top: 17px; }
 .sentiment-definitions-slide .definitions-note { font-size: 21px; color: #606976; line-height: 1.3; margin-top: 11px; }
-.reveal .slides section.processing-detail-slide h3 { font-size: 29px; text-transform: none; margin: 10px 0 24px; }
-.reveal .slides section.processing-detail-slide .column { padding-right: 25px; }
-.reveal .slides section.processing-detail-slide ul { font-size: 27px; }
-.reveal .slides section.processing-detail-slide li { margin-bottom: 18px; line-height: 1.3; }
-.reveal .slides section.processing-detail-slide .processing-note { border-top: 1px solid #cbd0d9; padding-top: 15px; font-size: 25px; margin-top: 15px; }
 .reveal .slides section.coverage-summary-slide .coverage-summary-line { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; font-size: 26px; margin: 8px 0 18px; }
 .reveal .slides section.coverage-summary-slide .coverage-summary-line span { font-size: 24px; }
 .reveal .slides section.coverage-summary-slide img { max-height: 465px; max-width: 100%; width: auto; object-fit: contain; }
@@ -47,5 +31,22 @@
 .reveal .slides section.framing-evidence-slide ul { font-size: 27px; }
 .reveal .slides section.framing-evidence-slide .sample { font-size: 20px; margin-top: 20px; }
 
-.reveal .slides section.processing-detail-slide .columns { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 42px; }
-.reveal .slides section.processing-detail-slide .column { width: auto !important; padding: 0 !important; min-width: 0; }
+
+/* Focus the concept slide on the three questions and their contrasting codes. */
+.reveal .slides section.sentiment-definitions-slide table { font-size: 28px; }
+.sentiment-definitions-slide .definitions-example { font-size: 28px; margin-bottom: 24px; }
+.reveal .slides section.sentiment-definitions-slide td { padding: 18px 15px; line-height: 1.3; }
+.sentiment-definitions-slide .definitions-variation { font-size: 27px; margin-top: 25px; line-height: 1.5; }
+.prompt-fields-slide .prompt-columns { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; text-align: left; }
+.reveal .slides section.prompt-fields-slide h3 { font-size: 31px; text-transform: none; margin: 15px 0 24px; }
+.reveal .slides section.prompt-fields-slide table { width: 100%; background: transparent; font-size: 27px; }
+.reveal .slides section.prompt-fields-slide td { padding: 19px 12px 19px 0; line-height: 1.3; vertical-align: top; }
+.prompt-fields-slide td:first-child { width: 42%; font-weight: 600; color: var(--accent); }
+.reveal .slides section.prompt-fields-slide ol { font-size: 29px; margin: 0 0 0 35px; }
+.reveal .slides section.prompt-fields-slide li { margin-bottom: 25px; padding-left: 6px; line-height: 1.35; }
+.reveal .slides section.genai-performance-slide .performance-intro { font-size: 27px; margin: 22px 0 42px; color: var(--muted); }
+.performance-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; }
+.performance-comparison > div { border-top: 3px solid var(--accent); padding-top: 28px; }
+.genai-performance-slide .performance-value { font-size: 80px; line-height: 1.1; }
+.reveal .slides section.genai-performance-slide .performance-comparison p { font-size: 30px; margin: 24px 0; line-height: 1.5; }
+.reveal .slides section.genai-performance-slide .performance-caveat { font-size: 26px; line-height: 1.5; margin: 42px 0 0; border-top: 1px solid #cbd0d9; padding-top: 22px; color: #606976; }

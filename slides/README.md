@@ -11,17 +11,20 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **19 slides**. Slides 6–8 move from four audience questions to “in relation to what?” and then precise definitions with a synthetic protest-dispersal example. Slide 9 retains the integrated classifier overview, including its field definitions, the same police case as a complete record and monthly illustration. The audience names are **Political alignment**, **Reputational implication** and **Framing**, mapped to `align`, `rep` and `frame`.
+The current source renders **20 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing have their own page, followed by a separate monthly-score illustration, prompting fields/rules, and the historical GenAI comparison.
 
 | Slides | Content |
 |---|---|
 | 1–5 | Question, literature and common political reference |
-| 6–8 | Audience questions, reference point and three precise concepts |
-| 9–10 | Integrated classifier and prompting/processing controls |
-| 11 | Coverage and analytical sample |
-| 12–15 | Label distributions, joint labels, source–government framing and monthly context |
-| 16–18 | Validation, research agenda and discussion |
-| 19 | References |
+| 6–7 | Audience questions and three concepts |
+| 8 | Full-page classifier and processing; civic-event and relevance performance |
+| 9 | Illustrative monthly distributions, net score and proposed P |
+| 10 | Prompting fields and decision rules |
+| 11 | GenAI event-selection agreement with earlier human coding |
+| 12 | Coverage and analytical sample |
+| 13–16 | Label distributions, joint labels, source–government framing and monthly context |
+| 17–19 | Validation, research agenda and discussion |
+| 20 | References |
 
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
@@ -29,7 +32,7 @@ The shared files contain the presentation, method qualifications and source note
 
 The rescue/title contrast in the opening questions comes from calibration example 6: cabinet-affiliated services rescue 20 miners, while the title calls the rescue a “cynical publicity stunt.” It can be discussed orally as a second example: political alignment 0, reputational implication +1 and framing −1.
 
-The police example on slides 8–9 is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. The negative reputational implication uses the prompt's explicit rights and lawful-conduct norms, not a democracy index or observed public-opinion change. It is not a sampled event or model-accuracy result.
+The police example on slide 7 is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; the narrator’s “Police rightly restored order by dispersing the rioters” changes framing to +1. “Rioters” alone is not a sufficient cue. The negative reputational implication uses the prompt's explicit rights and lawful-conduct norms, not a democracy index or observed public-opinion change. It is not a sampled event or model-accuracy result.
 
 The evaluated government is selected once for all three fields. Publication country is the default for domestic government-relevant affairs; the foreign-government exception requires a foreign focus and no codable judgment about the publication country's incumbent. The article date identifies who is incumbent, not which country must be evaluated. The complete rule, including `ALL` and multiple governments, is in prompt section 1.
 
@@ -37,7 +40,7 @@ Framing uses only the supplied title and narration. Prompt sections Input and 5 
 
 The classifier keeps Erik's six-box overview style. Translation and the two civic encoder classifiers have distinct stages. Its lower half contains the record, three judgment questions and illustrative monthly distributions. Definitions stay in this integrated figure. Edit [includes/classifier.qmd](includes/classifier.qmd) and [classifier.css](classifier.css). `pipeline_schematic.png` retains the earlier static figure for reference.
 
-The classifier and its examples are editable HTML in the included QMD. Sample counts and the framing comparison table remain editable in the main QMD. [concepts.css](concepts.css) styles those slides. Keep the `includes` folder and both CSS files with the QMD when sharing the source. The rendered HTML embeds its viewing resources.
+The classifier and separate monthly illustration are editable HTML in the included QMD files. Sample counts and the framing comparison table remain editable in the main QMD. [concepts.css](concepts.css) styles those slides. Keep the `includes` folder and both CSS files with the QMD when sharing the source. The rendered HTML embeds its viewing resources.
 
 The four current empirical figures use the fixed [November 8 release](analysis_snapshot.json): January 2019–May 2026, **3,181,113 eligible articles** among 3,464,596 valid, independently stored complete-prompt records. This adds 810,250 valid and 740,801 eligible records to the previous slide snapshot. Earlier-year coverage is uneven. Processing admissions and separately tracked reruns are outside this analytical denominator.
 
@@ -57,9 +60,19 @@ python scripts/build_slide_figures.py
 
 The builder verifies the public input hashes and pinned Natural Earth geometry. It uses no database, article text or model calls. The existing [notebook](../notebooks/01_dashboard_and_measures.ipynb) provides additional calculations and explanations.
 
+## Performance figures
+
+The upstream civic-event classifier’s **82%** average out-of-sample accuracy and civic relevance classifier’s **87%** overall accuracy are reported in [Moratz et al. (2025), Tracking Civic Space](https://zungru.com/assets/papers/civic-space-transformers.pdf), pp. 11–13. These are separate from GenAI evaluation.
+
+The GenAI slide reports **79.1% same-event agreement (167/211)** when both model and human identify an action, and **67.9% (178/262)** including shared no-action decisions and action/no-action disagreements. These come from a selected historical sample and AI-assisted event matching. They are not accuracy estimates for the three current political judgments. See [validation](../docs/validation.md).
+
+## Analytical scope
+
+The current analytical figures retain the fixed full eligible sample, including domestic, cross-border and international reporting. A domestic-only analysis additionally requires publication country to equal the evaluated government. “National incumbent” identifies the government reference, not a domestic-only sampling rule. The two maps distinguish where sources publish from which governments their articles evaluate; the pooled correlation describes article labels in that broader sample. Foreign evaluations support comparisons of multiple outlets covering the same government. Those comparisons need common periods and events.
+
 ## Updating coverage and counts
 
-The figures use `explore-since2019.json`, pinned in [analysis_snapshot.json](analysis_snapshot.json). The independent storage cutoff is **November 8, 2026, 13:57:13 UTC**. The [figure manifest](figures/data/slide_figure_manifest.json) records the input hashes and calculated results. [Annual counts](figures/data/06_coverage_by_year.csv) describe the uneven observed coverage. The Senegal case remains a 2023–2024 subwindow. [Source–government counts and framing scores](figures/data/12_source_government_framing.csv) reproduce the editable table on slide 14.
+The figures use `explore-since2019.json`, pinned in [analysis_snapshot.json](analysis_snapshot.json). The independent storage cutoff is **November 8, 2026, 13:57:13 UTC**. The [figure manifest](figures/data/slide_figure_manifest.json) records the input hashes and calculated results. [Annual counts](figures/data/06_coverage_by_year.csv) describe the uneven observed coverage. The Senegal case remains a 2023–2024 subwindow. [Source–government counts and framing scores](figures/data/12_source_government_framing.csv) reproduce the editable table on slide 15.
 
 The repository-wide `data/analysis_snapshot.json`, notebook and earlier exports retain their November 4 release. Slide inputs use a separate hash-addressed cache. The previous deck and figure files remain available at Git revision `118684b0ccd37bbcf4b9ff9c73004f2ca4fe5f48`; their dates have not been relabeled.
 

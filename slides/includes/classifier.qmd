@@ -1,15 +1,14 @@
 ```{=html}
-<div class="classifier-diagram" aria-label="Six-stage classification pipeline, an illustrative coded article, and three illustrative monthly distributions">
+<div class="classifier-diagram" aria-label="Six-stage classification pipeline and reported performance of the two civic classifiers">
   <div class="classifier-stages">
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">1</span><h3>News corpus</h3></div>
-      <div class="classifier-stage-copy">Collect articles<br>Preprocess text<br>Retain source + date</div>
+      <div class="classifier-stage-copy">Collect articles<br>Preprocess text<br>Keep source + date</div>
       <div class="classifier-stage-note">Domestic and international sources</div>
     </div>
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">2</span><h3>Translation</h3></div>
       <div class="classifier-stage-copy">Title and body<br>English text<br>Check usable input</div>
-      <div class="classifier-stage-note">Full supplied text</div>
     </div>
     <div class="classifier-stage classifier-stage-focus">
       <div class="classifier-stage-heading"><span class="classifier-number">3</span><h3>Civic classifiers</h3></div>
@@ -19,12 +18,12 @@
     </div>
     <div class="classifier-stage classifier-stage-focus">
       <div class="classifier-stage-heading"><span class="classifier-number">4</span><h3>GenAI coding</h3></div>
-      <div class="classifier-stage-copy">One article / request<br>Action + entities<br>Labels + evidence</div>
-      <div class="classifier-stage-note">Batch API, fixed prompt</div>
+      <div class="classifier-stage-copy">Action + entities<br>Three judgments<br>Supporting text</div>
+      <div class="classifier-stage-note">Fixed prompt<br>Batch API</div>
     </div>
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">5</span><h3>Checks</h3></div>
-      <div class="classifier-stage-copy">JSON + exact spans<br>Verified storage<br>Check codability</div>
+      <div class="classifier-stage-copy">Check output fields<br>Verify evidence<br>Store coded records</div>
     </div>
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">6</span><h3>Analytical views</h3></div>
@@ -32,47 +31,16 @@
     </div>
   </div>
 
-  <div class="classifier-detail-row">
-    <div class="classifier-record">
-      <div class="classifier-panel-heading">Inside one coded record <span>synthetic example</span></div>
-      <div class="classifier-example">“Police dispersed peaceful anti-government demonstrators.”</div>
-      <div class="classifier-record-columns">
-        <div class="classifier-entities">
-          <div class="classifier-detail-label">What the record identifies</div>
-          <div class="classifier-entity-row"><strong>gov</strong><span>Evaluated incumbent government</span></div>
-          <div class="classifier-entity-row"><strong>act</strong><span>“dispersed peaceful anti-government demonstrators”</span></div>
-          <div class="classifier-entity-row"><strong>actor</strong><span>Police</span></div>
-          <div class="classifier-entity-row"><strong>target</strong><span>Peaceful anti-government demonstrators</span></div>
-        </div>
-        <div class="classifier-labels">
-          <div class="classifier-detail-label">Three judgments about the incumbent</div>
-          <div class="classifier-code-row"><strong>Political<br>alignment</strong><span class="classifier-code classifier-positive">+1</span><span class="classifier-code-copy"><span class="classifier-question">Actor’s alignment toward gov?</span><span>Restricts explicit opponents</span></span></div>
-          <div class="classifier-code-row"><strong>Reputational<br>implication</strong><span class="classifier-code classifier-negative">−1</span><span class="classifier-code-copy"><span class="classifier-question">Implication for government?</span><span>Negative legitimacy implication</span></span></div>
-          <div class="classifier-code-row"><strong>Framing</strong><span class="classifier-code classifier-zero">0</span><span class="classifier-code-copy"><span class="classifier-question">Narrator approval or criticism?</span><span>No added evaluation</span></span></div>
-        </div>
-      </div>
-      <div class="classifier-record-note">Cabinet affiliation supplied. Adding “a necessary operation that restored order” changes framing to +1.</div>
-    </div>
-
-    <div class="classifier-months">
-      <div class="classifier-panel-heading">Illustrative months</div>
-      <div class="classifier-month-head"><span></span><span>Net N</span><span>P</span></div>
-      <div class="classifier-month">
-        <div class="classifier-month-name">All zero-coded</div>
-        <div class="classifier-month-data"><div class="classifier-distribution" aria-label="100 percent zero"><span class="classifier-bar-zero" style="width:100%"></span></div><span>0</span><strong>0</strong></div>
-      </div>
-      <div class="classifier-month">
-        <div class="classifier-month-name">One-sided</div>
-        <div class="classifier-month-data"><div class="classifier-distribution" aria-label="40 percent zero and 60 percent positive"><span class="classifier-bar-zero" style="width:40%"></span><span class="classifier-bar-positive" style="width:60%"></span></div><span>.60</span><strong>0</strong></div>
-      </div>
-      <div class="classifier-month">
-        <div class="classifier-month-name">Both directions</div>
-        <div class="classifier-month-data"><div class="classifier-distribution" aria-label="45 percent negative, 10 percent zero and 45 percent positive"><span class="classifier-bar-negative" style="width:45%"></span><span class="classifier-bar-zero" style="width:10%"></span><span class="classifier-bar-positive" style="width:45%"></span></div><span>0</span><strong>.81</strong></div>
-      </div>
-      <div class="classifier-legend"><span><i class="classifier-bar-negative"></i>−</span><span><i class="classifier-bar-zero"></i>0</span><span><i class="classifier-bar-positive"></i>+</span></div>
-      <div class="classifier-formula-row">N = p⁺ − p⁻<br>Proposed P = 4p⁺p⁻</div>
-    </div>
+  <div class="classifier-performance">
+    <h3>Civic classifier performance</h3>
+    <table aria-label="Paper-reported civic classifier accuracy">
+      <thead><tr><th>Model</th><th>What it identifies</th><th>Reported accuracy</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Civic-event type</strong></td><td>The article’s civic-event category</td><td><strong class="classifier-score">82%</strong><span>Average out of sample</span></td></tr>
+        <tr><td><strong>Civic relevance</strong></td><td>Whether the article concerns civic or political life</td><td><strong class="classifier-score">87%</strong><span>Overall accuracy</span></td></tr>
+      </tbody>
+    </table>
+    <p class="classifier-footnote">Moratz et al. (2025), <em>Tracking Civic Space</em>, pp. 11–13. Paper-reported classifier performance.</p>
   </div>
-  <div class="classifier-footnote">Zero: neutral, mixed or insufficient directional evidence. Null: not codable, kept separate. Synthetic months, not observed countries.</div>
 </div>
 ```

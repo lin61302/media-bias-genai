@@ -21,6 +21,15 @@ All 70 requests lacked incumbent-context metadata. Exact reconstruction of the s
 
 A separate comparison processed 266 previously human-coded articles with the complete prompt and full supplied text; 262 outputs were structurally valid and four invalid. An AI-assisted qualitative review retained the original human annotations and recorded proposed corrections separately. It does not constitute an independent human adjudication panel.
 
+The event-selection comparison gives the following **agreement rates**, based on AI-assisted review of whether the two codings describe the same event:
+
+| Comparison denominator | Matches | Agreement |
+|---|---:|---:|
+| Both human and model identify an action | 167 / 211 | 79.1% |
+| All valid outputs, including shared no-action decisions | 178 / 262 | 67.9% |
+
+The latter includes 11 shared no-action decisions and counts all 40 action/no-action disagreements. Four invalid outputs are outside these valid-output denominators. Event matching and proposed corrections were reviewed with AI assistance; this is not an independent human adjudication panel. These percentages evaluate event selection, not the accuracy of the three political judgments.
+
 This is a historical, selected sample. Its legacy annotation used one sentiment field rather than the current three constructs. Historical inputs were truncated while the new comparison used full supplied text; some titles and bodies differed. Event equivalence, exact-span agreement and political-label agreement therefore answer different questions. Conditional agreement rates from this exercise must not be presented as overall classifier accuracy. No representative human-reference accuracy estimate is established by these checks. Private article texts and review workbooks are not part of this repository.
 
 ## Evaluation layers

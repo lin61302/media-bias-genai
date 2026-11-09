@@ -9,7 +9,7 @@ author:
     affiliations: 
   - name: Ezgi Yilmaz
     affiliations: 
-date: 2026-11-08
+date: 2026-11-09
 date-format: long
 
 bibliography: references.bib
@@ -182,50 +182,20 @@ All examples are illustrative. The budget vote and allegation adapt calibration 
 :::
 
 
-## Sentiment in relation to what? {.sentiment-reference-slide}
-
-```{=html}
-<p class="reference-example-label">A product review</p>
-<p class="reference-quote">“I love the display, but some apps are incompatible.<br>Overall, I recommend this phone.”</p>
-<table class="reference-questions">
-  <thead><tr><th>What do we want to know?</th><th>What does the answer preserve?</th></tr></thead>
-  <tbody>
-    <tr><td>Does the reviewer like the phone overall?</td><td>An overall positive judgment summarizes the review, while leaving out feature differences.</td></tr>
-    <tr><td>Will this phone meet my needs?</td><td>Praise for the display and app-compatibility problems matter differently to different readers.</td></tr>
-  </tbody>
-</table>
-<p class="reference-principle">Every judgment is in relation to the phone. The detail we need depends on the question.</p>
-<div class="reference-bridge"><h3>In our project: the government being evaluated</h3><p>Default to the publication country for domestic affairs. Use a foreign incumbent when it is the focus and no judgment about the domestic incumbent is codable.</p><p class="reference-timing">“Incumbent” means in office at the article’s date; it does not fix the country.</p></div>
-<div class="reference-relations">The actor’s alignment toward it · The action’s implications for it · The narrator’s evaluation of it</div>
-```
-
-::: notes
-The product review is synthetic. It explicitly recommends the phone despite a complaint about app compatibility, illustrating how mixed feature evaluations can coexist with an overall positive judgment. The phone remains the common object throughout. A researcher asking whether reviewers like the phone can use an overall evaluation or recommendation as a useful summary, while recognizing that recommendation and liking are related rather than identical constructs. A reader concerned about display quality or app compatibility needs the relevant details, and may weigh them differently. An overall score does not preserve those priorities or tell every reader whether the phone meets their needs. A sentiment label is useful relative to a specified object and question; retaining aspects and relationships supports additional questions. Do not infer overall evaluation by mechanically averaging feature labels.
-
-Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task. The phone analogy motivates a common reference and multiple useful questions; political alignment, reputational implication and framing are distinct relationships, not feature ratings to average into one overall sentiment score.
-
-All three project dimensions refer to the same evaluated national incumbent, but the relationship and evidence differ. The actor, action's entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.
-
-Political alignment describes the actor's directional relationship to the evaluated government as expressed through the selected action. The action supplies evidence of the relationship; the action itself is not an entity with a political relationship. Evidence can be direct, such as an actor opposing a government proposal, or indirect, such as an actor restricting explicitly identified opponents of that government. This is a unilateral, action-specific inference, not a reciprocal relationship, stable alliance or private ideology. Do not invent a government link from an interaction with a third party when the supplied record establishes none.
-
-Government selection follows ../prompts/civic_20261020_complete_v1.txt, section 1 (lines 39–49): publication_country is the default for domestic government-relevant affairs. The foreign exception applies only when the selected action and portrayal concern that foreign incumbent and the supplied text provides no codable align, rep or frame regarding the publication country's incumbent. For publication_country = ALL, a government must be clearly identified. With multiple governments, choose the one most central to the selected action in the title and lead. publication_date fixes incumbent identity; it does not force gov to equal publication_country. Former-regime conduct cannot be attributed to the current incumbent without a supplied link.
-:::
-
 
 ## Three judgments about the same government {.sentiment-definitions-slide}
 
 ```{=html}
-<div class="definitions-example"><strong>Selected action:</strong> “Police dispersed peaceful anti-government demonstrators.”<br><span class="definitions-context">Synthetic case; direct affiliation with the evaluated government is supplied.</span></div>
+<div class="definitions-example"><strong>Selected action:</strong> “Police dispersed peaceful anti-government demonstrators.”</div>
 <table class="sentiment-definitions">
-  <thead><tr><th>Term</th><th>What we code</th><th>In this example</th></tr></thead>
+  <thead><tr><th>Term</th><th>What we ask</th><th>In this example</th></tr></thead>
   <tbody>
-    <tr><td><strong>Political alignment</strong></td><td>The actor’s political relationship to the incumbent, expressed through the selected action: support, opposition, or no supported direction.</td><td><strong>+1:</strong> Police restrict the incumbent’s explicit opponents, expressing alignment toward it.</td></tr>
-    <tr><td><strong>Reputational implication</strong></td><td>What the action and tied facts imply about government performance or legitimacy, under stated conduct norms.</td><td><strong>−1:</strong> Coercion against peaceful demonstrators conflicts with our stated rights norms.</td></tr>
-    <tr><td><strong>Framing</strong></td><td>Government-favoring or government-critical cues added by the title or narrator, holding reported facts constant.</td><td><strong>0:</strong> The sentence describes conduct without adding narrator approval or criticism.</td></tr>
+    <tr><td><strong>Political alignment</strong></td><td>Does the actor support or oppose the incumbent through this action?</td><td><strong>+1:</strong> Police restrict the government’s opponents.</td></tr>
+    <tr><td><strong>Reputational implication</strong></td><td>Does the reported conduct reflect well or badly on the government?</td><td><strong>−1:</strong> Dispersing peaceful protesters reflects badly on the government.</td></tr>
+    <tr><td><strong>Framing</strong></td><td>Does the narrator favor or criticize the government?</td><td><strong>0:</strong> The sentence reports what the police did.</td></tr>
   </tbody>
 </table>
-<div class="definitions-variation">Add narrator endorsement: “a necessary operation that restored order” → <strong>framing +1</strong>.</div>
-<div class="definitions-note">Framing uses supplied text; omissions need separate study. Reputation is not observed opinion change.</div>
+<div class="definitions-variation">Narrator: “Police rightly restored order by dispersing the rioters.”<br>→ <strong>Framing +1</strong></div>
 ```
 
 ::: notes
@@ -235,50 +205,79 @@ Scope the substantive action before its labels: here, dispersal is the selected 
 
 Framing uses only the supplied title and narration. The prompt prohibits browsing, other records and outside case knowledge (line 17); its comparison holds the reported action, condition and outcome constant (line 104). This permits ordinary linguistic judgment about an added evaluation, but supplies no external neutral-news benchmark. Explicit minimization of acknowledged wrongdoing can count (line 105); omitted details, sources, gatekeeping and presumed outlet ideology cannot be inferred from one article (lines 113–115). “Rioters” is not an automatic cue: it may describe supplied violence or delegitimate critics through loaded wording. “To keep citizens safe” may be an attributed official justification rather than narrator endorsement. Require visible adoption and robust cues, especially in translation. Matched-event comparisons can study differences in emphasis or omissions separately; the majority account is not automatically a factual or neutral baseline.
 
-The base case is +1/−1/0; adding the narrator's “necessary operation that restored order” changes framing to +1 while keeping the selected action and tied facts fixed. The following integrated classifier retains this same case as a complete record, its definitions and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.
+The base case is +1/−1/0. The new illustrative narrator wording “Police rightly restored order by dispersing the rioters” clearly endorses the intervention through “rightly” and “restored order”; rioters alone is not an automatic positive framing cue. Peaceful status stays in the reported base case because removing it would make the negative reputation label unsupported without further context. The short slide phrase about legitimacy describes the coded implication, not measured public opinion. Detailed qualifications are retained here rather than repeated on the slide. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.
 :::
 
 
-## The classifier {.classifier-slide}
+## The classifier and processing {.classifier-slide}
 
 {{< include includes/classifier.qmd >}}
 
 ::: notes
-The synthetic police example is calibration example 1 in ../prompts/civic_20261020_complete_v1.txt. The supplied record establishes direct cabinet affiliation and peaceful anti-government demonstrators. Institutional role alone does not establish alignment. Alignment describes the actor's political relationship to the evaluated government as expressed through the selected action, not moral approval, private ideology or a permanent reciprocal relationship. Reputation is a coded implication for government performance/legitimacy, not an observed change in public opinion. Framing requires observable evaluation in the title or narrator's voice beyond the underlying event. Quotation alone does not establish narrator endorsement. Example 2 adds “a necessary operation that restored order,” changing framing while keeping the conduct fixed.
+The six stages show corpus collection, translation, the two encoder classifiers, GenAI coding, checks, and analytical views. Civic-event type and civic relevance are separate classification tasks; both selection conditions must pass. This is not a dual-encoder architectural claim. GenAI receives the full supplied English text, unlike the earlier encoder classifier's title plus first 600 characters.
 
-One article contributes one prioritized action, not a complete event inventory. The entity target and evaluated government are distinct fields. Action selection follows headline, lead, then repeated substantive action, with government relevance resolving ties. Exact evidence requirements and coding rules appear in the complete prompt.
-
-The encoder tasks are civic-event type and civic relevance. Both selection conditions must pass. They are two classifiers, not a claim about a dual-encoder architecture. The monthly examples are synthetic. N is positive minus negative share. Proposed P = 4p+ p− combines the prevalence of directional reporting with its balance. It is not a validated societal polarization measure. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. Sources: ../docs/coverage-balance.md and ../docs/codebook.md.
+Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13: civic-event average out-of-sample accuracy 82%; civic/political relevance overall accuracy 87%. https://zungru.com/assets/papers/civic-space-transformers.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
 :::
 
 
-## Prompting and processing {.processing-detail-slide}
+## From article labels to monthly measures {.polarization-slide}
 
-::: {.columns}
-::: {.column width="50%"}
-### Coding controls
-
-- Supply the English title and full supplied English body
-- Select government and action before the three judgments
-- Use the same complete prompt, decision rules and boundary examples
-- Require exact evidence and retain allegations as allegations
-:::
-::: {.column width="50%"}
-### Checks and analytical records
-
-- One article per request, submitted through the Batch API
-- Record input, prompt and model versions
-- Match IDs, check schema and spans, verify stored records
-- Keep failures, nulls and exclusions separate from zeros
-:::
-:::
-
-::: {.processing-note}
-Fixed rules constrain variation across batches. Structural checks and verified storage do not establish political interpretation accuracy.
-:::
+{{< include includes/polarization.qmd >}}
 
 ::: notes
-Method sources: ../prompts/version.json, ../prompts/civic_20261020_complete_v1.txt, ../docs/codebook.md and ../docs/validation.md. Input checks for usable supplied English do not establish translation fidelity. No sentence-count minimum applies. Model decisions use supplied material rather than outside browsing or inferred outlet ideology. Prompt caching is an operational reuse/cost mechanism, not a guarantee of semantic consistency. Older prompt versions remain separate cohorts. The common analytical sample requires an identified government and primary action plus numeric values for all three labels. Actor and target fields can be null.
+The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index's relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.
+:::
+
+
+## Prompting: fields and decision rules {.prompt-fields-slide}
+
+```{=html}
+<div class="prompt-columns">
+  <div>
+    <h3>What we retain</h3>
+    <table class="prompt-fields">
+      <tbody>
+        <tr><td>Government</td><td>Which incumbent is evaluated?</td></tr>
+        <tr><td>Action · actor · target</td><td>Who did what to whom?</td></tr>
+        <tr><td>Three judgments</td><td>Alignment · reputation · framing</td></tr>
+        <tr><td>Evidence</td><td>The words supporting each code</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <h3>What the prompt specifies</h3>
+    <ol>
+      <li>Choose one main action and one government.</li>
+      <li>Keep the actor, its target and the government distinct.</li>
+      <li>Code the three judgments separately, using supplied text and worked examples.</li>
+      <li>Require evidence; allow zero or not codable.</li>
+    </ol>
+  </div>
+</div>
+```
+
+::: notes
+The complete prompt and codebook define the fields. Government is selected once for all three judgments. Publication country is the default for domestic government-relevant affairs; a foreign government can be selected under the prompt's focus rule. Incumbent identity refers to the article date. Source domain is provenance, not permission to infer ideology.
+
+The action supplies evidence about the actor's relationship to the incumbent, directly or through an explicitly linked third-party target. One selected action is not a full event inventory. Allegations remain allegations. The prompt forbids external event facts, other reporting and inferred omissions. It distinguishes neutral/mixed/insufficient direction (zero) from not codable (null). Source: ../prompts/civic_20261020_complete_v1.txt, ../docs/codebook.md. Processing and storage controls appear in the preceding pipeline, rather than being repeated on this slide.
+:::
+
+
+## GenAI: agreement with earlier human coding {.genai-performance-slide}
+
+```{=html}
+<p class="performance-intro">266 historical human-coded articles · 262 valid model outputs</p>
+<div class="performance-comparison">
+  <div><strong class="performance-value">79.1%</strong><p>Same event in <b>167 of 211</b> articles<br>where both identified an action</p></div>
+  <div><strong class="performance-value">67.9%</strong><p><b>178 of 262</b> agree when<br>no-action decisions are also counted</p></div>
+</div>
+<p class="performance-caveat">Selected historical sample; AI-assisted event matching.<br>Independent human validation of the three political judgments is still needed.</p>
+```
+
+::: notes
+This is agreement on the selected event, not overall model accuracy or human-reference accuracy of alignment, reputation and framing. The November 2 comparison sent 266 historical human-coded articles through the complete prompt without providing human labels; 262 outputs passed structure/evidence checks and four did not. Among 211 records where both selected an action, 167 were judged to select the same event (79.1469%). Including 11 shared no-action decisions gives 178/262 (67.9389%); all 40 action/no-action disagreements remain in this denominator. Four invalid outputs are excluded from these valid-output rates, not scored as successes.
+
+Event equivalence and disagreements were reviewed with AI assistance, not an independent human adjudication panel. Legacy human inputs were shorter, definitions differed, and some title/body records differed. The original human sentiment variable does not provide separate labels for all three current constructs. Therefore this is a selected historical comparison, not an end-to-end population accuracy estimate or evidence that the model outperforms humans. Conditional AI-review endorsement rates are deliberately not labeled human accuracy. Aggregated documentation: ../docs/validation.md. Private articles, reviewer text and workbooks stay outside the repository.
 :::
 
 
