@@ -1536,32 +1536,33 @@ display:block!important;
 <section class="slide level2 sentiment-reference-slide center">
 <h2>Sentiment in relation to what?</h2>
 <p class="reference-example-label">A product review</p>
-<p class="reference-quote">“The camera is excellent. The battery lasts eight hours.”</p>
+<p class="reference-quote">“I love the display, but some apps are incompatible.<br>Overall, I recommend this phone.”</p>
 
 <table class="reference-questions caption-top">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th">What do we want to know?</th>
-<th data-quarto-table-cell-role="th">What does the review tell us?</th>
+<th data-quarto-table-cell-role="th">What does the answer preserve?</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Would the customer recommend the product?</td>
-<td>Praise for one feature need not imply an overall recommendation.</td>
+<td>Does the reviewer like the phone overall?</td>
+<td>An overall positive judgment summarizes the review, while leaving out feature differences.</td>
 </tr>
 <tr class="even">
-<td>What about battery life?</td>
-<td>Eight hours is a fact. Calling it good or bad requires a criterion.</td>
+<td>Will this phone meet my needs?</td>
+<td>Praise for the display and app-compatibility problems matter differently to different readers.</td>
 </tr>
 </tbody>
 </table>
 
-<p class="reference-principle">Same product; different questions and evidence.</p>
+<p class="reference-principle">Every judgment is in relation to the phone. The detail we need depends on the question.</p>
 <div class="reference-bridge"><h3>In our project: the government being evaluated</h3><p>Default to the publication country for domestic affairs. Use a foreign incumbent when it is the focus and no judgment about the domestic incumbent is codable.</p><p class="reference-timing">“Incumbent” means in office at the article’s date; it does not fix the country.</p></div>
 <div class="reference-relations">An action’s relationship to it · Its implications for it · The narrator’s evaluation of it</div>
 <aside class="notes">
-<p>The product review is synthetic. Extracting a feature or fact is not itself sentiment classification; an evaluative judgment requires a target and criterion. Recommendation and feature-level sentiment are related but distinct questions. Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task.</p>
+<p>The product review is synthetic. It explicitly recommends the phone despite a complaint about app compatibility, illustrating how mixed feature evaluations can coexist with an overall positive judgment. The phone remains the common object throughout. A researcher asking whether reviewers like the phone can use an overall evaluation or recommendation as a useful summary, while recognizing that recommendation and liking are related rather than identical constructs. A reader concerned about display quality or app compatibility needs the relevant details, and may weigh them differently. An overall score does not preserve those priorities or tell every reader whether the phone meets their needs. A sentiment label is useful relative to a specified object and question; retaining aspects and relationships supports additional questions. Do not infer overall evaluation by mechanically averaging feature labels.</p>
+<p>Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task. The phone analogy motivates a common reference and multiple useful questions; political alignment, reputational implication and framing are distinct relationships, not feature ratings to average into one overall sentiment score.</p>
 <p>All three project dimensions refer to the same evaluated national incumbent, but the relationship and evidence differ. The actor, action’s entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.</p>
 <p>Government selection follows ../prompts/civic_20261020_complete_v1.txt, section 1 (lines 39–49): publication_country is the default for domestic government-relevant affairs. The foreign exception applies only when the selected action and portrayal concern that foreign incumbent and the supplied text provides no codable align, rep or frame regarding the publication country’s incumbent. For publication_country = ALL, a government must be clearly identified. With multiple governments, choose the one most central to the selected action in the title and lead. publication_date fixes incumbent identity; it does not force gov to equal publication_country. Former-regime conduct cannot be attributed to the current incumbent without a supplied link.</p>
 <style type="text/css">
