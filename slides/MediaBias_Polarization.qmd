@@ -169,16 +169,16 @@ The national incumbent is a proposed common political reference. Its relationshi
 
 ```{=html}
 <ol class="sentiment-questions">
-  <li><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(The event or outcome being evaluated still needs to be specified.)</div></li>
-  <li><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
-  <li><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
-  <li><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
+  <li><span class="question-mark question-out" aria-label="Outside our measurement target">×</span><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(General event valence — outside our measurement target.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
 </ol>
 <div class="sentiment-closing-question">Negative in relation to what?</div>
 ```
 
 ::: notes
-All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project's terminology.
+All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project's terminology. The red X marks general event valence as outside the project’s measurement target; it does not mean the question is wrong or unimportant. Green checks mark the three government-related questions the project addresses, not the truth or polarity of their answers.
 :::
 
 
@@ -220,15 +220,6 @@ Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in D
 :::
 
 
-## From article labels to monthly measures {.polarization-slide}
-
-{{< include includes/polarization.qmd >}}
-
-::: notes
-The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index's relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.
-:::
-
-
 ## Prompting: fields and decision rules {.prompt-fields-slide}
 
 ```{=html}
@@ -263,21 +254,30 @@ The action supplies evidence about the actor's relationship to the incumbent, di
 :::
 
 
-## GenAI: agreement with earlier human coding {.genai-performance-slide}
+## GenAI: agreement and Astra’s review {.genai-performance-slide}
 
 ```{=html}
-<p class="performance-intro">266 historical human-coded articles · 262 valid model outputs</p>
-<div class="performance-comparison">
-  <div><strong class="performance-value">79.1%</strong><p>Same event in <b>167 of 211</b> articles<br>where both identified an action</p></div>
-  <div><strong class="performance-value">67.9%</strong><p><b>178 of 262</b> agree when<br>no-action decisions are also counted</p></div>
+<div class="agreement-summary">
+  <p><strong>79.1%</strong> same-event agreement<br><span>167/211 articles with an action on both sides</span></p>
+  <p><strong>67.9%</strong> including no-action decisions<br><span>178/262 valid model outputs</span></p>
 </div>
-<p class="performance-caveat">Selected historical sample; AI-assisted event matching.<br>Independent human validation of the three political judgments is still needed.</p>
+<h3 class="astra-heading">Which action coding did Astra prefer? <span>262 articles</span></h3>
+<div class="astra-preferences" aria-label="Astra preferences on action selection and extraction in 262 valid outputs">
+  <div class="astra-row"><span>Luna</span><div class="astra-track"><div class="astra-fill astra-luna" style="width:46.1832%"></div></div><strong>121 <span>(46.2%)</span></strong></div>
+  <div class="astra-row"><span>Human</span><div class="astra-track"><div class="astra-fill astra-human" style="width:16.7939%"></div></div><strong>44 <span>(16.8%)</span></strong></div>
+  <div class="astra-row"><span>Both defensible</span><div class="astra-track"><div class="astra-fill astra-both" style="width:31.6794%"></div></div><strong>83 <span>(31.7%)</span></strong></div>
+  <div class="astra-row"><span>Unresolved / neither</span><div class="astra-track"><div class="astra-fill astra-unresolved" style="width:5.3435%"></div></div><strong>14 <span>(5.3%)</span></strong></div>
+</div>
+<p class="astra-different">Different selected events: <strong>17 Luna vs 16 human</strong>; 11 with no single preference.</p>
+<p class="astra-caveat">One AI reviewer; historical inputs and coding rules differed.<br>These are action-coding judgments, not accuracy of the three political measures.</p>
 ```
 
 ::: notes
 This is agreement on the selected event, not overall model accuracy or human-reference accuracy of alignment, reputation and framing. The November 2 comparison sent 266 historical human-coded articles through the complete prompt without providing human labels; 262 outputs passed structure/evidence checks and four did not. Among 211 records where both selected an action, 167 were judged to select the same event (79.1469%). Including 11 shared no-action decisions gives 178/262 (67.9389%); all 40 action/no-action disagreements remain in this denominator. Four invalid outputs are excluded from these valid-output rates, not scored as successes.
 
 Event equivalence and disagreements were reviewed with AI assistance, not an independent human adjudication panel. Legacy human inputs were shorter, definitions differed, and some title/body records differed. The original human sentiment variable does not provide separate labels for all three current constructs. Therefore this is a selected historical comparison, not an end-to-end population accuracy estimate or evidence that the model outperforms humans. Conditional AI-review endorsement rates are deliberately not labeled human accuracy. Aggregated documentation: ../docs/validation.md. Private articles, reviewer text and workbooks stay outside the repository.
+
+Astra's action-selection/extraction preferences among 262 valid outputs: Luna 121 (46.2%), human 44 (16.8%), both defensible 83 (31.7%), unresolved 9 and neither supported 5 (combined 14, 5.3%). An extraction can be preferred even when the selected event matches. Among the 44 different-event cases: Luna 17, human 16, both 5, unresolved 5, neither 1. Thus the near-even 17-versus-16 comparison applies only to disagreements about event choice. It is not the overall preference distribution. Astra had access to both codings and project context; this dependent AI review does not establish model superiority or independent human-reference accuracy. Aggregates exclude four invalid raw outputs; retain those failures separately. Public summary: ../docs/validation.md.
 :::
 
 
@@ -297,6 +297,15 @@ Verified November 8, 2026 snapshot. Earlier-year coverage is uneven. One article
 All figures use the hash-pinned explore-since2019.json release in analysis_snapshot.json, audit 2026-11-08T13:57:13.923991+00:00. The selected period contains 3,464,596 structurally valid records and 3,181,113 comparison-eligible records. The difference, 283,483, is excluded rather than relabeled zero. Complete monthly groups cover 430 domains: 404 mapped to 71 publication countries and 26 international/mixed domains. Evaluated governments span 211 country/territory codes. The two maps show different quantities and scales.
 
 A source's publication country and the government evaluated in an article are different concepts. International reporting can evaluate a government without local source collection there. This is a selected reporting corpus, not a probability sample of events. Collection, civic selection, supplied English, processing completion and coding determine inclusion. The analytical release adds 810,250 valid records and 740,801 eligible records to the previous snapshot. Earlier-year coverage remains uneven. Processing has reached 2018, but unverified outcomes and separately tracked reruns have no analytical credit here. Repeated reporting can yield multiple observations of the same event. Reproduction and plotted CSVs: ../scripts/build_slide_figures.py and figures/data/.
+:::
+
+
+## The same average can hide different coverage {.polarization-slide}
+
+{{< include includes/polarization.qmd >}}
+
+::: notes
+The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index's relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.
 :::
 
 

@@ -11,17 +11,17 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **20 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing have their own page, followed by a separate monthly-score illustration, prompting fields/rules, and the historical GenAI comparison.
+The current source renders **20 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing lead directly to prompting fields/rules and the historical GenAI comparison. The monthly-score illustration follows coverage, introducing how article labels are summarized before the findings.
 
 | Slides | Content |
 |---|---|
 | 1–5 | Question, literature and common political reference |
 | 6–7 | Audience questions and three concepts |
 | 8 | Full-page classifier and processing; civic-event and relevance performance |
-| 9 | Illustrative monthly distributions, net score and proposed P |
-| 10 | Prompting fields and decision rules |
-| 11 | GenAI event-selection agreement with earlier human coding |
-| 12 | Coverage and analytical sample |
+| 9 | Prompting fields and decision rules |
+| 10 | GenAI event agreement and Astra’s action-coding preferences |
+| 11 | Coverage and analytical sample |
+| 12 | Why the same average can hide different coverage; net score and proposed P |
 | 13–16 | Label distributions, joint labels, source–government framing and monthly context |
 | 17–19 | Validation, research agenda and discussion |
 | 20 | References |
@@ -29,6 +29,8 @@ The current source renders **20 slides**. Slides 6–7 move from audience questi
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
 ## Examples and figures
+
+Red X / green checks on slide 6 distinguish general event valence from the three government-related questions the project addresses; they do not mark the questions or their answers as true or false.
 
 The rescue/title contrast in the opening questions comes from calibration example 6: cabinet-affiliated services rescue 20 miners, while the title calls the rescue a “cynical publicity stunt.” It can be discussed orally as a second example: political alignment 0, reputational implication +1 and framing −1.
 
@@ -64,7 +66,7 @@ The builder verifies the public input hashes and pinned Natural Earth geometry. 
 
 The upstream civic-event classifier’s **82%** average out-of-sample accuracy and civic relevance classifier’s **87%** overall accuracy are reported in [Moratz et al. (2025), Tracking Civic Space](https://zungru.com/assets/papers/civic-space-transformers.pdf), pp. 11–13. These are separate from GenAI evaluation.
 
-The GenAI slide reports **79.1% same-event agreement (167/211)** when both model and human identify an action, and **67.9% (178/262)** including shared no-action decisions and action/no-action disagreements. These come from a selected historical sample and AI-assisted event matching. They are not accuracy estimates for the three current political judgments. See [validation](../docs/validation.md).
+The GenAI slide reports **79.1% same-event agreement (167/211)** when both model and human identify an action, and **67.9% (178/262)** including shared no-action decisions and action/no-action disagreements. Astra’s action-coding preferences among those 262 valid outputs are Luna 121, human 44, both defensible 83, unresolved/neither 14. The near-even 17-versus-16 preference occurs only in 44 different-event cases. These come from a selected historical sample and dependent AI review. They are not accuracy estimates for the three current political judgments. See [validation](../docs/validation.md).
 
 ## Analytical scope
 

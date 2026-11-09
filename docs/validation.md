@@ -30,6 +30,19 @@ The event-selection comparison gives the following **agreement rates**, based on
 
 The latter includes 11 shared no-action decisions and counts all 40 action/no-action disagreements. Four invalid outputs are outside these valid-output denominators. Event matching and proposed corrections were reviewed with AI assistance; this is not an independent human adjudication panel. These percentages evaluate event selection, not the accuracy of the three political judgments.
 
+Astra also reviewed action selection and extraction against the supplied source and current definitions. On the same 262 valid-output records:
+
+| Astra's preference | Articles | Share |
+|---|---:|---:|
+| Luna preferred | 121 | 46.2% |
+| Human preferred | 44 | 16.8% |
+| Both defensible | 83 | 31.7% |
+| Unresolved or neither supported | 14 | 5.3% |
+
+The last category combines nine unresolved and five neither-supported judgments. When the human and Luna selected **different events** (44 records), Astra preferred Luna in 17, the human in 16, and had no single preferred answer in 11 (five both defensible, five unresolved, one neither). This near-even split applies only to that subgroup. A preferred extraction can still describe the same event as the other coding, so event agreement and reviewer preference are different results.
+
+Astra saw both codings and project context; this is a dependent AI review, not independent human adjudication. Preferences concern action selection/extraction, not correctness of all fields. The full raw review also contains four invalid outputs; the table excludes them to match the valid-output denominator above. These judgments do not establish that Luna outperforms humans.
+
 This is a historical, selected sample. Its legacy annotation used one sentiment field rather than the current three constructs. Historical inputs were truncated while the new comparison used full supplied text; some titles and bodies differed. Event equivalence, exact-span agreement and political-label agreement therefore answer different questions. Conditional agreement rates from this exercise must not be presented as overall classifier accuracy. No representative human-reference accuracy estimate is established by these checks. Private article texts and review workbooks are not part of this repository.
 
 ## Evaluation layers

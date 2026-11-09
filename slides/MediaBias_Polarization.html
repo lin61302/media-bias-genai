@@ -613,6 +613,16 @@ margin: 0;
 .polarization-slide .polarization-formulas strong { display: block; font-size: 30px; }
 .polarization-slide .polarization-formulas span { display: block; font-size: 23px; margin-top: 5px; }
 .reveal .slides section.polarization-slide .polarization-note { font-size: 19px; color: var(--classifier-muted); line-height: 1.3; margin: 22px 0 0; }
+
+.reveal .slides section.polarization-slide .polarization-intro { font-size: 23px; margin: 4px 0 16px; }
+.polarization-slide .polarization-table-row { min-height: 82px; }
+.polarization-slide .polarization-table-head { font-size: 21px; padding-bottom: 10px; }
+.polarization-slide .polarization-legend { margin: 13px 0 15px; font-size: 21px; }
+.polarization-slide .polarization-formulas { padding-top: 12px; }
+.polarization-slide .polarization-formulas strong { font-size: 28px; }
+.polarization-slide .polarization-formulas span { font-size: 21px; }
+.reveal .slides section.polarization-slide .polarization-takeaway { font-size: 24px; color: var(--accent); font-weight: 600; line-height: 1.4; margin: 20px 0 0; }
+.reveal .slides section.polarization-slide .polarization-note { font-size: 17px; margin-top: 13px; }
 </style>
   <style type="text/css">
 .reveal .slides section.validation-slide table, .reveal .slides section.agenda-slide table { width: 100%; font-size: 27px; }
@@ -658,12 +668,30 @@ margin: 0;
 .prompt-fields-slide td:first-child { width: 42%; font-weight: 600; color: var(--accent); }
 .reveal .slides section.prompt-fields-slide ol { font-size: 29px; margin: 0 0 0 35px; }
 .reveal .slides section.prompt-fields-slide li { margin-bottom: 25px; padding-left: 6px; line-height: 1.35; }
-.reveal .slides section.genai-performance-slide .performance-intro { font-size: 27px; margin: 22px 0 42px; color: var(--muted); }
-.performance-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; }
-.performance-comparison > div { border-top: 3px solid var(--accent); padding-top: 28px; }
-.genai-performance-slide .performance-value { font-size: 80px; line-height: 1.1; }
-.reveal .slides section.genai-performance-slide .performance-comparison p { font-size: 30px; margin: 24px 0; line-height: 1.5; }
-.reveal .slides section.genai-performance-slide .performance-caveat { font-size: 26px; line-height: 1.5; margin: 42px 0 0; border-top: 1px solid #cbd0d9; padding-top: 22px; color: #606976; }
+
+.reveal .slides section.sentiment-questions-slide ol { list-style: none; margin-left: 52px; }
+.sentiment-questions-slide .sentiment-questions li { position: relative; padding-left: 0; }
+.sentiment-questions-slide .question-mark { position: absolute; left: -49px; top: -4px; width: 35px; font-size: 38px; font-weight: 700; text-align: center; }
+.sentiment-questions-slide .question-out { color: #c33b37; }
+.sentiment-questions-slide .question-in { color: #168249; }
+
+.agreement-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-bottom: 1px solid #cbd0d9; padding-bottom: 19px; }
+.reveal .slides section.genai-performance-slide .agreement-summary p { font-size: 26px; line-height: 1.35; margin: 5px 0; }
+.agreement-summary strong { font-size: 35px; margin-right: 8px; }
+.agreement-summary span { font-size: 21px; color: #606976; }
+.reveal .slides section.genai-performance-slide .astra-heading { font-size: 29px; text-transform: none; margin: 22px 0 16px; }
+.astra-heading span { font-size: 21px; color: #606976; font-weight: 400; margin-left: 16px; }
+.astra-row { display: grid; grid-template-columns: 235px minmax(0,1fr) 180px; gap: 22px; align-items: center; min-height: 51px; font-size: 25px; }
+.astra-track { background: #e3e7ed; height: 30px; }
+.astra-fill { height: 100%; }
+.astra-luna { background: #2477a6; }
+.astra-human { background: #ce7434; }
+.astra-both { background: #368768; }
+.astra-unresolved { background: #858d9b; }
+.astra-row strong { font-size: 27px; }
+.astra-row strong span { font-weight: 400; font-size: 22px; color: #606976; }
+.reveal .slides section.genai-performance-slide .astra-different { font-size: 25px; margin: 21px 0 13px; }
+.reveal .slides section.genai-performance-slide .astra-caveat { font-size: 20px; color: #606976; line-height: 1.4; margin: 0; }
 </style>
   <style type="text/css">.reveal
 div.sourceCode
@@ -1405,14 +1433,14 @@ display:block!important;
 <section class="slide level2 sentiment-questions-slide center">
 <h2>What does “negative” mean?</h2>
 <ol class="sentiment-questions">
-  <li><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(The event or outcome being evaluated still needs to be specified.)</div></li>
-  <li><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
-  <li><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
-  <li><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
+  <li><span class="question-mark question-out" aria-label="Outside our measurement target">×</span><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(General event valence — outside our measurement target.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
 </ol>
 <div class="sentiment-closing-question">Negative in relation to what?</div>
 <aside class="notes">
-<p>All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project’s terminology.</p>
+<p>All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project’s terminology. The red X marks general event valence as outside the project’s measurement target; it does not mean the question is wrong or unimportant. Green checks mark the three government-related questions the project addresses, not the truth or polarity of their answers.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1551,49 +1579,6 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section class="slide level2 polarization-slide center">
-<h2>From article labels to monthly measures</h2>
-<div class="polarization-example" aria-label="Three synthetic months showing positive, zero and negative article shares, net score and proposed polarization index">
-  <p class="polarization-intro">One measure, 100 codable articles in each illustrative month.</p>
-  <div class="polarization-table">
-    <div class="polarization-table-head"><span>Month</span><span>Share of articles</span><span>Net N</span><span>Proposed P</span></div>
-    <div class="polarization-table-row">
-      <strong>All zero-coded</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive articles"><span class="polarization-zero" style="width:100%">100%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>One-sided</strong>
-      <div class="polarization-distribution" aria-label="0 negative, 40 zero, 60 positive articles"><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:60%">60%</span></div>
-      <span class="polarization-value">.60</span><strong class="polarization-value">0</strong>
-    </div>
-    <div class="polarization-table-row">
-      <strong>Both directions</strong>
-      <div class="polarization-distribution" aria-label="45 negative, 10 zero, 45 positive articles"><span class="polarization-negative" style="width:45%">45%</span><span class="polarization-zero" style="width:10%">10%</span><span class="polarization-positive" style="width:45%">45%</span></div>
-      <span class="polarization-value">0</span><strong class="polarization-value">.81</strong>
-    </div>
-  </div>
-  <div class="polarization-legend"><span><i class="polarization-negative"></i>Negative</span><span><i class="polarization-zero"></i>Zero</span><span><i class="polarization-positive"></i>Positive</span></div>
-  <div class="polarization-formulas">
-    <p><strong>N = p⁺ − p⁻</strong><span>Net direction</span></p>
-    <p><strong>P = 4p⁺p⁻</strong><span>Coexistence of positive and negative coverage</span></p>
-  </div>
-  <p class="polarization-note">Zero-coded articles stay in the denominator; uncodable records are excluded. These are synthetic examples.</p>
-</div>
-<aside class="notes">
-<p>The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index’s relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
 <section class="slide level2 prompt-fields-slide center">
 <h2>Prompting: fields and decision rules</h2>
 <div class="prompt-columns">
@@ -1648,16 +1633,24 @@ display:block!important;
 }</style></aside>
 </section>
 <section class="slide level2 genai-performance-slide center">
-<h2>GenAI: agreement with earlier human coding</h2>
-<p class="performance-intro">266 historical human-coded articles · 262 valid model outputs</p>
-<div class="performance-comparison">
-  <div><strong class="performance-value">79.1%</strong><p>Same event in <b>167 of 211</b> articles<br>where both identified an action</p></div>
-  <div><strong class="performance-value">67.9%</strong><p><b>178 of 262</b> agree when<br>no-action decisions are also counted</p></div>
+<h2>GenAI: agreement and Astra’s review</h2>
+<div class="agreement-summary">
+  <p><strong>79.1%</strong> same-event agreement<br><span>167/211 articles with an action on both sides</span></p>
+  <p><strong>67.9%</strong> including no-action decisions<br><span>178/262 valid model outputs</span></p>
 </div>
-<p class="performance-caveat">Selected historical sample; AI-assisted event matching.<br>Independent human validation of the three political judgments is still needed.</p>
+<h3 class="astra-heading">Which action coding did Astra prefer? <span>262 articles</span></h3>
+<div class="astra-preferences" aria-label="Astra preferences on action selection and extraction in 262 valid outputs">
+  <div class="astra-row"><span>Luna</span><div class="astra-track"><div class="astra-fill astra-luna" style="width:46.1832%"></div></div><strong>121 <span>(46.2%)</span></strong></div>
+  <div class="astra-row"><span>Human</span><div class="astra-track"><div class="astra-fill astra-human" style="width:16.7939%"></div></div><strong>44 <span>(16.8%)</span></strong></div>
+  <div class="astra-row"><span>Both defensible</span><div class="astra-track"><div class="astra-fill astra-both" style="width:31.6794%"></div></div><strong>83 <span>(31.7%)</span></strong></div>
+  <div class="astra-row"><span>Unresolved / neither</span><div class="astra-track"><div class="astra-fill astra-unresolved" style="width:5.3435%"></div></div><strong>14 <span>(5.3%)</span></strong></div>
+</div>
+<p class="astra-different">Different selected events: <strong>17 Luna vs 16 human</strong>; 11 with no single preference.</p>
+<p class="astra-caveat">One AI reviewer; historical inputs and coding rules differed.<br>These are action-coding judgments, not accuracy of the three political measures.</p>
 <aside class="notes">
 <p>This is agreement on the selected event, not overall model accuracy or human-reference accuracy of alignment, reputation and framing. The November 2 comparison sent 266 historical human-coded articles through the complete prompt without providing human labels; 262 outputs passed structure/evidence checks and four did not. Among 211 records where both selected an action, 167 were judged to select the same event (79.1469%). Including 11 shared no-action decisions gives 178/262 (67.9389%); all 40 action/no-action disagreements remain in this denominator. Four invalid outputs are excluded from these valid-output rates, not scored as successes.</p>
 <p>Event equivalence and disagreements were reviewed with AI assistance, not an independent human adjudication panel. Legacy human inputs were shorter, definitions differed, and some title/body records differed. The original human sentiment variable does not provide separate labels for all three current constructs. Therefore this is a selected historical comparison, not an end-to-end population accuracy estimate or evidence that the model outperforms humans. Conditional AI-review endorsement rates are deliberately not labeled human accuracy. Aggregated documentation: ../docs/validation.md. Private articles, reviewer text and workbooks stay outside the repository.</p>
+<p>Astra’s action-selection/extraction preferences among 262 valid outputs: Luna 121 (46.2%), human 44 (16.8%), both defensible 83 (31.7%), unresolved 9 and neither supported 5 (combined 14, 5.3%). An extraction can be preferred even when the selected event matches. Among the 44 different-event cases: Luna 17, human 16, both 5, unresolved 5, neither 1. Thus the near-even 17-versus-16 comparison applies only to disagreements about event choice. It is not the overall preference distribution. Astra had access to both codings and project context; this dependent AI review does not establish model superiority or independent human-reference accuracy. Aggregates exclude four invalid raw outputs; retain those failures separately. Public summary: ../docs/validation.md.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1684,6 +1677,50 @@ display:block!important;
 <aside class="notes">
 <p>All figures use the hash-pinned explore-since2019.json release in analysis_snapshot.json, audit 2026-11-08T13:57:13.923991+00:00. The selected period contains 3,464,596 structurally valid records and 3,181,113 comparison-eligible records. The difference, 283,483, is excluded rather than relabeled zero. Complete monthly groups cover 430 domains: 404 mapped to 71 publication countries and 26 international/mixed domains. Evaluated governments span 211 country/territory codes. The two maps show different quantities and scales.</p>
 <p>A source’s publication country and the government evaluated in an article are different concepts. International reporting can evaluate a government without local source collection there. This is a selected reporting corpus, not a probability sample of events. Collection, civic selection, supplied English, processing completion and coding determine inclusion. The analytical release adds 810,250 valid records and 740,801 eligible records to the previous snapshot. Earlier-year coverage remains uneven. Processing has reached 2018, but unverified outcomes and separately tracked reruns have no analytical credit here. Repeated reporting can yield multiple observations of the same event. Reproduction and plotted CSVs: ../scripts/build_slide_figures.py and figures/data/.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2 polarization-slide center">
+<h2>The same average can hide different coverage</h2>
+<div class="polarization-example" aria-label="Three synthetic months showing positive, zero and negative article shares, net score and proposed polarization index">
+  <p class="polarization-intro">Three hypothetical government-months · 100 codable articles each · one measure at a time</p>
+  <div class="polarization-table">
+    <div class="polarization-table-head"><span>Coverage pattern</span><span>Share of articles</span><span>Net score N</span><span>Proposed P</span></div>
+    <div class="polarization-table-row">
+      <strong>All labels zero</strong>
+      <div class="polarization-distribution" aria-label="0 negative, 100 zero, 0 positive articles"><span class="polarization-zero" style="width:100%">100%</span></div>
+      <span class="polarization-value">0</span><strong class="polarization-value">0</strong>
+    </div>
+    <div class="polarization-table-row">
+      <strong>Mostly positive</strong>
+      <div class="polarization-distribution" aria-label="0 negative, 40 zero, 60 positive articles"><span class="polarization-zero" style="width:40%">40%</span><span class="polarization-positive" style="width:60%">60%</span></div>
+      <span class="polarization-value">.60</span><strong class="polarization-value">0</strong>
+    </div>
+    <div class="polarization-table-row">
+      <strong>Positive and negative</strong>
+      <div class="polarization-distribution" aria-label="45 negative, 10 zero, 45 positive articles"><span class="polarization-negative" style="width:45%">45%</span><span class="polarization-zero" style="width:10%">10%</span><span class="polarization-positive" style="width:45%">45%</span></div>
+      <span class="polarization-value">0</span><strong class="polarization-value">.81</strong>
+    </div>
+  </div>
+  <div class="polarization-legend"><span><i class="polarization-negative"></i>Negative</span><span><i class="polarization-zero"></i>Zero</span><span><i class="polarization-positive"></i>Positive</span></div>
+  <div class="polarization-formulas">
+    <p><strong>N = p⁺ − p⁻</strong><span>Positive share minus negative share</span></p>
+    <p><strong>P = 4p⁺p⁻</strong><span>High when both positive and negative shares are large</span></p>
+  </div>
+  <p class="polarization-takeaway">All-zero coverage and a positive–negative split both have net zero.<br>Read the shares alongside N and P: one score cannot show the whole pattern.</p>
+  <p class="polarization-note">Zero-coded articles stay in the denominator; uncodable records are excluded. These are synthetic examples.</p>
+</div>
+<aside class="notes">
+<p>The three monthly distributions are synthetic illustrations, not observed countries. For each government-month and measure, retain positive, zero and negative shares. N = p+ minus p− measures direction; proposed P = 4p+p− is high when both directions have substantial shares. Zero means neutral, mixed or insufficient directional evidence. Null is not codable and is excluded, with exclusions reported separately. The index’s relationship to societal polarization still needs validation. Large zero shares can dominate variation in P. See ../docs/coverage-balance.md.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

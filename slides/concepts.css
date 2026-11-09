@@ -44,9 +44,27 @@
 .prompt-fields-slide td:first-child { width: 42%; font-weight: 600; color: var(--accent); }
 .reveal .slides section.prompt-fields-slide ol { font-size: 29px; margin: 0 0 0 35px; }
 .reveal .slides section.prompt-fields-slide li { margin-bottom: 25px; padding-left: 6px; line-height: 1.35; }
-.reveal .slides section.genai-performance-slide .performance-intro { font-size: 27px; margin: 22px 0 42px; color: var(--muted); }
-.performance-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; text-align: left; }
-.performance-comparison > div { border-top: 3px solid var(--accent); padding-top: 28px; }
-.genai-performance-slide .performance-value { font-size: 80px; line-height: 1.1; }
-.reveal .slides section.genai-performance-slide .performance-comparison p { font-size: 30px; margin: 24px 0; line-height: 1.5; }
-.reveal .slides section.genai-performance-slide .performance-caveat { font-size: 26px; line-height: 1.5; margin: 42px 0 0; border-top: 1px solid #cbd0d9; padding-top: 22px; color: #606976; }
+/* Scope marks on the audience questions. */
+.reveal .slides section.sentiment-questions-slide ol { list-style: none; margin-left: 52px; }
+.sentiment-questions-slide .sentiment-questions li { position: relative; padding-left: 0; }
+.sentiment-questions-slide .question-mark { position: absolute; left: -49px; top: -4px; width: 35px; font-size: 38px; font-weight: 700; text-align: center; }
+.sentiment-questions-slide .question-out { color: #c33b37; }
+.sentiment-questions-slide .question-in { color: #168249; }
+/* Separate model-human agreement from the AI reviewer's preferences. */
+.agreement-summary { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-bottom: 1px solid #cbd0d9; padding-bottom: 19px; }
+.reveal .slides section.genai-performance-slide .agreement-summary p { font-size: 26px; line-height: 1.35; margin: 5px 0; }
+.agreement-summary strong { font-size: 35px; margin-right: 8px; }
+.agreement-summary span { font-size: 21px; color: #606976; }
+.reveal .slides section.genai-performance-slide .astra-heading { font-size: 29px; text-transform: none; margin: 22px 0 16px; }
+.astra-heading span { font-size: 21px; color: #606976; font-weight: 400; margin-left: 16px; }
+.astra-row { display: grid; grid-template-columns: 235px minmax(0,1fr) 180px; gap: 22px; align-items: center; min-height: 51px; font-size: 25px; }
+.astra-track { background: #e3e7ed; height: 30px; }
+.astra-fill { height: 100%; }
+.astra-luna { background: #2477a6; }
+.astra-human { background: #ce7434; }
+.astra-both { background: #368768; }
+.astra-unresolved { background: #858d9b; }
+.astra-row strong { font-size: 27px; }
+.astra-row strong span { font-weight: 400; font-size: 22px; color: #606976; }
+.reveal .slides section.genai-performance-slide .astra-different { font-size: 25px; margin: 21px 0 13px; }
+.reveal .slides section.genai-performance-slide .astra-caveat { font-size: 20px; color: #606976; line-height: 1.4; margin: 0; }
