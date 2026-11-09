@@ -1,0 +1,167 @@
+{
+  "created_at_utc": "2026-11-09T21:46:29.323390+00:00",
+  "builder": "scripts/build_coverage_maps.py",
+  "builder_sha256": "f8f9aeca2e1f1b0d84634e4ddfe3c27ee1555dc7bc59bb61d86a931e857bc7c6",
+  "helper": "scripts/build_slide_figures.py",
+  "helper_sha256": "2f0dfaf076110b9dec097bd78a91672474d8a08a4ead2441a1f62325f1c77067",
+  "snapshot": {
+    "path": "slides/analysis_snapshot.json",
+    "sha256": "990966b854a5854bba05a7223fded6cdef4b61a72ca49f073fd01ae023cb599a",
+    "commit": "821e24c66b43d4de15860f5414373da6f3448d63",
+    "audit_cutoff": "2026-11-08T13:57:13.923991+00:00",
+    "prompt_sha256": "452ac4b66439acfb34c9e1016d037433df05b24fc24241e384fe58afc74b71fc",
+    "article_period": [
+      "2019-01",
+      "2026-05"
+    ]
+  },
+  "pinned_inputs": {
+    "explore-since2019.json": {
+      "sha256": "1893e92ff1c5e7c85f3966d4cce40679abc02034c8e137f1d6059a66c8eab812"
+    },
+    "explore-monthly.json": {
+      "sha256": "1d9d9741ef1251565d48f83520fdd5a7298b6db105e9365323b61e86466faebb"
+    },
+    "explore-meta.json": {
+      "sha256": "ce45f480af359938303307884bb31236e11c27dd5e90ad1903d5633a7127b54c"
+    },
+    "country_context.json": {
+      "sha256": "048ea40436adba93a151d0699756c8f51f042298cc97e5b661a0be47d51f9113"
+    }
+  },
+  "existing_csv_inputs": {
+    "06_coverage_map.csv": "acb44e3d53ac56296deb418435b58f36117ff5aedfade71ce800b5daf63add38",
+    "06_coverage_by_year.csv": "1145f4e094321df443a57e1c63253ff297252905e5e06b250872d65099f9f0bc"
+  },
+  "geography": {
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/v5.1.2/geojson/ne_50m_admin_0_countries.geojson",
+    "sha256": "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fdeb",
+    "version": "Natural Earth v5.1.2",
+    "license": "Public domain",
+    "kosovo_code": "XKX"
+  },
+  "statistics": {
+    "publication_countries": 71,
+    "mapped_source_domains": 404,
+    "international_or_mixed_source_domains": 26,
+    "total_source_domains": 430,
+    "international_or_mixed_eligible_articles": 205126,
+    "evaluated_government_codes": 211,
+    "eligible_articles": 3181113,
+    "valid_records": 3464596
+  },
+  "annual_coverage": [
+    {
+      "year": "2019",
+      "valid_records": 378323,
+      "eligible_records": 345131
+    },
+    {
+      "year": "2020",
+      "valid_records": 411337,
+      "eligible_records": 376823
+    },
+    {
+      "year": "2021",
+      "valid_records": 517024,
+      "eligible_records": 474757
+    },
+    {
+      "year": "2022",
+      "valid_records": 514714,
+      "eligible_records": 472841
+    },
+    {
+      "year": "2023",
+      "valid_records": 523585,
+      "eligible_records": 482037
+    },
+    {
+      "year": "2024",
+      "valid_records": 576632,
+      "eligible_records": 528811
+    },
+    {
+      "year": "2025",
+      "valid_records": 395803,
+      "eligible_records": 363984
+    },
+    {
+      "year": "2026",
+      "valid_records": 147178,
+      "eligible_records": 136729
+    }
+  ],
+  "definitions": {
+    "publication": "Unique observed source domains assigned to one publication country in frozen source metadata; not restricted to domestic-government evaluations.",
+    "international_or_mixed": "Domains without a single observed publication country are counted separately and not assigned to a country on the publication map.",
+    "government": "Eligible article records evaluating each government, regardless of the source's publication country; this is not local news collection coverage.",
+    "eligible": "Government and action identified, with align, rep and frame each coded -1, 0 or +1; zero labels retained.",
+    "gray": "No observed positive value in this frozen plotted measure; not a claim of no news collection.",
+    "coverage": "Observed records are not distinct real-world events and do not imply complete coverage of every source/year."
+  },
+  "figure_specs": {
+    "06a_publication_coverage": {
+      "inches": [
+        14,
+        5.4
+      ],
+      "unit": "source domains",
+      "breaks": [
+        3,
+        6,
+        9
+      ]
+    },
+    "06b_evaluated_governments": {
+      "inches": [
+        9,
+        5
+      ],
+      "unit": "eligible article records",
+      "breaks": [
+        100,
+        1000,
+        10000
+      ]
+    }
+  },
+  "verification": {
+    "all_four_pinned_inputs_hash_verified": true,
+    "all_map_csv_values_reconciled": true,
+    "all_annual_csv_values_reconciled": true,
+    "every_observed_code_has_geometry": true,
+    "original_source_csvs_unchanged": true
+  },
+  "outputs": {
+    "slides/figures/06a_publication_coverage.png": {
+      "sha256": "def929442d6e238ffc8e85f9ca01f85e5b30b7581eec29216ee179533eac0e06",
+      "bytes": 272448
+    },
+    "slides/figures/06a_publication_coverage.pdf": {
+      "sha256": "964f4f1cc39094638c3ca2cb2a9708d27c02ca0c998184fd65945ae2b15751fe",
+      "bytes": 2678171
+    },
+    "slides/figures/06a_publication_coverage.svg": {
+      "sha256": "9c0d58f060129e5d296e3cafab2e01fe9b6ed221b7c4a482997697531159b138",
+      "bytes": 2326510
+    },
+    "slides/figures/06b_evaluated_governments.png": {
+      "sha256": "72eca441bb63c7c75477774c7088c671bc6763edade9c11268774f3c6d0f6a66",
+      "bytes": 260978
+    },
+    "slides/figures/06b_evaluated_governments.pdf": {
+      "sha256": "5b0769207e4e3bf0506bc529ead4b32614dca382fe221ad0cba8574129277b3f",
+      "bytes": 2665624
+    },
+    "slides/figures/06b_evaluated_governments.svg": {
+      "sha256": "1354f4369b2cb37934021a4e3e2ea66b1faf8694efb8e4a6d861628c1c6ce9cf",
+      "bytes": 2313286
+    }
+  },
+  "operations": {
+    "database_calls": 0,
+    "network_calls": 0,
+    "model_calls": 0
+  }
+}

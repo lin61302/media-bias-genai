@@ -281,39 +281,31 @@ Astra's action-selection/extraction preferences among 262 valid outputs: Luna 12
 :::
 
 
-## Coverage and analytical sample {.coverage-summary-slide}
+## MLP coverage and analytical sample {.publication-coverage-slide}
 
-```{=html}
-<div class="coverage-summary-line"><strong>January 2019–May 2026</strong><span>3,464,596 valid records · <b>3,181,113 eligible</b></span></div>
-```
+::: {.publication-coverage-line}
+**71 publication countries · 404 source domains**<span>January 2019–May 2026</span>
+:::
 
-![](figures/06_coverage_map.png){fig-align="center" width="100%"}
+![](figures/06a_publication_coverage.png){fig-align="center" width="100%"}
+
+::: {.publication-coverage-total}
+**3,181,113 eligible articles** from 3,464,596 valid records in the full snapshot.
+:::
 
 ::: {.sample}
-Verified November 8, 2026 snapshot. Earlier-year coverage is uneven. One article, one prioritized action.
+The full sample also includes **26 international / mixed-country domains**, separate from this map. November 8 snapshot; coverage is uneven across years and sources.
 :::
 
 ::: notes
-All figures use the hash-pinned explore-since2019.json release in analysis_snapshot.json, audit 2026-11-08T13:57:13.923991+00:00. The selected period contains 3,464,596 structurally valid records and 3,181,113 comparison-eligible records. The difference, 283,483, is excluded rather than relabeled zero. Complete monthly groups cover 430 domains: 404 mapped to 71 publication countries and 26 international/mixed domains. Evaluated governments span 211 country/territory codes. The two maps show different quantities and scales.
+This map shows publication provenance in the current frozen analytical release: 404 distinct source domains mapped to 71 publication countries, plus 26 international/mixed-country domains kept separate, giving 430 domains in all. Color encodes source-domain count, not article count or political direction. Gray indicates no observed mapped source-domain value in this release. Publication-country assignments follow the frozen metadata and are not a fresh audit of organizational nationality.
 
-A source's publication country and the government evaluated in an article are different concepts. International reporting can evaluate a government without local source collection there. This is a selected reporting corpus, not a probability sample of events. Collection, civic selection, supplied English, processing completion and coding determine inclusion. The analytical release adds 810,250 valid records and 740,801 eligible records to the previous snapshot. Earlier-year coverage remains uneven. Processing has reached 2018, but unverified outcomes and separately tracked reruns have no analytical credit here. Repeated reporting can yield multiple observations of the same event. Reproduction and plotted CSVs: ../scripts/build_slide_figures.py and figures/data/.
+The full January2019–May2026 release contains3,464,596 structurally valid records and3,181,113 comparison-eligible records. These totals include the26 international/mixed-country domains. They have not been restricted to domestic-government evaluations or to the404 mapped domains. The difference,283,483, is excluded rather than relabeled zero. An eligible record has an identified government and primary action plus numeric labels on all three fields. One article contributes one prioritized action. Collection, civic selection, supplied English, verified processing and coding determine inclusion. Repeated reporting can yield multiple records of one event.
+
+Keep the source-coverage discussion here. The separate map of211 evaluated-government country/territory codes and the domestic/foreign research questions appear later, after the country cases. Splitting the maps changes their placement, not the analytical cohort. Earlier-year coverage is uneven. Processing outcomes outside the verified release and separately tracked reruns receive no analytical credit.
+
+Sources: analysis_snapshot.json, figures/data/06_coverage_map.csv and06_coverage_by_year.csv. Reproduce the separate maps with ../scripts/build_coverage_maps.py, which verifies the existing frozen inputs and geometry. The earlier two-panel asset remains available but is no longer shown.
 :::
-
-
-## Directional coverage and polarization {.polarization-slide}
-
-{{< include includes/polarization.qmd >}}
-
-::: notes
-These are four synthetic distributions, not observed countries. All have 100 comparison-eligible articles for one measure. Negative/zero/positive counts are 0/100/0, 60/40/0, 5/90/5 and 30/40/30. The last two have the same balance among directional articles but different directional prevalence. The second and fourth have the same directional share but different balance.
-
-Directional share S = p+ + p−. Balance B = 4q(1−q), where q = p+/S and S > 0. B ranges from 0 (one direction only) to 1 (equal positive and negative shares). B is undefined if S = 0, shown as a dash. Proposed P = 4p+p− = S²B when S > 0; P = 0 when S = 0. These are algebraic decompositions of Erik's proposed index, not separately validated polarization measures. Net direction N = p+ − p− remains useful alongside the shares. An average near zero can describe all-zero coverage or cancellation of opposite signs.
-
-The examples have directional counts 0, 60, 10 and 60, so B = 1 alone does not tell us how much directional evidence there is. P can track S closely when B varies little. Directional share is sometimes called salience in discussion, but it is specifically the fraction of the eligible civic corpus with a directional code, not political importance, total news attention or article volume. Keep unknown/not-codable records outside the denominator, report exclusions separately, and retain zeros, which include neutral, mixed and insufficient directional evidence.
-
-Alternative comparisons should follow the substantive question: positive/negative shares and N for direction; S for prevalence; B for conditional balance; and matched-event, same-government comparisons across sources for between-outlet disagreement. Within- and between-outlet differences are distinct. Actor/action relationships can reveal which groups take opposing positions, but article counts and one extracted action do not measure the size of social camps. Surveys, party positions or conflict evidence are needed to validate a link to societal polarization. Full definitions and sensitivity checks: ../docs/coverage-balance.md.
-:::
-
 
 
 ## Most eligible articles have zero-coded labels {.figure-slide}
@@ -339,7 +331,8 @@ Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 
 ![](figures/09_senegal_monthly_indices.png){fig-align="center" width="100%"}
 
 ::: {.senegal-series-reading}
-**February → March 2024:** protest/march actions **51 → 4**; voting/election actions **14 → 201**. The mix of reported actions changes with the indices.
+**Higher P means positive and negative coverage coexist more often.**<br>
+February → March 2024: protest/march actions **51 → 4**; voting/election actions **14 → 201**.
 :::
 
 ::: notes
@@ -515,7 +508,42 @@ A secondary Nicaragua February 9,2023 pair is retained in the same evidence file
 :::
 
 
-## Same outlet, different governments {.foreign-government-slide}
+## Other research questions {.foreign-map-questions-slide}
+
+::: {.foreign-map-subtitle}
+When the evaluated government differs from the country of publication
+:::
+
+:::: {.foreign-map-columns}
+::: {.foreign-map-figure}
+![](figures/06b_evaluated_governments.png){width="100%"}
+
+**211 evaluated-government country / territory codes**
+:::
+
+::: {.foreign-map-questions}
+- Which outlets cover which governments, **at home and abroad**?
+- Do **allies and rivals** receive different coverage? Does regime type matter?
+- Which **actors and actions** appear when coverage changes around elections or diplomatic disputes?
+:::
+::::
+
+::: {.sample}
+Color counts eligible articles evaluating each government. This map shows the reach of reporting, not additional domestic media collection. January 2019–May 2026; full frozen sample.
+:::
+
+::: notes
+The evaluated-government map counts3,181,113 eligible articles across211 country/territory codes. It differs in unit and scale from the publication-country map: article counts by evaluated government rather than source-domain counts by publication country. It includes domestic, foreign and international reporting. It does not imply collection of local outlets in211 sovereign states. Article volume is neither political polarization nor a count of unique events.
+
+These are research questions, not estimated effects. Government selection uses the prompt's domestic default and foreign-focus rule, with one common government reference for the three judgments. The government is the incumbent at the publication date. Identifying an action's immediate target is separate from identifying the evaluated government. Keep sources, events, time, genre and incumbent transitions explicit when comparing.
+
+Possible designs include a source-by-evaluated-government panel over common months; comparisons of similar actions against domestic and foreign governments; and actor/action examination around diplomatic disputes or elections. Political relationships and regime context require appropriately dated external covariates and cannot be inferred from a fixed-year cloud color. Compare within-source changes and keep source composition separate. The next slide illustrates a question about framing with one outlet and two evaluated governments.
+
+Map source: figures/data/06_coverage_map.csv, the same pinned November8 release in analysis_snapshot.json, and Natural Earthv5.1.2. Reproduction and source hashes: ../scripts/build_coverage_maps.py and figures/data/06_split_maps_manifest.json.
+:::
+
+
+## Framing and polarization across governments {.foreign-framing-compact-slide}
 
 ::: {.foreign-intro}
 **The Kyiv Independent:** framing toward Russia and Ukraine
@@ -526,18 +554,23 @@ A secondary Nicaragua February 9,2023 pair is retained in the same evidence file
 | Russia (foreign) | 1,242 | 37.7% | 0.2% | **37.8%** | 0.0024 |
 | Ukraine (domestic) | 9,568 | 3.1% | 3.3% | **6.3%** | 0.0040 |
 
-::: {.foreign-reading}
-**Russia:** 470 directional articles, almost all negative.<br>
-**Ukraine:** 605 directional articles, roughly balanced between signs.
+::: {.compact-p-reading}
+**Russia has more directional framing, almost all negative.**<br>
+Ukraine’s rarer directional framing is more balanced, giving it a higher P.
 :::
 
-::: {.foreign-question}
-How does an outlet’s evaluation change with the government it covers?<br>
-Next: compare **domestic and foreign governments** using similar actions and events.
+::: {.compact-p-definition}
+**P = 4 × positive share × negative share**<br>
+It rises when both directions are common. Read it alongside their shares.
+:::
+
+::: {.compact-framing-questions}
+When does an outlet criticize one government and defend another?<br>
+Does disagreement occur **within outlets or between them**?
 :::
 
 ::: {.sample}
-Available coverage in January 2019–May 2026. Zero labels remain in denominators. Different events, periods and political conduct; these pooled shares do not establish double standards.
+Available coverage in January 2019–May 2026. Zero labels stay in denominators. Events and political conduct differ; these pooled comparisons do not establish double standards or societal polarization.
 :::
 
 ::: notes
@@ -565,20 +598,6 @@ Representative human-reference accuracy remains unmeasured. Verified storage and
 
 ::: notes
 Sources: ../docs/validation.md and ../docs/codebook.md. Representative human-reference accuracy of the three current labels remains unmeasured. Historical generic sentiment labels do not constitute separate human labels for all three fields. Dependent AI adjudication is not independent human reference. Selection can omit politically important conditions without a codable action; unknown and uncodable records require separate accounting.
-:::
-
-
-## Research agenda {.agenda-slide}
-
-| Substantive question | Comparison needed |
-|---|---|
-| Which actors and actions account for changes in the indices? | Contributions within a government and month, with article counts |
-| Do outlets present the same events differently? | Matched events, source panels and explicit evaluation cues |
-| How do patterns differ across countries and regions? | Comparable periods, coverage composition and incumbent transitions |
-| Does divided coverage precede or follow democratic backsliding? | External polarization measures and a design that handles monthly reporting versus annual indicators |
-
-::: notes
-These are proposed comparisons. Separate directional prevalence, the balance of signs within each outlet, and disagreement between outlets covering the same government and events. None alone establishes societal polarization. Current aggregates do not match events across outlets. Actor/action contributions are descriptive, not causal effects. Country and regional comparisons require comparable periods and sources. An incumbent transition changes the government reference point. Lead/lag correlations alone cannot identify the causal direction between polarization and democratic change. Model-coded reputation is distinct from measured public-opinion change.
 :::
 
 

@@ -22,7 +22,7 @@ Government identity is date-dependent. For example, a country series spanning a 
 
 ## Directional share, balance and source disagreement
 
-The slides separate three descriptive questions. For each measure, government and period, let `n` be the eligible article count and retain all three sign counts.
+We can separate three descriptive questions. For each measure, government and period, let `n` be the eligible article count and retain all three sign counts.
 
 | Question | Summary | What it describes |
 |---|---|---|
@@ -33,7 +33,7 @@ The slides separate three descriptive questions. For each measure, government an
 
 `B` is undefined when `S = 0`; `P` is still zero. B ranges from zero for one sign only to one for equal positive and negative shares. A high B can rest on very few articles, so always show its directional count. A high correlation of P with S can reflect limited variation in B; it does not by itself establish poor classifier sensitivity. S describes directional prevalence in this selected civic corpus, not issue prominence or national-news salience. Article volume answers a separate coverage question.
 
-The current synthetic slide uses 100 articles in each case:
+The optional synthetic illustration retained in `slides/includes/polarization.qmd` uses 100 articles in each case. It is not displayed in the current condensed deck:
 
 | Negative | Zero | Positive | S | N | B | P |
 |---:|---:|---:|---:|---:|---:|---:|

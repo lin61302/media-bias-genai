@@ -11,21 +11,21 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **24 slides**. The concepts lead through classifier selection, prompting and GenAI review to coverage. One measurement slide opens the analysis by separating directional share and balance, then explaining their combination in P. Country cases precede the separate foreign-government comparison.
+The current source renders **23 slides**. Publication-source coverage appears before the empirical findings. Two later research-question slides hold the evaluated-government map, the Russia–Ukraine comparison and a condensed explanation of P. The separate synthetic P slide and overlapping research-agenda slide are no longer displayed.
 
 | Slides | Content |
 |---|---|
 | 1–5 | Question, literature and common political reference |
 | 6–7 | Audience questions and three concepts |
 | 8–10 | Classifier and processing, prompting, GenAI event agreement and Astra review |
-| 11 | Coverage and analytical sample |
-| 12 | Directional share, conditional balance and proposed P, on one slide |
-| 13–14 | Label distributions and alignment–reputation relationship |
-| 15–16 | Senegal monthly series, actor groups and article examples |
-| 17–19 | Kenya source series, institutional context and paired article example |
-| 20 | Same outlet evaluating domestic and foreign governments: Kyiv Independent |
-| 21–23 | Validation, research agenda and discussion |
-| 24 | References |
+| 11 | MLP publication coverage: 71 countries, 404 mapped domains and full-snapshot counts |
+| 12–13 | Label distributions and alignment–reputation relationship |
+| 14–15 | Senegal monthly series, actor groups and article examples |
+| 16–18 | Kenya source series, institutional context and paired article example |
+| 19 | Evaluated-government map and questions about reporting across borders |
+| 20 | Kyiv Independent framing toward Russia/Ukraine, with a condensed P interpretation |
+| 21–22 | Validation and discussion |
+| 23 | References |
 
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
@@ -41,15 +41,16 @@ The evaluated government is selected once for all three fields. Publication coun
 
 Framing uses only the supplied title and narration. Prompt sections Input and 5 prohibit external event knowledge, other articles and inferred omissions. The comparison holds reported facts constant and asks what evaluation the narrator adds; it does not use an external neutral-news baseline. Explicit minimization of acknowledged wrongdoing can count. Differences in coverage, omitted details or emphasis across accounts require a separate comparative analysis; the most common account is not automatically neutral or correct. Words such as “rioters” or an attributed claim about public safety are not automatic framing labels.
 
-The classifier keeps Erik's six-box overview style. Translation and the two civic encoder classifiers have distinct stages. Its lower half reports civic-event and civic-relevance classifier performance. The conceptual definitions appear once on slide 7; monthly aggregation appears once on slide 12. Edit [includes/classifier.qmd](includes/classifier.qmd) and [classifier.css](classifier.css). `pipeline_schematic.png` retains the earlier static figure for reference.
+The classifier keeps Erik's six-box overview style. Translation and the two civic encoder classifiers have distinct stages. Its lower half reports civic-event and civic-relevance classifier performance. The conceptual definitions appear once on slide 7. The Senegal time series has a one-line index explanation; the condensed framing/P comparison appears on slide 20. Edit [includes/classifier.qmd](includes/classifier.qmd) and [classifier.css](classifier.css). `pipeline_schematic.png` retains the earlier static figure for reference.
 
-The classifier and separate monthly illustration are editable HTML in the included QMD files. Sample counts and the framing comparison table remain editable in the main QMD. [concepts.css](concepts.css) styles those slides. Keep the `includes` folder and both CSS files with the QMD when sharing the source. The rendered HTML embeds its viewing resources.
+The classifier is editable HTML in its included QMD file. The older synthetic monthly illustration remains in `includes/polarization.qmd` as an optional source asset, outside the current deck. Sample counts and the framing comparison table remain editable in the main QMD. [concepts.css](concepts.css) styles those slides. Keep the `includes` folder and both CSS files with the QMD when sharing the source. The rendered HTML embeds its viewing resources.
 
-The four current empirical figures use the fixed [November 8 release](analysis_snapshot.json): January 2019–May 2026, **3,181,113 eligible articles** among 3,464,596 valid, independently stored complete-prompt records. This adds 810,250 valid and 740,801 eligible records to the previous slide snapshot. Earlier-year coverage is uneven. Processing admissions and separately tracked reruns are outside this analytical denominator.
+The current empirical figures use the fixed [November 8 release](analysis_snapshot.json): January 2019–May 2026, **3,181,113 eligible articles** among 3,464,596 valid, independently stored complete-prompt records. This adds 810,250 valid and 740,801 eligible records to the previous slide snapshot. Earlier-year coverage is uneven. Processing admissions and separately tracked reruns are outside this analytical denominator.
 
 | Figure | What it shows |
 |---|---|
-| [06_coverage_map.png](figures/06_coverage_map.png) | 71 publication countries and 211 evaluated-government codes. The maps have different quantities and scales. International/mixed source domains are separate. |
+| [06a_publication_coverage.png](figures/06a_publication_coverage.png) | 404 source domains mapped to 71 publication countries. The full sample also includes 26 international/mixed domains, kept separate from this map. |
+| [06b_evaluated_governments.png](figures/06b_evaluated_governments.png) | Eligible article counts for 211 evaluated-government country/territory codes. Shown later with research questions; this does not imply collection of local media in all those places. |
 | [07_label_distributions.png](figures/07_label_distributions.png) | Three marginal distributions on the same eligible denominator. Zero combines neutral, mixed and insufficient directional evidence. |
 | [08_alignment_reputation_joint.png](figures/08_alignment_reputation_joint.png) | Reputation conditional on alignment. Among pro-incumbent actions, 20.8% have negative reputational implications. |
 | [09_senegal_monthly_indices.png](figures/09_senegal_monthly_indices.png) | Monthly two-sided index for each field, article volume and a sourced episode. All nonempty months are shown with exact article counts. Counts describe coverage volume, not independent events or a guarantee of precision. |
@@ -59,13 +60,14 @@ PDF and SVG versions are alongside each PNG. [Plotted CSVs, notes and provenance
 ```sh
 python -m pip install -r requirements-analysis.txt
 python scripts/build_slide_figures.py
+python scripts/build_coverage_maps.py
 ```
 
-The builder verifies the public input hashes and pinned Natural Earth geometry. It uses no database, article text or model calls. The existing [notebook](../notebooks/01_dashboard_and_measures.ipynb) provides additional calculations and explanations.
+The builders verify the public input hashes and pinned Natural Earth geometry. The separate map builder reads the existing cached release, verifies the coverage CSVs, and records hashes in [06_split_maps_manifest.json](figures/data/06_split_maps_manifest.json). The earlier two-panel map is retained as a historical asset but is not displayed. It uses no database, article text or model calls. The existing [notebook](../notebooks/01_dashboard_and_measures.ipynb) provides additional calculations and explanations.
 
 ## Senegal case evidence
 
-Slides 15–16 connect the monthly series to actors, primary actions and selected article records. February has 132 positive-alignment and 182 negative-alignment articles; 83 of the positive-alignment records also have negative reputation. From February to March, protest/march actions fall from 51 to 4 and voting/election actions rise from 14 to 201. These are coded article counts, not independent events or a causal decomposition of P.
+Slides 14–15 connect the monthly series to actors, primary actions and selected article records. February has 132 positive-alignment and 182 negative-alignment articles; 83 of the positive-alignment records also have negative reputation. From February to March, protest/march actions fall from 51 to 4 and voting/election actions rise from 14 to 201. These are coded article counts, not independent events or a causal decomposition of P.
 
 [Aggregate evidence](figures/data/09_senegal_contributors.json) contains all 24 monthly denominators, actor/action distributions, joint labels and within-source comparisons. [Nine article examples](figures/data/09_senegal_article_examples.json) contain source links, saved model codes, short evidence spans and input lengths. Each example's saved-attempt membership, source plan and input were verified against the frozen extraction evidence. Examples were deliberately selected and are not an accuracy sample. Several translated inputs are short excerpts. In the police example, the negative reputation span concerns the election postponement, so the slide reports only the police–protester link and alignment.
 
@@ -73,19 +75,21 @@ Reproduce the aggregates with [build_senegal_case.py](../scripts/build_senegal_c
 
 ## Kenya source comparison
 
-Slides 17–19 compare Nation, KBC and Citizen Digital articles evaluating Kenya's incumbent government. The chart shows January–August 2024 around the Finance Bill protests. [All 36 source-month cells for January–December](figures/data/13_kenya_source_monthly.csv) remain available; December KBC has only three records. The source gap predates June, and all three outlets' negative-framing shares rise in June. Zero labels remain in each denominator.
+Slides 16–18 compare Nation, KBC and Citizen Digital articles evaluating Kenya's incumbent government. The chart shows January–August 2024 around the Finance Bill protests. [All 36 source-month cells for January–December](figures/data/13_kenya_source_monthly.csv) remain available; December KBC has only three records. The source gap predates June, and all three outlets' negative-framing shares rise in June. Zero labels remain in each denominator.
 
 [Aggregate evidence](figures/data/13_kenya_source_comparison.json) includes all three signs, June actor/action distributions and the March–May baseline. [The paired reports](figures/data/13_source_article_pairs.json) cover the same Blinken–Ruto call in original English, but the stored model records select different actions. This supports a close comparison of narration, quotation and action selection; it does not isolate an outlet effect. A secondary Nicaragua pair is documented with its smaller sample and shorter translated inputs.
 
 Use [build_kenya_source_comparison.py](../scripts/build_kenya_source_comparison.py) with the three private caches and frozen slide snapshot to reproduce the aggregate export. [build_source_comparison_figure.py](../scripts/build_source_comparison_figure.py) renders PNG/PDF/SVG and the CSV from that public export. Both use existing data without database or model calls. The [figure manifest](figures/data/13_kenya_figure_manifest.json) records hashes and the selected display window.
 
-Slide 18 distinguishes the outlets' institutional settings in 2024. NMG was a listed private-sector group with AKFED as majority shareholder; KBC was the state public broadcaster; Citizen was part of commercial Royal Media Services. NMG's stated support for accountability and interpretive journalism is policy context, not evidence that ownership caused its measured framing. Citizen's June negative-framing share (8.5%) is close to KBC's (7.2%), compared with Nation's 33.5%, so a state/private split does not account for the pattern. Period-specific sources and qualifications are linked in the slide notes. Later ownership changes are not projected back onto 2024.
+Slide 17 distinguishes the outlets' institutional settings in 2024. NMG was a listed private-sector group with AKFED as majority shareholder; KBC was the state public broadcaster; Citizen was part of commercial Royal Media Services. NMG's stated support for accountability and interpretive journalism is policy context, not evidence that ownership caused its measured framing. Citizen's June negative-framing share (8.5%) is close to KBC's (7.2%), compared with Nation's 33.5%, so a state/private split does not account for the pattern. Period-specific sources and qualifications are linked in the slide notes. Later ownership changes are not projected back onto 2024.
 
 ## Measurement and foreign-government comparisons
 
-Slide 12 replaces the earlier N/P-only illustration with directional share `S`, conditional balance `B`, and their combination `P = S²B`. B is undefined when no directional articles exist. The four synthetic examples distinguish prevalence from balance. [Measure definitions](../docs/coverage-balance.md) retain N and explain comparisons within and between sources. These describe coded coverage, with societal polarization still to validate.
+Slide 19 asks which outlets cover which governments at home and abroad, how evaluations relate to political relationships and regime context, and which actors/actions appear around changes over time. Its map counts eligible articles by evaluated government. Source provenance and evaluated government use different map units; separating their placement does not rescope the analytical sample.
 
-Slide 20 holds the outlet fixed on The Kyiv Independent and compares Russia with Ukraine. Directional framing appears in 470/1,242 Russia-evaluating records (37.8%) and 605/9,568 Ukraine-evaluating records (6.3%). Russia's framing is almost all negative, so its P is lower despite its much larger directional share. These pooled data do not hold event, time or political conduct constant. They illustrate the value of recording foreign evaluated governments, without establishing double standards. The existing five-row source-government CSV remains available.
+Slide 20 combines the Kyiv Independent comparison with the short definition `P = 4p⁺p⁻`. Directional framing appears in 470/1,242 Russia-evaluating records (37.8%) and 605/9,568 Ukraine-evaluating records (6.3%). Russia's framing is almost all negative, so its P is lower despite its much larger directional share. These pooled data do not hold event, time or political conduct constant and do not establish double standards. The existing five-row source-government CSV remains available.
+
+The full decomposition into directional share `S`, conditional balance `B`, and `P = S²B` remains in the [measure definitions](../docs/coverage-balance.md), alongside N and proposed comparisons within and between sources. B is undefined when no directional articles exist. These describe coded coverage, with societal polarization still to validate. The synthetic four-row illustration is no longer shown before the findings.
 
 ## Performance figures
 
@@ -95,7 +99,7 @@ The GenAI slide reports **79.1% same-event agreement (167/211)** when both model
 
 ## Analytical scope
 
-The current analytical figures retain the fixed full eligible sample, including domestic, cross-border and international reporting. A domestic-only analysis additionally requires publication country to equal the evaluated government. “National incumbent” identifies the government reference, not a domestic-only sampling rule. The two maps distinguish where sources publish from which governments their articles evaluate; the pooled correlation describes article labels in that broader sample. Foreign evaluations support comparisons of multiple outlets covering the same government. Those comparisons need common periods and events.
+The current analytical figures retain the fixed full eligible sample, including domestic, cross-border and international reporting. A domestic-only analysis additionally requires publication country to equal the evaluated government. “National incumbent” identifies the government reference, not a domestic-only sampling rule. The maps now appear in separate parts of the deck and distinguish where sources publish from which governments their articles evaluate; the pooled correlation describes article labels in that broader sample. Foreign evaluations support comparisons of multiple outlets covering the same government. Those comparisons need common periods and events.
 
 ## Updating coverage and counts
 
@@ -103,7 +107,7 @@ The figures use `explore-since2019.json`, pinned in [analysis_snapshot.json](ana
 
 The repository-wide `data/analysis_snapshot.json`, notebook and earlier exports retain their November 4 release. Slide inputs use a separate hash-addressed cache. The previous deck and figure files remain available at Git revision `118684b0ccd37bbcf4b9ff9c73004f2ca4fe5f48`; their dates have not been relabeled.
 
-When more data are ready, select a verified new release and update the manifest through the repository's normal data-release process. Then regenerate all four figures, plotted CSVs and this deck together. Change the counts and derived findings in the QMD and README as part of the same update. Leave historical snapshots and evidence intact. A larger production counter alone is insufficient for an analytical refresh.
+When more data are ready, select a verified new release and update the manifest through the repository's normal data-release process. Then regenerate the relevant figures, separate maps, plotted CSVs and this deck together. Change the counts and derived findings in the QMD and README as part of the same update. Leave historical snapshots and evidence intact. A larger production counter alone is insufficient for an analytical refresh.
 
 ## Interpretation and remaining work
 
