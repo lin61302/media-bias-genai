@@ -185,43 +185,53 @@ All examples are illustrative. The budget vote and allegation adapt calibration 
 ## Sentiment in relation to what? {.sentiment-reference-slide}
 
 ```{=html}
-<div class="reference-example"><strong>A product review</strong><p>“The camera is excellent. The battery lasts eight hours.”</p></div>
-<div class="reference-questions">
-  <div><strong>Would this customer recommend the product?</strong><p>A question about overall evaluation. Praise for one feature need not imply a recommendation.</p></div>
-  <div><strong>What does the review tell us about battery life?</strong><p>A question about a feature we care about. Eight hours is information; whether it is good depends on the standard.</p></div>
-</div>
-<div class="reference-bridge"><p>The product remains the reference. <strong>The question determines what we extract.</strong></p><p>In our project, the reference is the <strong>national incumbent government at publication.</strong></p></div>
-<div class="reference-relations">An action’s relationship <strong>to</strong> the government<br>Its implications <strong>for</strong> the government<br>The narrator’s evaluation <strong>of</strong> the government</div>
+<p class="reference-example-label">A product review</p>
+<p class="reference-quote">“The camera is excellent. The battery lasts eight hours.”</p>
+<table class="reference-questions">
+  <thead><tr><th>What do we want to know?</th><th>What does the review tell us?</th></tr></thead>
+  <tbody>
+    <tr><td>Would the customer recommend the product?</td><td>Praise for one feature need not imply an overall recommendation.</td></tr>
+    <tr><td>What about battery life?</td><td>Eight hours is a fact. Calling it good or bad requires a criterion.</td></tr>
+  </tbody>
+</table>
+<p class="reference-principle">Same product; different questions and evidence.</p>
+<div class="reference-bridge"><h3>In our project: the government being evaluated</h3><p>Default to the publication country for domestic affairs. Use a foreign incumbent when it is the focus and no judgment about the domestic incumbent is codable.</p><p class="reference-timing">“Incumbent” means in office at the article’s date; it does not fix the country.</p></div>
+<div class="reference-relations">An action’s relationship to it · Its implications for it · The narrator’s evaluation of it</div>
 ```
 
 ::: notes
 The product review is synthetic. Extracting a feature or fact is not itself sentiment classification; an evaluative judgment requires a target and criterion. Recommendation and feature-level sentiment are related but distinct questions. Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task.
 
-All three project dimensions refer to the same national incumbent, but the relationship and evidence differ. The actor, action's entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.
+All three project dimensions refer to the same evaluated national incumbent, but the relationship and evidence differ. The actor, action's entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.
+
+Government selection follows ../prompts/civic_20261020_complete_v1.txt, section 1 (lines 39–49): publication_country is the default for domestic government-relevant affairs. The foreign exception applies only when the selected action and portrayal concern that foreign incumbent and the supplied text provides no codable align, rep or frame regarding the publication country's incumbent. For publication_country = ALL, a government must be clearly identified. With multiple governments, choose the one most central to the selected action in the title and lead. publication_date fixes incumbent identity; it does not force gov to equal publication_country. Former-regime conduct cannot be attributed to the current incumbent without a supplied link.
 :::
 
 
 ## Three judgments about the same government {.sentiment-definitions-slide}
 
 ```{=html}
-<div class="definitions-example"><strong>Synthetic report:</strong> Cabinet-affiliated emergency services rescued 20 miners.<br>The title calls the rescue “the government’s cynical publicity stunt.”</div>
+<div class="definitions-example"><strong>Selected action:</strong> “Police dispersed peaceful anti-government demonstrators.”<br><span class="definitions-context">Synthetic case; direct affiliation with the evaluated government is supplied.</span></div>
 <table class="sentiment-definitions">
   <thead><tr><th>Term</th><th>What we code</th><th>In this example</th></tr></thead>
   <tbody>
-    <tr><td><strong>Political alignment</strong></td><td>The selected action’s political direction relative to the incumbent: support, opposition, or no supported direction.</td><td><strong>0:</strong> A successful rescue alone establishes no support–opposition relationship.</td></tr>
-    <tr><td><strong>Reputational implication</strong></td><td>What the action and directly tied facts imply about government performance or legitimacy.</td><td><strong>+1:</strong> Successful rescue by cabinet-affiliated services signals competence.</td></tr>
-    <tr><td><strong>Framing</strong></td><td>Approval or criticism toward the government expressed by the title or narrator, beyond the event or an attributed quotation.</td><td><strong>−1:</strong> “Cynical publicity stunt” adds a negative evaluation.</td></tr>
+    <tr><td><strong>Political alignment</strong></td><td>The selected action’s political direction relative to the incumbent: support, opposition, or no supported direction.</td><td><strong>+1:</strong> Dispersal restricts explicitly identified opponents of the incumbent.</td></tr>
+    <tr><td><strong>Reputational implication</strong></td><td>What the action and tied facts imply about government performance or legitimacy, under stated conduct norms.</td><td><strong>−1:</strong> Coercion against peaceful demonstrators conflicts with our stated rights norms.</td></tr>
+    <tr><td><strong>Framing</strong></td><td>Government-favoring or government-critical cues added by the title or narrator, holding reported facts constant.</td><td><strong>0:</strong> The sentence describes conduct without adding narrator approval or criticism.</td></tr>
   </tbody>
 </table>
-<div class="definitions-note">Reputational implication is a coded interpretation of conduct. It is not an observed change in public opinion.</div>
+<div class="definitions-variation">Add narrator endorsement: “a necessary operation that restored order” → <strong>framing +1</strong>.</div>
+<div class="definitions-note">Framing uses supplied text; omissions need separate study. Reputation is not observed opinion change.</div>
 ```
 
 ::: notes
-Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 3–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The rescue is calibration example 6, with supplied direct affiliation to the current national cabinet. No real event, public-opinion effect or validation result is claimed.
+Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 1–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The police case and narrator-endorsement variation are calibration examples 1–2, with supplied direct affiliation to the current national cabinet. No real event, public-opinion effect or validation result is claimed. The rescue/title case remains an optional oral contrast (calibration example 6) and appears in the fourth opening question.
 
-Political alignment concerns direction manifested by the selected action, including support for the incumbent or restrictions on its explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. Reputational implication uses a broad reasonable-observer standard and requires a clear government link. It can concern competence, integrity, lawful conduct, rights or responsiveness; performance and legitimacy are not directly measured public beliefs. Framing concerns observable title/narrator cues, not an author's private intent or attributed criticism alone. It is narrower than the wider literature's uses of framing and does not establish outlet bias.
+Scope the substantive action before its labels: here, dispersal is the selected action, police the actor, demonstrators the entity target, and the incumbent the evaluated government. Political alignment concerns direction manifested by that action, including restrictions on explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. Reputational implication uses a broad reasonable-observer standard and requires a clear government link. It can concern competence, integrity, lawful conduct, rights or responsiveness. This normative standard is neither a democracy-index input nor a claim of universal audience agreement. The prompt normally assigns rep = -1 to coercion against explicitly peaceful/lawful civic actors, rep = +1 to successful lawful action against clearly criminal/violent targets, and 0 when legitimacy, proportionality, responsibility or success is unclear (lines 92–102). Performance and legitimacy are not directly measured public beliefs.
 
-The three values in the rescue example are 0/+1/−1. The following integrated classifier retains the different police example, its definitions, full record and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. The two examples illustrate why these distinctions are retained in the record, not model accuracy.
+Framing uses only the supplied title and narration. The prompt prohibits browsing, other records and outside case knowledge (line 17); its comparison holds the reported action, condition and outcome constant (line 104). This permits ordinary linguistic judgment about an added evaluation, but supplies no external neutral-news benchmark. Explicit minimization of acknowledged wrongdoing can count (line 105); omitted details, sources, gatekeeping and presumed outlet ideology cannot be inferred from one article (lines 113–115). “Rioters” is not an automatic cue: it may describe supplied violence or delegitimate critics through loaded wording. “To keep citizens safe” may be an attributed official justification rather than narrator endorsement. Require visible adoption and robust cues, especially in translation. Matched-event comparisons can study differences in emphasis or omissions separately; the majority account is not automatically a factual or neutral baseline.
+
+The base case is +1/−1/0; adding the narrator's “necessary operation that restored order” changes framing to +1 while keeping the selected action and tied facts fixed. The following integrated classifier retains this same case as a complete record, its definitions and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.
 :::
 
 

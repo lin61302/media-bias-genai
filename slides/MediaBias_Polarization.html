@@ -735,23 +735,27 @@ text-align: center;
 .sentiment-questions-slide .sentiment-example { font-size: 24px; margin-top: 5px; line-height: 1.25; }
 .sentiment-questions-slide .sentiment-purpose { font-size: 21px; color: #606976; margin-top: 3px; }
 .sentiment-questions-slide .sentiment-closing-question { font-size: 29px; color: var(--accent); font-weight: 600; border-top: 1px solid #cbd0d9; padding-top: 16px; margin-top: 20px; }
-.sentiment-reference-slide .reference-example { border-left: 4px solid var(--accent); background: #fff; padding: 13px 20px; margin: 16px 0 22px; }
-.sentiment-reference-slide .reference-example > strong { font-size: 23px; }
-.reveal .slides section.sentiment-reference-slide .reference-example p { font-size: 28px; margin: 7px 0 0; }
-.sentiment-reference-slide .reference-questions { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; }
-.sentiment-reference-slide .reference-questions strong { font-size: 27px; line-height: 1.25; display: block; }
-.reveal .slides section.sentiment-reference-slide .reference-questions p { font-size: 24px; line-height: 1.3; margin: 9px 0 0; }
-.sentiment-reference-slide .reference-bridge { border-top: 1px solid #cbd0d9; margin-top: 22px; padding-top: 13px; }
-.reveal .slides section.sentiment-reference-slide .reference-bridge p { font-size: 26px; line-height: 1.3; margin: 7px 0; }
-.sentiment-reference-slide .reference-relations { font-size: 26px; line-height: 1.5; margin-top: 17px; padding-left: 20px; border-left: 4px solid var(--accent); }
+.reveal .slides section.sentiment-reference-slide .reference-example-label { font-size: 22px; color: #606976; margin: 18px 0 6px; }
+.reveal .slides section.sentiment-reference-slide .reference-quote { font-size: 29px; margin: 0 0 22px; }
+.reveal .slides section.sentiment-reference-slide table.reference-questions { width: 100%; table-layout: fixed; font-size: 25px; background: transparent; }
+.sentiment-reference-slide .reference-questions th:first-child { width: 44%; }
+.reveal .slides section.sentiment-reference-slide .reference-questions td, .reveal .slides section.sentiment-reference-slide .reference-questions th { padding: 10px 16px 10px 0; line-height: 1.28; vertical-align: top; }
+.reveal .slides section.sentiment-reference-slide .reference-principle { font-size: 24px; color: #606976; margin: 14px 0 23px; }
+.sentiment-reference-slide .reference-bridge { border-top: 1px solid #cbd0d9; padding-top: 18px; }
+.reveal .slides section.sentiment-reference-slide .reference-bridge h3 { font-size: 28px; text-transform: none; margin: 0 0 10px; }
+.reveal .slides section.sentiment-reference-slide .reference-bridge p { font-size: 25px; line-height: 1.32; margin: 8px 0; }
+.reveal .slides section.sentiment-reference-slide .reference-bridge .reference-timing { font-size: 22px; color: #606976; }
+.sentiment-reference-slide .reference-relations { font-size: 23px; line-height: 1.35; margin-top: 22px; }
 .sentiment-definitions-slide .definitions-example { font-size: 25px; line-height: 1.35; padding: 13px 18px; background: #fff; border-left: 4px solid var(--accent); margin: 15px 0 20px; }
+.sentiment-definitions-slide .definitions-context { font-size: 22px; color: #606976; }
 .reveal .slides section.sentiment-definitions-slide table { width: 100%; font-size: 25px; table-layout: fixed; }
 .sentiment-definitions-slide th:nth-child(1) { width: 23%; }
 .sentiment-definitions-slide th:nth-child(2) { width: 43%; }
 .sentiment-definitions-slide th:nth-child(3) { width: 34%; }
-.reveal .slides section.sentiment-definitions-slide td { padding: 16px 15px; vertical-align: top; line-height: 1.26; }
+.reveal .slides section.sentiment-definitions-slide td { padding: 13px 15px; vertical-align: top; line-height: 1.26; }
 .reveal .slides section.sentiment-definitions-slide th { padding: 9px 15px; }
-.sentiment-definitions-slide .definitions-note { font-size: 22px; color: #606976; line-height: 1.3; margin-top: 18px; }
+.sentiment-definitions-slide .definitions-variation { font-size: 24px; line-height: 1.3; margin-top: 17px; }
+.sentiment-definitions-slide .definitions-note { font-size: 21px; color: #606976; line-height: 1.3; margin-top: 11px; }
 .reveal .slides section.processing-detail-slide h3 { font-size: 29px; text-transform: none; margin: 10px 0 24px; }
 .reveal .slides section.processing-detail-slide .column { padding-right: 25px; }
 .reveal .slides section.processing-detail-slide ul { font-size: 27px; }
@@ -1531,16 +1535,35 @@ display:block!important;
 </section>
 <section class="slide level2 sentiment-reference-slide center">
 <h2>Sentiment in relation to what?</h2>
-<div class="reference-example"><strong>A product review</strong><p>“The camera is excellent. The battery lasts eight hours.”</p></div>
-<div class="reference-questions">
-  <div><strong>Would this customer recommend the product?</strong><p>A question about overall evaluation. Praise for one feature need not imply a recommendation.</p></div>
-  <div><strong>What does the review tell us about battery life?</strong><p>A question about a feature we care about. Eight hours is information; whether it is good depends on the standard.</p></div>
-</div>
-<div class="reference-bridge"><p>The product remains the reference. <strong>The question determines what we extract.</strong></p><p>In our project, the reference is the <strong>national incumbent government at publication.</strong></p></div>
-<div class="reference-relations">An action’s relationship <strong>to</strong> the government<br>Its implications <strong>for</strong> the government<br>The narrator’s evaluation <strong>of</strong> the government</div>
+<p class="reference-example-label">A product review</p>
+<p class="reference-quote">“The camera is excellent. The battery lasts eight hours.”</p>
+
+<table class="reference-questions caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">What do we want to know?</th>
+<th data-quarto-table-cell-role="th">What does the review tell us?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Would the customer recommend the product?</td>
+<td>Praise for one feature need not imply an overall recommendation.</td>
+</tr>
+<tr class="even">
+<td>What about battery life?</td>
+<td>Eight hours is a fact. Calling it good or bad requires a criterion.</td>
+</tr>
+</tbody>
+</table>
+
+<p class="reference-principle">Same product; different questions and evidence.</p>
+<div class="reference-bridge"><h3>In our project: the government being evaluated</h3><p>Default to the publication country for domestic affairs. Use a foreign incumbent when it is the focus and no judgment about the domestic incumbent is codable.</p><p class="reference-timing">“Incumbent” means in office at the article’s date; it does not fix the country.</p></div>
+<div class="reference-relations">An action’s relationship to it · Its implications for it · The narrator’s evaluation of it</div>
 <aside class="notes">
 <p>The product review is synthetic. Extracting a feature or fact is not itself sentiment classification; an evaluative judgment requires a target and criterion. Recommendation and feature-level sentiment are related but distinct questions. Sentiment research already includes target- and aspect-level methods. Background: Bing Liu, Sentiment Analysis and Opinion Mining, https://www.cs.uic.edu/~liub/FBS/SentimentAnalysis-and-OpinionMining.html . Word counts, dictionaries and learned representations are methods; they do not choose the political object or purpose. Spam detection is a separate classification task.</p>
-<p>All three project dimensions refer to the same national incumbent, but the relationship and evidence differ. The actor, action’s entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.</p>
+<p>All three project dimensions refer to the same evaluated national incumbent, but the relationship and evidence differ. The actor, action’s entity target and evaluated government remain distinct fields. The three judgments are neither generic event valence nor interchangeable measures of government popularity.</p>
+<p>Government selection follows ../prompts/civic_20261020_complete_v1.txt, section 1 (lines 39–49): publication_country is the default for domestic government-relevant affairs. The foreign exception applies only when the selected action and portrayal concern that foreign incumbent and the supplied text provides no codable align, rep or frame regarding the publication country’s incumbent. For publication_country = ALL, a government must be clearly identified. With multiple governments, choose the one most central to the selected action in the title and lead. publication_date fixes incumbent identity; it does not force gov to equal publication_country. Former-regime conduct cannot be attributed to the current incumbent without a supplied link.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1555,7 +1578,7 @@ display:block!important;
 </section>
 <section class="slide level2 sentiment-definitions-slide center">
 <h2>Three judgments about the same government</h2>
-<div class="definitions-example"><strong>Synthetic report:</strong> Cabinet-affiliated emergency services rescued 20 miners.<br>The title calls the rescue “the government’s cynical publicity stunt.”</div>
+<div class="definitions-example"><strong>Selected action:</strong> “Police dispersed peaceful anti-government demonstrators.”<br><span class="definitions-context">Synthetic case; direct affiliation with the evaluated government is supplied.</span></div>
 
 <table class="sentiment-definitions caption-top">
 <thead>
@@ -1569,26 +1592,28 @@ display:block!important;
 <tr class="odd">
 <td><strong>Political alignment</strong></td>
 <td>The selected action’s political direction relative to the incumbent: support, opposition, or no supported direction.</td>
-<td><strong>0:</strong> A successful rescue alone establishes no support–opposition relationship.</td>
+<td><strong>+1:</strong> Dispersal restricts explicitly identified opponents of the incumbent.</td>
 </tr>
 <tr class="even">
 <td><strong>Reputational implication</strong></td>
-<td>What the action and directly tied facts imply about government performance or legitimacy.</td>
-<td><strong>+1:</strong> Successful rescue by cabinet-affiliated services signals competence.</td>
+<td>What the action and tied facts imply about government performance or legitimacy, under stated conduct norms.</td>
+<td><strong>−1:</strong> Coercion against peaceful demonstrators conflicts with our stated rights norms.</td>
 </tr>
 <tr class="odd">
 <td><strong>Framing</strong></td>
-<td>Approval or criticism toward the government expressed by the title or narrator, beyond the event or an attributed quotation.</td>
-<td><strong>−1:</strong> “Cynical publicity stunt” adds a negative evaluation.</td>
+<td>Government-favoring or government-critical cues added by the title or narrator, holding reported facts constant.</td>
+<td><strong>0:</strong> The sentence describes conduct without adding narrator approval or criticism.</td>
 </tr>
 </tbody>
 </table>
 
-<div class="definitions-note">Reputational implication is a coded interpretation of conduct. It is not an observed change in public opinion.</div>
+<div class="definitions-variation">Add narrator endorsement: “a necessary operation that restored order” → <strong>framing +1</strong>.</div>
+<div class="definitions-note">Framing uses supplied text; omissions need separate study. Reputation is not observed opinion change.</div>
 <aside class="notes">
-<p>Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 3–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The rescue is calibration example 6, with supplied direct affiliation to the current national cabinet. No real event, public-opinion effect or validation result is claimed.</p>
-<p>Political alignment concerns direction manifested by the selected action, including support for the incumbent or restrictions on its explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. Reputational implication uses a broad reasonable-observer standard and requires a clear government link. It can concern competence, integrity, lawful conduct, rights or responsiveness; performance and legitimacy are not directly measured public beliefs. Framing concerns observable title/narrator cues, not an author’s private intent or attributed criticism alone. It is narrower than the wider literature’s uses of framing and does not establish outlet bias.</p>
-<p>The three values in the rescue example are 0/+1/−1. The following integrated classifier retains the different police example, its definitions, full record and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. The two examples illustrate why these distinctions are retained in the record, not model accuracy.</p>
+<p>Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 1–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The police case and narrator-endorsement variation are calibration examples 1–2, with supplied direct affiliation to the current national cabinet. No real event, public-opinion effect or validation result is claimed. The rescue/title case remains an optional oral contrast (calibration example 6) and appears in the fourth opening question.</p>
+<p>Scope the substantive action before its labels: here, dispersal is the selected action, police the actor, demonstrators the entity target, and the incumbent the evaluated government. Political alignment concerns direction manifested by that action, including restrictions on explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. Reputational implication uses a broad reasonable-observer standard and requires a clear government link. It can concern competence, integrity, lawful conduct, rights or responsiveness. This normative standard is neither a democracy-index input nor a claim of universal audience agreement. The prompt normally assigns rep = -1 to coercion against explicitly peaceful/lawful civic actors, rep = +1 to successful lawful action against clearly criminal/violent targets, and 0 when legitimacy, proportionality, responsibility or success is unclear (lines 92–102). Performance and legitimacy are not directly measured public beliefs.</p>
+<p>Framing uses only the supplied title and narration. The prompt prohibits browsing, other records and outside case knowledge (line 17); its comparison holds the reported action, condition and outcome constant (line 104). This permits ordinary linguistic judgment about an added evaluation, but supplies no external neutral-news benchmark. Explicit minimization of acknowledged wrongdoing can count (line 105); omitted details, sources, gatekeeping and presumed outlet ideology cannot be inferred from one article (lines 113–115). “Rioters” is not an automatic cue: it may describe supplied violence or delegitimate critics through loaded wording. “To keep citizens safe” may be an attributed official justification rather than narrator endorsement. Require visible adoption and robust cues, especially in translation. Matched-event comparisons can study differences in emphasis or omissions separately; the majority account is not automatically a factual or neutral baseline.</p>
+<p>The base case is +1/−1/0; adding the narrator’s “necessary operation that restored order” changes framing to +1 while keeping the selected action and tied facts fixed. The following integrated classifier retains this same case as a complete record, its definitions and monthly distributions. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1643,7 +1668,7 @@ display:block!important;
       <div class="classifier-record-columns">
         <div class="classifier-entities">
           <div class="classifier-detail-label">What the record identifies</div>
-          <div class="classifier-entity-row"><strong>gov</strong><span>National incumbent at publication</span></div>
+          <div class="classifier-entity-row"><strong>gov</strong><span>Evaluated incumbent government</span></div>
           <div class="classifier-entity-row"><strong>act</strong><span>“dispersed peaceful anti-government demonstrators”</span></div>
           <div class="classifier-entity-row"><strong>actor</strong><span>Police</span></div>
           <div class="classifier-entity-row"><strong>target</strong><span>Peaceful anti-government demonstrators</span></div>

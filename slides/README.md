@@ -11,7 +11,7 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **19 slides**. Slides 6–8 move from four audience questions to “in relation to what?” and then precise definitions with a synthetic rescue example. Slide 9 retains the integrated classifier overview, including its field definitions, different police example and monthly illustration. The audience names are **Political alignment**, **Reputational implication** and **Framing**, mapped to `align`, `rep` and `frame`.
+The current source renders **19 slides**. Slides 6–8 move from four audience questions to “in relation to what?” and then precise definitions with a synthetic protest-dispersal example. Slide 9 retains the integrated classifier overview, including its field definitions, the same police case as a complete record and monthly illustration. The audience names are **Political alignment**, **Reputational implication** and **Framing**, mapped to `align`, `rep` and `frame`.
 
 | Slides | Content |
 |---|---|
@@ -27,9 +27,13 @@ The shared files contain the presentation, method qualifications and source note
 
 ## Examples and figures
 
-The rescue example on slide 8 comes from calibration example 6: cabinet-affiliated services rescue 20 miners, while the title calls the rescue a “cynical publicity stunt.” It illustrates political alignment 0, reputational implication +1 and framing −1. This is a contrast between coding questions, not an observed effect or accuracy result.
+The rescue/title contrast in the opening questions comes from calibration example 6: cabinet-affiliated services rescue 20 miners, while the title calls the rescue a “cynical publicity stunt.” It can be discussed orally as a second example: political alignment 0, reputational implication +1 and framing −1.
 
-The police example is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. It is not a sampled event or model-accuracy result.
+The police example on slides 8–9 is synthetic and comes from calibration examples 1–2 in the [complete prompt](../prompts/civic_20261020_complete_v1.txt). It explicitly supplies cabinet affiliation and peaceful anti-government demonstrators. It demonstrates alignment +1, reputation −1 and framing 0; adding narrator endorsement changes framing to +1. The negative reputational implication uses the prompt's explicit rights and lawful-conduct norms, not a democracy index or observed public-opinion change. It is not a sampled event or model-accuracy result.
+
+The evaluated government is selected once for all three fields. Publication country is the default for domestic government-relevant affairs; the foreign-government exception requires a foreign focus and no codable judgment about the publication country's incumbent. The article date identifies who is incumbent, not which country must be evaluated. The complete rule, including `ALL` and multiple governments, is in prompt section 1.
+
+Framing uses only the supplied title and narration. Prompt sections Input and 5 prohibit external event knowledge, other articles and inferred omissions. The comparison holds reported facts constant and asks what evaluation the narrator adds; it does not use an external neutral-news baseline. Explicit minimization of acknowledged wrongdoing can count. Differences in coverage, omitted details or emphasis across accounts require a separate comparative analysis; the most common account is not automatically neutral or correct. Words such as “rioters” or an attributed claim about public safety are not automatic framing labels.
 
 The classifier keeps Erik's six-box overview style. Translation and the two civic encoder classifiers have distinct stages. Its lower half contains the record, three judgment questions and illustrative monthly distributions. Definitions stay in this integrated figure. Edit [includes/classifier.qmd](includes/classifier.qmd) and [classifier.css](classifier.css). `pipeline_schematic.png` retains the earlier static figure for reference.
 

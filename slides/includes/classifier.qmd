@@ -39,7 +39,7 @@
       <div class="classifier-record-columns">
         <div class="classifier-entities">
           <div class="classifier-detail-label">What the record identifies</div>
-          <div class="classifier-entity-row"><strong>gov</strong><span>National incumbent at publication</span></div>
+          <div class="classifier-entity-row"><strong>gov</strong><span>Evaluated incumbent government</span></div>
           <div class="classifier-entity-row"><strong>act</strong><span>“dispersed peaceful anti-government demonstrators”</span></div>
           <div class="classifier-entity-row"><strong>actor</strong><span>Police</span></div>
           <div class="classifier-entity-row"><strong>target</strong><span>Peaceful anti-government demonstrators</span></div>
