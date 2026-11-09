@@ -11,7 +11,7 @@ Open the HTML in a browser. Click a slide, then use **F** for fullscreen, arrow 
 
 ## Current deck
 
-The current source renders **21 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing lead directly to prompting fields/rules and the historical GenAI comparison. The monthly-score illustration follows coverage, introducing how article labels are summarized before the findings.
+The current source renders **23 slides**. Slides 6–7 move from audience questions directly to three judgments about the same government. The classifier and processing lead directly to prompting fields/rules and the historical GenAI comparison. The monthly-score illustration follows coverage, introducing how article labels are summarized before the findings.
 
 | Slides | Content |
 |---|---|
@@ -24,8 +24,9 @@ The current source renders **21 slides**. Slides 6–7 move from audience questi
 | 12 | Why the same average can hide different coverage; net score and proposed P |
 | 13–16 | Label distributions, joint labels, source–government framing and monthly context |
 | 17 | Senegal actor groups and verified article examples |
-| 18–20 | Validation, research agenda and discussion |
-| 21 | References |
+| 18–19 | Kenya source comparison over time and a paired article example |
+| 20–22 | Validation, research agenda and discussion |
+| 23 | References |
 
 The shared files contain the presentation, method qualifications and source notes. Personal speaking manuscripts are maintained separately outside this repository.
 
@@ -70,6 +71,14 @@ Slides 16–17 connect the monthly series to actors, primary actions and selecte
 [Aggregate evidence](figures/data/09_senegal_contributors.json) contains all 24 monthly denominators, actor/action distributions, joint labels and within-source comparisons. [Nine article examples](figures/data/09_senegal_article_examples.json) contain source links, saved model codes, short evidence spans and input lengths. Each example's saved-attempt membership, source plan and input were verified against the frozen extraction evidence. Examples were deliberately selected and are not an accuracy sample. Several translated inputs are short excerpts. In the police example, the negative reputation span concerns the election postponement, so the slide reports only the police–protester link and alignment.
 
 Reproduce the aggregates with [build_senegal_case.py](../scripts/build_senegal_case.py), supplying the three disjoint private extraction caches using repeated `--cache` arguments, plus `--snapshot slides/analysis_snapshot.json`, `--slide-csv slides/figures/data/09_senegal_monthly_indices.csv` and `--output slides/figures/data/09_senegal_contributors.json`. Each cache needs its neighboring `EXTRACTION_VERIFIED.json`; the frozen public scope JSON must be cached or supplied with `--scope`. The script verifies cache hashes, full sample counts and the 27-cell joint distribution, then reconciles every displayed month. It reads existing files and makes no database, network or model calls. Private caches and article texts are not published.
+
+## Kenya source comparison
+
+Slides 18–19 compare Nation, KBC and Citizen Digital articles evaluating Kenya's incumbent government. The chart shows January–August 2024 around the Finance Bill protests. [All 36 source-month cells for January–December](figures/data/13_kenya_source_monthly.csv) remain available; December KBC has only three records. The source gap predates June, and all three outlets' negative-framing shares rise in June. Zero labels remain in each denominator.
+
+[Aggregate evidence](figures/data/13_kenya_source_comparison.json) includes all three signs, June actor/action distributions and the March–May baseline. [The paired reports](figures/data/13_source_article_pairs.json) cover the same Blinken–Ruto call in original English, but the stored model records select different actions. This supports a close comparison of narration, quotation and action selection; it does not isolate an outlet effect. A secondary Nicaragua pair is documented with its smaller sample and shorter translated inputs.
+
+Use [build_kenya_source_comparison.py](../scripts/build_kenya_source_comparison.py) with the three private caches and frozen slide snapshot to reproduce the aggregate export. [build_source_comparison_figure.py](../scripts/build_source_comparison_figure.py) renders PNG/PDF/SVG and the CSV from that public export. Both use existing data without database or model calls. The [figure manifest](figures/data/13_kenya_figure_manifest.json) records hashes and the selected display window.
 
 ## Performance figures
 

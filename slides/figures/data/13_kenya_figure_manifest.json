@@ -1,0 +1,33 @@
+{
+  "input": "13_kenya_source_comparison.json",
+  "input_sha256": "774d6a73229d60107117e345d408cf74b98b6488f886c3781a17dca892ead6f8",
+  "builder_sha256": "70f246b0d8475e2f026372c1e906f667923419970f350ea494822e1aac912d4e",
+  "snapshot_commit": "821e24c66b43d4de15860f5414373da6f3448d63",
+  "plot_months": [
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08"
+  ],
+  "export_months": [
+    "2024-01",
+    "2024-12"
+  ],
+  "count_filter": null,
+  "june_denominators": {
+    "nation.africa": 224,
+    "kbc.co.ke": 138,
+    "citizen.digital": 236
+  },
+  "interpretation": "Negative-label shares of the common eligible source-month sample; zero retained. Descriptive model labels, not a causal source effect.",
+  "window_note": "Selected episode window January\u2013August; all36 January\u2013December cells exported. December KBC has n3.",
+  "files": {
+    "13_kenya_source_comparison.png": "1742f72ff543801aa9498e8cd0a4d4154f5e4c78597018f2bc2eeafbb11523c1",
+    "13_kenya_source_comparison.pdf": "1e29ffb28d9a654e63bec1cd7b4128fd80571c3ebf5d3c4c9df0e9d236cb5c1d",
+    "13_kenya_source_comparison.svg": "43dbf5911c5ef9423c902a0ddf5cf4666c0ddd6d82f83960b58b2e0c8769b4b4"
+  }
+}

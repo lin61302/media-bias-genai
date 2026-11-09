@@ -440,6 +440,66 @@ Illustrative records were selected deliberately, not sampled randomly. All figur
 :::
 
 
+## Kenya: outlets differ before and during the protests {.source-series-slide}
+
+![](figures/13_kenya_source_comparison.png){fig-align="center" width="100%"}
+
+::: {.source-series-reading}
+Among June **civic-movement protest actions**, negative framing appears in **8/15 Nation records** and **0/17 Citizen records**. These are still different sets of stories.
+:::
+
+::: notes
+Frozen November 8 sample; exact source domains nation.africa, kbc.co.ke, citizen.digital; publication country KEN and evaluated government KEN. This holds the country reference fixed on the incumbent Ruto government; it does not mix evaluations of foreign governments. All common-eligible articles, including zero labels, remain in each denominator. No minimum-count mask. The main chart selects January–August 2024 around the June episode; all 36 January–December source-month cells are exported. December KBC has only three eligible records, so the main figure should not be described as a full-year view. Counts are coded article records, not separate events or independent observations.
+
+June denominators: Nation224, KBC138, Citizen236. Negative framing is75/224=33.5%,10/138=7.2%,20/236=8.5%; negative reputation91/224=40.6%,25/138=18.1%,34/236=14.4%. The labels are model-coded evaluations of Kenya's incumbent government, not a validated estimate of editorial bias or public opinion. The graph shows negative shares rather than P because one-sided critical coverage may have a low two-sided index. Positive and zero counts remain in the public data.
+
+The source difference predates June. Pooled March–May negative framing: Nation76/387=19.6%, KBC6/236=2.5%, Citizen12/307=3.9%. Each rises in June, but the protest episode did not create the pre-existing gap. July framing remains74/250=29.6% at Nation, versus4/138=2.9% KBC and15/279=5.4% Citizen. Same-source comparisons reduce source-composition explanations but do not hold events, genre, duplication or article completeness constant. This case was chosen after exploratory country/source/month screening, not as a pre-specified statistical test.
+
+The source contrast is not only a difference in the frequency of broad actor roles. In June, Nation and Citizen each have 32 records with civic movements/unions as the selected actor; negative framing is16/32 versus2/32. Within the more specific civic-movement + protest/march cell, negative framing is8/15 Nation,0/17 Citizen and0/4 KBC; negative reputation10/15,2/17,0/4. These are small descriptive cells, not matched events. Executive/cabinet records also differ: negative framing15/34 Nation,1/30 KBC,2/27 Citizen. They identify strata for close reading, not a controlled estimate of source effects.
+
+Episode context: June protests concerned the Finance Bill; Ruto announced on June 26 that he would not sign it. The official June 26 Blinken–Ruto readout records praise for de-escalation, a call for security-force restraint and investigations of alleged rights abuses: https://2021-2025.state.gov/secretary-blinkens-call-with-kenyan-president-william-ruto/ . Kenya's Parliament records the subsequent July 25 rejection following presidential reservations: https://www.parliament.go.ke/index.php/node/22244 . These sources contextualize the episode and were not used to add external facts to the stored model coding.
+
+Reproduction: ../scripts/build_kenya_source_comparison.py verifies three private cache hashes and reconciles full population counts and 27 joint cells. ../scripts/build_source_comparison_figure.py renders the public aggregates. Figures/data/13_kenya_source_comparison.json,13_kenya_source_monthly.csv and13_kenya_figure_manifest.json preserve denominators, signs, scope and hashes. The full source/year filter excludes 182 eligible records evaluating other governments.
+:::
+
+
+## The same call, different descriptions and coding {.source-pair-slide}
+
+::: {.source-pair-context}
+**June 27, 2024:** Nation and KBC report the Blinken–Ruto call after the Finance Bill withdrawal. Both report US praise and concerns about security-force conduct.
+:::
+
+| | Nation | KBC |
+|---|---|---|
+| Wording and attribution | Narrator: **“conceding defeat”** | Ruto quoted: **“I concede”** |
+| Selected actor → action | Ruto → withdraws the bill | US → commends Ruto |
+| Political alignment | **0** | **+1** |
+| Reputational implication | **−1** | **+1** |
+| Framing | **−1** | **0** |
+
+::: {.source-pair-links}
+[Read Nation’s report](https://nation.africa/kenya/news/africa/us-lauds-president-ruto-for-withdrawing-finance-bill-4671282) · [Read KBC’s report](https://www.kbc.co.ke/us-commends-president-ruto-for-withdrawing-finance-bill-2024/)
+:::
+
+::: {.source-pair-takeaway}
+The wording differs, and the model selected different actions. **These codes do not isolate an outlet effect.**
+:::
+
+::: {.sample}
+Original English reports; stored model labels.
+:::
+
+::: notes
+Both articles are dated June 27 and cover the June 26 call after Ruto declined to sign the Finance Bill. Their headlines both emphasize US praise: Nation's headline is US lauds President Ruto for withdrawing controversial Finance Bill; KBC's is US commends President Ruto for withdrawing Finance Bill 2024. Both also include calls for restraint and investigations of alleged human-rights violations. Do not describe KBC as omitting every critical element, or Nation as omitting the praise.
+
+Nation's stored record selects President Ruto withdrawing the bill; align0,rep-1,frame-1. Both negative evidence spans cite the narrator's conceding defeat. KBC selects US endorsement directed toward Ruto; align+1,rep+1,frame0. Its reputation evidence points to withdrawing the bill following opposition. Its I concede wording is a direct quotation from Ruto. The narrator/quotation distinction helps explain the different framing outputs, but does not establish that every human would agree with the model. The near-parallel headlines and different selected focal actions are also a real action-selection sensitivity: a fuller comparison should hold the action fixed and review the evidence manually.
+
+The evaluated government in both records is Kenya. The US is an actor in the KBC record, not the evaluated government. Both texts are original English and exactly equal the saved input text: 1,968 characters for Nation and 1,882 for KBC. All selected article IDs, plan hashes and source rows were verified against the frozen audit. Nation's live page fetch returned403; the saved original English was available and verified. KBC's public indexed page agrees with the saved episode. Source URLs, short evidence spans, model outputs and verification hashes are in figures/data/13_source_article_pairs.json. The paired records were chosen deliberately and are not an accuracy sample or a causal test of outlet bias.
+
+A secondary Nicaragua February 9,2023 pair is retained in the same evidence file: La Prensa describes the expulsion of 222 political prisoners with dictatorship/banishment wording, coded0/-1/-1; Nuevaya describes 222 people convicted of treason being deported, coded0/0/0. Both refer to the same removal to the United States. It is a useful wording contrast, but Nuevaya has only eight eligible records that month, and the two supplied translations are short excerpts. Do not use it as the stronger time-series case or treat zero framing as proof of neutral language. Event context: https://www.oas.org/en/iachr/jsForm/?File=%2Fen%2Fiachr%2Fmedia_center%2Fpreleases%2F2023%2F021.asp .
+:::
+
+
 ## What needs validation {.validation-slide}
 
 | Question | Required evidence or comparison |
