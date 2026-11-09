@@ -67,7 +67,7 @@ When more data are ready, select a verified new release and update the manifest 
 
 ## Interpretation and remaining work
 
-- **Political alignment** describes the actor's directional relationship toward the evaluated government as expressed through the selected action. It can be evidenced directly or through conduct toward explicitly identified government opponents. It does not establish a reciprocal or permanent relationship, moral approval or private views.
+- **Political alignment** describes the actor's directional relationship to the evaluated government as expressed through the selected action. It can be evidenced directly or through conduct toward explicitly identified government opponents. It does not establish a reciprocal or permanent relationship, moral approval or private views.
 - **Reputational implication** describes a coded implication for government performance/legitimacy, rather than a measured change in public opinion.
 - **Framing** describes observable narrator evaluation. Outlet bias requires evidence about coverage selection and comparable events.
 - **Monthly P = 4p⁺p⁻** is a proposed two-sided coverage index, calculated separately for the three fields. Its relationship to societal polarization and to formal polarization indices remains to be justified.
