@@ -84,24 +84,6 @@
   font-size: 21px;
   margin: 7px 0;
 }
-.classifier-slide .classifier-performance {
-  margin-top: 32px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  padding: 18px 25px;
-  border-left: 6px solid var(--classifier-navy);
-  background: #fff;
-  font-size: 25px;
-  line-height: 1.4;
-}
-.classifier-slide .classifier-performance .classifier-score {
-  font-size: 54px;
-  font-weight: 700;
-  line-height: 1;
-  white-space: nowrap;
-}
-
 .reveal .slides section.polarization-slide .polarization-intro { font-size: 26px; margin: 8px 0 25px; }
 .polarization-slide .polarization-table-head,
 .polarization-slide .polarization-table-row { display: grid; grid-template-columns: 210px minmax(0, 1fr) 130px 105px 110px; gap: 20px; align-items: center; }

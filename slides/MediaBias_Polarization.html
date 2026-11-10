@@ -596,23 +596,6 @@ color: #1f2328;
 font-size: 21px;
 margin: 7px 0;
 }
-.classifier-slide .classifier-performance {
-margin-top: 32px;
-display: flex;
-align-items: center;
-gap: 24px;
-padding: 18px 25px;
-border-left: 6px solid var(--classifier-navy);
-background: #fff;
-font-size: 25px;
-line-height: 1.4;
-}
-.classifier-slide .classifier-performance .classifier-score {
-font-size: 54px;
-font-weight: 700;
-line-height: 1;
-white-space: nowrap;
-}
 .reveal .slides section.polarization-slide .polarization-intro { font-size: 26px; margin: 8px 0 25px; }
 .polarization-slide .polarization-table-head,
 .polarization-slide .polarization-table-row { display: grid; grid-template-columns: 210px minmax(0, 1fr) 130px 105px 110px; gap: 20px; align-items: center; }
@@ -1779,14 +1762,9 @@ display:block!important;
     </div>
   </div>
 
-  <div class="classifier-performance" aria-label="Paper-reported out-of-sample accuracy for civic relevance is 87 percent">
-    <strong class="classifier-score">87%</strong>
-    <div><strong>Civic relevance accuracy</strong><br>Does the article concern civic or political life?</div>
-  </div>
 </div>
 <aside class="notes">
-<p>The six stages show corpus collection, translation, the two encoder classifiers, GenAI coding, checks, and analytical views. Civic-event type and civic relevance are separate classification tasks; both selection conditions must pass. This is not a dual-encoder architectural claim. GenAI receives the full supplied English text, unlike the earlier encoder classifier’s title plus first 600 characters.</p>
-<p>Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13. Out-of-sample accuracy: civic-event classification 82%; civic/political relevance 87%. https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.</p>
+<p>The six stages show how articles reach the analysis: collection and cleaning, translation, civic selection, GenAI coding, checks, and analytical views. The event-type and civic-relevance classifiers select the civic material. GenAI then records the actor, action, target and three political judgments. This provides the transition to the source coverage and measurement sections.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

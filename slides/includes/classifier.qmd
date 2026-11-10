@@ -31,9 +31,5 @@
     </div>
   </div>
 
-  <div class="classifier-performance" aria-label="Paper-reported out-of-sample accuracy for civic relevance is 87 percent">
-    <strong class="classifier-score">87%</strong>
-    <div><strong>Civic relevance accuracy</strong><br>Does the article concern civic or political life?</div>
-  </div>
 </div>
 ```
