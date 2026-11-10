@@ -94,16 +94,15 @@ format:
           </style>
 ---
 
-## The Puzzle {.smaller}
+## Motivation {.smaller}
 
 - Polarization is understood as a common feature of politics across the world
 - Media bias is understood to be an important driver of polarization
   * [@MartinYurukoglu2017; @kubin2021role]
-- Big Question: What are the consequences of media bias and political polarization on the relationship between citizens and government?
+- **Big Question:** What are the consequences of media bias and political polarization on the relationship between citizens and government?
   * Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
   * Incumbents may deepen polarization strategically [@somer_etal_2021]
-- Most research is on the US (+ a few others)
-- Significant challenges in the measurement of bias and polarization [@puglisi2015empirical; @prior2013media]
+- Significant challenges measuring bias and polarization [@puglisi2015empirical; @prior2013media]
 - Can we measure media bias and polarization systematically across countries and over time to answer the big question? 
 
 ::: notes
@@ -116,18 +115,17 @@ format:
 
 ## Existing work on the US {.smaller .literature-detail}
 
-- **Substantive debate:** 
-  * To what extent is there a causal link between more partisan messages and changing attitudes? [@prior2013media] 
+- **Substantive debates:** 
+  * Is there a causal link between more partisan messages and changing attitudes? [@prior2013media] 
   * Is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]
 - **Measures of bias:**
   * TV news: visibility of partisan actors [@kim2022measuring]
-  * Newspaper: similarity of language to Republican or Democrat [@gentzkow2010what]
+  * Newspaper: similarity of language to Republican or Democrat [@gentzkow_shapiro_2010]
 - **Measures of polarization:**
   * Legislative: distance between parties on roll-call ideal points [@poole_rosenthal_1985; @mccarty_etal_2006]
   * Public opinion: issue-position distributions; party feeling thermometers [@lelkes2016review]
   * Speech: partisanship of congressional speech [@gentzkow_etal_2019]
 - **Key findings:**
-  * Roll-call polarization has risen steadily since the 1970s [@mccarty_etal_2006]
   * Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
   * Media: partisan news shifts votes and can raise polarization [@MartinYurukoglu2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior2013media]
 
