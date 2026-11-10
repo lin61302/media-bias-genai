@@ -1,0 +1,573 @@
+{
+  "schema_version": 1,
+  "title": "GenAI validation (Astra-assisted)",
+  "source_review_date": "2026-11-03",
+  "aggregate_verification_date": "2026-11-10",
+  "unit": "Historical validation article; original human and Luna coding followed by Astra review",
+  "review_design": {
+    "reviewer_access": "Astra saw both existing codings, the supplied text and project context.",
+    "nature": "Dependent AI-assisted review; not an independent third coding or human adjudication.",
+    "human_fields": "Action, action tags, reaction, actor, actor category, one legacy sentiment, evidence and sparse government reference.",
+    "human_legacy_sentiment_field": "sent_gov_final",
+    "human_three_dimension_labels_available": false,
+    "astra_outputs": "Review assessments, selection preferences, prose corrections and dependent numeric proposals.",
+    "astra_complete_independent_coding_available": false,
+    "historical_gpt_columns": "Separate older model baseline; not Astra.",
+    "missing_policy": "Missing field values and unresolved judgments remain distinct from numeric zero and receive no agreement credit. Shared explicit no-action decisions count as agreement only in the stated broader event-selection comparison.",
+    "shares": "Fractions from 0 to 1."
+  },
+  "cohorts": {
+    "historical": 266,
+    "valid_model_outputs": 262,
+    "invalid_model_outputs": 4,
+    "both_human_luna_action": 211,
+    "same_event": 167,
+    "different_event": 44,
+    "action_no_action_disagreement": 40,
+    "both_no_action": 11,
+    "accepted_same_event": 155,
+    "same_event_excluded_action_selection": 12,
+    "excluded_selection_verdicts": {
+      "unsupported": 2,
+      "unresolved": 10
+    },
+    "accepted_same_event_matches_existing_label_cohort": true
+  },
+  "broad_human_luna_event_comparison": {
+    "both_selected_action": {
+      "matches": 167,
+      "compared": 211,
+      "share": 0.7914691943127962
+    },
+    "all_valid_including_shared_no_action": {
+      "matches": 178,
+      "compared": 262,
+      "share": 0.6793893129770993
+    }
+  },
+  "threeway_event_overlap": {
+    "n": 187,
+    "human_luna": {
+      "matches": 155,
+      "compared": 187,
+      "share": 0.8288770053475936
+    },
+    "luna_astra": {
+      "matches": 170,
+      "compared": 187,
+      "share": 0.9090909090909091
+    },
+    "human_astra": {
+      "matches": 171,
+      "compared": 187,
+      "share": 0.9144385026737968
+    },
+    "paired_action_partition": {
+      "accepted_shared_event": 155,
+      "accepted_luna_preferred_event": 15,
+      "human_preferred_event": 16,
+      "neither_supported": 1,
+      "both_different_events_defensible": 5,
+      "unresolved": 19
+    },
+    "exclusions": {
+      "both_different_events_defensible": 5,
+      "unresolved": 19
+    },
+    "selection_limit": "The filter uses a Luna-specific selection assessment without a parallel human assessment. Two Luna-preferred cases remain unresolved and are excluded.",
+    "interpretation": "Adjudication-derived event overlap. The 171-versus-170 difference does not establish a human advantage; these are not independent third-rater accuracy estimates."
+  },
+  "action_extraction_preferences": [
+    {
+      "group": "all_valid",
+      "n": 262,
+      "luna_preferred": 121,
+      "human_preferred": 44,
+      "both_defensible": 83,
+      "unresolved": 9,
+      "neither_supported": 5
+    },
+    {
+      "group": "same_event",
+      "n": 167,
+      "luna_preferred": 75,
+      "human_preferred": 20,
+      "both_defensible": 67,
+      "unresolved": 2,
+      "neither_supported": 3
+    },
+    {
+      "group": "different_event",
+      "n": 44,
+      "luna_preferred": 17,
+      "human_preferred": 16,
+      "both_defensible": 5,
+      "unresolved": 5,
+      "neither_supported": 1
+    },
+    {
+      "group": "action_no_action_disagreement",
+      "n": 40,
+      "luna_preferred": 29,
+      "human_preferred": 8,
+      "both_defensible": 0,
+      "unresolved": 2,
+      "neither_supported": 1
+    },
+    {
+      "group": "both_no_action",
+      "n": 11,
+      "luna_preferred": 0,
+      "human_preferred": 0,
+      "both_defensible": 11,
+      "unresolved": 0,
+      "neither_supported": 0
+    }
+  ],
+  "human_luna_same_event_field_agreement": {
+    "rows": [
+      {
+        "field": "exact_action_tag_set",
+        "all_same_event": {
+          "matches": 99,
+          "compared": 167,
+          "share": 0.592814371257485
+        },
+        "accepted_same_event": {
+          "matches": 92,
+          "compared": 155,
+          "share": 0.5935483870967742
+        }
+      },
+      {
+        "field": "primary_action_tag",
+        "all_same_event": {
+          "matches": 108,
+          "compared": 167,
+          "share": 0.6467065868263473
+        },
+        "accepted_same_event": {
+          "matches": 101,
+          "compared": 155,
+          "share": 0.6516129032258065
+        }
+      },
+      {
+        "field": "actor_category_code",
+        "all_same_event": {
+          "matches": 106,
+          "compared": 149,
+          "share": 0.7114093959731543
+        },
+        "accepted_same_event": {
+          "matches": 101,
+          "compared": 140,
+          "share": 0.7214285714285714
+        }
+      },
+      {
+        "field": "literal_actor_wording",
+        "all_same_event": {
+          "matches": 46,
+          "compared": 146,
+          "share": 0.3150684931506849
+        },
+        "accepted_same_event": {
+          "matches": 43,
+          "compared": 137,
+          "share": 0.31386861313868614
+        }
+      },
+      {
+        "field": "normalized_actor_wording",
+        "all_same_event": {
+          "matches": 53,
+          "compared": 146,
+          "share": 0.363013698630137
+        },
+        "accepted_same_event": {
+          "matches": 49,
+          "compared": 137,
+          "share": 0.35766423357664234
+        }
+      },
+      {
+        "field": "substantive_reaction_tag",
+        "all_same_event": {
+          "matches": 9,
+          "compared": 20,
+          "share": 0.45
+        },
+        "accepted_same_event": {
+          "matches": 9,
+          "compared": 19,
+          "share": 0.47368421052631576
+        }
+      }
+    ],
+    "conditions": {
+      "all_same_event": "167 reviewed human-Luna event matches, including 12 unsupported or unresolved Luna selections.",
+      "accepted_same_event": "155 shared-event records with Luna action selection judged compliant or defensible.",
+      "action_tags": "Exact tag-set or primary-tag equality as specified; no semantic recoding.",
+      "actor_category": "Existing A-W category code extracted from the recorded value.",
+      "actor_wording": "Literal or case/spacing-normalized equality, not an independent semantic entity-equivalence judgment.",
+      "reaction": "Only pairs with substantive reaction tags; missing or uncodable values are excluded."
+    }
+  },
+  "astra_action_tag_support": [
+    {
+      "cohort": "both_human_luna_action",
+      "n": 211,
+      "human": {
+        "matches": 142,
+        "compared": 211,
+        "share": 0.6729857819905213
+      },
+      "luna": {
+        "matches": 150,
+        "compared": 211,
+        "share": 0.7109004739336493
+      }
+    },
+    {
+      "cohort": "all_same_event",
+      "n": 167,
+      "human": {
+        "matches": 118,
+        "compared": 167,
+        "share": 0.7065868263473054
+      },
+      "luna": {
+        "matches": 127,
+        "compared": 167,
+        "share": 0.7604790419161677
+      }
+    },
+    {
+      "cohort": "accepted_same_event",
+      "n": 155,
+      "human": {
+        "matches": 114,
+        "compared": 155,
+        "share": 0.7354838709677419
+      },
+      "luna": {
+        "matches": 121,
+        "compared": 155,
+        "share": 0.7806451612903226
+      }
+    }
+  ],
+  "action_tag_support_interpretation": "Separate support assessments of each side's recorded tags, not exact agreement with an independently coded Astra tag set.",
+  "legacy_sentiment_sign_correspondence": {
+    "interpretation": "Raw numeric sign correspondence between the single human legacy sentiment, each Luna dimension and Astra's dependent proposal. Human comparisons are across different constructs; these are not same-construct three-way sentiment agreement.",
+    "proposal_construction": "Supported proposals copy Luna's label. Unsupported labels may receive an explicit correction. Ambiguous proposals remain null.",
+    "pairwise_available_rows": [
+      {
+        "cohort": "all_same_event",
+        "dimension": "align",
+        "human_luna": {
+          "matches": 90,
+          "compared": 162,
+          "share": 0.5555555555555556
+        },
+        "human_astra_proposal": {
+          "matches": 78,
+          "compared": 139,
+          "share": 0.5611510791366906
+        },
+        "luna_astra_proposal": {
+          "matches": 133,
+          "compared": 142,
+          "share": 0.9366197183098591
+        }
+      },
+      {
+        "cohort": "all_same_event",
+        "dimension": "rep",
+        "human_luna": {
+          "matches": 77,
+          "compared": 162,
+          "share": 0.47530864197530864
+        },
+        "human_astra_proposal": {
+          "matches": 68,
+          "compared": 130,
+          "share": 0.5230769230769231
+        },
+        "luna_astra_proposal": {
+          "matches": 128,
+          "compared": 133,
+          "share": 0.9624060150375939
+        }
+      },
+      {
+        "cohort": "all_same_event",
+        "dimension": "frame",
+        "human_luna": {
+          "matches": 71,
+          "compared": 162,
+          "share": 0.4382716049382716
+        },
+        "human_astra_proposal": {
+          "matches": 69,
+          "compared": 152,
+          "share": 0.45394736842105265
+        },
+        "luna_astra_proposal": {
+          "matches": 154,
+          "compared": 157,
+          "share": 0.9808917197452229
+        }
+      },
+      {
+        "cohort": "accepted_same_event",
+        "dimension": "align",
+        "human_luna": {
+          "matches": 83,
+          "compared": 150,
+          "share": 0.5533333333333333
+        },
+        "human_astra_proposal": {
+          "matches": 74,
+          "compared": 132,
+          "share": 0.5606060606060606
+        },
+        "luna_astra_proposal": {
+          "matches": 126,
+          "compared": 135,
+          "share": 0.9333333333333333
+        }
+      },
+      {
+        "cohort": "accepted_same_event",
+        "dimension": "rep",
+        "human_luna": {
+          "matches": 70,
+          "compared": 150,
+          "share": 0.4666666666666667
+        },
+        "human_astra_proposal": {
+          "matches": 63,
+          "compared": 123,
+          "share": 0.5121951219512195
+        },
+        "luna_astra_proposal": {
+          "matches": 122,
+          "compared": 126,
+          "share": 0.9682539682539683
+        }
+      },
+      {
+        "cohort": "accepted_same_event",
+        "dimension": "frame",
+        "human_luna": {
+          "matches": 66,
+          "compared": 150,
+          "share": 0.44
+        },
+        "human_astra_proposal": {
+          "matches": 64,
+          "compared": 141,
+          "share": 0.45390070921985815
+        },
+        "luna_astra_proposal": {
+          "matches": 143,
+          "compared": 146,
+          "share": 0.9794520547945206
+        }
+      }
+    ],
+    "pairwise_available_limit": "Each pair can have a different denominator. The all-same-event cohort retains 12 selections excluded by the action-adequacy gate.",
+    "common_numeric_accepted_same_event_rows": [
+      {
+        "dimension": "align",
+        "n": 132,
+        "human_luna": {
+          "matches": 75,
+          "compared": 132,
+          "share": 0.5681818181818182
+        },
+        "human_astra_proposal": {
+          "matches": 74,
+          "compared": 132,
+          "share": 0.5606060606060606
+        },
+        "luna_astra_proposal": {
+          "matches": 123,
+          "compared": 132,
+          "share": 0.9318181818181818
+        }
+      },
+      {
+        "dimension": "rep",
+        "n": 123,
+        "human_luna": {
+          "matches": 63,
+          "compared": 123,
+          "share": 0.5121951219512195
+        },
+        "human_astra_proposal": {
+          "matches": 63,
+          "compared": 123,
+          "share": 0.5121951219512195
+        },
+        "luna_astra_proposal": {
+          "matches": 119,
+          "compared": 123,
+          "share": 0.967479674796748
+        }
+      },
+      {
+        "dimension": "frame",
+        "n": 141,
+        "human_luna": {
+          "matches": 61,
+          "compared": 141,
+          "share": 0.4326241134751773
+        },
+        "human_astra_proposal": {
+          "matches": 64,
+          "compared": 141,
+          "share": 0.45390070921985815
+        },
+        "luna_astra_proposal": {
+          "matches": 138,
+          "compared": 141,
+          "share": 0.9787234042553191
+        }
+      }
+    ],
+    "common_numeric_rule": "For each dimension within the accepted-155 cohort, retain only records with all three numeric values. All three pairs therefore use the same denominator within that dimension.",
+    "missing_in_accepted_same_event": {
+      "nonnumeric_human_sentiment": 5,
+      "unresolved_astra_proposals": {
+        "align": 20,
+        "rep": 29,
+        "frame": 9
+      }
+    },
+    "dependence_limit": "High Luna-Astra proposal correspondence is partly built into proposal construction; it is not independent inter-rater reliability."
+  },
+  "same_event_label_support": {
+    "n": 155,
+    "align": {
+      "supported": 126,
+      "unresolved": 20,
+      "correction_proposed": 9,
+      "directional_supported": 24,
+      "directional_n": 37
+    },
+    "rep": {
+      "supported": 122,
+      "unresolved": 29,
+      "correction_proposed": 4,
+      "directional_supported": 7,
+      "directional_n": 24
+    },
+    "frame": {
+      "supported": 143,
+      "unresolved": 9,
+      "correction_proposed": 3,
+      "directional_supported": 8,
+      "directional_n": 14
+    },
+    "all_three_supported": 103,
+    "interpretation": "Support denominators retain unresolved assessments. Do not substitute complete-case numeric correspondence for these rates."
+  },
+  "government_reference": {
+    "human_provenance": "User confirmed that populated sentiment_target_country entries were entered by human coders.",
+    "historical_n": 266,
+    "populated": 19,
+    "missing": 247,
+    "all_same_event": {
+      "n": 167,
+      "missing": 153,
+      "different": 7,
+      "multiple": 2,
+      "same": 5
+    },
+    "accepted_same_event": {
+      "n": 155,
+      "missing": 143,
+      "different": 6,
+      "multiple": 1,
+      "same": 5
+    },
+    "explicitly_matching_government_subset": {
+      "n": 5,
+      "all_in_accepted_same_event": true,
+      "align": {
+        "human_luna": {
+          "matches": 2,
+          "compared": 5,
+          "share": 0.4
+        },
+        "human_astra_proposal": {
+          "matches": 2,
+          "compared": 5,
+          "share": 0.4
+        },
+        "luna_astra_proposal": {
+          "matches": 5,
+          "compared": 5,
+          "share": 1
+        }
+      },
+      "rep": {
+        "human_luna": {
+          "matches": 0,
+          "compared": 5,
+          "share": 0
+        },
+        "human_astra_proposal": {
+          "matches": 0,
+          "compared": 2,
+          "share": 0
+        },
+        "luna_astra_proposal": {
+          "matches": 2,
+          "compared": 2,
+          "share": 1
+        },
+        "unresolved_astra_proposals": 3
+      },
+      "frame": {
+        "human_luna": {
+          "matches": 0,
+          "compared": 5,
+          "share": 0
+        },
+        "human_astra_proposal": {
+          "matches": 0,
+          "compared": 5,
+          "share": 0
+        },
+        "luna_astra_proposal": {
+          "matches": 5,
+          "compared": 5,
+          "share": 1
+        }
+      }
+    },
+    "literal_action_wording_and_matching_government_n": 0,
+    "interpretation": "These tiny explicitly matched-government subsets do not support general performance conclusions."
+  },
+  "unavailable_comparisons": [
+    "Same-construct human-Luna or human-Astra agreement separately for alignment, reputation and framing: corresponding human labels were not collected.",
+    "Exact human-Astra or Luna-Astra agreement against independent actor, actor-category, action-tag, reaction or government fields: no complete independent Astra coding exists."
+  ],
+  "corrections_preserved": [
+    "The reversed one-sided action-status entry is retained as Model action only.",
+    "The disputed reputation review remains ambiguous between 0 and +1, with no point proposal or automatic agreement credit."
+  ],
+  "provenance": {
+    "hash_algorithm": "sha256",
+    "source_hashes": {
+      "corrected_threeway_data": "81fa441f12139b757c193767f37a0da828afdbe9c2787c589895707f4b03613e",
+      "verified_compact_report": "2f2679dc3942e35ed315ef6827176305256ed605620966d149903f2e70b4fb5b"
+    },
+    "source_access": "Underlying coding and source text remain private. This artifact contains aggregate counts and methods only.",
+    "related_label_aggregate": "05_same_event_label_review.json"
+  }
+}

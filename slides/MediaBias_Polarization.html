@@ -779,13 +779,26 @@ margin: 0;
 .reveal .slides section.prompt-purpose-slide td, .reveal .slides section.prompt-purpose-slide th { padding: 17px 18px; line-height: 1.35; vertical-align: top; }
 .purpose-bottom { font-size: 27px; line-height: 1.4; margin-top: 25px; }
 .review-intro { font-size: 27px; line-height: 1.4; margin: 12px 0 23px; }
-.action-match-summary { font-size: 31px; line-height: 1.4; margin: 16px 0 26px; }
-.action-review-question { font-size: 26px; line-height: 1.4; margin: 0 0 18px; }
-.reveal .slides section.action-review-slide table { width: 100%; font-size: 27px; table-layout: fixed; }
-.reveal .slides section.action-review-slide col:first-child { width: 78% !important; }
-.reveal .slides section.action-review-slide col:last-child { width: 22% !important; }
-.reveal .slides section.action-review-slide td, .reveal .slides section.action-review-slide th { padding: 12px 18px; line-height: 1.3; }
-.reveal .slides section.action-review-slide .sample { font-size: 21px; margin-top: 20px; line-height: 1.4; }
+.comparison-context { font-size: 25px; line-height: 1.4; margin-top: 22px; }
+.reveal .slides section.threeway-event-slide table,
+.reveal .slides section.same-event-fields-slide table { width: 100%; font-size: 27px; table-layout: fixed; }
+.reveal .slides section.threeway-event-slide col:first-child,
+.reveal .slides section.same-event-fields-slide col:first-child { width: 56% !important; }
+.reveal .slides section.threeway-event-slide col:not(:first-child),
+.reveal .slides section.same-event-fields-slide col:not(:first-child) { width: 22% !important; }
+.reveal .slides section.threeway-event-slide td,
+.reveal .slides section.threeway-event-slide th { padding: 17px 18px; line-height: 1.3; }
+.reveal .slides section.same-event-fields-slide td,
+.reveal .slides section.same-event-fields-slide th { padding: 12px 14px; line-height: 1.3; }
+.reveal .slides section.action-review-slide table { width: 100%; font-size: 25px; table-layout: fixed; }
+.reveal .slides section.action-review-slide col:first-child { width: 29% !important; }
+.reveal .slides section.action-review-slide col:nth-child(2) { width: 7% !important; }
+.reveal .slides section.action-review-slide col:nth-child(n+3) { width: 16% !important; }
+.reveal .slides section.action-review-slide td,
+.reveal .slides section.action-review-slide th { padding: 12px 12px; line-height: 1.3; }
+.reveal .slides section.threeway-event-slide .sample,
+.reveal .slides section.same-event-fields-slide .sample,
+.reveal .slides section.action-review-slide .sample { font-size: 20px; margin-top: 20px; line-height: 1.4; }
 .reveal .slides section.label-review-slide table { width: 100%; table-layout: fixed; font-size: 25px; }
 .reveal .slides section.label-review-slide col { width: 20% !important; }
 .reveal .slides section.label-review-slide td, .reveal .slides section.label-review-slide th { padding: 16px 12px; line-height: 1.3; vertical-align: middle; }
@@ -1791,51 +1804,217 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section class="slide level2 action-review-slide center">
-<h2>Action selection: human and model</h2>
+<section class="slide level2 threeway-event-slide center">
+<h2>GenAI validation (Astra-assisted)</h2>
 <div class="review-intro">
-<p>Human coders and Luna both selected an action in <strong>211 articles</strong>.</p>
-</div>
-<div class="action-match-summary">
-<p><strong>167</strong> selected the same event <strong>(79.1%)</strong> · <strong>44</strong> selected different events <strong>(20.9%)</strong></p>
-</div>
-<div class="action-review-question">
-<p>For the <strong>44 different-event cases</strong>, Astra reviewed which selection better fit the supplied text and coding rules.</p>
+<p><strong>Human and Luna coding → Astra-assisted review</strong><br> Do the three recorded choices identify the same event?</p>
 </div>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th>Selection preferred by Astra</th>
-<th style="text-align: right;">Articles</th>
+<th>Event comparison</th>
+<th style="text-align: right;">Matches / compared</th>
+<th style="text-align: right;">Agreement</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Luna</td>
-<td style="text-align: right;"><strong>17</strong></td>
+<td>Human–Luna</td>
+<td style="text-align: right;">155 / 187</td>
+<td style="text-align: right;"><strong>82.9%</strong></td>
 </tr>
 <tr class="even">
-<td>Human</td>
-<td style="text-align: right;"><strong>16</strong></td>
+<td>Luna–Astra-assisted review</td>
+<td style="text-align: right;">170 / 187</td>
+<td style="text-align: right;"><strong>90.9%</strong></td>
 </tr>
 <tr class="odd">
-<td>No single preference</td>
-<td style="text-align: right;"><strong>11</strong></td>
+<td>Human–Astra-assisted review</td>
+<td style="text-align: right;">171 / 187</td>
+<td style="text-align: right;"><strong>91.4%</strong></td>
 </tr>
 </tbody>
 </table>
 <div class="review-example">
-<p>Different action selections can lead to different political labels.</p>
+<p>All three comparisons use the <strong>same 187 cases</strong>.<br> Another <strong>19</strong> remain undecided; <strong>5</strong> allow two different defensible events.</p>
+</div>
+<div class="comparison-context">
+<p>Broader human–Luna agreement: <strong>167 / 211 (79.1%)</strong> when both select an action;<br> <strong>178 / 262 (67.9%)</strong> when shared no-action choices and one-sided choices are included.</p>
 </div>
 <div class="sample">
-<p>Historical comparison; inputs and coding rules differed. AI-assisted review, <strong>not independent accuracy</strong>.</p>
+<p>Event agreement, not full-record accuracy. The review saw both codings; the selection rule is asymmetric, so the one-case difference does not rank coder performance.</p>
 </div>
 <aside class="notes">
-<p>This stage examines action selection before political-label review. Of 266 historical inputs, 262 model outputs were structurally valid. In 211 records both the human and Luna selected an action: 167 were judged to identify the same event and 44 different events. Event identity was reviewed with AI assistance; it is not exact-span agreement and does not certify matching actors, targets or evaluated governments.</p>
-<p>Across all 262 valid outputs, agreement including 11 shared no-action decisions is 178/262 = 67.9%. The other 40 are one-sided action/no-action disagreements. Four invalid model outputs are excluded from both valid-output denominators. The displayed 79.1% is conditional event agreement, not overall accuracy.</p>
-<p>In the 44 different-event cases, Astra preferred Luna in 17 and the human in 16; five were both defensible, five unresolved and one neither supported (11 with no single preference). This near-even 17/16 split applies only to the different-event subset. Across all 262 valid-output records, the extraction preferences are 121 Luna, 44 human, 83 both defensible and 14 unresolved/neither. Event agreement and extraction preference are separate judgments, so a preferred extraction may still refer to the same event as the alternative.</p>
-<p>The review saw both answers and project context. Historical human inputs were shorter and some titles/bodies differed; coding rules also differed. These comparisons identify disagreements to investigate, not a controlled test of model versus human superiority. The next slide retains 155 of the 167 shared-event records after excluding two unsupported and ten unresolved model action selections. The political-label review therefore does not cover the different-event or one-sided action/no-action disagreements.</p>
-<p>Source: ../docs/validation.md, November 2 historical comparison. Private source records and review workbooks remain outside the repository.</p>
+<p>GenAI validation (Astra-assisted) describes historical human and Luna coding followed by review against the supplied article and current coding rules. The third event choice is a review judgment, not a blind independent coding pass. Restore the original three-way event comparison: human–Luna 155/187, Luna–review 170/187, human–review 171/187. All three use identical records.</p>
+<p>The 211 valid records with an action on both sides partition into 155 accepted shared events, 15 accepted Luna-preferred events, 16 human-preferred events, one neither-supported case, 19 unresolved cases and five cases accepting two different events. The latter 24 are outside the single-choice 187 comparison. The one neither-supported case remains a determinate disagreement. No uncertainty is counted as agreement.</p>
+<p>The historical 187-case construction uses a Luna-specific selection-acceptance flag without an equivalent human-selection flag. Two Luna-preferred cases, rows 149 and 170, were classified unresolved; this leaves 15 Luna-preferred and 16 human-preferred events in the determinate subset. Therefore 170 versus 171 is not a symmetric comparison of coder accuracy. These retained event-overlap figures should be read with the full extraction review on the next slide.</p>
+<p>The broader human–Luna event comparison is 167/211. Across all 262 valid outputs, 167 shared events plus 11 shared no-action choices give 178/262 = 67.9%; all 40 one-sided action/no-action disagreements remain in that denominator. There were 266 inputs and four invalid model outputs. Exact action wording is a different test from event identity.</p>
+<p>Read-only verification on November 10 confirmed that the 155 shared-event members in the 187 comparison are exactly the 155 accepted shared-event records used later for political-label review. Sources: figures/data/05_threeway_validation.json and ../docs/validation.md; current corrected November 3 three-way records. Private article records remain outside this repository.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2 action-review-slide center">
+<h2>Action selection: review of disagreements</h2>
+<div class="review-intro">
+<p>Which selection and extraction best fit the supplied text and coding rules?</p>
+</div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Cases reviewed</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">Luna preferred</th>
+<th style="text-align: right;">Human preferred</th>
+<th style="text-align: right;">Both defensible</th>
+<th style="text-align: right;">Undecided / neither</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>All valid outputs</strong></td>
+<td style="text-align: right;"><strong>262</strong></td>
+<td style="text-align: right;"><strong>121</strong></td>
+<td style="text-align: right;"><strong>44</strong></td>
+<td style="text-align: right;"><strong>83</strong></td>
+<td style="text-align: right;"><strong>14</strong></td>
+</tr>
+<tr class="even">
+<td>Same event</td>
+<td style="text-align: right;">167</td>
+<td style="text-align: right;">75</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">67</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="odd">
+<td>Different events</td>
+<td style="text-align: right;">44</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="even">
+<td>Only one selects an action</td>
+<td style="text-align: right;">40</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="odd">
+<td>Neither selects an action</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<div class="review-example">
+<p>Identifying the same event can still leave differences in <strong>actor, action wording or action stage</strong>. The review can prefer one extraction even when event choices match.</p>
+</div>
+<div class="comparison-context">
+<p>Action tags retained in review, across <strong>211 paired actions</strong>:<br> <strong>Luna: 150 / 211 (71.1%)</strong> · <strong>Human: 142 / 211 (67.3%)</strong></p>
+</div>
+<div class="sample">
+<p>GenAI validation (Astra-assisted). Historical inputs and rules differed. Preferences and retained tags describe review outcomes, not a controlled accuracy ranking.</p>
+</div>
+<aside class="notes">
+<p>This is the complete extraction review of 262 valid outputs, not just the 44 different-event cases. Astra-assisted review preferred Luna in 121 (46.2%), the human in 44 (16.8%), found both defensible in 83 (31.7%), and left nine undecided plus five neither supported (14, 5.3%). No judgments were changed to favor either side.</p>
+<p>The rows below the total partition all 262 records. Same-event 167: 75 Luna, 20 human, 67 both, two unresolved and three neither. Different-event 44: 17 Luna, 16 human, five both, five unresolved and one neither. One-sided action/no-action 40: 29 Luna, eight human, two unresolved and one neither. Both no-action 11: all eleven both defensible. The 17-versus-16 comparison therefore describes only a subset.</p>
+<p>Same-event identity can coexist with a preferred extraction because one answer may preserve agency, modality, specificity or a substantive action more faithfully. Preference concerns selection and extraction, not correctness of every returned field. The current fuller text and coding rules differed from the historical human exercise.</p>
+<p>The separate action-tag assessments use all 211 records with an action on both sides: human tags 142 retained, 38 ambiguous and 31 needing correction; Luna tags 150 retained, 46 ambiguous and 15 needing correction. These produce 67.3% and 71.1%. They are judgments about each side’s tags, not exact overlap with a third independently coded tag set. For the 167 shared-event subset, retained tags are 118/167 human and 127/167 Luna; for the 155 accepted shared events, 114/155 human and 121/155 Luna. Keep these populations distinct.</p>
+<p>Sources: figures/data/05_threeway_validation.json and ../docs/validation.md; the corrected November 3 three-way comparison, rechecked November 10 without new model coding.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2 same-event-fields-slide center">
+<h2>Same event: agreement on other fields</h2>
+<div class="review-intro">
+<p>Within <strong>167 articles where human and Luna selected the same event</strong>, how often do their other recorded fields match?</p>
+</div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Recorded field</th>
+<th style="text-align: right;">Human–Luna matches</th>
+<th style="text-align: right;">Agreement</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Primary action tag</td>
+<td style="text-align: right;">108 / 167</td>
+<td style="text-align: right;"><strong>64.7%</strong></td>
+</tr>
+<tr class="even">
+<td>Complete action-tag set</td>
+<td style="text-align: right;">99 / 167</td>
+<td style="text-align: right;"><strong>59.3%</strong></td>
+</tr>
+<tr class="odd">
+<td>Actor category</td>
+<td style="text-align: right;">106 / 149</td>
+<td style="text-align: right;"><strong>71.1%</strong></td>
+</tr>
+<tr class="even">
+<td>Actor wording — exact text</td>
+<td style="text-align: right;">46 / 146</td>
+<td style="text-align: right;"><strong>31.5%</strong></td>
+</tr>
+<tr class="odd">
+<td>Trigger / reaction tag</td>
+<td style="text-align: right;">9 / 20</td>
+<td style="text-align: right;"><strong>45.0%</strong></td>
+</tr>
+<tr class="even">
+<td>Evaluated government — one named country</td>
+<td style="text-align: right;">5 / 12</td>
+<td style="text-align: right;"><strong>41.7%</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="review-example">
+<p>A shared event does not guarantee the same actor, tags or government reference.</p>
+</div>
+<div class="sample">
+<p>Each denominator requires both fields to be coded; missing values are not matches. Exact wording is stricter than identifying the same actor. Review judgments are reported separately because no complete third set of these fields was recorded.</p>
+</div>
+<aside class="notes">
+<p>This is actual recorded human–Luna field agreement conditional on shared event identity, not Astra-assisted support of one side. The parent population is all 167 shared-event records. Only records with comparable substantive values enter each denominator; missing or uncodable fields are not credited as agreement. Actor category comparison extracts the existing A–W code without semantic recoding. Action-tag sets are compared as sets; primary tags are compared separately.</p>
+<p>Exact field matches: complete action-tag set 99/167; primary tag 108/167; actor category 106/149; literal actor wording 46/146; reaction tag 9/20. With only case and spacing normalized, actor wording matches 53/146 (36.3%). Neither wording comparison is an adjudicated measure of entity equivalence. The title/lead selection can agree while one extraction includes a longer name or additional qualifier.</p>
+<p>Among the 167 records, 153 human government fields are missing, two name multiple countries, and twelve name one interpretable country. Of the twelve, five match Luna and seven differ. Missing human government references remain missing. The historical human-country provenance was confirmed by the user. Reaction-tag comparison excludes null or non-substantive values; only 20 records have substantive values on both sides.</p>
+<p>Restricting to the 155 accepted shared events yields complete tag-set agreement 92/155, primary tag 101/155, actor category 101/140, literal actor wording 43/137, normalized actor wording 49/137 and reaction tag 9/19. Five of eleven interpretable single human government references match; 143 human references are missing and one names multiple countries. Do not substitute this subset without relabeling the denominator.</p>
+<p>Astra-assisted review records preferences, assessments and some proposed corrections, not an independently completed actor/tag/category/reaction/government record for every article. Therefore exact human–review and Luna–review category agreement is not available for these fields. The previous slide reports the retained tag assessments for each coder separately. The next slide reports political-label review outcomes.</p>
+<p>The historical human sentiment is one variable, not three separately coded political judgments. Supplemental raw numeric sign comparisons with the three current fields are preserved in ../docs/validation.md and figures/data/05_threeway_validation.json; those are cross-measure correspondence, not same-construct three-way accuracy. Sources and exact filters are retained there.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1849,9 +2028,9 @@ display:block!important;
 }</style></aside>
 </section>
 <section class="slide level2 label-review-slide center">
-<h2>Political judgments after action selection</h2>
+<h2>Political labels: Astra-assisted review</h2>
 <div class="review-intro">
-<p>Of the <strong>167 shared-event records</strong>, <strong>155</strong> passed the action-selection review.<br> Astra then assessed Luna’s alignment, reputation and framing labels.</p>
+<p><strong>155 shared-event records</strong> remain after the action-selection check.<br> GenAI validation (Astra-assisted): which political labels are retained or revised?</p>
 </div>
 <table class="caption-top">
 <colgroup>
@@ -1864,10 +2043,10 @@ display:block!important;
 <thead>
 <tr class="header">
 <th>Judgment</th>
-<th style="text-align: right;">Supported</th>
-<th style="text-align: right;">Uncertain</th>
-<th style="text-align: right;">Correction proposed</th>
-<th style="text-align: right;">Supported among nonzero labels</th>
+<th style="text-align: right;">Retained in review</th>
+<th style="text-align: right;">Left open</th>
+<th style="text-align: right;">Change proposed</th>
+<th style="text-align: right;">Retained among nonzero labels</th>
 </tr>
 </thead>
 <tbody>
@@ -1895,13 +2074,13 @@ display:block!important;
 </tbody>
 </table>
 <div class="review-example">
-<p><strong>Police beat opposition protesters:</strong> alignment <strong>+1</strong> retained; reputation <strong>0 → −1</strong> proposed. The same action can support the incumbent and reflect badly on it.</p>
+<p><strong>All three labels retained: 103 / 155 (66.5%).</strong><br> Police beating opposition protesters: human sentiment <strong>−1</strong>; Luna <strong>(+1, 0, 0)</strong>; review <strong>(+1, −1, open)</strong>.</p>
 </div>
 <div class="sample">
-<p>AI review of existing labels, <strong>not independent accuracy</strong>. Zeros dominate; directional cases need closer review. The historical human sheet has one sentiment field, not three separate reference labels.</p>
+<p>Triples are alignment, reputation, framing. The human sheet has one sentiment field, not three separate labels. Retained means the review accepts the recorded label; open cases remain undecided. Zeros dominate the totals.</p>
 </div>
 <aside class="notes">
-<p>This follows the action-selection comparison. The historical comparison has 266 inputs, 262 valid model outputs, 211 records with an action on both sides, and 167 same-event matches. Of those 167, twelve fail Astra’s additional action-adequacy gate; 155 meet the existing review protocol. The twelve comprise two unsupported and ten unresolved model action selections. Event equivalence was itself reviewed with AI assistance. Same-event matching is not exact-text matching. These conditional label-review results exclude the different-event and one-sided action/no-action disagreements shown in the preceding comparison.</p>
+<p>This follows the three-way event comparison, full action-selection review and recorded same-event field agreement. The historical comparison has 266 inputs, 262 valid model outputs, 211 records with an action on both sides, and 167 same-event matches. Of those 167, twelve fail Astra’s additional action-adequacy gate; 155 meet the existing review protocol. The twelve comprise two unsupported and ten unresolved model action selections. Event equivalence was itself reviewed with AI assistance. Same-event matching is not exact-text matching. These conditional label-review results exclude the different-event and one-sided action/no-action disagreements shown in the preceding comparison.</p>
 <p>Astra assesses Luna’s political labels conditional on the selected model action and government. Supported proposals copy Luna’s value by construction. These verdicts are therefore dependent evidence review, not independent Astra–Luna agreement and not human-reference accuracy. Supported/uncertain/correction counts: alignment126/20/9; reputation122/29/4; framing143/9/3. All three supported103/155. No uncertain case is credited as supported. Nonzero-only support is24/37,7/24,8/14 respectively; these small selected denominators do not estimate population accuracy, but show how the majority zero class inflates the overall support rate.</p>
 <p>Full167 sensitivity including the twelve disputed actions: alignment133/25/9, reputation128/34/5, framing154/10/3. Current November3 corrections are retained, including the changed reputation review of one case. The historical human sheet supplies one legacy sentiment variable;153of167 shared-event human records lack a government reference, seven differ, five match and two are multiple. It cannot support a human three-axis comparison at a fixed government.</p>
 <p>The concrete Baku police case is a Reuters October12,2013 report: both codings identify beating/detention after an opposition rally. The saved model record is(+1,0,0). The reviewer retains+1 alignment, proposes−1 reputation and leaves framing unresolved. It is a disagreement for human adjudication, not a corrected production record or ground truth. Private evidence stays outside the repository. Public aggregates/provenance: figures/data/05_same_event_label_review.json and ../docs/validation.md.</p>
