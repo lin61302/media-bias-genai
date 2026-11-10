@@ -114,6 +114,21 @@
     function erase(p) {
       page().strokes = page().strokes.filter(s => !s.points.some((a, i) => segmentDistance(p, a, s.points[i+1] || a) < 16+s.width/2));
     }
+    function extend(event) {
+      // Coalesced samples are optional. Some embedded browsers expose the API
+      // but reject the call; the delivered event must still produce ink.
+      let samples = [];
+      try { samples = event.getCoalescedEvents?.() || []; } catch (_) {}
+      for (const sample of [...samples, event]) {
+        const p = point(sample);
+        if (mode === 'erase') erase(p);
+        else if (activeStroke) {
+          const last = activeStroke.points[activeStroke.points.length - 1];
+          if (!last || last[0] !== p[0] || last[1] !== p[1]) activeStroke.points.push(p);
+        }
+      }
+      render();
+    }
     svg.addEventListener('pointerdown', event => {
       if (mode === 'off' || activePointer !== null || event.isPrimary === false ||
           (event.pointerType === 'mouse' && event.button !== 0)) return;
@@ -128,19 +143,20 @@
     });
     window.addEventListener('pointermove', event => {
       if (event.pointerId !== activePointer) return;
-      if (event.pointerType === 'mouse' && event.buttons === 0) { finish(); return; }
       event.preventDefault(); event.stopPropagation();
-      for (const sample of (event.getCoalescedEvents?.().length ? event.getCoalescedEvents() : [event])) {
-        if (mode === 'erase') erase(point(sample)); else activeStroke?.points.push(point(sample));
-      }
-      render();
+      // The down/up lifecycle owns this gesture. A move's buttons value may
+      // be missing in an embedded input stream and must not truncate it.
+      extend(event);
     }, {capture: true, passive: false});
     for (const name of ['pointerup', 'pointercancel']) window.addEventListener(name, event => {
-      if (event.pointerId === activePointer) { event.stopPropagation(); finish(); }
+      if (event.pointerId !== activePointer) return;
+      event.stopPropagation();
+      // Fast drags may have few or no intermediate moves. Retain their end.
+      if (name === 'pointerup') extend(event);
+      finish();
     }, true);
-    svg.addEventListener('lostpointercapture', event => {
-      if (event.pointerId === activePointer) finish();
-    });
+    // Capture loss changes delivery, not whether the pointer is still down.
+    // Window tracking continues until release, cancellation or window blur.
     window.addEventListener('blur', finish);
     // Touch events must not bubble into Reveal's swipe-to-change-slide handler.
     for (const name of ['touchstart', 'touchmove', 'touchend']) svg.addEventListener(name, event => {
