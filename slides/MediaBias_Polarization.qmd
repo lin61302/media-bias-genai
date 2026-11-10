@@ -1,5 +1,5 @@
 ---
-title: "Polarization, Media Coverage, and Regime Type"
+title: "Beyond Sentiment: Actions, Reputation, and Political Bias in Civic News"
 author:
   - name: Zung-Ru Lin
     affiliations: 
