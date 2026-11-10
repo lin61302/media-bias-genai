@@ -250,15 +250,15 @@ Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/
 :::
 
 
-## Prompting: three judgments with a common reference {.clean-slide .prompt-clean-slide}
+## Prompting: government, action, evaluation {.clean-slide .prompt-clean-slide}
 
 ```{=html}
 <div class="prompt-steps">
   <div><span class="step-number">1</span><h3>Which government?</h3><p>The national incumbent<br>at publication.</p></div>
   <div><span class="step-number">2</span><h3>What happened?</h3><p>The main reported action.<br>Who did what to whom?</p></div>
-  <div><span class="step-number">3</span><h3>How is it evaluated?</h3><p>Political alignment<br>Reputational implication<br>Framing</p></div>
+  <div><span class="step-number">3</span><h3>How is it evaluated?</h3><ol class="prompt-evaluations"><li>Political alignment</li><li>Reputational implication</li><li>Framing</li></ol></div>
 </div>
-<p class="slide-takeaway">Article title and text, with country of publication, publication date and source.</p>
+<p class="prompt-input"><strong>Input to the model:</strong> title and text, publication country, date and source domain.</p>
 ```
 
 ::: notes
@@ -283,8 +283,6 @@ The first two steps establish what the judgments refer to. This is why action se
 | Political alignment | **89.6%** | 0.6% | 1.2% | 8.7% |
 | Reputational implication | **86.1%** | 5.8% | 1.2% | 6.9% |
 | Framing | **93.1%** | 1.7% | 1.2% | 4.0% |
-
-Assistant review. Alternatives and scope issues stay outside clear support.
 
 ::: notes
 Every row uses the same 173 articles: political alignment 155 supported, 1 defensible alternatives, 2 unresolved scope, 15 proposed changes; reputational implication 149 supported, 10 defensible alternatives, 2 unresolved scope, 12 proposed changes; framing 161 supported, 3 defensible alternatives, 2 unresolved scope, 7 proposed changes. Percentages are rounded; exact counts and source versions are retained in the documentation. Defensible means the recorded label is one of multiple comparably rule-consistent readings. It does not enter strict support. A proposed change is a reviewer judgment, not an established human-reference error.
@@ -358,14 +356,14 @@ Event chronology: Sall announced the postponement on February 3; the Constitutio
 This is an empirical application to polarization in news content, not evidence that citizens became less polarized. Source mix, reported events, genres, repeated reporting and model sensitivity remain possible contributors. The evaluated government is Senegal, with domestic and international source origins included. Connecting this news measure to elite or mass polarization requires independent political or attitudinal evidence. Data, formulas, exact monthly values and hashes: figures/data/14_presentation_revision_manifest.json; ../scripts/build_presentation_revision_figures.py.
 :::
 
-## Senegal: which actors and actions change? {.clean-slide .figure-slide}
+## Senegal: February’s actors and the shift to voting {.clean-slide .figure-slide}
 
 ![](figures/14_senegal_actors_actions.png){width="100%"}
 
 ::: notes
 Actor rows are not exhaustive: positive counts 115/132, negative 127/182. All February labels are 132 positive, 182 negative, 620 zero. Role labels do not establish permanent allegiance: courts can constrain the incumbent, and executive/security actions can support it. The alignment is manifested through the recorded action.
 
-The source of the lower March directional share is partly a changed action mix: protest/march 51→4; ban/disperse 28→1; voting 14→201. 168/201 voting records are zero alignment, 32 negative and 1 positive. Parties/politicians rise 164/934→357/874. This is descriptive composition, not a causal decomposition or proof that conflict disappeared. Some zero labels may be coding errors. other_act remains included 116 February, 124 March.
+The lower March directional share is consistent with a changed mix of reported actions: protest/march 51→4; ban/disperse 28→1; voting 14→201. 168/201 voting records are zero alignment, 32 negative and 1 positive. Parties/politicians rise 164/934→357/874. The displayed actor panel describes February only; it does not compare actor roles over time. This is descriptive composition, not a causal decomposition or proof that conflict disappeared. Some zero labels may be coding errors. other_act remains included 116 February, 124 March.
 
 Among 132 positive-alignment February articles, 83 also have negative reputation (62.9%). Of those 83,47 have negative framing, 35 zero and 1 positive. This captures the conceptual distinction without measuring public reaction. Review attachment: some reputation evidence points to the wider episode rather than the selected action.
 
@@ -395,7 +393,7 @@ SEN-03, Xalima February 7: https://www.xalimasn.com/report-de-la-presidentielle-
 
 SEN-05, France24 February 15: https://www.france24.com/en/africa/20240215-senegal-s-constitutional-council-overturns-macky-sall-s-delay-to-feb-25-presidential-poll . Court invalidates postponement; −1/−1/0; original English 3072 characters.
 
-SEN-06, BBC March 24: stored example/link in figures/data/09_senegal_article_examples.json; voting, 0/0/0; supplied English 421 characters. All displayed examples have exact saved-attempt membership and plan/input hashes checked against the frozen audit. Literal evidence matching is not semantic validation. Do not treat selected four examples as representative frequency estimates. Reproducible public short evidence and URLs: 09_senegal_article_examples.json.
+SEN-06, BBC March 24: stored example/link in figures/data/09_senegal_article_examples.json; voting, 0/0/0; retained English translation 421 characters, saved original body 1604 characters. All displayed examples have exact saved-attempt membership and plan/input hashes checked against the frozen audit. Literal evidence matching is not semantic validation. Do not treat selected four examples as representative frequency estimates. Reproducible public short evidence and URLs: 09_senegal_article_examples.json.
 :::
 
 

@@ -18,8 +18,8 @@
 }
 .classifier-slide .classifier-stages {
   display: grid;
-  /* Keep the two civic classifier names readable at the full font size. */
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1fr) minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1fr);
+  /* Give civic selection and GenAI coding equal space for their full labels. */
+  grid-template-columns: minmax(0, .95fr) minmax(0, .95fr) minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, .8fr) minmax(0, .95fr);
   gap: 18px;
 }
 .classifier-slide .classifier-stage {
