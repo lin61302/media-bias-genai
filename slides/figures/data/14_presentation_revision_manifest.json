@@ -1,0 +1,283 @@
+{
+  "schema_version": 1,
+  "snapshot": "November 8, 2026 frozen analytical release",
+  "input_files": [
+    {
+      "path": "slides/figures/data/09_senegal_contributors.json",
+      "sha256": "e516859304330c385d55277aded7d692111b997c0d6c9dfe3146324af584f468"
+    },
+    {
+      "path": "slides/figures/data/09_senegal_monthly_indices.csv",
+      "sha256": "72fccdcdd7b4ffa1e73393c69edb6b2ceb2a6f17dbf196fbcaf374f9dee0e546"
+    },
+    {
+      "path": "slides/figures/data/12_source_government_framing.csv",
+      "sha256": "29dfc3ffbced6a31488b6e3e6e74e0c3a09a91c8dd7ba5f02f76fd159bf4fc13"
+    }
+  ],
+  "script_sha256": "9d187c9bd747252e19950409418ef7131bf49cbc015d19465d7b588b292a1651",
+  "global_definitions": {
+    "unit": "Article records with one primary selected action, not unique real-world events.",
+    "eligible": "Evaluated government and primary action identified; all three political labels numeric. Unknown/uncodable excluded upstream.",
+    "sign_share": "Each sign count divided by all eligible records in the same grouping, including zeros.",
+    "zero": "May represent neutral, mixed or insufficient directional evidence.",
+    "political_alignment": "Actor's support/opposition relative to the evaluated incumbent manifested through the selected action.",
+    "P": "4 * positive share * negative share, on a theoretical 0–1 scale; measures coexistence of coded directions in this reporting corpus, not public-opinion polarization."
+  },
+  "figures": {
+    "senegal_actors_actions": {
+      "outputs": [
+        {
+          "path": "slides/figures/14_senegal_actors_actions.png",
+          "sha256": "e0bd00c296fc230c61561393939e99a279c7ef247cb7e1661c46b0b8127f4fcd"
+        },
+        {
+          "path": "slides/figures/14_senegal_actors_actions.svg",
+          "sha256": "544e3598549b99df4fd81e65f8114ac27391aca65a8595526a84c4f5416b326f"
+        },
+        {
+          "path": "slides/figures/14_senegal_actors_actions.pdf",
+          "sha256": "6f1a0dbd9acba0252a6be72b7dd72f4cd6f77122e4b21269efcc7987aff8a7f0"
+        }
+      ],
+      "evaluated_government": "SEN",
+      "publication_origin": "all",
+      "actor_month": "2024-02",
+      "month_denominators": {
+        "2024-02": 934,
+        "2024-03": 874
+      },
+      "selected_actor_groups": [
+        {
+          "code": "A",
+          "label": "Executive / cabinet",
+          "positive": 59,
+          "negative": 0
+        },
+        {
+          "code": "B",
+          "label": "Legislature",
+          "positive": 18,
+          "negative": 4
+        },
+        {
+          "code": "G",
+          "label": "Security forces",
+          "positive": 18,
+          "negative": 0
+        },
+        {
+          "code": "C",
+          "label": "Parties / politicians",
+          "positive": 17,
+          "negative": 56
+        },
+        {
+          "code": "K",
+          "label": "Civic movements / unions",
+          "positive": 0,
+          "negative": 37
+        },
+        {
+          "code": "F",
+          "label": "Courts / prosecutors",
+          "positive": 3,
+          "negative": 30
+        }
+      ],
+      "actor_totals": {
+        "positive_all_roles": 132,
+        "negative_all_roles": 182,
+        "positive_displayed_roles": 115,
+        "negative_displayed_roles": 127
+      },
+      "action_counts": {
+        "2024-02": {
+          "protest_march": 51,
+          "ban_disperse": 28,
+          "elect_vote": 14
+        },
+        "2024-03": {
+          "protest_march": 4,
+          "ban_disperse": 1,
+          "elect_vote": 201
+        }
+      },
+      "march_election_voting_zero_alignment_n": 168,
+      "limits": [
+        "Displayed actor groups and action categories are selected, not exhaustive.",
+        "Role describes an institution, not permanent political allegiance.",
+        "Action shares divide by all eligible articles, not just displayed actions.",
+        "The changing mix is descriptive; it is not a causal decomposition of the sign-share change."
+      ]
+    },
+    "senegal_polarization_application": {
+      "outputs": [
+        {
+          "path": "slides/figures/14_senegal_polarization_application.png",
+          "sha256": "06d3d732fe26c8fe68953512cee88bc4c00f43325d511d7e883c77ac5971bda4"
+        },
+        {
+          "path": "slides/figures/14_senegal_polarization_application.svg",
+          "sha256": "382b7f164ebaf5d2c8a79f06b7d683d180e5cb9827cbed2bdc85f1e6679c8fdc"
+        },
+        {
+          "path": "slides/figures/14_senegal_polarization_application.pdf",
+          "sha256": "8a90115ae81b5036a9188d18ee8c15377361ceabc2311ef0ba5978043f1e6f2f"
+        }
+      ],
+      "evaluated_government": "SEN",
+      "publication_origin": "all",
+      "display_months": [
+        "2023-10",
+        "2023-11",
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06"
+      ],
+      "values": [
+        {
+          "month": "2023-10",
+          "n": 161,
+          "positive_alignment_share": 0.08074534161490683,
+          "negative_alignment_share": 0.14906832298136646,
+          "P_alignment": 0.04814629065236681,
+          "P_reputation": 0.0018517804097064156,
+          "P_framing": 0.0023147255121330197
+        },
+        {
+          "month": "2023-11",
+          "n": 159,
+          "positive_alignment_share": 0.0880503144654088,
+          "negative_alignment_share": 0.15723270440251572,
+          "P_alignment": 0.055377556267552704,
+          "P_reputation": 0.010126181717495353,
+          "P_framing": 0.0009493295360151893
+        },
+        {
+          "month": "2023-12",
+          "n": 198,
+          "positive_alignment_share": 0.08080808080808081,
+          "negative_alignment_share": 0.13131313131313133,
+          "P_alignment": 0.042444648505254576,
+          "P_reputation": 0.0015304560759106215,
+          "P_framing": 0.0
+        },
+        {
+          "month": "2024-01",
+          "n": 289,
+          "positive_alignment_share": 0.0657439446366782,
+          "negative_alignment_share": 0.058823529411764705,
+          "P_alignment": 0.01546916344392428,
+          "P_reputation": 0.0,
+          "P_framing": 0.0007662743501634319
+        },
+        {
+          "month": "2024-02",
+          "n": 934,
+          "positive_alignment_share": 0.14132762312633834,
+          "negative_alignment_share": 0.1948608137044968,
+          "P_alignment": 0.110156862565283,
+          "P_reputation": 0.016121858507306647,
+          "P_framing": 0.013852142932472524
+        },
+        {
+          "month": "2024-03",
+          "n": 874,
+          "positive_alignment_share": 0.034324942791762014,
+          "negative_alignment_share": 0.11556064073226545,
+          "P_alignment": 0.015866449528457498,
+          "P_reputation": 0.006220904963632841,
+          "P_framing": 0.0035817331608795143
+        },
+        {
+          "month": "2024-04",
+          "n": 124,
+          "positive_alignment_share": 0.1774193548387097,
+          "negative_alignment_share": 0.04032258064516129,
+          "P_alignment": 0.02861602497398543,
+          "P_reputation": 0.018210197710718003,
+          "P_framing": 0.018730489073881373
+        },
+        {
+          "month": "2024-05",
+          "n": 137,
+          "positive_alignment_share": 0.051094890510948905,
+          "negative_alignment_share": 0.029197080291970802,
+          "P_alignment": 0.005967286483030529,
+          "P_reputation": 0.008950929724545795,
+          "P_framing": 0.006393521231818424
+        },
+        {
+          "month": "2024-06",
+          "n": 64,
+          "positive_alignment_share": 0.046875,
+          "negative_alignment_share": 0.046875,
+          "P_alignment": 0.0087890625,
+          "P_reputation": 0.005859375,
+          "P_framing": 0.0
+        }
+      ],
+      "P_axis_display_range": [
+        0,
+        0.13
+      ],
+      "P_theoretical_range": [
+        0,
+        1
+      ],
+      "incumbent_boundary": "Faye inaugurated April 2, 2024; same external chronology as the existing Senegal slide notes.",
+      "limits": [
+        "Shares and P measure model-coded news content, not attitudes or behavior among citizens.",
+        "Changing source mix, reported actions, genre, repeated reporting and model sensitivity remain possible contributors.",
+        "No minimum-count filter; n shown for every month. Zeros stay in all sign-share denominators.",
+        "A low P can reflect rare directional coverage or predominantly one-sided coverage; inspect separate sign shares."
+      ]
+    },
+    "kyiv_government_framing": {
+      "outputs": [
+        {
+          "path": "slides/figures/14_kyiv_government_framing.png",
+          "sha256": "cc0d9b46f4951f8b2f127c6cc1a0600f69e390c369db7a51f0fcffbe59870c22"
+        },
+        {
+          "path": "slides/figures/14_kyiv_government_framing.svg",
+          "sha256": "5b2d6f8861af5befd97d2fbb5d7cd86af56c0b6a04ec2facfcfe88748d2df159"
+        },
+        {
+          "path": "slides/figures/14_kyiv_government_framing.pdf",
+          "sha256": "6925dd80ff4ab64c500f5b01d4dca02de070b729ea4d9e8965887dcf19e49cb3"
+        }
+      ],
+      "source_domain": "kyivindependent.com",
+      "scope": "Available eligible reporting within January 2019–May 2026 frozen release.",
+      "values": [
+        {
+          "government": "RUS",
+          "n": 1242,
+          "negative_n": 468,
+          "positive_n": 2,
+          "negative_share": 0.37681159420289856,
+          "positive_share": 0.001610305958132045
+        },
+        {
+          "government": "UKR",
+          "n": 9568,
+          "negative_n": 294,
+          "positive_n": 311,
+          "negative_share": 0.03072742474916388,
+          "positive_share": 0.03250418060200669
+        }
+      ],
+      "limits": [
+        "Government labels refer to the evaluated government, not the publication origin.",
+        "Pooled comparisons do not match events, conduct, genre, time or supplied-text quality.",
+        "Different framing shares do not by themselves establish bias, double standards or a causal outlet effect."
+      ]
+    }
+  }
+}

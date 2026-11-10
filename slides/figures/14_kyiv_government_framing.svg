@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="972pt" height="352.8pt" viewBox="0 0 972 352.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-11-10T14:27:46.719098</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.11.2, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 352.8
+L 972 352.8
+L 972 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 238.14 282.24
+L 913.68 282.24
+L 913.68 77.616
+L 238.14 77.616
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <path d="M 238.14 282.24
+L 238.14 77.616
+" clip-path="url(#p60e8975bad)" style="fill: none; stroke: #e3e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_2"/>
+     <g id="text_1">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="238.14" y="296.376719" transform="rotate(-0 238.14 296.376719)">0%</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_3">
+      <path d="M 395.242326 282.24
+L 395.242326 77.616
+" clip-path="url(#p60e8975bad)" style="fill: none; stroke: #e3e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_4"/>
+     <g id="text_2">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="395.242326" y="296.376719" transform="rotate(-0 395.242326 296.376719)">10%</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_5">
+      <path d="M 552.344651 282.24
+L 552.344651 77.616
+" clip-path="url(#p60e8975bad)" style="fill: none; stroke: #e3e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_6"/>
+     <g id="text_3">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="552.344651" y="296.376719" transform="rotate(-0 552.344651 296.376719)">20%</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_7">
+      <path d="M 709.446977 282.24
+L 709.446977 77.616
+" clip-path="url(#p60e8975bad)" style="fill: none; stroke: #e3e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_4">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="709.446977" y="296.376719" transform="rotate(-0 709.446977 296.376719)">30%</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_9">
+      <path d="M 866.549302 282.24
+L 866.549302 77.616
+" clip-path="url(#p60e8975bad)" style="fill: none; stroke: #e3e7eb; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_5">
+      <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="866.549302" y="296.376719" transform="rotate(-0 866.549302 296.376719)">40%</text>
+     </g>
+    </g>
+    <g id="text_6">
+     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #19334b" x="575.91" y="323.137656" transform="rotate(-0 575.91 323.137656)">Share of eligible articles evaluating that government</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_11"/>
+     <g id="text_7">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; fill: #19334b" transform="translate(111.69 116.43117)">Russia · foreign</text>
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; fill: #19334b" transform="translate(69.03 135.635545)">1,242 article records</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12"/>
+     <g id="text_8">
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; fill: #19334b" transform="translate(84.37 237.979517)">Ukraine · domestic</text>
+      <text style="font-size: 16px; font-family: 'DejaVu Sans'; fill: #19334b" transform="translate(69.03 257.183892)">9,568 article records</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 238.14 86.917091
+L 830.119778 86.917091
+L 830.119778 115.454529
+L 238.14 115.454529
+z
+" clip-path="url(#p60e8975bad)" style="fill: #bc4042"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 238.14 208.465438
+L 286.413499 208.465438
+L 286.413499 237.002876
+L 238.14 237.002876
+z
+" clip-path="url(#p60e8975bad)" style="fill: #bc4042"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 238.14 122.853124
+L 240.669828 122.853124
+L 240.669828 151.390562
+L 238.14 151.390562
+z
+" clip-path="url(#p60e8975bad)" style="fill: #087f72"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 238.14 244.401471
+L 289.204824 244.401471
+L 289.204824 272.938909
+L 238.14 272.938909
+z
+" clip-path="url(#p60e8975bad)" style="fill: #087f72"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 238.14 282.24
+L 913.68 282.24
+" style="fill: none; stroke: #aab5c0; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="text_9">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #bc4042" x="842.687964" y="105.601826" transform="rotate(-0 842.687964 105.601826)">37.7%</text>
+   </g>
+   <g id="text_10">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #bc4042" x="298.981685" y="227.150173" transform="rotate(-0 298.981685 227.150173)">3.1%</text>
+   </g>
+   <g id="text_11">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087f72" x="253.238014" y="141.537859" transform="rotate(-0 253.238014 141.537859)">0.2%</text>
+   </g>
+   <g id="text_12">
+    <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #087f72" x="301.77301" y="263.086206" transform="rotate(-0 301.77301 263.086206)">3.3%</text>
+   </g>
+   <g id="legend_1">
+    <g id="patch_8">
+     <path d="M 237.2292 53.467759
+L 258.2292 53.467759
+L 258.2292 43.667759
+L 237.2292 43.667759
+z
+" style="fill: #bc4042"/>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="269.4292" y="53.467759" transform="rotate(-0 269.4292 53.467759)">Negative framing (−1)</text>
+    </g>
+    <g id="patch_9">
+     <path d="M 455.274825 53.467759
+L 476.274825 53.467759
+L 476.274825 43.667759
+L 455.274825 43.667759
+z
+" style="fill: #087f72"/>
+    </g>
+    <g id="text_14">
+     <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="487.474825" y="53.467759" transform="rotate(-0 487.474825 53.467759)">Positive framing (+1)</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_15">
+   <text style="font-weight: 700; font-size: 19px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="38.88" y="24.696" transform="rotate(-0 38.88 24.696)">The Kyiv Independent: framing toward the evaluated government</text>
+  </g>
+  <g id="text_16">
+   <text style="font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="38.88" y="340.452" transform="rotate(-0 38.88 340.452)">Available reporting in January 2019–May 2026</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p60e8975bad">
+   <rect x="238.14" y="77.616" width="675.54" height="204.624"/>
+  </clipPath>
+ </defs>
+</svg>

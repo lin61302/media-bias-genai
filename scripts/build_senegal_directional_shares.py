@@ -29,10 +29,10 @@ plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 12,
                      'axes.spines.left': False, 'axes.edgecolor': '#b8c1cc',
                      'svg.fonttype': 'none', 'svg.hashsalt': 'senegal-shares-v1'})
 fig, axes = plt.subplots(1, 3, figsize=(13.5, 5.55), sharey=True)
-fig.subplots_adjust(left=.055, right=.985, bottom=.26, top=.78, wspace=.13)
+fig.subplots_adjust(left=.075, right=.985, bottom=.26, top=.78, wspace=.13)
 x = list(range(len(rows)))
 for ax, field, title in zip(axes, ('align', 'rep', 'frame'),
-                            ('Political alignment', 'Reputational implication', 'Framing')):
+                            ('Political alignment', 'Reputational effect', 'Framing')):
     ax.axvspan(3.6, 4.4, color='#f1e7d8', zorder=0)
     ax.axvline(5.5, color='#7b8490', linestyle=':', linewidth=1.2)
     for sign, color, label in [('positive', '#087e68', 'Positive'), ('negative', '#ba3e3e', 'Negative')]:
@@ -51,12 +51,13 @@ for ax, field, title in zip(axes, ('align', 'rep', 'frame'),
         ax.text(i, -.20, r['eligible_articles'], transform=ax.get_xaxis_transform(), ha='center', fontsize=9, color='#4f5e70')
     ax.text(0, -.12, '2023', transform=ax.get_xaxis_transform(), fontsize=9, color='#4f5e70')
     ax.text(3, -.12, '2024', transform=ax.get_xaxis_transform(), fontsize=9, color='#4f5e70')
-fig.text(.055, .94, 'Shares of reporting that evaluate Senegal’s incumbent', fontsize=17, fontweight='bold', color='#172f50')
-fig.text(.055, .875, 'Election delayed in February; held March 24. Faye takes office April 2 (dotted line).', fontsize=12, color='#4f5e70')
+axes[0].set_ylabel('Share of eligible articles', fontsize=12, labelpad=10)
+fig.text(.075, .94, 'Articles evaluating Senegal’s incumbent', fontsize=17, fontweight='bold', color='#172f50')
+fig.text(.075, .875, 'Election delayed in February; held March 24. Faye takes office April 2 (dotted line).', fontsize=12, color='#4f5e70')
 handles, labels = axes[0].get_legend_handles_labels()
 fig.legend(handles, labels, loc='lower left', bbox_to_anchor=(.045,.035), frameon=False, ncol=2, fontsize=12)
 fig.text(.985, .09, 'Numbers below each panel = eligible articles in that month', ha='right', fontsize=11, color='#4f5e70')
-fig.text(.985, .045, 'Domestic and international sources · zeros included · no minimum-count mask', ha='right', fontsize=11, color='#4f5e70')
+fig.text(.985, .045, 'Each sign ÷ all eligible articles, including zeros', ha='right', fontsize=11, color='#4f5e70')
 outputs=[]
 for ext in ('png','pdf','svg'):
     p=FIG/f'09_senegal_directional_shares.{ext}'

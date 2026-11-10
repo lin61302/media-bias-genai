@@ -1,6 +1,104 @@
 # Validation
 
-Human validation is incomplete; a historical human-coded comparison is available, while a representative independent evaluation of all three current constructs remains planned. Structural checks and independent database verification establish that outputs conform to the schema and were stored correctly. They do not establish correct action selection, political interpretation, or translation fidelity.
+The November 10 review compares human and GenAI coding through the **reported action selected from each article**. This makes the sequence explicit: establish which action was selected, then examine its extracted fields and political judgments. The results support an inspectable coding process and identify disagreements for further review. They do not establish representative human-reference accuracy for political alignment, reputational effect or framing.
+
+Structural checks establish whether outputs conform to the schema and were stored correctly. They do not establish correct action selection, political interpretation or translation fidelity. Independent human validation of all three current judgments remains planned.
+
+## GenAI validation (Astra-assisted)
+
+All **266 historical validation articles** received a new action review. Two Astra reviewers divided the source-only work into disjoint sets of 133 articles; each article had one initial reference, not two independent initial codings. They read the supplied article and current prompt before seeing the original answers. The references were frozen, then the human and Luna choices were mapped as anonymized A/B candidates. A further names-hidden audit examined 56 cases, including a fixed sample of 20, uncertain references and flagged cases. Four action references changed. Initial decisions, revisions and hashes are preserved.
+
+The final review is therefore model-assisted and partly adjudicated after seeing anonymized answers. It is not human ground truth. The [review protocol](event-review-protocol.md) specifies the selection hierarchy, action identity rules, audit process and treatment of uncertainty. [Aggregate results](../slides/figures/data/05_event_validation_20261110.json) and the [reducer](../scripts/build_event_validation.py) provide the exact counts and provenance; article texts and individual judgments remain private.
+
+### Choosing the reported action
+
+The common comparison contains **251 articles** with a unique reference choice and interpretable choices from both coders. All three pairs use exactly these articles:
+
+| Comparison | Same action choice | Agreement |
+|---|---:|---:|
+| Human–Luna | 179 / 251 | 71.3% |
+| Human–review reference | 184 / 251 | 73.3% |
+| Luna–review reference | 221 / 251 | 88.0% |
+
+An explicit no-action decision is a valid choice. An unreadable or ambiguous choice is not treated as no action. The remaining 15 articles comprise 12 with insufficient source text, one unresolved reference and two ambiguous action anchors. An interpretable but incorrect choice stays in the denominator. Neither coder's correctness nor the former Luna-specific acceptance flag determines inclusion.
+
+The common population partitions as follows:
+
+| Relationship among the three choices | Articles |
+|---|---:|
+| All three agree | 172 |
+| Only the human agrees with the reference | 12 |
+| Only Luna agrees with the reference | 49 |
+| Human and Luna agree, but the reference differs | 7 |
+| All three differ | 11 |
+
+These counts reproduce the three pairs: human–Luna is 172 + 7; human–reference is 172 + 12; Luna–reference is 172 + 49. Shared choices that differ from the reference remain included.
+
+For the broader observed human–Luna comparison, **184 of 264 interpretable pairs agree (69.7%)**: 173 select the same actual action and 11 both select no action. Among the 213 pairs where both choose an action, agreement is **173/213 (81.2%)**. The full comparison also retains 40 different-action pairs and 40 one-sided action/no-action decisions. Two action anchors cannot be assigned uniquely. Four structurally invalid full model records have readable action choices and enter these event-only comparisons; their full-record failures remain flagged.
+
+### What the comparison can establish
+
+Action identity concerns the selected occurrence, not exact wording. A shorter phrase or an actor-role extraction mistake may still identify the same occurrence. Distinct stages—an allegation versus alleged conduct, a proposal versus implementation—or actions by opposing participants remain different choices. This separation prevents a preference for a more complete extraction from being counted as a different event.
+
+The human exercise and Luna run used different historical inputs and coding rules; seven source views changed. The sample spans January 2012–January 2025, with 193 of 266 articles from 2012–2013. It is not representative of the current 2019–2026 analytical corpus. The reference uses the current prompt, so the larger Luna–reference agreement does not establish superiority over human coders under equivalent conditions.
+
+The earlier 187-case results mixed event identity with a Luna-specific selection check. They are preserved in the [historical review archive](validation-historical-2026-11-03.md), together with the earlier extraction preferences and political-label subsets. They are not constraints that the new review was designed to reproduce.
+
+### Sensitivity to review decisions and inputs
+
+| Construction | Common articles | Human–Luna | Human–reference | Luna–reference |
+|---|---:|---:|---:|---:|
+| Final reviewed comparison | 251 | 179 | 184 | 221 |
+| Initial references and mappings, before audit | 251 | 180 | 186 | 220 |
+| Exclude seven changed source views | 245 | 175 | 180 | 215 |
+| Structurally valid full outputs only | 247 | 175 | 180 | 217 |
+| Exclude both changed views and structural failures | 241 | 171 | 176 | 211 |
+
+The first two rows happen to have the same size but differ in membership. Two previously insufficient references became identifiable, while two candidate anchors became unresolved. The audit also separated a closure from an evacuation order and revised a component action to the article's primary clash. These revisions were recorded before decoding coder identities.
+
+For each of the two ambiguous anchors, two action stages fit the recorded phrase. Assigning all four combinations gives a common denominator of 253: human–Luna matches range from 179 to 181, human–reference from 184 to 186, and Luna–reference remains 223. Across all 266 pairs, human–Luna matches range from 184 to 186. These are sensitivity bounds, not adjudicated corrections. The primary comparison leaves the two anchors unresolved.
+
+## Political judgments after selecting the same action
+
+The new review identifies **173 articles where human and Luna selected the same actual action**. This cohort includes shared actions that differ from the review reference; it does not use the former 155-case acceptance gate.
+
+The following counts apply the **saved, corrected November 3 political-label assessments** to that new cohort. They are not a new coding pass. The reviewer had seen Luna's labels and assessed them conditional on Luna's selected action and government. The original human sheet has one legacy sentiment field, not separate political alignment, reputational effect and framing labels.
+
+| Judgment | Review agrees | Uncertain | Change proposed | Review agrees when Luna coded +1 or −1 |
+|---|---:|---:|---:|---:|
+| Political alignment | 135 / 173 (78.0%) | 28 | 10 | 27 / 41 (65.9%) |
+| Reputational effect | 131 / 173 (75.7%) | 37 | 5 | 11 / 31 (35.5%) |
+| Framing | 155 / 173 (89.6%) | 14 | 4 | 9 / 21 (42.9%) |
+
+“Review agrees” means the saved assessment supports the producer label. “Uncertain” means ambiguous or boundary; “change proposed” is the saved unsupported verdict, not an independently established error. All three judgments are supported together in **108/173 (62.4%)**. Every article remains in each row's denominator, including unresolved assessments; all 173 have traceable assessments for all three labels.
+
+Zeros are common: 132 political-alignment labels, 142 reputational-effect labels and 152 framing labels. The positive/negative-only columns show why high overall support does not establish reliable detection of directional content. These small selected subsets are diagnostic, not population accuracy estimates. Four invalid full outputs are included because their actions and political values are readable; other field errors remain flagged. The aggregate file also reports valid-output-only cohorts and the 166 actual actions where both coders match the review reference.
+
+The saved review's numeric proposals often copy accepted Luna labels; ambiguous cases have no point proposal. Treating those proposals as independently assigned labels would exaggerate agreement. A valid human three-way comparison of the three political judgments requires new, separate human labels on the same action and government.
+
+## Other fields after selecting the same action
+
+Within the same 173 actions, each field is compared only where both recorded values are substantive and interpretable:
+
+| Human–Luna field comparison | Matches / comparable values |
+|---|---:|
+| Main action category | 109 / 173 (63.0%) |
+| Complete action-category set | 100 / 173 (57.8%) |
+| Actor category | 108 / 157 (68.8%) |
+| Literal actor wording | 48 / 154 (31.2%) |
+| Actor wording after case/spacing normalization | 57 / 154 (37.0%) |
+| Prior action triggering the selected action | 9 / 20 (45.0%) |
+| One named evaluated government | 5 / 13 (38.5%) |
+
+Wording equality is stricter than identifying the same entity. Actor-category comparison uses the recorded A–W code; action categories are compared as a first tag and as an exact set, without semantic recoding. Missing fields are not matches. The human government reference is missing in 157 cases, multiple or uninterpretable in three, matching in five and different in eight. The 13 comparable references are too few and too selective for a general government-selection accuracy claim.
+
+No complete third set of actor, action-category, reaction and government fields was independently recorded. The historical review's preferences and proposed changes cannot supply that missing third coding.
+
+## Reproduction and historical results
+
+The [protocol](event-review-protocol.md#reproduction) documents the private input layout and aggregate-only output command. The reducer checks fixed membership, canonical action identities, the five-way partition, missingness, source versions and review provenance. Initial/final and ambiguous-anchor sensitivities are included in the public JSON. Private diagnostics contain case membership and reasons and must stay outside the repository.
+
+The [November 2–3 archive](validation-historical-2026-11-03.md) retains the former 167/211, 178/262, 187-case and 155-case constructions. Its figures are historical and should not be combined with the new action comparison. The preliminary October reviews below concern different samples and remain separate.
 
 ## Preliminary reviews
 
@@ -16,127 +114,6 @@ The later sample excluded the earlier 30 records. Both samples concern recent-pe
 The October 26 review identified five clear scope, extraction, or role errors. Across the reviews, observed problems included an event treated as an actor, a destination treated as an entity target, local conflict attributed to the national government without a supplied link, unrelated title/body content, and English text missing substantive original material. Other disagreements concerned interpretation. These small reviews diagnose error types; they do not estimate their population prevalence.
 
 All 70 requests lacked incumbent-context metadata. Exact reconstruction of the supplied English confirmed what the model received, but did not establish fidelity to the original article. These limitations matter when the coding rules prohibit outside facts.
-
-## November 2 historical comparison
-
-A separate comparison processed 266 previously human-coded articles with the complete prompt and full supplied text; 262 outputs were structurally valid and four invalid. An AI-assisted qualitative review retained the original human annotations and recorded proposed corrections separately. It does not constitute an independent human adjudication panel.
-
-The event-selection comparison gives the following **agreement rates**, based on AI-assisted review of whether the two codings describe the same event:
-
-| Comparison denominator | Matches | Agreement |
-|---|---:|---:|
-| Both human and model identify an action | 167 / 211 | 79.1% |
-| All valid outputs, including shared no-action decisions | 178 / 262 | 67.9% |
-
-The latter includes 11 shared no-action decisions and counts all 40 action/no-action disagreements. Four invalid outputs are outside these valid-output denominators. Event matching and proposed corrections were reviewed with AI assistance; this is not an independent human adjudication panel. These percentages evaluate event selection, not the accuracy of the three political judgments.
-
-Astra also reviewed action selection and extraction against the supplied source and current definitions. On the same 262 valid-output records:
-
-| Astra's preference | Articles | Share |
-|---|---:|---:|
-| Luna preferred | 121 | 46.2% |
-| Human preferred | 44 | 16.8% |
-| Both defensible | 83 | 31.7% |
-| Unresolved or neither supported | 14 | 5.3% |
-
-The last category combines nine unresolved and five neither-supported judgments. When the human and Luna selected **different events** (44 records), Astra preferred Luna in 17, the human in 16, and had no single preferred answer in 11 (five both defensible, five unresolved, one neither). This near-even split applies only to that subgroup. A preferred extraction can still describe the same event as the other coding, so event agreement and reviewer preference are different results.
-
-Astra saw both codings and project context; this is a dependent AI review, not independent human adjudication. Preferences concern action selection/extraction, not correctness of all fields. The full raw review also contains four invalid outputs; the table excludes them to match the valid-output denominator above. These judgments do not establish that Luna outperforms humans.
-
-This is a historical, selected sample. Its legacy annotation used one sentiment field rather than the current three constructs. Historical inputs were truncated while the new comparison used full supplied text; some titles and bodies differed. Event equivalence, exact-span agreement and political-label agreement therefore answer different questions. Conditional agreement rates from this exercise must not be presented as overall classifier accuracy. No representative human-reference accuracy estimate is established by these checks. Private article texts and review workbooks are not part of this repository.
-
-## Political-label review conditional on a shared event
-
-Action agreement does not establish label reliability. The corrected November 3 review identifies **167 articles in which the human and model codings describe the same event**. Of these, **155** also have model action selection judged compliant or defensible; two have unsupported selection and ten unresolved selection. The following diagnostic uses the 155 accepted selections. Shared-event identity does not certify matching action spans, actors, targets, modality, or evaluated government.
-
-The reviewer assessed the producer's alignment, reputation, and framing labels against the supplied evidence and current definitions. It saw both codings and project context. These are **dependent AI evidence-review verdicts**, not independent labels or human-reference accuracy. They condition on the producer's selected government: 143 of the 155 records lack a human country reference. The historical human sentiment field cannot serve as three separate human labels.
-
-| Dimension | Supported | Ambiguous or boundary | Correction proposed | Supported among directional labels only |
-|---|---:|---:|---:|---:|
-| Alignment | 126 / 155 (81.3%) | 20 | 9 | 24 / 37 (64.9%) |
-| Reputation | 122 / 155 (78.7%) | 29 | 4 | 7 / 24 (29.2%) |
-| Framing | 143 / 155 (92.3%) | 9 | 3 | 8 / 14 (57.1%) |
-
-“Correction proposed” corresponds to the review's *Unsupported* verdict; it is not an independently established error. Ambiguous or boundary cases remain unresolved. All three labels were supported in 103 of 155 articles. Directional denominators include only the producer's −1 and +1 labels; the overall columns also include 118 alignment zeros, 131 reputation zeros, and 141 framing zeros. Their high frequency makes the directional breakdown essential. These small, selected subsets do not estimate population performance.
-
-As a sensitivity check, retaining **all 167 shared-event articles** gives supported / ambiguous / correction-proposed counts of **133 / 25 / 9** for alignment, **128 / 34 / 5** for reputation, and **154 / 10 / 3** for framing. These totals retain the 12 records with action-selection problems; they should not replace the gated diagnostic without that qualification.
-
-The review's numeric proposals are not a third set of independently assigned labels: supported values were copied from the producer, explicit corrections were recorded for unsupported values, and ambiguous cases were left unresolved. A confusion matrix based on those proposals would therefore overstate independence. The [aggregate review data](../slides/figures/data/05_same_event_label_review.json) preserve both denominators, directional counts, review limitations, and source hashes. No article text or individual review records are published.
-
-## GenAI validation (Astra-assisted)
-
-The November 10 reconstruction restores the comparisons from the November 3 review: human and Luna coding, followed by Astra's assessment of their selections and labels. Astra saw the existing answers and supplied text. It did not produce a complete independent third coding. The [three-way comparison aggregates](../slides/figures/data/05_threeway_validation.json) retain the counts, missing values, conditioning rules and source hashes.
-
-### Three-way event comparison
-
-These comparisons use the same **187 records with a determinate event judgment**:
-
-| Comparison | Matching event choice | Share |
-|---|---:|---:|
-| Human–Luna | 155 / 187 | 82.9% |
-| Luna–Astra | 170 / 187 | 90.9% |
-| Human–Astra | 171 / 187 | 91.4% |
-
-The broader 211 paired-action records comprise 155 accepted shared events, 15 accepted Luna-preferred events, 16 human-preferred events, one neither-supported case, five cases allowing different defensible events and 19 unresolved cases. The last two groups are excluded from the common 187-record denominator. The original human–Luna event comparison remains **167/211 = 79.1%** before this additional selection.
-
-The 187-record rule is asymmetric: two Luna-preferred events were excluded because Luna's selection assessment remained unresolved, without a parallel human-selection assessment. The 171-versus-170 difference therefore does not establish a human performance advantage. These are overlaps with an informed AI review, not independent three-rater reliability.
-
-### Astra's full action-selection and extraction review
-
-Event identity and extraction preference answer different questions. Two codings can describe the same event while differing in specificity, agency, modality or completeness.
-
-| Reviewed group | Luna preferred | Human preferred | Both defensible | Unresolved | Neither supported |
-|---|---:|---:|---:|---:|---:|
-| All 262 valid outputs | 121 | 44 | 83 | 9 | 5 |
-| Same event: 167 | 75 | 20 | 67 | 2 | 3 |
-| Different event: 44 | 17 | 16 | 5 | 5 | 1 |
-| Action/no-action disagreement: 40 | 29 | 8 | 0 | 2 | 1 |
-| Both select no action: 11 | 0 | 0 | 11 | 0 | 0 |
-
-The four subgroup rows partition the 262 valid outputs. The 17/16 result concerns only the 44 different-event records; it does not summarize Astra's full review. Review preferences do not certify that every field in a preferred record is correct.
-
-### Agreement on other fields after selecting the same event
-
-The 155 accepted shared-event records are the same records used in the political-label review above. The larger 167-record column also retains 12 unsupported or unresolved model selections.
-
-| Human–Luna comparison | All 167 shared events | Accepted 155 shared events |
-|---|---:|---:|
-| Exact action-tag set | 99 / 167 | 92 / 155 |
-| Primary action tag | 108 / 167 | 101 / 155 |
-| Actor category code | 106 / 149 | 101 / 140 |
-| Literal actor wording | 46 / 146 | 43 / 137 |
-| Actor wording after case/spacing normalization | 53 / 146 | 49 / 137 |
-| Reaction tag, both substantive | 9 / 20 | 9 / 19 |
-
-Missing or uncodable values are excluded from each comparison, not counted as matches. Wording equality is not a semantic entity-equivalence judgment. Actor-category normalization extracts the existing A–W code without recoding its meaning.
-
-Astra assessed each side's action tags separately:
-
-| Reviewed group | Human tags supported | Luna tags supported |
-|---|---:|---:|
-| All 211 paired actions | 142 / 211 (67.3%) | 150 / 211 (71.1%) |
-| All 167 shared events | 118 / 167 (70.7%) | 127 / 167 (76.0%) |
-| Accepted 155 shared events | 114 / 155 (73.5%) | 121 / 155 (78.1%) |
-
-These are support assessments of the recorded tags. There is no complete independently coded Astra tag set for an exact three-way tag-agreement comparison.
-
-### Numeric sign correspondence with the legacy human sentiment
-
-Humans recorded one field, `sent_gov_final`, rather than separate alignment, reputation and framing judgments. The following table compares that **legacy sentiment's numeric sign** with each Luna dimension and Astra's corresponding proposal. It is a descriptive correspondence check across different constructs, not three-way agreement on the same sentiment definition.
-
-Within the 155 accepted shared events, each row uses only records with all three numeric values available, so the three pairs have an identical denominator within that row:
-
-| Dimension compared with human legacy sentiment | Common records | Human–Luna | Human–Astra proposal | Luna–Astra proposal |
-|---|---:|---:|---:|---:|
-| Alignment | 132 | 75 / 132 (56.8%) | 74 / 132 (56.1%) | 123 / 132 (93.2%) |
-| Reputation | 123 | 63 / 123 (51.2%) | 63 / 123 (51.2%) | 119 / 123 (96.7%) |
-| Framing | 141 | 61 / 141 (43.3%) | 64 / 141 (45.4%) | 138 / 141 (97.9%) |
-
-Five human sentiments in the accepted-event cohort are nonnumeric. Astra leaves 20 alignment, 29 reputation and nine framing proposals unresolved. Unresolved values remain missing, not zero or agreement. When Astra supports a Luna label, its retained proposal copies that label; otherwise it may propose a correction. This construction partly accounts for the high Luna–Astra correspondence and cannot establish independent reliability. The support rates **126/155, 122/155 and 143/155** above retain unresolved assessments in their denominators and must not be replaced with these complete-case rates.
-
-The evaluated government is another limitation. Among the 167 shared events, the human reference is missing in 153, different in seven, multiple in two and explicitly matching in only five. All five matching references are within the accepted 155. This is too little evidence for a general comparison with action and government both held fixed. No record combines literal action-wording equality with an explicitly matching human–Luna government.
-
-Human actor, category, action-tag and reaction fields can be compared with Luna where recorded. Exact comparisons against independently coded Astra equivalents are **not available**: Astra supplied assessments, preferences and proposals, not a full third set of those fields. Historical `*_GPT` fields are an older model baseline, not Astra. The November 3 correction leaving the disputed reputation assessment unresolved is retained, and original human and model values remain unchanged.
 
 ## Evaluation layers
 

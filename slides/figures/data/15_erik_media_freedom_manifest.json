@@ -1,0 +1,83 @@
+{
+  "title": "Negative coverage of the incumbent by media freedom, monthly",
+  "author": "Erik Wibbels",
+  "received_date": "2026-11-10",
+  "source_file_name": "fig3_mediafreedom_monthly.png",
+  "artifact_handling": "Original attachment bytes preserved. No redraw, cropping, recoding, or values reconstructed from pixels.",
+  "verification_scope": "Visual inspection of the author-supplied figure and caption; numerical reproduction not available.",
+  "caption_verified": {
+    "article_period_start": "2022-01",
+    "article_period_end": "2025-12",
+    "coverage_snapshot_date": "2026-11-04",
+    "unit_description": "Country-month negative article shares, averaged equally across countries within media-freedom groups.",
+    "eligibility": "Country-months with at least 30 eligible articles",
+    "thin_line": "Monthly unweighted mean across countries",
+    "thick_line": "Three-month centered mean",
+    "media_freedom_source": "V-Dem v16",
+    "media_freedom_variable": "v2x_freexp_altinf",
+    "media_freedom_label": "Freedom of Expression and Alternative Sources of Information index",
+    "grouping": "Terciles of the country-mean media-freedom score over 2022–2025; groups fixed per country for January 2022–December 2025.",
+    "groups": [
+      {
+        "name": "Low media freedom",
+        "score_range_displayed": [
+          0.03,
+          0.54
+        ],
+        "countries": 24
+      },
+      {
+        "name": "Middle media freedom",
+        "score_range_displayed": [
+          0.57,
+          0.76
+        ],
+        "countries": 23
+      },
+      {
+        "name": "High media freedom",
+        "score_range_displayed": [
+          0.77,
+          0.92
+        ],
+        "countries": 24
+      }
+    ],
+    "panels": [
+      {
+        "measure": "Alignment",
+        "description": "Share of articles reporting actions opposing the incumbent"
+      },
+      {
+        "measure": "Reputation",
+        "description": "Share of articles unfavorable to government reputation"
+      },
+      {
+        "measure": "Framing",
+        "description": "Share of articles critical of the government in title/narration"
+      }
+    ],
+    "y_axis": "Negative share (mean across countries); fractions rather than percentages; ranges differ by panel."
+  },
+  "unverified": [
+    "Which country identity defines a country-month: evaluated-government country or publication country.",
+    "Whether source origin is restricted to the domestic country and whether evaluated government must equal publication country.",
+    "Exact 71-country membership and monthly group membership, denominators, zero/uncodable treatment, and handling of missing months.",
+    "The author's code, input-file hashes, exact monthly values, and centered-smoothing edge treatment.",
+    "Whether the author used the repository's November 4 monthly_polarization_all_countries.csv without additional source filters."
+  ],
+  "interpretation": {
+    "use": "Exploratory application supplied by the collaborator; retain its date and aggregation definition in notes.",
+    "claim_supported_by_visible_plot": "The ordering of media-freedom groups differs across alignment, reputation and framing.",
+    "not_established": "Domestic-media differences, causal effects of press freedom or regime type, source-selection-adjusted comparisons, or public polarization.",
+    "relation_to_main_deck": "Uses the November 4 snapshot, unlike the main empirical figures based on the November 8 snapshot."
+  },
+  "artifact": {
+    "file": "slides/figures/15_erik_media_freedom_monthly.png",
+    "bytes": 444892,
+    "sha256": "bc35890ac60738ff3881e408acaba9cfa77494dd59c20835531a6d87b9df9b79",
+    "width": 3116,
+    "height": 992
+  },
+  "source_origin": "Figure supplied by Erik Wibbels to the project team on November 10, 2026. Original private-message provenance retained outside the repository."
+}

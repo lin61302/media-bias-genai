@@ -1,46 +1,39 @@
 ```{=html}
-<div class="classifier-diagram" aria-label="Six-stage classification pipeline and reported performance of the two civic classifiers">
+<div class="classifier-diagram" aria-label="Six-stage pipeline from collected news to political analysis">
+  <p class="classifier-intro">Select civic reporting, then code its political meaning.</p>
   <div class="classifier-stages">
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">1</span><h3>News corpus</h3></div>
-      <div class="classifier-stage-copy">Collect articles<br>Preprocess text<br>Keep source + date</div>
-      <div class="classifier-stage-note">Domestic and international sources</div>
+      <div class="classifier-stage-copy">Collect and clean articles</div>
     </div>
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">2</span><h3>Translation</h3></div>
-      <div class="classifier-stage-copy">Title and body<br>English text<br>Check usable input</div>
+      <div class="classifier-stage-copy">Translate into English</div>
     </div>
     <div class="classifier-stage classifier-stage-focus">
-      <div class="classifier-stage-heading"><span class="classifier-number">3</span><h3>Civic classifiers</h3></div>
+      <div class="classifier-stage-heading"><span class="classifier-number">3</span><h3>Civic selection</h3></div>
       <div class="classifier-encoder">Civic-event type</div>
+      <div class="classifier-filter-and">and</div>
       <div class="classifier-encoder">Civic relevance</div>
-      <div class="classifier-stage-note">Two encoder models<br>Both filters required</div>
     </div>
     <div class="classifier-stage classifier-stage-focus">
       <div class="classifier-stage-heading"><span class="classifier-number">4</span><h3>GenAI coding</h3></div>
-      <div class="classifier-stage-copy">Action + entities<br>Three judgments<br>Supporting text</div>
-      <div class="classifier-stage-note">Fixed prompt<br>Batch API</div>
+      <div class="classifier-stage-copy">Actor · action · target</div>
+      <div class="classifier-stage-copy classifier-second-line">Three judgments</div>
     </div>
     <div class="classifier-stage">
       <div class="classifier-stage-heading"><span class="classifier-number">5</span><h3>Checks</h3></div>
-      <div class="classifier-stage-copy">Check output fields<br>Verify evidence<br>Store coded records</div>
+      <div class="classifier-stage-copy">Validate records</div>
     </div>
     <div class="classifier-stage">
-      <div class="classifier-stage-heading"><span class="classifier-number">6</span><h3>Analytical views</h3></div>
-      <div class="classifier-stage-copy">Government-month<br>Outlet, actor, action<br>Shares, net and P</div>
+      <div class="classifier-stage-heading"><span class="classifier-number">6</span><h3>Analysis</h3></div>
+      <div class="classifier-stage-copy">Compare governments, sources and time</div>
     </div>
   </div>
 
-  <div class="classifier-performance">
-    <h3>Civic classifier performance</h3>
-    <table aria-label="Paper-reported civic classifier accuracy">
-      <thead><tr><th>Model</th><th>What it identifies</th><th>Out-of-sample accuracy</th></tr></thead>
-      <tbody>
-        <tr><td><strong>Civic-event type</strong></td><td>The article’s civic-event category</td><td><strong class="classifier-score">82%</strong></td></tr>
-        <tr><td><strong>Civic relevance</strong></td><td>Whether the article concerns civic or political life</td><td><strong class="classifier-score">87%</strong></td></tr>
-      </tbody>
-    </table>
-    <p class="classifier-footnote">Moratz et al. (2025), <em>Tracking Civic Space</em>, pp. 11–13. Paper-reported classifier performance.</p>
+  <div class="classifier-performance" aria-label="Paper-reported out-of-sample accuracy for civic relevance is 87 percent">
+    <strong class="classifier-score">87%</strong>
+    <div><strong>Civic relevance accuracy</strong><br>Does the article concern civic or political life?</div>
   </div>
 </div>
 ```

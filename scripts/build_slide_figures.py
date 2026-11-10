@@ -35,7 +35,7 @@ GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fde
 INK, NAVY, MUTED = "#1f2328", "#011F5B", "#6b7280"
 NEG, ZERO, POS = "#D55E00", "#e1e5eb", "#009E73"
 AXIS_COLORS = {"align": "#0072B2", "rep": "#D55E00", "frame": "#009E73"}
-AXIS_NAMES = {"align": "Political alignment", "rep": "Reputational implication", "frame": "Framing"}
+AXIS_NAMES = {"align": "Political alignment", "rep": "Reputational effect", "frame": "Framing"}
 
 plt.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": ["Helvetica Neue", "Arial", "DejaVu Sans"],
@@ -191,7 +191,6 @@ def distributions(scope):
     ax.tick_params(axis="x", length=0)
     ax.legend(loc="lower center", bbox_to_anchor=(.45, 1.07), ncol=3, frameon=False, fontsize=17)
     fig.text(.5, .09, "Zero includes neutral, mixed or insufficient directional evidence; not-codable labels are excluded.", ha="center", fontsize=14)
-    fig.text(.5, .04, f"{PERIOD} · n = {n:,} · same eligible articles for all three fields", ha="center", fontsize=13, color=MUTED)
     save(fig, "07_label_distributions")
     return {axis: {"negative": int(marginal(scope["overall"], axis)[0]),
                    "zero": int(marginal(scope["overall"], axis)[1]),
@@ -260,7 +259,7 @@ def joint(scope):
     ax.set_xticks(range(3), ["Negative (−1)", "Zero", "Positive (+1)"], fontsize=18)
     ax.xaxis.tick_top()
     ax.xaxis.set_label_position("top")
-    ax.set_xlabel("Reputational implication", labelpad=20, fontsize=19)
+    ax.set_xlabel("Reputational effect", labelpad=20, fontsize=19)
     ax.set_yticks(range(3), [f"Opposes (−1)\nn = {ar[0].sum():,}", f"Zero\nn = {ar[1].sum():,}", f"Supports (+1)\nn = {ar[2].sum():,}"], fontsize=17)
     ax.set_ylabel("Political alignment", fontsize=19, labelpad=18)
     ax.tick_params(length=0, pad=12)
@@ -269,9 +268,8 @@ def joint(scope):
     ax.grid(which="minor", color="white", linewidth=3)
     ax.tick_params(which="minor", length=0)
     ax.spines[:].set_visible(False)
-    fig.text(.5, .13, f"{shares[2,0]:.1%} of pro-incumbent actions have a negative reputational implication.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
-    fig.text(.5, .074, f"Each row sums to 100% · correlation across −1/0/+1 article labels: r = {joint_correlation:.3f}", ha="center", fontsize=14)
-    fig.text(.5, .03, f"{PERIOD} · n = {int(ar.sum()):,} eligible articles · descriptive model classifications", ha="center", fontsize=13, color=MUTED)
+    fig.text(.5, .13, f"{shares[2,0]:.1%} of articles with positive alignment have a negative reputational effect.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
+    fig.text(.5, .074, "Each row sums to 100%", ha="center", fontsize=14)
     save(fig, "08_alignment_reputation_joint")
     return {"correlation_alignment_reputation": joint_correlation,
             "positive_alignment_n": int(ar[2].sum()), "positive_alignment_negative_reputation_n": int(ar[2,0]),

@@ -12,19 +12,19 @@
   "measure": "Each sign count divided by the eligible monthly count; not P and not public opinion.",
   "full_export_months": 24,
   "display_months": 9,
-  "script_sha256": "91c5c9710252179614c0e9ae13584cece8ba39e2b158200f8c11f0cc3d42eaa2",
+  "script_sha256": "2958b605076003ffa0b9e470c2b6aa0236d8ef1e52510ce413f4fef8e3ae2554",
   "outputs": [
     {
       "path": "slides/figures/09_senegal_directional_shares.png",
-      "sha256": "f7f93fb5739effaa8767aa0ef76557cee1c3bd7dcaea243c6dea51be6aadce18"
+      "sha256": "93fb1919983113bd1e181cb1ba775d8b67dd616acb88abeab0097fe56052563c"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.pdf",
-      "sha256": "aea929b85cf7daedf2e34fbdabac5fda86ddc9f8a4c38eb5356e711849fc3276"
+      "sha256": "44d697d3266a4825c710be6e06548915305f821aac3e3fd38dc9238635eddf50"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.svg",
-      "sha256": "fce3f8ee88d4ce83794da4de75f8b1cfe68b8ddc562e9b550f07422241adff2d"
+      "sha256": "655c88b06db02b1a1f08baec5e86e7965b60ab0af091d6e72db4197dda247124"
     }
   ]
 }
