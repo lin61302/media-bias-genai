@@ -1,0 +1,153 @@
+<style>
+#live-ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 30; overflow: hidden; pointer-events: none; }
+#live-ink.drawing { pointer-events: auto; touch-action: none; cursor: crosshair; }
+#ink-tools { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 100;
+  display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px;
+  max-width: calc(100vw - 120px); width: max-content; padding: 5px; border: 1px solid #b8c2ce;
+  border-radius: 9px; background: #fff; box-shadow: 0 2px 10px #0002; font: 14px Arial, sans-serif; }
+#ink-tools button { min-height: 40px; min-width: 40px; padding: 7px 10px; border: 1px solid #cbd3dc;
+  border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: pointer; touch-action: manipulation; }
+#ink-tools button[aria-pressed="true"] { background: #17324f; color: white; border-color: #17324f; }
+#ink-tools button:focus-visible { outline: 3px solid #0072b2; outline-offset: 2px; }
+#ink-tools button:disabled { opacity: .35; cursor: default; }
+#ink-tools .ink-color { width: 40px; padding: 8px; }
+#ink-tools .ink-color span { display: block; width: 20px; height: 20px; border-radius: 50%; background: var(--ink-color); border: 1px solid #0004; }
+#ink-tools:not(.expanded) .ink-extra { display: none; }
+#ink-tools .ink-divider { width: 1px; height: 28px; background: #d7dce2; margin: 0 2px; }
+.reveal.overview #live-ink, .reveal.overview ~ #ink-tools { display: none; }
+@media print { #live-ink, #ink-tools { display: none !important; } }
+</style>
+<script>
+(() => {
+  'use strict';
+  function setup() {
+    if (!window.Reveal || document.getElementById('live-ink')) return;
+    const deck = window.Reveal;
+    if (!deck.isReady()) { deck.on('ready', setup); return; }
+    if (new URLSearchParams(location.search).has('print-pdf')) return;
+    const ns = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(ns, 'svg');
+    const width = Number(deck.getConfig().width) || 1280;
+    const height = Number(deck.getConfig().height) || 800;
+    svg.id = 'live-ink'; svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.setAttribute('preserveAspectRatio', 'none'); svg.setAttribute('aria-label', 'Slide drawing surface');
+    deck.getSlidesElement().appendChild(svg);
+    const tools = document.createElement('div');
+    tools.id = 'ink-tools'; tools.setAttribute('role', 'toolbar'); tools.setAttribute('aria-label', 'Slide annotation tools');
+    tools.innerHTML = `
+      <button data-mode="pen" title="Draw on this slide (C)" aria-pressed="false">✎ Pen · C</button>
+      <button class="ink-extra" data-mode="highlight" aria-pressed="false">Highlighter</button>
+      <button class="ink-extra" data-mode="erase" title="Erase a whole stroke" aria-pressed="false">Eraser</button>
+      <span class="ink-extra ink-divider" aria-hidden="true"></span>
+      <button class="ink-extra ink-color" data-color="#d62828" aria-label="Red ink" style="--ink-color:#d62828"><span></span></button>
+      <button class="ink-extra ink-color" data-color="#0072b2" aria-label="Blue ink" style="--ink-color:#0072b2"><span></span></button>
+      <button class="ink-extra ink-color" data-color="#00835d" aria-label="Green ink" style="--ink-color:#00835d"><span></span></button>
+      <button class="ink-extra ink-color" data-color="#ffcf40" aria-label="Yellow ink" style="--ink-color:#ffcf40"><span></span></button>
+      <button class="ink-extra" data-action="undo">Undo</button>
+      <button class="ink-extra" data-action="clear" title="Clear this slide; Undo restores it">Clear slide</button>
+      <button class="ink-extra" data-action="previous" aria-label="Previous slide">←</button>
+      <button class="ink-extra" data-action="next" aria-label="Next slide">→</button>
+      <button class="ink-extra" data-action="done" title="Return to navigation (C or Escape)">Done</button>`;
+    // Inside Reveal so native fullscreen also includes the controls.
+    deck.getRevealElement().appendChild(tools);
+    let mode = 'off', penColor = '#d62828', markerColor = '#ffcf40';
+    let activePointer = null, activeStroke = null;
+    const pages = new Map();
+    function page() {
+      const slide = deck.getCurrentSlide();
+      if (!pages.has(slide)) pages.set(slide, {strokes: [], undo: []});
+      return pages.get(slide);
+    }
+    function remember() {
+      const p = page(); p.undo.push(JSON.stringify(p.strokes));
+      if (p.undo.length > 50) p.undo.shift();
+    }
+    function controls() {
+      tools.classList.toggle('expanded', mode !== 'off');
+      svg.classList.toggle('drawing', mode !== 'off');
+      tools.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
+      tools.querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.color === (mode === 'highlight' ? markerColor : penColor))));
+      tools.querySelector('[data-action="undo"]').disabled = !page().undo.length;
+      tools.querySelector('[data-action="clear"]').disabled = !page().strokes.length;
+      tools.querySelector('[data-action="previous"]').disabled = deck.isFirstSlide();
+      tools.querySelector('[data-action="next"]').disabled = deck.isLastSlide();
+    }
+    function render() {
+      svg.replaceChildren();
+      for (const stroke of page().strokes) {
+        const path = document.createElementNS(ns, 'path');
+        let d = stroke.points.map((p, i) => `${i ? 'L' : 'M'}${p[0]},${p[1]}`).join(' ');
+        if (stroke.points.length === 1) d += ` l.01,.01`;
+        path.setAttribute('d', d); path.setAttribute('fill', 'none');
+        path.setAttribute('stroke', stroke.color); path.setAttribute('stroke-width', stroke.width);
+        path.setAttribute('stroke-opacity', stroke.opacity); path.setAttribute('stroke-linecap', 'round');
+        path.setAttribute('stroke-linejoin', 'round'); path.style.pointerEvents = 'none'; svg.appendChild(path);
+      }
+      controls();
+    }
+    function finish() { activePointer = null; activeStroke = null; }
+    function setMode(next) { finish(); mode = next; controls(); }
+    function point(event) {
+      const r = svg.getBoundingClientRect();
+      return [Math.max(0, Math.min(width, (event.clientX-r.left)*width/r.width)), Math.max(0, Math.min(height, (event.clientY-r.top)*height/r.height))];
+    }
+    function segmentDistance(p, a, b) {
+      const dx=b[0]-a[0], dy=b[1]-a[1];
+      const t=Math.max(0, Math.min(1, ((p[0]-a[0])*dx+(p[1]-a[1])*dy)/(dx*dx+dy*dy || 1)));
+      return Math.hypot(p[0]-a[0]-t*dx, p[1]-a[1]-t*dy);
+    }
+    function erase(p) {
+      page().strokes = page().strokes.filter(s => !s.points.some((a, i) => segmentDistance(p, a, s.points[i+1] || a) < 16+s.width/2));
+    }
+    svg.addEventListener('pointerdown', event => {
+      if (mode === 'off' || activePointer !== null || event.button !== 0) return;
+      event.preventDefault(); event.stopPropagation(); svg.setPointerCapture(event.pointerId);
+      activePointer = event.pointerId; remember();
+      if (mode === 'erase') erase(point(event));
+      else { activeStroke = {color: mode === 'highlight' ? markerColor : penColor, width: mode === 'highlight' ? 24 : 4, opacity: mode === 'highlight' ? .32 : 1, points: [point(event)]}; page().strokes.push(activeStroke); }
+      render();
+    });
+    svg.addEventListener('pointermove', event => {
+      if (event.pointerId !== activePointer) return;
+      event.preventDefault(); event.stopPropagation();
+      for (const sample of (event.getCoalescedEvents?.().length ? event.getCoalescedEvents() : [event])) {
+        if (mode === 'erase') erase(point(sample)); else activeStroke?.points.push(point(sample));
+      }
+      render();
+    });
+    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) svg.addEventListener(name, event => {
+      if (event.pointerId === activePointer) { event.stopPropagation(); finish(); }
+    });
+    // Touch events must not bubble into Reveal's swipe-to-change-slide handler.
+    for (const name of ['touchstart', 'touchmove', 'touchend']) svg.addEventListener(name, event => {
+      if (mode !== 'off') { event.preventDefault(); event.stopPropagation(); }
+    }, {passive: false});
+    tools.addEventListener('click', event => {
+      const button = event.target.closest('button'); if (!button) return;
+      event.stopPropagation();
+      if (button.dataset.mode) setMode(button.dataset.mode === mode ? 'off' : button.dataset.mode);
+      if (button.dataset.color) { if (mode === 'highlight') markerColor=button.dataset.color; else penColor=button.dataset.color; controls(); }
+      const action = button.dataset.action;
+      if (action === 'done') setMode('off');
+      if (action === 'undo' && page().undo.length) { page().strokes=JSON.parse(page().undo.pop()); render(); }
+      if (action === 'clear' && page().strokes.length) { remember(); page().strokes=[]; render(); }
+      if (action === 'previous') deck.prev();
+      if (action === 'next') deck.next();
+    });
+    window.addEventListener('keydown', event => {
+      if (event.metaKey || event.ctrlKey || event.altKey || event.repeat || event.target.closest?.('input,textarea,select,[contenteditable="true"]')) return;
+      if (event.key.toLowerCase() === 'c') {
+        event.preventDefault(); event.stopImmediatePropagation(); setMode(mode === 'off' ? 'pen' : 'off');
+      } else if (event.key === 'Escape' && mode !== 'off') {
+        event.preventDefault(); event.stopImmediatePropagation(); setMode('off');
+      }
+    }, true);
+    deck.on('slidechanged', () => { finish(); render(); });
+    deck.on('overviewshown', () => { setMode('off'); svg.style.display='none'; tools.style.display='none'; });
+    deck.on('overviewhidden', () => { svg.style.display=''; tools.style.display=''; });
+    render();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
+  else setup();
+})();
+</script>

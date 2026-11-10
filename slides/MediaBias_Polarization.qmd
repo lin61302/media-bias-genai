@@ -32,6 +32,7 @@ format:
     preview-links: false
     pdf-separate-fragments: false
     css: [classifier.css, concepts.css]
+    include-after-body: includes/annotations.html
     include-in-header:
       - text: |
           <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
@@ -90,7 +91,7 @@ format:
           .reveal .csl-entry { margin-bottom: 0.35em; }
           .reveal .slides section.figure-slide img { max-height: 545px; width: auto; max-width: 100%; object-fit: contain; }
           .reveal .slides section.figure-slide p { margin: 0.2em 0; }
-          .reveal .slides section.literature-detail li { margin-bottom: 0.22em; line-height: 1.23; }
+          .reveal .slides section.literature-detail li { margin-top: 0.16em; margin-bottom: 0.16em; line-height: 1.18; }
           </style>
 ---
 
