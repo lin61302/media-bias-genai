@@ -62,7 +62,29 @@ For each of the two ambiguous anchors, two action stages fit the recorded phrase
 
 The new review identifies **173 articles where human and Luna selected the same actual action**. This cohort includes shared actions that differ from the review reference; it does not use the former 155-case acceptance gate.
 
-The following counts apply the **saved, corrected November 3 political-label assessments** to that new cohort. They are not a new coding pass. The reviewer had seen Luna's labels and assessed them conditional on Luna's selected action and government. The original human sheet has one legacy sentiment field, not separate political alignment, reputational implication and framing labels.
+A November 10 follow-up reassessed **all 79 previously uncertain dimension judgments across 55 of these articles**. The other 440 saved dimension assessments remain unchanged. Two separate assistant readings per reassessed judgment were followed by documented lead-assistant adjudication. Reviewers saw the recorded Luna label, action and government; the new decisions have not been individually approved by a human researcher. The [follow-up protocol](label-reassessment-protocol.md), [aggregate results](../slides/figures/data/05_label_reassessment_20261110.json) and [reducer](../scripts/build_label_reassessment.py) preserve the rules and accounting.
+
+Of the 79 formerly uncertain judgments, 44 are now supported, 14 remain defensible alternatives, and 15 have proposed corrections; 6 remain unresolved because government applicability is not established.
+
+### Updated conditional review results
+
+Every row below contains the same 173 articles. Only **Supported** enters the strict support numerator. A defensible alternative is a recorded label that remains reasonable alongside another label; it is kept separate from strict support and from a proposed correction.
+
+| Judgment | Supported / 173 | Defensible alternative | Unresolved scope | Change proposed | Supported among original +1 / −1 labels |
+|---|---:|---:|---:|---:|---:|
+| Political alignment | 155 (89.6%) | 1 | 2 | 15 | 28/41 (68.3%) |
+| Reputational implication | 149 (86.1%) | 10 | 2 | 12 | 16/31 (51.6%) |
+| Framing | 161 (93.1%) | 3 | 2 | 7 | 12/21 (57.1%) |
+
+Six judgments across two articles remain unresolved because the record does not establish meaningful government relevance. A fixed country label does not establish applicability: those zeros are not counted as supported. Missing direction within an applicable government dimension can still resolve to zero. The separate applicability sensitivity excludes those two articles; neither the primary denominator nor the original labels change. All three labels are strictly supported together in **130/173 (75.1%)**. No original producer label has changed.
+
+The two assistant readings are an audit aid, not independent human ground truth. The final support rate combines carried-forward judgments with a targeted reassessment; it is not a fresh review of all 519 judgments. Proposed corrections are still reviewer judgments. The human exercise collected one legacy sentiment field, not separate political alignment, reputational implication and framing labels. It cannot supply a human three-way comparison for these dimensions.
+
+Zeros remain common: 132 political-alignment labels, 142 reputational-implication labels and 152 framing labels. The directional columns retain all original positive and negative labels, including alternatives and proposed changes. These small historical subsets are diagnostic, not population accuracy or precision estimates. Four invalid full outputs enter because their actions and values are readable; the aggregate reports valid-output-only and changed-source-view sensitivities.
+
+### Preserved results before the follow-up
+
+The following original results recount the corrected November 3 political-label assessments on the same 173-article cohort. They remain in the original [aggregate file](../slides/figures/data/05_event_validation_20261110.json). All three labels were supported together in 108/173 (62.4%).
 
 | Judgment | Review agrees | Uncertain | Change proposed | Review agrees when Luna coded +1 or −1 |
 |---|---:|---:|---:|---:|
@@ -70,11 +92,7 @@ The following counts apply the **saved, corrected November 3 political-label ass
 | Reputational implication | 131 / 173 (75.7%) | 37 | 5 | 11 / 31 (35.5%) |
 | Framing | 155 / 173 (89.6%) | 14 | 4 | 9 / 21 (42.9%) |
 
-“Review agrees” means the saved assessment supports the producer label. “Uncertain” means ambiguous or boundary; “change proposed” is the saved unsupported verdict, not an independently established error. All three judgments are supported together in **108/173 (62.4%)**. Every article remains in each row's denominator, including unresolved assessments; all 173 have traceable assessments for all three labels.
-
-Zeros are common: 132 political-alignment labels, 142 reputational-effect labels and 152 framing labels. The positive/negative-only columns show why high overall support does not establish reliable detection of directional content. These small selected subsets are diagnostic, not population accuracy estimates. Four invalid full outputs are included because their actions and political values are readable; other field errors remain flagged. The aggregate file also reports valid-output-only cohorts and the 166 actual actions where both coders match the review reference.
-
-The saved review's numeric proposals often copy accepted Luna labels; ambiguous cases have no point proposal. Treating those proposals as independently assigned labels would exaggerate agreement. A valid human three-way comparison of the three political judgments requires new, separate human labels on the same action and government.
+The saved point proposals copy accepted Luna labels, while uncertain cases have no point proposal. Neither those proposals nor the targeted follow-up constitute independent third-coder labels. Individual human validation on the same input, action and government remains required.
 
 ## Other fields after selecting the same action
 

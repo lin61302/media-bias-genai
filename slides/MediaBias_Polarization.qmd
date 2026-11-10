@@ -278,22 +278,24 @@ The first two steps establish what the judgments refer to. This is why action se
 
 **173 articles where human and GenAI selected the same action**
 
-| Judgment | Review agrees | Uncertain | Change proposed |
-|---|---:|---:|---:|
-| Political alignment | **78%** | 16% | 6% |
-| Reputational implication | **76%** | 21% | 3% |
-| Framing | **90%** | 8% | 2% |
+| Judgment | Supported | Defensible | Scope issue | Revise |
+|---|---:|---:|---:|---:|
+| Political alignment | **89.6%** | 0.6% | 1.2% | 8.7% |
+| Reputational implication | **86.1%** | 5.8% | 1.2% | 6.9% |
+| Framing | **93.1%** | 1.7% | 1.2% | 4.0% |
 
-Most labels are zero. Positive and negative cases need closer checking.
+Assistant review. Alternatives and scope issues stay outside clear support.
 
 ::: notes
-The main talk focuses on the three judgments. Every row has a denominator of 173, so the counts reconcile: alignment 135 + 28 + 10; reputation 131 + 37 + 5; framing 155 + 14 + 4. Percentages are rounded from 78.0347%, 75.7225%, and 89.5954%. “Review agrees” means the corrected November 3 Astra-assisted assessment supports Luna's recorded label, conditional on its selected action and government. “Uncertain” means ambiguous or boundary cases; “change proposed” means the saved unsupported verdict. These are dependent review outcomes, not an independent human-reference accuracy estimate or a new three-dimension coding pass.
+Every row uses the same 173 articles: political alignment 155 supported, 1 defensible alternatives, 2 unresolved scope, 15 proposed changes; reputational implication 149 supported, 10 defensible alternatives, 2 unresolved scope, 12 proposed changes; framing 161 supported, 3 defensible alternatives, 2 unresolved scope, 7 proposed changes. Percentages are rounded; exact counts and source versions are retained in the documentation. Defensible means the recorded label is one of multiple comparably rule-consistent readings. It does not enter strict support. A proposed change is a reviewer judgment, not an established human-reference error.
 
-The November 10 action review identifies 173 articles where both coders selected the same actual action, among 213 interpretable cases where both selected an action. All 173 enter this table; the old 155-case, model-only acceptance gate is retired. Four structurally invalid full outputs have readable actions and numeric political labels; their other errors remain flagged. All 173 have traceable saved label assessments. No missing review or unresolved label is treated as support. The human sheet has one legacy sentiment field, not three separate labels. Historical inputs and rules differed. The validation sample spans 2012–2025 and is not the current 2019–2026 analytical corpus.
+The November 10 follow-up reassesses all 79 formerly uncertain dimension judgments across 55 articles, with two separate assistant readings followed by lead-assistant adjudication. Each reviewer saw the producer label and fixed action/government, but not the other reviewer's decision. Of the 79 formerly uncertain judgments, 44 are now supported, 14 remain defensible alternatives, and 15 have proposed corrections; 6 remain unresolved because government applicability is not established. The other 440 saved November 3 dimension assessments are carried forward. This is a targeted reassessment, not a new independent coding of all three dimensions. The new decisions have not been individually approved by a human researcher.
 
-Positive and negative cases are harder: the review supports 27/41 alignment labels, 11/31 reputation labels, and 9/21 framing labels, with uncertainty retained in each denominator. High overall support partly reflects many zeros. The appendix shows these counts, the complete three-way action comparison, and all denominator definitions. All three political labels are supported together in 108/173 articles (62.4%). These results support an inspectable coding approach and help diagnose specific disagreements. They alone do not prove representative accuracy, equivalence to human coders, or the validity of inferred public polarization.
+The cohort comes from the action comparison: 173 shared actual actions among 213 interpretable pairs where both coders selected an action. The former 155-case acceptance gate is not used. Four structurally invalid full outputs have readable actions and political values; their separate errors remain flagged. The human sheet has one legacy sentiment field, not separate alignment, reputation and framing labels. The historical sample spans 2012–2025 and is not the current analytical corpus.
 
-Sources: figures/data/05_event_validation_20261110.json and ../docs/validation.md. The private source-only references were coded before the candidates were seen, followed by anonymized mapping and audits of 56 cases. Original human and producer data remain unchanged. The fresh event comparison and the saved political-label reviews are separate.
+Most labels are zero (132 alignment, 142 reputation, 152 framing). Directional diagnostics remain in the appendix: political alignment: 28 supported, 0 defensible alternatives, 13 proposed changes; reputational implication: 16 supported, 8 defensible alternatives, 7 proposed changes; framing: 12 supported, 3 defensible alternatives, 6 proposed changes. All three judgments are strictly supported together in 130/173 (75.1%). These are conditional assistant-review results, not representative human accuracy or evidence of public polarization.
+
+Sources: figures/data/05_label_reassessment_20261110.json, ../docs/label-reassessment-protocol.md and ../docs/validation.md. Original saved results remain in figures/data/05_event_validation_20261110.json. Original model outputs, article text, prompts, production data and the separate action comparison are unchanged.
 :::
 
 
@@ -512,7 +514,7 @@ Scope requiring confirmation with Erik: whether country means evaluated governme
 - What are our most compelling and feasible avenues of investigation?
 
 ::: notes
-The questions follow the three applications. Invite discussion of a comparison benchmark for bias, independent evidence on polarization, and validation or matched-event studies. Detailed measurement and action-selection diagnostics are available in the appendix.
+Invite feedback on whether the classification distinctions are understandable, how the pipeline and validation should improve, and which research applications are most compelling and feasible. Refer to the empirical examples when discussing a concrete next design. Detailed measurement and action-selection diagnostics are available in the appendix.
 :::
 
 
@@ -583,18 +585,22 @@ No complete independent third set of these fields exists, so a three-way field t
 
 ## Appendix: checking positive and negative labels {.clean-slide .backup}
 
-| Review agrees with GenAI | All labels | Only +1 / −1 labels |
+| Label supported | All labels | Only +1 / −1 labels |
 |---|---:|---:|
-| Political alignment | 135 / 173 · **78.0%** | 27 / 41 · **65.9%** |
-| Reputational implication | 131 / 173 · **75.7%** | 11 / 31 · **35.5%** |
-| Framing | 155 / 173 · **89.6%** | 9 / 21 · **42.9%** |
+| Political alignment | 155 / 173 · **89.6%** | 28 / 41 · **68.3%** |
+| Reputational implication | 149 / 173 · **86.1%** | 16 / 31 · **51.6%** |
+| Framing | 161 / 173 · **93.1%** | 12 / 21 · **57.1%** |
 
-Zeros raise overall agreement. Ambiguous cases remain in the denominators.
+Most labels are zero. Defensible alternatives remain in the denominators.
 
 ::: notes
-These are saved November 3 dependent evidence-review outcomes, reconditioned on 173 shared actual actions from the November 10 review; they are not fresh independent labels. Among directional labels, alignment has 27 supported, five open, and nine proposed changes; reputation has 11/17/3, and framing 9/8/4. The all-label counts on the main slide include 132 alignment zeros, 142 reputation zeros, and 152 framing zeros. All three labels are supported in 108/173 articles (62.4%). The human exercise has one legacy sentiment field; it cannot supply separate human alignment, reputation, and framing scores. The review's proposals often copy accepted Luna values, so agreement with those proposals must not be presented as independent accuracy.
+These combine the saved November 3 review with the targeted November 10 reassessment of all 79 previously uncertain judgments. They are not independent human-reference accuracy. Directional support, defensible-alternative and proposed-change counts: political alignment: 28 supported, 0 defensible alternatives, 13 proposed changes; reputational implication: 16 supported, 8 defensible alternatives, 7 proposed changes; framing: 12 supported, 3 defensible alternatives, 6 proposed changes. Overall counts of zero remain 132, 142 and 152. All three labels are supported in 130/173 (75.1%).
 
-Optional example for questions: Reuters, Baku, October 12, 2013, describing police beating or detaining opposition protesters. The human's single sentiment is −1. Luna records (+1, 0, 0); the earlier review gives (+1, −1, open). This illustrates the distinction between actor alignment, substantive government implication, and narrator framing, not a verified production correction. Historical country references are sparse. All new source/action decisions are private; no production records or prompts changed. These conditional diagnostics identify where human validation is needed. They do not justify a broad claim of 80–90% accuracy.
+The reassessment used the same selected action and government. It distinguished a label supported by the rule, a defensible alternative, a proposed correction and genuinely unresolved inputs. No uncertainty is counted automatically as agreement. Source/selection limitations are retained separately; independent human labels are still needed. The original human exercise's single sentiment variable cannot supply those three separate judgments.
+
+Examples of why review matters: the Mexican union-arrest article adds a narrator comparison with a presidency that brooked no dissent, supporting negative framing. A military officer's denial of a coup does not itself establish positive alignment with the incumbent. The Reuters Baku report describes observed beatings while attributing stronger political judgments; the follow-up supports its zero framing, keeping factual damage separate from narrator evaluation. These are review examples, not production corrections.
+
+Sources: figures/data/05_label_reassessment_20261110.json and ../docs/validation.md. The original results remain separately available in figures/data/05_event_validation_20261110.json.
 :::
 
 
