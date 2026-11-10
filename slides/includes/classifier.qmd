@@ -11,8 +11,8 @@
       <div class="classifier-stage-copy">Translate into English</div>
     </div>
     <div class="classifier-stage classifier-stage-focus">
-      <div class="classifier-stage-heading"><span class="classifier-number">3</span><h3>Selection</h3></div>
-      <div class="classifier-encoder">Event type</div>
+      <div class="classifier-stage-heading"><span class="classifier-number">3</span><h3>Civic selection</h3></div>
+      <div class="classifier-encoder">Civic-event type</div>
       <div class="classifier-filter-and">and</div>
       <div class="classifier-encoder">Civic relevance</div>
     </div>
