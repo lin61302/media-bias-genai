@@ -34,10 +34,10 @@
   <div class="classifier-performance">
     <h3>Civic classifier performance</h3>
     <table aria-label="Paper-reported civic classifier accuracy">
-      <thead><tr><th>Model</th><th>What it identifies</th><th>Reported accuracy</th></tr></thead>
+      <thead><tr><th>Model</th><th>What it identifies</th><th>Out-of-sample accuracy</th></tr></thead>
       <tbody>
-        <tr><td><strong>Civic-event type</strong></td><td>The article’s civic-event category</td><td><strong class="classifier-score">82%</strong><span>Average out of sample</span></td></tr>
-        <tr><td><strong>Civic relevance</strong></td><td>Whether the article concerns civic or political life</td><td><strong class="classifier-score">87%</strong><span>Overall accuracy</span></td></tr>
+        <tr><td><strong>Civic-event type</strong></td><td>The article’s civic-event category</td><td><strong class="classifier-score">82%</strong></td></tr>
+        <tr><td><strong>Civic relevance</strong></td><td>Whether the article concerns civic or political life</td><td><strong class="classifier-score">87%</strong></td></tr>
       </tbody>
     </table>
     <p class="classifier-footnote">Moratz et al. (2025), <em>Tracking Civic Space</em>, pp. 11–13. Paper-reported classifier performance.</p>

@@ -223,7 +223,7 @@ The base case is +1/−1/0. The new illustrative narrator wording “Police righ
 ::: notes
 The six stages show corpus collection, translation, the two encoder classifiers, GenAI coding, checks, and analytical views. Civic-event type and civic relevance are separate classification tasks; both selection conditions must pass. This is not a dual-encoder architectural claim. GenAI receives the full supplied English text, unlike the earlier encoder classifier's title plus first 600 characters.
 
-Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13: civic-event average out-of-sample accuracy 82%; civic/political relevance overall accuracy 87%. https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
+Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13. Out-of-sample accuracy: civic-event classification 82%; civic/political relevance 87%. https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
 :::
 
 
