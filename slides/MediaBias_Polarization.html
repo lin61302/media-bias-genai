@@ -3666,8 +3666,10 @@ window.QuartoSupport = function () {
       });
     </script>
     <style>
-#live-ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 30; overflow: hidden; pointer-events: none; }
-#live-ink.drawing { pointer-events: auto; touch-action: none; cursor: crosshair; }
+#live-ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 30; overflow: hidden; pointer-events: none; user-select: none; -webkit-user-select: none; }
+#live-ink.drawing { pointer-events: all; touch-action: none; cursor: crosshair; }
+.reveal:fullscreen { background: #eef0f3; }
+.reveal:-webkit-full-screen { background: #eef0f3; }
 #ink-tools { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 100;
 display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 5px;
 max-width: calc(100vw - 120px); width: max-content; padding: 5px; border: 1px solid #b8c2ce;
@@ -3698,6 +3700,14 @@ border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: po
         const height = Number(deck.getConfig().height) || 800;
         svg.id = 'live-ink'; svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
         svg.setAttribute('preserveAspectRatio', 'none'); svg.setAttribute('aria-label', 'Slide drawing surface');
+        // An explicit surface is hit-tested consistently even when there is no ink.
+        // Do not depend on browsers treating an empty SVG root as a painted area.
+        const hitSurface = document.createElementNS(ns, 'rect');
+        hitSurface.setAttribute('width', width); hitSurface.setAttribute('height', height);
+        hitSurface.setAttribute('fill', 'transparent'); hitSurface.setAttribute('aria-hidden', 'true');
+        const inkPaths = document.createElementNS(ns, 'g');
+        inkPaths.style.pointerEvents = 'none';
+        svg.append(hitSurface, inkPaths);
         deck.getSlidesElement().appendChild(svg);
         const tools = document.createElement('div');
         tools.id = 'ink-tools'; tools.setAttribute('role', 'toolbar'); tools.setAttribute('aria-label', 'Slide annotation tools');
@@ -3732,6 +3742,7 @@ border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: po
         function controls() {
           tools.classList.toggle('expanded', mode !== 'off');
           svg.classList.toggle('drawing', mode !== 'off');
+          hitSurface.style.pointerEvents = mode === 'off' ? 'none' : 'all';
           tools.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
           tools.querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.color === (mode === 'highlight' ? markerColor : penColor))));
           tools.querySelector('[data-action="undo"]').disabled = !page().undo.length;
@@ -3740,7 +3751,7 @@ border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: po
           tools.querySelector('[data-action="next"]').disabled = deck.isLastSlide();
         }
         function render() {
-          svg.replaceChildren();
+          inkPaths.replaceChildren();
           for (const stroke of page().strokes) {
             const path = document.createElementNS(ns, 'path');
             let d = stroke.points.map((p, i) => `${i ? 'L' : 'M'}${p[0]},${p[1]}`).join(' ');
@@ -3748,11 +3759,15 @@ border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: po
             path.setAttribute('d', d); path.setAttribute('fill', 'none');
             path.setAttribute('stroke', stroke.color); path.setAttribute('stroke-width', stroke.width);
             path.setAttribute('stroke-opacity', stroke.opacity); path.setAttribute('stroke-linecap', 'round');
-            path.setAttribute('stroke-linejoin', 'round'); path.style.pointerEvents = 'none'; svg.appendChild(path);
+            path.setAttribute('stroke-linejoin', 'round'); path.style.pointerEvents = 'none'; inkPaths.appendChild(path);
           }
           controls();
         }
-        function finish() { activePointer = null; activeStroke = null; }
+        function finish() {
+          const pointer = activePointer;
+          activePointer = null; activeStroke = null;
+          try { if (pointer !== null && svg.hasPointerCapture?.(pointer)) svg.releasePointerCapture(pointer); } catch (_) {}
+        }
         function setMode(next) { finish(); mode = next; controls(); }
         function point(event) {
           const r = svg.getBoundingClientRect();
@@ -3767,24 +3782,33 @@ border-radius: 5px; background: white; color: #17324f; font: inherit; cursor: po
           page().strokes = page().strokes.filter(s => !s.points.some((a, i) => segmentDistance(p, a, s.points[i+1] || a) < 16+s.width/2));
         }
         svg.addEventListener('pointerdown', event => {
-          if (mode === 'off' || activePointer !== null || event.button !== 0) return;
-          event.preventDefault(); event.stopPropagation(); svg.setPointerCapture(event.pointerId);
+          if (mode === 'off' || activePointer !== null || event.isPrimary === false ||
+              (event.pointerType === 'mouse' && event.button !== 0)) return;
+          event.preventDefault(); event.stopPropagation();
           activePointer = event.pointerId; remember();
           if (mode === 'erase') erase(point(event));
           else { activeStroke = {color: mode === 'highlight' ? markerColor : penColor, width: mode === 'highlight' ? 24 : 4, opacity: mode === 'highlight' ? .32 : 1, points: [point(event)]}; page().strokes.push(activeStroke); }
           render();
+          // Some browser/fullscreen combinations reject capture. Drawing must still
+          // begin, and the window listeners below continue the active gesture.
+          try { svg.setPointerCapture?.(event.pointerId); } catch (_) {}
         });
-        svg.addEventListener('pointermove', event => {
+        window.addEventListener('pointermove', event => {
           if (event.pointerId !== activePointer) return;
+          if (event.pointerType === 'mouse' && event.buttons === 0) { finish(); return; }
           event.preventDefault(); event.stopPropagation();
           for (const sample of (event.getCoalescedEvents?.().length ? event.getCoalescedEvents() : [event])) {
             if (mode === 'erase') erase(point(sample)); else activeStroke?.points.push(point(sample));
           }
           render();
-        });
-        for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) svg.addEventListener(name, event => {
+        }, {capture: true, passive: false});
+        for (const name of ['pointerup', 'pointercancel']) window.addEventListener(name, event => {
           if (event.pointerId === activePointer) { event.stopPropagation(); finish(); }
+        }, true);
+        svg.addEventListener('lostpointercapture', event => {
+          if (event.pointerId === activePointer) finish();
         });
+        window.addEventListener('blur', finish);
         // Touch events must not bubble into Reveal's swipe-to-change-slide handler.
         for (const name of ['touchstart', 'touchmove', 'touchend']) svg.addEventListener(name, event => {
           if (mode !== 'off') { event.preventDefault(); event.stopPropagation(); }
