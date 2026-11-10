@@ -1,6 +1,7 @@
 <style>
-#live-ink { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 30; overflow: hidden; pointer-events: none; user-select: none; -webkit-user-select: none; }
-#live-ink.drawing { pointer-events: all; touch-action: none; cursor: crosshair; }
+#live-ink { touch-action: none; -webkit-touch-callout: none; position: absolute; inset: 0; width: 100%; height: 100%; z-index: 30; overflow: hidden; pointer-events: none; user-select: none; -webkit-user-select: none; }
+#live-ink > svg { display: block; width: 100%; height: 100%; pointer-events: none; }
+#live-ink.drawing { pointer-events: auto; touch-action: none; cursor: crosshair; }
 .reveal:fullscreen { background: #eef0f3; }
 .reveal:-webkit-full-screen { background: #eef0f3; }
 #ink-tools { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); z-index: 100;
@@ -27,21 +28,22 @@
     const deck = window.Reveal;
     if (!deck.isReady()) { deck.on('ready', setup); return; }
     if (new URLSearchParams(location.search).has('print-pdf')) return;
+    const touchNavigation = deck.getConfig().touch;
     const ns = 'http://www.w3.org/2000/svg';
+    // Use an HTML input surface; SVG is only the ink renderer.
+    const surface = document.createElement('div');
+    surface.id = 'live-ink';
+    surface.setAttribute('aria-label', 'Slide drawing surface');
+    surface.dataset.inputVersion = 'direct-touch-20261110';
     const svg = document.createElementNS(ns, 'svg');
     const width = Number(deck.getConfig().width) || 1280;
     const height = Number(deck.getConfig().height) || 800;
-    svg.id = 'live-ink'; svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-    svg.setAttribute('preserveAspectRatio', 'none'); svg.setAttribute('aria-label', 'Slide drawing surface');
-    // An explicit surface is hit-tested consistently even when there is no ink.
-    // Do not depend on browsers treating an empty SVG root as a painted area.
-    const hitSurface = document.createElementNS(ns, 'rect');
-    hitSurface.setAttribute('width', width); hitSurface.setAttribute('height', height);
-    hitSurface.setAttribute('fill', 'transparent'); hitSurface.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+    svg.setAttribute('preserveAspectRatio', 'none'); svg.setAttribute('aria-hidden', 'true');
     const inkPaths = document.createElementNS(ns, 'g');
-    inkPaths.style.pointerEvents = 'none';
-    svg.append(hitSurface, inkPaths);
-    deck.getSlidesElement().appendChild(svg);
+    svg.appendChild(inkPaths);
+    surface.appendChild(svg);
+    deck.getSlidesElement().appendChild(surface);
     const tools = document.createElement('div');
     tools.id = 'ink-tools'; tools.setAttribute('role', 'toolbar'); tools.setAttribute('aria-label', 'Slide annotation tools');
     tools.innerHTML = `
@@ -61,7 +63,8 @@
     // Inside Reveal so native fullscreen also includes the controls.
     deck.getRevealElement().appendChild(tools);
     let mode = 'off', penColor = '#d62828', markerColor = '#ffcf40';
-    let activePointer = null, activeStroke = null;
+    let activePointer = null, activeStroke = null, activeTouch = null, inputKind = null;
+    let lastContact = null, lastPointerDown = -Infinity, suppressMouseUntil = 0;
     const pages = new Map();
     function page() {
       const slide = deck.getCurrentSlide();
@@ -74,8 +77,7 @@
     }
     function controls() {
       tools.classList.toggle('expanded', mode !== 'off');
-      svg.classList.toggle('drawing', mode !== 'off');
-      hitSurface.style.pointerEvents = mode === 'off' ? 'none' : 'all';
+      surface.classList.toggle('drawing', mode !== 'off');
       tools.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.mode === mode)));
       tools.querySelectorAll('[data-color]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.color === (mode === 'highlight' ? markerColor : penColor))));
       tools.querySelector('[data-action="undo"]').disabled = !page().undo.length;
@@ -98,12 +100,17 @@
     }
     function finish() {
       const pointer = activePointer;
-      activePointer = null; activeStroke = null;
-      try { if (pointer !== null && svg.hasPointerCapture?.(pointer)) svg.releasePointerCapture(pointer); } catch (_) {}
+      activePointer = null; activeStroke = null; activeTouch = null; inputKind = null; lastContact = null;
+      try { if (typeof pointer === 'number' && surface.hasPointerCapture?.(pointer)) surface.releasePointerCapture(pointer); } catch (_) {}
     }
-    function setMode(next) { finish(); mode = next; controls(); }
+    function setMode(next) {
+      finish(); mode = next;
+      // Extra fingers must not swipe the deck while annotating.
+      deck.configure({touch: mode === 'off' ? touchNavigation : false});
+      controls();
+    }
     function point(event) {
-      const r = svg.getBoundingClientRect();
+      const r = surface.getBoundingClientRect();
       return [Math.max(0, Math.min(width, (event.clientX-r.left)*width/r.width)), Math.max(0, Math.min(height, (event.clientY-r.top)*height/r.height))];
     }
     function segmentDistance(p, a, b) {
@@ -129,39 +136,99 @@
       }
       render();
     }
-    svg.addEventListener('pointerdown', event => {
-      if (mode === 'off' || activePointer !== null || event.isPrimary === false ||
-          (event.pointerType === 'mouse' && event.button !== 0)) return;
-      event.preventDefault(); event.stopPropagation();
-      activePointer = event.pointerId; remember();
-      if (mode === 'erase') erase(point(event));
-      else { activeStroke = {color: mode === 'highlight' ? markerColor : penColor, width: mode === 'highlight' ? 24 : 4, opacity: mode === 'highlight' ? .32 : 1, points: [point(event)]}; page().strokes.push(activeStroke); }
+    function stopEvent(event) {
+      if (event.cancelable) event.preventDefault();
+      event.stopPropagation();
+    }
+    function begin(contact, kind, pointer = null) {
+      inputKind = kind; activePointer = pointer;
+      lastContact = {x: contact.clientX, y: contact.clientY};
+      remember();
+      if (mode === 'erase') erase(point(contact));
+      else {
+        activeStroke = {color: mode === 'highlight' ? markerColor : penColor,
+          width: mode === 'highlight' ? 24 : 4, opacity: mode === 'highlight' ? .32 : 1,
+          points: [point(contact)]};
+        page().strokes.push(activeStroke);
+      }
       render();
-      // Some browser/fullscreen combinations reject capture. Drawing must still
-      // begin, and the window listeners below continue the active gesture.
-      try { svg.setPointerCapture?.(event.pointerId); } catch (_) {}
-    });
+    }
+    surface.addEventListener('pointerdown', event => {
+      if (mode === 'off') return;
+      stopEvent(event);
+      if (event.isPrimary === false || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      lastPointerDown = performance.now();
+      if (inputKind !== null) return;
+      begin(event, event.pointerType || 'mouse', event.pointerId);
+      try { surface.setPointerCapture?.(event.pointerId); } catch (_) {}
+    }, {passive: false});
     window.addEventListener('pointermove', event => {
-      if (event.pointerId !== activePointer) return;
-      event.preventDefault(); event.stopPropagation();
-      // The down/up lifecycle owns this gesture. A move's buttons value may
-      // be missing in an embedded input stream and must not truncate it.
+      if (mode !== 'off' && surface.contains(event.target)) stopEvent(event);
+      if (event.pointerId !== activePointer || activeTouch !== null) return;
+      stopEvent(event);
+      lastContact = {x: event.clientX, y: event.clientY};
       extend(event);
     }, {capture: true, passive: false});
     for (const name of ['pointerup', 'pointercancel']) window.addEventListener(name, event => {
       if (event.pointerId !== activePointer) return;
-      event.stopPropagation();
-      // Fast drags may have few or no intermediate moves. Retain their end.
+      stopEvent(event);
+      // A direct touch stream has its own end/cancel lifecycle. Do not let an
+      // incomplete compatibility pointer stream truncate that touch stroke.
+      if (activeTouch !== null) return;
       if (name === 'pointerup') extend(event);
       finish();
-    }, true);
-    // Capture loss changes delivery, not whether the pointer is still down.
-    // Window tracking continues until release, cancellation or window blur.
-    window.addEventListener('blur', finish);
-    // Touch events must not bubble into Reveal's swipe-to-change-slide handler.
-    for (const name of ['touchstart', 'touchmove', 'touchend']) svg.addEventListener(name, event => {
-      if (mode !== 'off') { event.preventDefault(); event.stopPropagation(); }
+    }, {capture: true, passive: false});
+    // Some browsers expose touch coordinates without a complete PointerEvent
+    // stream. Handle them directly instead of only cancelling Reveal's swipe.
+    surface.addEventListener('touchstart', event => {
+      if (mode === 'off') return;
+      stopEvent(event); suppressMouseUntil = performance.now() + 800;
+      if (activeTouch !== null) return;
+      const contact = event.changedTouches[0];
+      if (!contact) return;
+      if (inputKind === null) begin(contact, 'touch');
+      else {
+        // Adopt only the same contact already started by a pointer event.
+        // A second finger/palm must not take over a pen or mouse stroke.
+        if (!['touch', 'pen'].includes(inputKind) || !lastContact ||
+            Math.hypot(contact.clientX-lastContact.x, contact.clientY-lastContact.y) > 24) return;
+      }
+      activeTouch = contact.identifier;
     }, {passive: false});
+    window.addEventListener('touchmove', event => {
+      if (activeTouch === null) return;
+      const contact = Array.from(event.touches).find(t => t.identifier === activeTouch);
+      if (!contact) return;
+      stopEvent(event); suppressMouseUntil = performance.now() + 800;
+      extend(contact);
+    }, {capture: true, passive: false});
+    for (const name of ['touchend', 'touchcancel']) window.addEventListener(name, event => {
+      if (activeTouch === null) return;
+      const contact = Array.from(event.changedTouches).find(t => t.identifier === activeTouch);
+      if (!contact) return;
+      stopEvent(event); suppressMouseUntil = performance.now() + 800;
+      if (name === 'touchend') extend(contact);
+      finish();
+    }, {capture: true, passive: false});
+    // Desktop touch compatibility layers can send mouse motion after a pointer
+    // down, or a mouse-only stream. Deduplicate by coordinates in extend().
+    surface.addEventListener('mousedown', event => {
+      if (mode === 'off' || event.button !== 0 || performance.now() < suppressMouseUntil) return;
+      stopEvent(event);
+      if (inputKind !== null || performance.now()-lastPointerDown < 80) return;
+      begin(event, 'mouse');
+    }, {passive: false});
+    window.addEventListener('mousemove', event => {
+      if (inputKind !== 'mouse' || activeTouch !== null) return;
+      stopEvent(event); extend(event);
+    }, {capture: true, passive: false});
+    window.addEventListener('mouseup', event => {
+      if (inputKind !== 'mouse' || activeTouch !== null || event.button !== 0) return;
+      stopEvent(event); extend(event); finish();
+    }, {capture: true, passive: false});
+    surface.addEventListener('contextmenu', event => { if (mode !== 'off') stopEvent(event); });
+    // Capture loss does not end the gesture; release, cancellation and blur do.
+    window.addEventListener('blur', finish);
     tools.addEventListener('click', event => {
       const button = event.target.closest('button'); if (!button) return;
       event.stopPropagation();
@@ -183,8 +250,8 @@
       }
     }, true);
     deck.on('slidechanged', () => { finish(); render(); });
-    deck.on('overviewshown', () => { setMode('off'); svg.style.display='none'; tools.style.display='none'; });
-    deck.on('overviewhidden', () => { svg.style.display=''; tools.style.display=''; });
+    deck.on('overviewshown', () => { setMode('off'); surface.style.display='none'; tools.style.display='none'; });
+    deck.on('overviewhidden', () => { surface.style.display=''; tools.style.display=''; });
     render();
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup);
