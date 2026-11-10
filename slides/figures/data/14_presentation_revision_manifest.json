@@ -15,7 +15,7 @@
       "sha256": "29dfc3ffbced6a31488b6e3e6e74e0c3a09a91c8dd7ba5f02f76fd159bf4fc13"
     }
   ],
-  "script_sha256": "8f5dac292a4be13f35c2a87ed7eff3cf27d29e7f3b372295a1c9dc9e8fc52386",
+  "script_sha256": "be4c4edb69b5e9beb3b56a5285a7c7b1e6eadbb7246db602a39b4d26d6fd694b",
   "global_definitions": {
     "unit": "Article records with one primary selected action, not unique real-world events.",
     "eligible": "Evaluated government and primary action identified; all three political labels numeric. Unknown/uncodable excluded upstream.",
@@ -115,15 +115,15 @@
       "outputs": [
         {
           "path": "slides/figures/14_senegal_polarization_application.png",
-          "sha256": "ec32cf07872d206336d206d2b3614d0bb101f3bd52cdae559770fef4c8d56afd"
+          "sha256": "354f632a75fd0a70788c556f230c8ecef7f63c7c02f92b84a6c4908d53cc5c65"
         },
         {
           "path": "slides/figures/14_senegal_polarization_application.svg",
-          "sha256": "acd06f210a7b80acb323b5a1110a8a171982fc1d547c1044a16645d965406dbe"
+          "sha256": "b1859a6a8a8b9df5c725ca74eccb751ad8fe2ed4f4b62983d71258612558b295"
         },
         {
           "path": "slides/figures/14_senegal_polarization_application.pdf",
-          "sha256": "02a5e96b69da3c4d7532793ff2cfb1ee9e311683e422a1b9cdd9f5d488ea2c84"
+          "sha256": "9a774e404e2e6d09d8464ae85619f5dd5d544cc272508813cbe1aeb63d7313b7"
         }
       ],
       "evaluated_government": "SEN",
@@ -230,6 +230,21 @@
         0,
         1
       ],
+      "time_axis": {
+        "scale": "Continuous calendar dates; month-start boundary ticks and centered month labels.",
+        "monthly_point_positions": [
+          "2023-10-16T12:00:00",
+          "2023-11-16T00:00:00",
+          "2023-12-16T12:00:00",
+          "2024-01-16T12:00:00",
+          "2024-02-15T12:00:00",
+          "2024-03-16T12:00:00",
+          "2024-04-16T00:00:00",
+          "2024-05-16T12:00:00",
+          "2024-06-16T00:00:00"
+        ],
+        "aggregation": "One unchanged aggregate per calendar month; midpoint placement does not create daily observations."
+      },
       "incumbent_boundary": "Faye inaugurated April 2, 2024; same external chronology as the existing Senegal slide notes.",
       "event_annotations": {
         "source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
@@ -238,22 +253,22 @@
           {
             "date": "2024-02-03",
             "label": "Election postponed",
-            "display_month": "2024-02"
+            "display_position": "Exact calendar date"
           },
           {
             "date": "2024-02-15",
             "label": "Court overturns delay",
-            "display_month": "2024-02"
+            "display_position": "Exact calendar date"
           },
           {
             "date": "2024-03-24",
             "label": "Presidential election",
-            "display_month": "2024-03"
+            "display_position": "Exact calendar date"
           },
           {
             "date": "2024-04-02",
             "label": "Faye takes office",
-            "display_boundary": "March–April"
+            "display_position": "Exact calendar date"
           }
         ],
         "interpretation": "External chronology provides context for monthly aggregates; it neither recodes articles nor identifies within-month or causal effects."

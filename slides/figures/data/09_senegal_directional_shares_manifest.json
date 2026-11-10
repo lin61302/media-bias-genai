@@ -10,21 +10,37 @@
   },
   "denominator": "All eligible records per month, including zero; unknown/uncodable excluded upstream.",
   "measure": "Each sign count divided by the eligible monthly count; not P and not public opinion.",
+  "time_axis": {
+    "scale": "Calendar dates",
+    "observation_period": "Full calendar month",
+    "point_positions": "Calendar-month midpoints; positions do not indicate daily observations.",
+    "boundary_ticks": "First day of each calendar month",
+    "display_start": "2023-10-01",
+    "display_end": "2024-07-01",
+    "shaded_period": [
+      "2024-02-01",
+      "2024-03-01"
+    ],
+    "dotted_line": "2024-04-02",
+    "event_source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
+    "event_source_locator": "UN S/2024/521, paragraph 18",
+    "limitation": "Monthly aggregates do not identify daily changes or causal responses to dated events."
+  },
   "full_export_months": 24,
   "display_months": 9,
-  "script_sha256": "2958b605076003ffa0b9e470c2b6aa0236d8ef1e52510ce413f4fef8e3ae2554",
+  "script_sha256": "46c4433047e48bd1f10474edda05b4dd7c4afce57a73650b00018586194ac21e",
   "outputs": [
     {
       "path": "slides/figures/09_senegal_directional_shares.png",
-      "sha256": "93fb1919983113bd1e181cb1ba775d8b67dd616acb88abeab0097fe56052563c"
+      "sha256": "bd48b0bba2107d4efb40e78e6fb6c17b582366b034f4436d6586fb8fb0a9d228"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.pdf",
-      "sha256": "44d697d3266a4825c710be6e06548915305f821aac3e3fd38dc9238635eddf50"
+      "sha256": "8dca83bed05b345734eca3314cb478daba1de2f44334b0cf9054f38e840564df"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.svg",
-      "sha256": "655c88b06db02b1a1f08baec5e86e7965b60ab0af091d6e72db4197dda247124"
+      "sha256": "16fa8fbc736777ceac1d93d2bce292a1134b9e1026416cccb3ac9f57d50033c7"
     }
   ]
 }
