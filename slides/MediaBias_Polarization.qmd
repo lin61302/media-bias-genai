@@ -104,7 +104,7 @@ format:
     -   Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
     -   Incumbents may deepen polarization strategically [@somer_etal_2021]
 -   Significant challenges measuring bias and polarization [@puglisi2015empirical; @prior2013media]
--   Can we measure media bias and polarization systematically across countries and over time to answer the big question?
+-   Can we measure media bias and polarization systematically across countries and over time?
 
 ::: notes
 -   general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
@@ -147,9 +147,9 @@ This separates the measurement approaches already listed in the literature revie
 ## Existing comparative work {.smaller}
 
 -   **Media-system partisanship:** expert surveys on alignment and intensity of partisanship across media outlets [@popescu2011european]
--   **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
--   **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization", near-global [@vdem]
-    -   Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
+-   **Ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
+-   **Affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization" [@vdem]
+    -   Twelve OECD countries over four decades: US shows largest increase [@boxell_etal_2024]
 -   **Relational measures:** mass partisan polarization over parties [@lauka2018mass]
 -   **Common limits:**
     -   Election-year or annual frequency
@@ -507,9 +507,9 @@ Scope requiring confirmation with Erik: whether country means evaluated governme
 
 ## Discussion {.clean-slide}
 
-- When do differences in coverage count as media bias?
-- How does news coverage relate to political polarization?
-- Which comparisons should we test next?
+- Is the classification system understandable?
+- Suggestions for our classification pipeline or validation?
+- What are our most compelling and feasible avenues of investigation?
 
 ::: notes
 The questions follow the three applications. Invite discussion of a comparison benchmark for bias, independent evidence on polarization, and validation or matched-event studies. Detailed measurement and action-selection diagnostics are available in the appendix.
