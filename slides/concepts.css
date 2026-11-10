@@ -155,6 +155,13 @@
 .reveal .slides section.prompt-purpose-slide td, .reveal .slides section.prompt-purpose-slide th { padding: 17px 18px; line-height: 1.35; vertical-align: top; }
 .purpose-bottom { font-size: 27px; line-height: 1.4; margin-top: 25px; }
 .review-intro { font-size: 27px; line-height: 1.4; margin: 12px 0 23px; }
+.action-match-summary { font-size: 31px; line-height: 1.4; margin: 16px 0 26px; }
+.action-review-question { font-size: 26px; line-height: 1.4; margin: 0 0 18px; }
+.reveal .slides section.action-review-slide table { width: 100%; font-size: 27px; table-layout: fixed; }
+.reveal .slides section.action-review-slide col:first-child { width: 78% !important; }
+.reveal .slides section.action-review-slide col:last-child { width: 22% !important; }
+.reveal .slides section.action-review-slide td, .reveal .slides section.action-review-slide th { padding: 12px 18px; line-height: 1.3; }
+.reveal .slides section.action-review-slide .sample { font-size: 21px; margin-top: 20px; line-height: 1.4; }
 .reveal .slides section.label-review-slide table { width: 100%; table-layout: fixed; font-size: 25px; }
 .reveal .slides section.label-review-slide col { width: 20% !important; }
 .reveal .slides section.label-review-slide td, .reveal .slides section.label-review-slide th { padding: 16px 12px; line-height: 1.3; vertical-align: middle; }
