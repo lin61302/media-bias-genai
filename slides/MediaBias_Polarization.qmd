@@ -511,6 +511,10 @@ Scope requiring confirmation with Erik: whether country means evaluated governme
 - Suggestions for our classification pipeline or validation?
 - What are our most compelling and feasible avenues of investigation?
 
+::: {.funding-ack style="margin-top: 2em; font-size: 24px;"}
+Supported by the **Penn MEDIATED Research Grant Program**.
+:::
+
 ::: notes
 Invite feedback on whether the classification distinctions are understandable, how the pipeline and validation should improve, and which research applications are most compelling and feasible. Refer to the empirical examples when discussing a concrete next design. Detailed measurement and action-selection diagnostics are available in the appendix.
 :::
