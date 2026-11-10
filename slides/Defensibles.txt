@@ -8,7 +8,7 @@ lots of "other actions": can be revisited if we identify more "non-overlapped" a
 
 ## Most objective to most subjective:
 
-Action alignemnt > Reputational effect > Framing/Editorial tone
+Action alignemnt > Reputational implication > Framing/Editorial tone
 
 Tradeoff mentioned is particularly important when it's getting more subjective
 

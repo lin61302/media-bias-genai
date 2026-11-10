@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-10T14:52:10.730857</dc:date>
+    <dc:date>2026-11-10T15:43:14.578323</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -630,7 +630,7 @@ L 650.822577 295.704
     <text style="font-size: 9px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #4f5e70" x="485.947985" y="320.63904" transform="rotate(-0 485.947985 320.63904)">2024</text>
    </g>
    <g id="text_48">
-    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172f50" x="379.497423" y="72.912" transform="rotate(-0 379.497423 72.912)">Reputational effect</text>
+    <text style="font-weight: 700; font-size: 14px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #172f50" x="379.497423" y="72.912" transform="rotate(-0 379.497423 72.912)">Reputational implication</text>
    </g>
   </g>
   <g id="axes_3">

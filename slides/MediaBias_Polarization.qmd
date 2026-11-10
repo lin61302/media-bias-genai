@@ -199,7 +199,7 @@ All examples are illustrative. The budget vote and allegation adapt calibration 
   <thead><tr><th>Term</th><th>What we ask</th><th>In this example</th></tr></thead>
   <tbody>
     <tr><td><strong>Political alignment</strong></td><td>Does the actor support or oppose the incumbent through this action?</td><td><strong>+1:</strong> Police restrict the government’s opponents.</td></tr>
-    <tr><td><strong>Reputational effect</strong></td><td>Does the reported conduct reflect well or badly on the government?</td><td><strong>−1:</strong> Dispersing peaceful protesters can reflect badly on the government.</td></tr>
+    <tr><td><strong>Reputational implication</strong></td><td>Does the reported conduct reflect well or badly on the government?</td><td><strong>−1:</strong> Dispersing peaceful protesters can reflect badly on the government.</td></tr>
     <tr><td><strong>Framing</strong></td><td>Does the narrator favor or criticize the government?</td><td><strong>0:</strong> The sentence reports what the police did.</td></tr>
   </tbody>
 </table>
@@ -207,9 +207,9 @@ All examples are illustrative. The budget vote and allegation adapt calibration 
 ```
 
 ::: notes
-Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 1–5. Presentation labels are Political alignment (align), Reputational effect (rep), and Framing (frame). The police case and narrator-endorsement variation adapt calibration examples 1–2. Alignment follows from restricting explicitly identified government opponents; it does not require police membership in, or direct orders from, the incumbent. The original calibration supplies cabinet affiliation separately, but that is not the reason for its alignment label. No real event, public-opinion effect or validation result is claimed. The rescue/title case remains an optional oral contrast (calibration example 6) and appears in the fourth opening question.
+Definitions follow ../docs/codebook.md and ../prompts/civic_20261020_complete_v1.txt, sections 1–5. Presentation labels are Political alignment (align), Reputational implication (rep), and Framing (frame). The police case and narrator-endorsement variation adapt calibration examples 1–2. Alignment follows from restricting explicitly identified government opponents; it does not require police membership in, or direct orders from, the incumbent. The original calibration supplies cabinet affiliation separately, but that is not the reason for its alignment label. No real event, public-opinion effect or validation result is claimed. The rescue/title case remains an optional oral contrast (calibration example 6) and appears in the fourth opening question.
 
-Scope the substantive action before its labels: here, dispersal is the selected action, police the actor, demonstrators the entity target, and the incumbent the evaluated government. Political alignment concerns the actor's relationship to the incumbent manifested through that action, including restrictions on explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. The demonstrators are the immediate entity target; their supplied opposition to the incumbent makes the police action evidence of alignment toward that government. Police remain security-force actors, distinct from the executive. Courts, legislatures and other state institutions can support or challenge the incumbent through different actions; institutional category and political direction remain separate fields. Reputational effect concerns what the conduct implies for the government under a broad reasonable-observer standard. It does not require proof that the incumbent ordered the action, but the article must support its relevance to government responsibility or affectedness; positive alignment alone does not establish negative reputation. It can concern competence, integrity, lawful conduct, rights or responsiveness. This normative standard is neither a democracy-index input nor a claim of universal audience agreement. The prompt normally assigns rep = -1 to coercion against explicitly peaceful/lawful civic actors, rep = +1 to successful lawful action against clearly criminal/violent targets, and 0 when legitimacy, proportionality, responsibility or success is unclear (lines 92–102). Performance and legitimacy are not directly measured public beliefs.
+Scope the substantive action before its labels: here, dispersal is the selected action, police the actor, demonstrators the entity target, and the incumbent the evaluated government. Political alignment concerns the actor's relationship to the incumbent manifested through that action, including restrictions on explicitly identified opponents; actor identity, usefulness and moral approval do not establish it. The demonstrators are the immediate entity target; their supplied opposition to the incumbent makes the police action evidence of alignment toward that government. Police remain security-force actors, distinct from the executive. Courts, legislatures and other state institutions can support or challenge the incumbent through different actions; institutional category and political direction remain separate fields. Reputational implication concerns what the conduct implies for the government under a broad reasonable-observer standard. It does not require proof that the incumbent ordered the action, but the article must support its relevance to government responsibility or affectedness; positive alignment alone does not establish negative reputation. It can concern competence, integrity, lawful conduct, rights or responsiveness. This normative standard is neither a democracy-index input nor a claim of universal audience agreement. The prompt normally assigns rep = -1 to coercion against explicitly peaceful/lawful civic actors, rep = +1 to successful lawful action against clearly criminal/violent targets, and 0 when legitimacy, proportionality, responsibility or success is unclear (lines 92–102). Performance and legitimacy are not directly measured public beliefs.
 
 Framing uses only the supplied title and narration. The prompt prohibits browsing, other records and outside case knowledge (line 17); its comparison holds the reported action, condition and outcome constant (line 104). This permits ordinary linguistic judgment about an added evaluation, but supplies no external neutral-news benchmark. Explicit minimization of acknowledged wrongdoing can count (line 105); omitted details, sources, gatekeeping and presumed outlet ideology cannot be inferred from one article (lines 113–115). “Rioters” is not an automatic cue: it may describe supplied violence or delegitimate critics through loaded wording. “To keep citizens safe” may be an attributed official justification rather than narrator endorsement. Require visible adoption and robust cues, especially in translation. Matched-event comparisons can study differences in emphasis or omissions separately; the majority account is not automatically a factual or neutral baseline.
 
@@ -256,7 +256,7 @@ Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/
 <div class="prompt-steps">
   <div><span class="step-number">1</span><h3>Which government?</h3><p>The national incumbent<br>at publication.</p></div>
   <div><span class="step-number">2</span><h3>What happened?</h3><p>The main reported action.<br>Who did what to whom?</p></div>
-  <div><span class="step-number">3</span><h3>How is it evaluated?</h3><p>Political alignment<br>Reputational effect<br>Framing</p></div>
+  <div><span class="step-number">3</span><h3>How is it evaluated?</h3><p>Political alignment<br>Reputational implication<br>Framing</p></div>
 </div>
 <p class="slide-takeaway">Article title and text, with country of publication, publication date and source.</p>
 ```
@@ -281,7 +281,7 @@ The first two steps establish what the judgments refer to. This is why action se
 | Judgment | Review agrees | Uncertain | Change proposed |
 |---|---:|---:|---:|
 | Political alignment | **78%** | 16% | 6% |
-| Reputational effect | **76%** | 21% | 3% |
+| Reputational implication | **76%** | 21% | 3% |
 | Framing | **90%** | 8% | 2% |
 
 Most labels are zero. Positive and negative cases need closer checking.
@@ -306,7 +306,7 @@ Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2
 :::
 
 
-## Positive alignment, negative reputational effect {.figure-slide}
+## Positive alignment, negative reputational implication {.figure-slide}
 
 ![](figures/08_alignment_reputation_joint.png){fig-align="center" width="100%"}
 
@@ -377,10 +377,10 @@ The figure replaces the two tables. Left: selected actor categories and positive
 
 ```{=html}
 <div class="story-cards">
- <div><h3>Sall postpones the election</h3><p>Sud · February 7</p><p class="code-line">Political alignment <b>+1</b> · Reputational effect <b>−1</b> · Framing <b>−1</b></p><p>“Dangerous Game” adds criticism to the reported executive action.</p></div>
- <div><h3>GERDDES-Africa condemns the governing majority</h3><p>Xalima · February 7</p><p class="code-line">Political alignment <b>−1</b> · Reputational effect <b>−1</b> · Framing <b>0</b></p><p>The quoted actor criticizes the government. The narrator need not.</p></div>
- <div><h3>Court overturns the postponement</h3><p>France24 · February 15</p><p class="code-line">Political alignment <b>−1</b> · Reputational effect <b>−1</b> · Framing <b>0</b></p><p>A state institution constrains the incumbent.</p></div>
- <div><h3>Voters go to the polls</h3><p>BBC · March 24</p><p class="code-line">Political alignment <b>0</b> · Reputational effect <b>0</b> · Framing <b>0</b></p><p>Voting does not automatically imply support or opposition.</p></div>
+ <div><h3>Sall postpones the election</h3><p>Sud · February 7</p><p class="code-line">Political alignment <b>+1</b> · Reputational implication <b>−1</b> · Framing <b>−1</b></p><p>“Dangerous Game” adds criticism to the reported executive action.</p></div>
+ <div><h3>GERDDES-Africa condemns the governing majority</h3><p>Xalima · February 7</p><p class="code-line">Political alignment <b>−1</b> · Reputational implication <b>−1</b> · Framing <b>0</b></p><p>The quoted actor criticizes the government. The narrator need not.</p></div>
+ <div><h3>Court overturns the postponement</h3><p>France24 · February 15</p><p class="code-line">Political alignment <b>−1</b> · Reputational implication <b>−1</b> · Framing <b>0</b></p><p>A state institution constrains the incumbent.</p></div>
+ <div><h3>Voters go to the polls</h3><p>BBC · March 24</p><p class="code-line">Political alignment <b>0</b> · Reputational implication <b>0</b> · Framing <b>0</b></p><p>Voting does not automatically imply support or opposition.</p></div>
 </div>
 ```
 
@@ -425,7 +425,7 @@ Possible contributors include different events, genres, repeated stories, access
  <div><h3>Chronicle</h3><blockquote>“Sore loser…Road Rage”</blockquote><p>Framing <strong>+1</strong></p><p>Ridicules the government’s opponent.</p></div>
  <div><h3>ZimLive</h3><blockquote>“ends jail nightmare”</blockquote><p>Framing <strong>−1</strong></p><p>Emphasizes the opponent’s detention.</p></div>
 </div>
-<p class="slide-takeaway">Both articles: political alignment 0 · reputational effect 0</p>
+<p class="slide-takeaway">Both articles: political alignment 0 · reputational implication 0</p>
 ```
 
 ::: notes
@@ -586,7 +586,7 @@ No complete independent third set of these fields exists, so a three-way field t
 | Review agrees with GenAI | All labels | Only +1 / −1 labels |
 |---|---:|---:|
 | Political alignment | 135 / 173 · **78.0%** | 27 / 41 · **65.9%** |
-| Reputational effect | 131 / 173 · **75.7%** | 11 / 31 · **35.5%** |
+| Reputational implication | 131 / 173 · **75.7%** | 11 / 31 · **35.5%** |
 | Framing | 155 / 173 · **89.6%** | 9 / 21 · **42.9%** |
 
 Zeros raise overall agreement. Ambiguous cases remain in the denominators.

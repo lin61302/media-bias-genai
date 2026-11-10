@@ -41,7 +41,7 @@ month_midpoints = [start + (end-start)/2
                    for start, end in zip(month_edges[:-1], month_edges[1:])]
 x = mdates.date2num(month_midpoints)
 for ax, field, title in zip(axes, ('align', 'rep', 'frame'),
-                            ('Political alignment', 'Reputational effect', 'Framing')):
+                            ('Political alignment', 'Reputational implication', 'Framing')):
     ax.axvspan(datetime(2024, 2, 1), datetime(2024, 3, 1), color='#f1e7d8', zorder=0)
     ax.axvline(datetime(2024, 4, 2), color='#7b8490', linestyle=':', linewidth=1.2)
     for sign, color, label in [('positive', '#087e68', 'Positive'), ('negative', '#ba3e3e', 'Negative')]:

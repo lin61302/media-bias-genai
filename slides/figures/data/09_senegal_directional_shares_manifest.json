@@ -28,19 +28,19 @@
   },
   "full_export_months": 24,
   "display_months": 9,
-  "script_sha256": "46c4433047e48bd1f10474edda05b4dd7c4afce57a73650b00018586194ac21e",
+  "script_sha256": "3b09cd3535af4fe45ef8485000ea6ca5df1f12ba8785bde08ab19d00f8473f37",
   "outputs": [
     {
       "path": "slides/figures/09_senegal_directional_shares.png",
-      "sha256": "bd48b0bba2107d4efb40e78e6fb6c17b582366b034f4436d6586fb8fb0a9d228"
+      "sha256": "0d1dcdcd3fcf2cc9af4d0e7a6048b2e11d9d271465721e6dd6a4146fd0e06fb2"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.pdf",
-      "sha256": "8dca83bed05b345734eca3314cb478daba1de2f44334b0cf9054f38e840564df"
+      "sha256": "a5e823ca828448b5d6d23e1086cf3a60e0c05588fafaa9f5a35b773e8e7aa96c"
     },
     {
       "path": "slides/figures/09_senegal_directional_shares.svg",
-      "sha256": "16fa8fbc736777ceac1d93d2bce292a1134b9e1026416cccb3ac9f57d50033c7"
+      "sha256": "acd216447c9ba4fbe2862a4717e27e9775bf6a13c9cd71fab6d577850ce87823"
     }
   ]
 }

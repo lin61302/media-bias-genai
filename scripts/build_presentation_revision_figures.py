@@ -191,7 +191,7 @@ for event in event_annotations:
     ax.axvline(calendar_x(event["date"]), color="#6d7782", linestyle=":", linewidth=1.25, zorder=1)
 clean(ax, grid="y")
 for field, color, label in [("align", "#0072b2", "Political alignment"),
-                            ("rep", "#d55e00", "Reputational effect"),
+                            ("rep", "#d55e00", "Reputational implication"),
                             ("frame", "#009e73", "Framing")]:
     ax.plot(x, [float(r[f"{field}_two_sided"]) for r in rows], marker="o",
             linewidth=2.7, markersize=6, color=color, label=label)

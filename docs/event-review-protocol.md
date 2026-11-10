@@ -10,7 +10,7 @@ Action identity, extraction quality and political judgments are separate questio
 
 1. **Selection:** which reported occurrence did the coder choose?
 2. **Extraction:** did its action phrase, actor, target and categories describe that occurrence adequately?
-3. **Political judgments:** how was it coded for political alignment, reputational effect and framing?
+3. **Political judgments:** how was it coded for political alignment, reputational implication and framing?
 
 The three-way action comparison addresses the first question. It does not certify the rest of a record.
 

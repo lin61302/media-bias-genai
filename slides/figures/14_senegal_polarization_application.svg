@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-10T14:52:32.258151</dc:date>
+    <dc:date>2026-11-10T15:43:14.836719</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -396,40 +396,40 @@ Q 701.142253 105.1488 665.546415 105.1488
    </g>
    <g id="legend_1">
     <g id="line2d_35">
-     <path d="M 251.265469 29.538324
-L 266.265469 29.538324
-L 281.265469 29.538324
+     <path d="M 231.3225 29.538324
+L 246.3225 29.538324
+L 261.3225 29.538324
 " style="fill: none; stroke: #0072b2; stroke-width: 2.7; stroke-linecap: square"/>
      <g>
-      <use xlink:href="#m8d69dae8dd" x="266.265469" y="29.538324" style="fill: #0072b2; stroke: #0072b2"/>
+      <use xlink:href="#m8d69dae8dd" x="246.3225" y="29.538324" style="fill: #0072b2; stroke: #0072b2"/>
      </g>
     </g>
     <g id="text_19">
-     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="293.265469" y="34.788324" transform="rotate(-0 293.265469 34.788324)">Political alignment</text>
+     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="273.3225" y="34.788324" transform="rotate(-0 273.3225 34.788324)">Political alignment</text>
     </g>
     <g id="line2d_36">
-     <path d="M 461.492812 29.538324
-L 476.492812 29.538324
-L 491.492812 29.538324
+     <path d="M 441.549844 29.538324
+L 456.549844 29.538324
+L 471.549844 29.538324
 " style="fill: none; stroke: #d55e00; stroke-width: 2.7; stroke-linecap: square"/>
      <g>
-      <use xlink:href="#m6fa6ae5a97" x="476.492812" y="29.538324" style="fill: #d55e00; stroke: #d55e00"/>
+      <use xlink:href="#m6fa6ae5a97" x="456.549844" y="29.538324" style="fill: #d55e00; stroke: #d55e00"/>
      </g>
     </g>
     <g id="text_20">
-     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="503.492812" y="34.788324" transform="rotate(-0 503.492812 34.788324)">Reputational effect</text>
+     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="483.549844" y="34.788324" transform="rotate(-0 483.549844 34.788324)">Reputational implication</text>
     </g>
     <g id="line2d_37">
-     <path d="M 676.35375 29.538324
-L 691.35375 29.538324
-L 706.35375 29.538324
+     <path d="M 696.296719 29.538324
+L 711.296719 29.538324
+L 726.296719 29.538324
 " style="fill: none; stroke: #009e73; stroke-width: 2.7; stroke-linecap: square"/>
      <g>
-      <use xlink:href="#ma27db6866d" x="691.35375" y="29.538324" style="fill: #009e73; stroke: #009e73"/>
+      <use xlink:href="#ma27db6866d" x="711.296719" y="29.538324" style="fill: #009e73; stroke: #009e73"/>
      </g>
     </g>
     <g id="text_21">
-     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="718.35375" y="34.788324" transform="rotate(-0 718.35375 34.788324)">Framing</text>
+     <text style="font-size: 15px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="738.296719" y="34.788324" transform="rotate(-0 738.296719 34.788324)">Framing</text>
     </g>
    </g>
   </g>

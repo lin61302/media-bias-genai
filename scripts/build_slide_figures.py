@@ -35,7 +35,7 @@ GEOGRAPHY_SHA = "3e458fc036ad0a66411f2c1e6cac49c5d7bfb81cb1123bc513b22511a2b7fde
 INK, NAVY, MUTED = "#1f2328", "#011F5B", "#6b7280"
 NEG, ZERO, POS = "#D55E00", "#e1e5eb", "#009E73"
 AXIS_COLORS = {"align": "#0072B2", "rep": "#D55E00", "frame": "#009E73"}
-AXIS_NAMES = {"align": "Political alignment", "rep": "Reputational effect", "frame": "Framing"}
+AXIS_NAMES = {"align": "Political alignment", "rep": "Reputational implication", "frame": "Framing"}
 
 plt.rcParams.update({
     "font.family": "sans-serif", "font.sans-serif": ["Helvetica Neue", "Arial", "DejaVu Sans"],
@@ -259,7 +259,7 @@ def joint(scope):
     ax.set_xticks(range(3), ["Negative (−1)", "Zero", "Positive (+1)"], fontsize=18)
     ax.xaxis.tick_top()
     ax.xaxis.set_label_position("top")
-    ax.set_xlabel("Reputational effect", labelpad=20, fontsize=19)
+    ax.set_xlabel("Reputational implication", labelpad=20, fontsize=19)
     ax.set_yticks(range(3), [f"Opposes (−1)\nn = {ar[0].sum():,}", f"Zero\nn = {ar[1].sum():,}", f"Supports (+1)\nn = {ar[2].sum():,}"], fontsize=17)
     ax.set_ylabel("Political alignment", fontsize=19, labelpad=18)
     ax.tick_params(length=0, pad=12)
@@ -268,7 +268,7 @@ def joint(scope):
     ax.grid(which="minor", color="white", linewidth=3)
     ax.tick_params(which="minor", length=0)
     ax.spines[:].set_visible(False)
-    fig.text(.5, .13, f"{shares[2,0]:.1%} of articles with positive alignment have a negative reputational effect.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
+    fig.text(.5, .13, f"{shares[2,0]:.1%} of articles with positive alignment have a negative reputational implication.", ha="center", fontsize=19, fontweight="bold", color=NAVY)
     fig.text(.5, .074, "Each row sums to 100%", ha="center", fontsize=14)
     save(fig, "08_alignment_reputation_joint")
     return {"correlation_alignment_reputation": joint_correlation,

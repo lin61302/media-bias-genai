@@ -1,6 +1,6 @@
 # Validation
 
-The November 10 review compares human and GenAI coding through the **reported action selected from each article**. This makes the sequence explicit: establish which action was selected, then examine its extracted fields and political judgments. The results support an inspectable coding process and identify disagreements for further review. They do not establish representative human-reference accuracy for political alignment, reputational effect or framing.
+The November 10 review compares human and GenAI coding through the **reported action selected from each article**. This makes the sequence explicit: establish which action was selected, then examine its extracted fields and political judgments. The results support an inspectable coding process and identify disagreements for further review. They do not establish representative human-reference accuracy for political alignment, reputational implication or framing.
 
 Structural checks establish whether outputs conform to the schema and were stored correctly. They do not establish correct action selection, political interpretation or translation fidelity. Independent human validation of all three current judgments remains planned.
 
@@ -62,12 +62,12 @@ For each of the two ambiguous anchors, two action stages fit the recorded phrase
 
 The new review identifies **173 articles where human and Luna selected the same actual action**. This cohort includes shared actions that differ from the review reference; it does not use the former 155-case acceptance gate.
 
-The following counts apply the **saved, corrected November 3 political-label assessments** to that new cohort. They are not a new coding pass. The reviewer had seen Luna's labels and assessed them conditional on Luna's selected action and government. The original human sheet has one legacy sentiment field, not separate political alignment, reputational effect and framing labels.
+The following counts apply the **saved, corrected November 3 political-label assessments** to that new cohort. They are not a new coding pass. The reviewer had seen Luna's labels and assessed them conditional on Luna's selected action and government. The original human sheet has one legacy sentiment field, not separate political alignment, reputational implication and framing labels.
 
 | Judgment | Review agrees | Uncertain | Change proposed | Review agrees when Luna coded +1 or −1 |
 |---|---:|---:|---:|---:|
 | Political alignment | 135 / 173 (78.0%) | 28 | 10 | 27 / 41 (65.9%) |
-| Reputational effect | 131 / 173 (75.7%) | 37 | 5 | 11 / 31 (35.5%) |
+| Reputational implication | 131 / 173 (75.7%) | 37 | 5 | 11 / 31 (35.5%) |
 | Framing | 155 / 173 (89.6%) | 14 | 4 | 9 / 21 (42.9%) |
 
 “Review agrees” means the saved assessment supports the producer label. “Uncertain” means ambiguous or boundary; “change proposed” is the saved unsupported verdict, not an independently established error. All three judgments are supported together in **108/173 (62.4%)**. Every article remains in each row's denominator, including unresolved assessments; all 173 have traceable assessments for all three labels.
