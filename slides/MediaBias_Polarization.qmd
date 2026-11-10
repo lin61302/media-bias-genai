@@ -97,103 +97,92 @@ format:
 
 ## Motivation {.smaller}
 
-- Polarization is understood as a common feature of politics across the world
-- Media bias is understood to be an important driver of polarization
-  * [@MartinYurukoglu2017; @kubin2021role]
-- **Big Question:** What are the consequences of media bias and political polarization on the relationship between citizens and government?
-  * Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
-  * Incumbents may deepen polarization strategically [@somer_etal_2021]
-- Significant challenges measuring bias and polarization [@puglisi2015empirical; @prior2013media]
-- Can we measure media bias and polarization systematically across countries and over time to answer the big question? 
+-   Polarization is understood as a common feature of politics across the world
+-   Media bias is understood to be an important driver of polarization
+    -   [@MartinYurukoglu2017; @kubin2021role]
+-   **Big Question:** What are the consequences of media bias and political polarization for the relationship between citizens and government?
+    -   Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
+    -   Incumbents may deepen polarization strategically [@somer_etal_2021]
+-   Significant challenges measuring bias and polarization [@puglisi2015empirical; @prior2013media]
+-   Can we measure media bias and polarization systematically across countries and over time to answer the big question?
 
 ::: notes
-- general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
-- Orhan (2022): affective polarization across 53 countries correlates with backsliding; ideological polarization does not. Cross-national, survey based.
+-   general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
+-   Orhan (2022): affective polarization across 53 countries correlates with backsliding; ideological polarization does not. Cross-national, survey based.
 :::
-
-
-
 
 ## Existing work on the US {.smaller .literature-detail}
 
-- **Substantive debates:** 
-  * Is there a causal link between more partisan messages and changing attitudes? [@prior2013media] 
-  * Is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]
-- **Measures of bias:**
-  * TV news: visibility of partisan actors [@kim2022measuring]
-  * Newspaper: similarity of language to Republican or Democrat [@gentzkow_shapiro_2010]
-- **Measures of polarization:**
-  * Legislative: distance between parties on roll-call ideal points [@poole_rosenthal_1985; @mccarty_etal_2006]
-  * Public opinion: issue-position distributions; party feeling thermometers [@lelkes2016review]
-  * Speech: partisanship of congressional speech [@gentzkow_etal_2019]
-- **Key findings:**
-  * Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
-  * Media: partisan news shifts votes and can raise polarization [@MartinYurukoglu2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior2013media]
+-   **Substantive debates:**
+    -   Is there a causal link between more partisan messages and changing attitudes? [@prior2013media]
+    -   Is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]
+-   **Measures of bias:**
+    -   TV news: visibility of partisan actors [@kim2022measuring]
+    -   Newspaper: similarity of language to Republican or Democrat [@gentzkow_shapiro_2010]
+-   **Measures of polarization:**
+    -   Legislative: distance between parties on roll-call ideal points [@poole_rosenthal_1985; @mccarty_etal_2006]
+    -   Public opinion: issue-position distributions; party feeling thermometers [@lelkes2016review]
+    -   Speech: partisanship of congressional speech [@gentzkow_etal_2019]
+-   **Key findings:**
+    -   Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
+    -   Media: partisan news shifts votes and can raise polarization [@MartinYurukoglu2017]; effects concentrate among viewers who are already partisan [@levendusky_2013; @prior2013media]
 
 ::: notes
-- Citation completion: add the intended Matt reference and the remaining media literature.
-- Comparability of legislative polarization measures over time requires scrutiny
-- measured as the distance between the two parties on an ideology scale estimated from roll-call votes.
-- NOMINATE, DW-NOMINATE, etc.: members who serve in many Congresses link the scale across years. Does anyone think they (and the agenda and what makes it to a floor vote) are consistent over time?
+-   Citation completion: add the intended Matt reference and the remaining media literature.
+-   Comparability of legislative polarization measures over time requires scrutiny
+-   measured as the distance between the two parties on an ideology scale estimated from roll-call votes.
+-   NOMINATE, DW-NOMINATE, etc.: members who serve in many Congresses link the scale across years. Does anyone think they (and the agenda and what makes it to a floor vote) are consistent over time?
 :::
-
-
 
 ## Existing comparative work {.smaller}
 
-- **Media-system partisanship:** expert surveys on alignment and intensity of partisanship across media outlets [@popescu2011european]
-- **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
-- **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization", near-global [@vdem]
-  * Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
-- **Relational measures:** mass partisan polarization over parties [@lauka2018mass]
-- **Common limits:**
-  * Election-year or annual frequency
-  * Survey coverage thin outside democracies
-  * Party-based scales presume stable, programmatic party systems
+-   **Media-system partisanship:** expert surveys on alignment and intensity of partisanship across media outlets [@popescu2011european]
+-   **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
+-   **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization", near-global [@vdem]
+    -   Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
+-   **Relational measures:** mass partisan polarization over parties [@lauka2018mass]
+-   **Common limits:**
+    -   Election-year or annual frequency
+    -   Survey coverage thin outside democracies
+    -   Party-based scales presume stable, programmatic party systems
 
 ::: notes
-- Expert codings of polarization may be informed by the same events that define backsliding. This argues for a measure built from a different data source.
+-   Expert codings of polarization may be informed by the same events that define backsliding. This argues for a measure built from a different data source.
 :::
-
-
 
 ## A common political reference {.smaller}
 
-- Bias and polarization require a political dimension and an object of comparison
-  * Party and ideological scales vary across countries and over time
-- We use the **national incumbent government** as a common reference
-  * Support and opposition can organize conflict
-- News media can reveal conflict around the incumbent at a finer time scale
-- The measurement question then centers on what an article's positive or negative content refers to
-  * Distinguishing those signals also lets us study **news selection and framing across outlets**
+-   Bias and polarization require a political dimension and an object of comparison
+    -   Party and ideological scales vary across countries and over time
+-   We use the **national incumbent government** as a common reference
+    -   Support and opposition can organize conflict
+-   News media can reveal conflict around the incumbent at a finer time scale
+-   The measurement question centers on what it means for articles to have positive or negative coverage of the incumbent
+    -   Distinguishing those signals also lets us study **news selection and framing across outlets**
 
 ::: notes
 The national incumbent is a proposed common political reference. Its relationship to societal polarization requires validation. Incumbent identity can change within a country series.
 :::
 
-
 ## What does “negative” mean? {.sentiment-questions-slide}
 
 ```{=html}
 <ol class="sentiment-questions">
-  <li><span class="question-mark question-out" aria-label="Outside our measurement target">×</span><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” Negative about which part?</div><div class="sentiment-purpose">(General event valence — outside our measurement target.)</div></li>
-  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The political relationship expressed through an action.)</div></li>
-  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Implications for government performance or legitimacy.)</div></li>
-  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Evaluation added by the title or narrator.)</div></li>
+  <li><span class="question-mark question-out" aria-label="Outside our measurement target">×</span><div class="sentiment-question">Did something bad happen?</div><div class="sentiment-example">“One passenger died; 100 were rescued.” </div><div class="sentiment-purpose">(General event valence — outside our measurement target.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Did someone act against the government?</div><div class="sentiment-example">“Legislators voted against the cabinet’s proposed budget.”</div><div class="sentiment-purpose">(The negativity is expressed through an action.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the reported conduct reflect badly on the government?</div><div class="sentiment-example">“Cabinet ministers were accused of diverting relief funds.”</div><div class="sentiment-purpose">(Negative implications for government performance or legitimacy.)</div></li>
+  <li><span class="question-mark question-in" aria-label="A question our measures address">✓</span><div class="sentiment-question">Does the journalist criticize the government?</div><div class="sentiment-example">A successful rescue is described as “the government’s cynical publicity stunt.”</div><div class="sentiment-purpose">(Negative evaluation added by the author/editor.)</div></li>
 </ol>
-<div class="sentiment-closing-question">Negative in relation to what?</div>
 ```
 
 ::: notes
 All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project's terminology. The red X marks general event valence as outside the project’s measurement target; it does not mean the question is wrong or unimportant. Green checks mark the three government-related questions the project addresses, not the truth or polarity of their answers.
 :::
 
-
-
 ## Three judgments about the same government {.sentiment-definitions-slide}
 
 ```{=html}
-<div class="definitions-example"><strong>Selected action:</strong> “Police dispersed peaceful anti-government demonstrators.”</div>
+<div class="definitions-example"><strong>Example:</strong> “Police dispersed peaceful anti-government demonstrators.”</div>
 <table class="sentiment-definitions">
   <thead><tr><th>Term</th><th>What we ask</th><th>In this example</th></tr></thead>
   <tbody>
@@ -215,7 +204,6 @@ Framing uses only the supplied title and narration. The prompt prohibits browsin
 The base case is +1/−1/0. The new illustrative narrator wording “Police rightly restored order by dispersing the rioters” clearly endorses the intervention through “rightly” and “restored order”; rioters alone is not an automatic positive framing cue. Peaceful status stays in the reported base case because removing it would make the negative reputation label unsupported without further context. The short slide phrase about legitimacy describes the coded implication, not measured public opinion. Detailed qualifications are retained here rather than repeated on the slide. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.
 :::
 
-
 ## The classifier and processing {.classifier-slide}
 
 {{< include includes/classifier.qmd >}}
@@ -226,19 +214,17 @@ The six stages show corpus collection, translation, the two encoder classifiers,
 Upstream metrics are reported in Moratz et al. (2025), Tracking Civic Space in Developing Countries with a High-Quality Corpus of Domestic Media and Transformer Models, pp. 11–13. Out-of-sample accuracy: civic-event classification 82%; civic/political relevance 87%. https://bpb-us-w2.wpmucdn.com/web.sas.upenn.edu/dist/4/872/files/2025/11/tracking_civic_space_transformer_models.pdf . The 6,475 and 2,938 double-human-coded articles are training-set sizes, not held-out test denominators. These are paper-reported upstream results, not a fresh evaluation of the GenAI component or this analytical release.
 :::
 
-
-## Prompting: make the political comparison explicit {.prompt-purpose-slide}
+## Prompting: making the political comparison explicit {.prompt-purpose-slide}
 
 | Prompt choice | Why it matters for the research |
-|---|---|
+|------------------------------------|------------------------------------|
 | **One government · one main action** | Compare judgments about the same political reference; do not select whichever action looks most polarized. |
 | **Actor · action · target** | Identify who supports or challenges the incumbent, including actions directed at a third party. |
 | **Three separate judgments** | An action can support the incumbent and reflect badly on it. Reporting criticism is not necessarily narrator criticism. |
 | **Textual evidence · worked examples** | Make decisions inspectable. Use the supplied report, not assumptions about the outlet or external accounts. |
 
-::: {.purpose-bottom}
-**Zero is allowed. Not codable stays separate.**<br>
-The result links political relationships and conduct to the way they are reported.
+::: purpose-bottom
+**Zero is allowed. Not codable stays separate.**<br> The result links political relationships and conduct to the way they are reported.
 :::
 
 ::: notes
@@ -249,31 +235,27 @@ One prioritized action is selected from title/lead/substantive focus rather than
 The model cannot browse, import other reporting, infer outlet ideology, or treat an attributed quotation as the narrator's own position. A fixed prompt, calibration examples and required supporting spans make the intended distinctions explicit; they do not eliminate model variation or establish validity. Zero covers neutral, mixed and insufficient directional evidence. Not identified/not codable is excluded from common comparisons, not relabeled zero. Bias remains a question for comparative research, not a synonym for every positive or negative label.
 :::
 
-
 ## GenAI validation (Astra-assisted) {.threeway-event-slide}
 
-::: {.review-intro}
-**Human and Luna coding → Astra-assisted review**<br>
-Do the three recorded choices identify the same event?
+::: review-intro
+**Human and Luna coding → Astra-assisted review**<br> Do the three recorded choices identify the same event?
 :::
 
-| Event comparison | Matches / compared | Agreement |
-|---|---:|---:|
-| Human–Luna | 155 / 187 | **82.9%** |
-| Luna–Astra-assisted review | 170 / 187 | **90.9%** |
-| Human–Astra-assisted review | 171 / 187 | **91.4%** |
+| Event comparison            | Matches / compared | Agreement |
+|-----------------------------|-------------------:|----------:|
+| Human–Luna                  |          155 / 187 | **82.9%** |
+| Luna–Astra-assisted review  |          170 / 187 | **90.9%** |
+| Human–Astra-assisted review |          171 / 187 | **91.4%** |
 
-::: {.review-example}
-All three comparisons use the **same 187 cases**.<br>
-Another **19** remain undecided; **5** allow two different defensible events.
+::: review-example
+All three comparisons use the **same 187 cases**.<br> Another **19** remain undecided; **5** allow two different defensible events.
 :::
 
-::: {.comparison-context}
-Broader human–Luna agreement: **167 / 211 (79.1%)** when both select an action;<br>
-**178 / 262 (67.9%)** when shared no-action choices and one-sided choices are included.
+::: comparison-context
+Broader human–Luna agreement: **167 / 211 (79.1%)** when both select an action;<br> **178 / 262 (67.9%)** when shared no-action choices and one-sided choices are included.
 :::
 
-::: {.sample}
+::: sample
 Event agreement, not full-record accuracy. The review saw both codings; the selection rule is asymmetric, so the one-case difference does not rank coder performance.
 :::
 
@@ -289,31 +271,29 @@ The broader human–Luna event comparison is 167/211. Across all 262 valid outpu
 Read-only verification on November 10 confirmed that the 155 shared-event members in the 187 comparison are exactly the 155 accepted shared-event records used later for political-label review. Sources: figures/data/05_threeway_validation.json and ../docs/validation.md; current corrected November 3 three-way records. Private article records remain outside this repository.
 :::
 
-
 ## Action selection: review of disagreements {.action-review-slide}
 
-::: {.review-intro}
+::: review-intro
 Which selection and extraction best fit the supplied text and coding rules?
 :::
 
 | Cases reviewed | n | Luna preferred | Human preferred | Both defensible | Undecided / neither |
-|---|---:|---:|---:|---:|---:|
+|------------|-----------:|-----------:|-----------:|-----------:|-----------:|
 | **All valid outputs** | **262** | **121** | **44** | **83** | **14** |
 | Same event | 167 | 75 | 20 | 67 | 5 |
 | Different events | 44 | 17 | 16 | 5 | 6 |
 | Only one selects an action | 40 | 29 | 8 | 0 | 3 |
 | Neither selects an action | 11 | 0 | 0 | 11 | 0 |
 
-::: {.review-example}
+::: review-example
 Identifying the same event can still leave differences in **actor, action wording or action stage**. The review can prefer one extraction even when event choices match.
 :::
 
-::: {.comparison-context}
-Action tags retained in review, across **211 paired actions**:<br>
-**Luna: 150 / 211 (71.1%)** · **Human: 142 / 211 (67.3%)**
+::: comparison-context
+Action tags retained in review, across **211 paired actions**:<br> **Luna: 150 / 211 (71.1%)** · **Human: 142 / 211 (67.3%)**
 :::
 
-::: {.sample}
+::: sample
 GenAI validation (Astra-assisted). Historical inputs and rules differed. Preferences and retained tags describe review outcomes, not a controlled accuracy ranking.
 :::
 
@@ -329,27 +309,26 @@ The separate action-tag assessments use all 211 records with an action on both s
 Sources: figures/data/05_threeway_validation.json and ../docs/validation.md; the corrected November 3 three-way comparison, rechecked November 10 without new model coding.
 :::
 
-
 ## Same event: agreement on other fields {.same-event-fields-slide}
 
-::: {.review-intro}
+::: review-intro
 Within **167 articles where human and Luna selected the same event**, how often do their other recorded fields match?
 :::
 
-| Recorded field | Human–Luna matches | Agreement |
-|---|---:|---:|
-| Primary action tag | 108 / 167 | **64.7%** |
-| Complete action-tag set | 99 / 167 | **59.3%** |
-| Actor category | 106 / 149 | **71.1%** |
-| Actor wording — exact text | 46 / 146 | **31.5%** |
-| Trigger / reaction tag | 9 / 20 | **45.0%** |
-| Evaluated government — one named country | 5 / 12 | **41.7%** |
+| Recorded field                           | Human–Luna matches | Agreement |
+|------------------------------------------|-------------------:|----------:|
+| Primary action tag                       |          108 / 167 | **64.7%** |
+| Complete action-tag set                  |           99 / 167 | **59.3%** |
+| Actor category                           |          106 / 149 | **71.1%** |
+| Actor wording — exact text               |           46 / 146 | **31.5%** |
+| Trigger / reaction tag                   |             9 / 20 | **45.0%** |
+| Evaluated government — one named country |             5 / 12 | **41.7%** |
 
-::: {.review-example}
+::: review-example
 A shared event does not guarantee the same actor, tags or government reference.
 :::
 
-::: {.sample}
+::: sample
 Each denominator requires both fields to be coded; missing values are not matches. Exact wording is stricter than identifying the same actor. Review judgments are reported separately because no complete third set of these fields was recorded.
 :::
 
@@ -367,26 +346,23 @@ Astra-assisted review records preferences, assessments and some proposed correct
 The historical human sentiment is one variable, not three separately coded political judgments. Supplemental raw numeric sign comparisons with the three current fields are preserved in ../docs/validation.md and figures/data/05_threeway_validation.json; those are cross-measure correspondence, not same-construct three-way accuracy. Sources and exact filters are retained there.
 :::
 
-
 ## Political labels: Astra-assisted review {.label-review-slide}
 
-::: {.review-intro}
-**155 shared-event records** remain after the action-selection check.<br>
-GenAI validation (Astra-assisted): which political labels are retained or revised?
+::: review-intro
+**155 shared-event records** remain after the action-selection check.<br> GenAI validation (Astra-assisted): which political labels are retained or revised?
 :::
 
 | Judgment | Retained in review | Left open | Change proposed | Retained among nonzero labels |
-|---|---:|---:|---:|---:|
+|---------------|--------------:|--------------:|--------------:|--------------:|
 | Alignment | 126 (81.3%) | 20 | 9 | **24 / 37** |
 | Reputation | 122 (78.7%) | 29 | 4 | **7 / 24** |
 | Framing | 143 (92.3%) | 9 | 3 | **8 / 14** |
 
-::: {.review-example}
-**All three labels retained: 103 / 155 (66.5%).**<br>
-Police beating opposition protesters: human sentiment **−1**; Luna **(+1, 0, 0)**; review **(+1, −1, open)**.
+::: review-example
+**All three labels retained: 103 / 155 (66.5%).**<br> Police beating opposition protesters: human sentiment **−1**; Luna **(+1, 0, 0)**; review **(+1, −1, open)**.
 :::
 
-::: {.sample}
+::: sample
 Triples are alignment, reputation, framing. The human sheet has one sentiment field, not three separate labels. Retained means the review accepts the recorded label; open cases remain undecided. Zeros dominate the totals.
 :::
 
@@ -400,20 +376,19 @@ Full167 sensitivity including the twelve disputed actions: alignment133/25/9, re
 The concrete Baku police case is a Reuters October12,2013 report: both codings identify beating/detention after an opposition rally. The saved model record is(+1,0,0). The reviewer retains+1 alignment, proposes−1 reputation and leaves framing unresolved. It is a disagreement for human adjudication, not a corrected production record or ground truth. Private evidence stays outside the repository. Public aggregates/provenance: figures/data/05_same_event_label_review.json and ../docs/validation.md.
 :::
 
-
 ## Source coverage and analytical sample {.publication-coverage-slide .source-scope-slide}
 
-::: {.publication-coverage-line}
-**71 publication countries · 404 mapped source domains**<span>January 2019–May 2026</span>
+::: publication-coverage-line
+**71 publication countries · 404 mapped source domains**January 2019–May 2026
 :::
 
 ![](figures/06a_publication_coverage.png){fig-align="center" width="100%"}
 
-::: {.publication-coverage-total}
+::: publication-coverage-total
 **3,181,113 eligible articles** · **26 international / mixed-country domains** also included.
 :::
 
-::: {.sample}
+::: sample
 Color shows the number of source domains. Coverage varies across countries, outlets and time.
 :::
 
@@ -427,7 +402,6 @@ This is observed processed coverage, not a representative country sample or a me
 Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/data/06_coverage_by_year.csv and figures/data/06_split_maps_manifest.json; ../scripts/build_coverage_maps.py. Map data and analytical scope are unchanged by this layout revision.
 :::
 
-
 ## Most eligible articles have zero-coded labels {.figure-slide}
 
 ![](figures/07_label_distributions.png){fig-align="center" width="100%"}
@@ -435,7 +409,6 @@ Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/
 ::: notes
 Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2%, reputation 85.6%, framing 92.1%. Framing has 251,573 directional records. The zero class combines neutral, mixed and insufficient directional evidence. It is not an estimate of the share of unbiased articles. Strict narration rules, composition, translation and classification error may all affect the distribution. Reproduction: ../scripts/build_slide_figures.py.
 :::
-
 
 ## Supporting the incumbent can still reflect badly on it {.figure-slide}
 
@@ -445,14 +418,12 @@ Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2
 Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
 :::
 
-
 ## Senegal: coverage shifts across the election crisis {.figure-slide .senegal-series-slide}
 
 ![](figures/09_senegal_directional_shares.png){fig-align="center" width="100%"}
 
-::: {.senegal-series-reading}
-February → March: directional alignment falls from **33.6% to 15.0%**.<br>
-The selected actor/action is coded as supporting or challenging the incumbent; this does not measure polarized citizens.
+::: senegal-series-reading
+February → March: directional alignment falls from **33.6% to 15.0%**.<br> The selected actor/action is coded as supporting or challenging the incumbent; this does not measure polarized citizens.
 :::
 
 ::: notes
@@ -465,47 +436,45 @@ Salience here means the prevalence of coded support/opposition within this selec
 UN chronology S/2024/521para18: Sall postponed the election February3, parliament rescheduled February5, Constitutional Council overturned February15; election March24; Faye inaugurated April2. https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . The dotted April boundary signals a new incumbent, not a continuous Sall administration. External chronology contextualizes stored coding without recoding it. New plot: ../scripts/build_senegal_directional_shares.py; frozen source: figures/data/09_senegal_monthly_indices.csv; manifest09_senegal_directional_shares_manifest.json. Original P assets are retained as reproducible background.
 :::
 
-
 ## Senegal: which actors and actions drive the pattern? {.senegal-evidence-slide}
 
-::: {.senegal-subtitle}
+::: senegal-subtitle
 February’s **314 directional records** include both incumbent support and challenges to it.
 :::
 
-:::: {.senegal-evidence-columns}
-::: {.senegal-roles}
+::::: senegal-evidence-columns
+::: senegal-roles
 <h3>February alignment by actor</h3>
 
-| Selected actor groups | +1 | −1 |
-|---|---:|---:|
-| Executive / cabinet | 59 | 0 |
-| Legislature | 18 | 4 |
-| Security forces | 18 | 0 |
-| Parties / politicians | 17 | 56 |
-| Civic movements / unions | 0 | 37 |
-| Judiciary / prosecutors | 3 | 30 |
+| Selected actor groups    |  +1 |  −1 |
+|--------------------------|----:|----:|
+| Executive / cabinet      |  59 |   0 |
+| Legislature              |  18 |   4 |
+| Security forces          |  18 |   0 |
+| Parties / politicians    |  17 |  56 |
+| Civic movements / unions |   0 |  37 |
+| Judiciary / prosecutors  |   3 |  30 |
 :::
 
-::: {.senegal-action-shift}
+::: senegal-action-shift
 <h3>The reported actions change</h3>
 
-| Selected action | February | March |
-|---|---:|---:|
-| Protest / march | 51 | 4 |
-| Ban / disperse | 28 | 1 |
-| Election / voting | 14 | 201 |
-| All eligible articles | 934 | 874 |
+| Selected action       | February | March |
+|-----------------------|---------:|------:|
+| Protest / march       |       51 |     4 |
+| Ban / disperse        |       28 |     1 |
+| Election / voting     |       14 |   201 |
+| All eligible articles |      934 |   874 |
 
 **168 of 201 March voting records have zero alignment.** More election coverage need not mean more coded confrontation.
 :::
-::::
+:::::
 
-::: {.senegal-takeaway}
-**83 of 132 positive-alignment articles also have negative reputation.**<br>
-Support for the incumbent can coincide with negative implications for its image.
+::: senegal-takeaway
+**83 of 132 positive-alignment articles also have negative reputation.**<br> Support for the incumbent can coincide with negative implications for its image.
 :::
 
-::: {.sample}
+::: sample
 Counts are article records, not unique events. Actor rows are selected; zeros and “other action” remain in denominators.
 :::
 
@@ -519,26 +488,24 @@ Among132positive-alignment February articles,83also have negative reputation(62.
 Among182negative-alignment February records, top specified actions include urge/call53, condemn/accuse24, court rule23, protest19, disagree/oppose16.26records link security actors to civic targets;13ban/disperse,8nonlethalviolence,3detention,1other,1securityoperation.13have positive alignment and13zero. Repeated reports are not26independent interventions. Source: figures/data/09_senegal_contributors.json; builder ../scripts/build_senegal_case.py.
 :::
 
-
 ## Senegal: what was being reported? {.senegal-story-slide}
 
-::: {.story-intro}
+::: story-intro
 February’s confrontation over postponement → March’s election coverage
 :::
 
 | Reported action | Alignment | Reputation | Framing | What the distinction adds |
-|---|---:|---:|---:|---|
+|---------------|--------------:|--------------:|--------------:|---------------|
 | **Sall postpones the election** · Sud, Feb. 7 | +1 | −1 | −1 | Executive action supports the incumbent; “Dangerous Game” adds narrator criticism. |
 | **GERDDES-Africa condemns the governing majority** · Xalima, Feb. 7 | −1 | −1 | 0 | An actor’s condemnation is not automatically the journalist’s stance. |
 | **Court overturns the postponement** · France24, Feb. 15 | −1 | −1 | 0 | A state institution constrains the incumbent; reporting this is not itself editorial criticism. |
 | **Voters go to the polls** · BBC, Mar. 24 | 0 | 0 | 0 | Participation is recorded without an explicit pro- or anti-incumbent direction. |
 
-::: {.story-link}
-The fall accompanies a shift from confrontation toward **election coverage**.<br>
-The labels help separate that shift from the narrator’s own evaluation.
+::: story-link
+The fall accompanies a shift from confrontation toward **election coverage**.<br> The labels help separate that shift from the narrator’s own evaluation.
 :::
 
-::: {.sample}
+::: sample
 Selected stored model codings, not independently validated cases. Some supplied translations are short excerpts. Links and evidence are in the slide notes and data export.
 :::
 
@@ -554,14 +521,12 @@ SEN-05, France24February15: https://www.france24.com/en/africa/20240215-senegal-
 SEN-06, BBCMarch24: stored example/link in figures/data/09_senegal_article_examples.json; voting,0/0/0; supplied English421characters. All displayed examples have exact saved-attempt membership and plan/input hashes checked against the frozen audit. Literal evidence matching is not semantic validation. Do not treat selected four examples as representative frequency estimates. Reproducible public short evidence and URLs:09_senegal_article_examples.json.
 :::
 
-
 ## Zimbabwe: the same incumbent, different framing {.source-series-slide .zimbabwe-series-slide}
 
 ![](figures/13_zimbabwe_framing_shares.png){fig-align="center" width="100%"}
 
-::: {.source-series-reading}
-Chronicle, September 14: **“hits the ground running”** → framing **+1**.<br>
-Positive and negative shares show differences that a two-sided index can conceal.
+::: source-series-reading
+Chronicle, September 14: **“hits the ground running”** → framing **+1**.<br> Positive and negative shares show differences that a two-sided index can conceal.
 :::
 
 ::: notes
@@ -574,29 +539,27 @@ The direct positive case is ChronicleSeptember14: https://www.chronicle.co.zw/pr
 Possible contributors include different events, genres, repeated stories, access, source selection, supplied text completeness and model sensitivity. The next slide offers one same-event comparison, not an adjustment of the aggregate gap. Scripts/build_zimbabwe_source_comparison.py verifies hashes and can reconcile all three frozen private caches; public aggregates and sign denominators are in13_zimbabwe_monthly_framing.csv,13_zimbabwe_source_summary.json and13_zimbabwe_manifest.json. Short article evidence with verified audit membership is in13_zimbabwe_article_examples.json. No new model coding or production changes.
 :::
 
-
 ## The same court decision, different portrayals {.zimbabwe-pair-slide}
 
-::: {.source-pair-context}
+::: source-pair-context
 **September 15, 2023:** the High Court grants bail to opposition candidate Patrick Cheza.
 :::
 
-| | Chronicle | ZimLive |
-|---|---|---|
+|   | Chronicle | ZimLive |
+|------------------------|------------------------|------------------------|
 | Headline wording | **“Sore loser…Road Rage”** | **“ends jail nightmare”** |
 | Emphasis | Ridicules the government’s opponent | Emphasizes the opponent’s detention |
 | Stored model codes | Alignment **0** · reputation **0**<br>Framing **+1** | Alignment **0** · reputation **0**<br>Framing **−1** |
 
-::: {.pair-context-line}
+::: pair-context-line
 **Institutional context:** Chronicle belongs to government-controlled Zimpapers. EU election observers also documented favorable incumbent coverage in its newspapers.
 :::
 
-::: {.pair-research-line}
-Editorial priorities, access and audiences are possible explanations.<br>
-Compare repeated shared events to test **wording, quoted voices and story selection**.
+::: pair-research-line
+Editorial priorities, access and audiences are possible explanations.<br> Compare repeated shared events to test **wording, quoted voices and story selection**.
 :::
 
-::: {.sample}
+::: sample
 Original-English reports; selected examples, not a causal estimate. Translating ridicule of an opponent into favorable government framing needs human review. [Chronicle](https://www.chronicle.co.zw/sore-loserroad-rage-losing-ccc-candidate-who-assaulted-zanu-pf-minister-granted-bail/) · [ZimLive](https://www.zimlive.com/court-ends-jail-nightmare-for-ccc-poll-candidate-accused-of-bashing-minister/) · [EU report, pp. 21–23](https://www.ecoi.net/en/file/local/2101116/EU%20EOM%20ZWE%202023%20FR.pdf)
 :::
 
@@ -610,28 +573,27 @@ The2023EU Election Observation Mission report printedp21 identifies government c
 ZimLive's current About page identifies Makhwedini Media Trust, a Zimbabwe-registered company, and publication sinceJuly2018: https://www.zimlive.com/about-us/ . The page is undated and does not verify opposition affiliation or a2023shareholding register. Do not call it opposition-owned from observed negative framing. Zimpapers' current charter declares editorial independence/fairness but is not a verified2023policy snapshot. Ownership, audience incentives, access to official sources, genre and editorial priorities remain explanations to investigate rather than causal findings. A next study would predefine matched events, code quoted sources and narration separately, inspect source originals, and compare within-outlet changes across common event categories.
 :::
 
-
 ## Further questions: foreign governments {.foreign-map-questions-slide}
 
-::: {.foreign-map-subtitle}
+::: foreign-map-subtitle
 When the evaluated government differs from the country of publication
 :::
 
-:::: {.foreign-map-columns}
-::: {.foreign-map-figure}
+::::: foreign-map-columns
+::: foreign-map-figure
 ![](figures/06b_evaluated_governments.png){width="100%"}
 
 **211 evaluated-government country / territory codes**
 :::
 
-::: {.foreign-map-questions}
-- Which outlets cover which governments, **at home and abroad**?
-- Do **allies and rivals** receive different coverage? Does regime type matter?
-- Which **actors and actions** appear when coverage changes around elections or diplomatic disputes?
+::: foreign-map-questions
+-   Which outlets cover which governments, **at home and abroad**?
+-   Do **allies and rivals** receive different coverage? Does regime type matter?
+-   Which **actors and actions** appear when coverage changes around elections or diplomatic disputes?
 :::
-::::
+:::::
 
-::: {.sample}
+::: sample
 Color counts eligible articles evaluating each government. This map shows the reach of reporting, not additional domestic media collection. January 2019–May 2026; full frozen sample.
 :::
 
@@ -645,34 +607,30 @@ Possible designs include a source-by-evaluated-government panel over common mont
 Map source: figures/data/06_coverage_map.csv, the same pinned November8 release in analysis_snapshot.json, and Natural Earthv5.1.2. Reproduction and source hashes: ../scripts/build_coverage_maps.py and figures/data/06_split_maps_manifest.json.
 :::
 
-
 ## Coverage direction and polarization {.foreign-framing-compact-slide}
 
-::: {.foreign-intro}
+::: foreign-intro
 **The Kyiv Independent:** framing toward Russia and Ukraine
 :::
 
-| Government evaluated | Articles | Negative | Positive | Directional share | P |
-|---|---:|---:|---:|---:|---:|
-| Russia (foreign) | 1,242 | 37.7% | 0.2% | **37.8%** | 0.0024 |
-| Ukraine (domestic) | 9,568 | 3.1% | 3.3% | **6.3%** | 0.0040 |
+| Government evaluated | Articles | Negative | Positive | Directional share |      P |
+|------------|-----------:|-----------:|-----------:|-----------:|-----------:|
+| Russia (foreign)     |    1,242 |    37.7% |     0.2% |         **37.8%** | 0.0024 |
+| Ukraine (domestic)   |    9,568 |     3.1% |     3.3% |          **6.3%** | 0.0040 |
 
-::: {.compact-p-reading}
-**Russia has more directional framing, almost all negative.**<br>
-Ukraine’s rarer directional framing is more balanced, giving it a higher P.
+::: compact-p-reading
+**Russia has more directional framing, almost all negative.**<br> Ukraine’s rarer directional framing is more balanced, giving it a higher P.
 :::
 
-::: {.compact-p-definition}
-**P = 4 × positive share × negative share**<br>
-It rises when both directions are common. Read it alongside their shares.
+::: compact-p-definition
+**P = 4 × positive share × negative share**<br> It rises when both directions are common. Read it alongside their shares.
 :::
 
-::: {.compact-framing-questions}
-When does an outlet criticize one government and defend another?<br>
-Does disagreement occur **within outlets or between them**?
+::: compact-framing-questions
+When does an outlet criticize one government and defend another?<br> Does disagreement occur **within outlets or between them**?
 :::
 
-::: {.sample}
+::: sample
 Available coverage in January 2019–May 2026. Zero labels stay in denominators. Events and political conduct differ; these pooled comparisons do not establish double standards or societal polarization.
 :::
 
@@ -684,16 +642,15 @@ Kyiv Independent Russia: negative 468, zero 772, positive 2; n 1,242; directiona
 These pooled comparisons do not hold event, genre, time, translation or political conduct constant. They motivate source–government and matched-event analysis rather than establishing double standards. Many zeros do not establish poor sensitivity or difficulty for human readers. Those questions require text review and human evaluation. P is informative about coexistence of directions when read with their prevalence, not the intensity of one-sided evaluation.
 :::
 
-
 ## From coverage patterns to research claims {.validation-slide}
 
 | What we want to establish | What we need next |
-|---|---|
+|------------------------------------|------------------------------------|
 | **The codes capture the intended distinctions** | Independent human coding of all three dimensions, including enough positive and negative cases and checks against original-language text. |
 | **Outlets systematically portray governments differently** | Repeated comparisons of the same events. Separate action selection, quoted voices and narrator wording. |
 | **The media environment relates to political polarization** | Compare news measures with independent evidence on political actors or citizens. Keep coverage direction, its prevalence and disagreement separate. |
 
-::: {.sample}
+::: sample
 The current findings identify comparisons worth testing. Source differences alone do not establish bias, its causes or its effects on citizens.
 :::
 
@@ -703,13 +660,11 @@ The progression is measurement validity, comparative coverage, then the link to 
 Representative human-reference accuracy of the three current labels remains unmeasured. The historical human field cannot serve as three independent labels. Dependent AI review helps select disagreements for adjudication but does not establish performance. Review government/action/entity extraction, narrator attribution and translation, with explicit sampling of minority directional labels. Study sensitivity to source mix, repeated reporting, prompt version, zero codes and the action-based eligibility rule. Preserve unknown/not codable separately. Documentation: ../docs/validation.md and ../docs/codebook.md.
 :::
 
-
 ## Discussion
 
-- What do these signals tell us about the media environment, and what requires an external benchmark for bias?
-- Which patterns in reported action and evaluation should count as evidence of polarization?
-- What comparisons would distinguish political change from changing coverage?
-
+-   What do these signals tell us about the media environment, and what requires an external benchmark for bias?
+-   Which patterns in reported action and evaluation should count as evidence of polarization?
+-   What comparisons would distinguish political change from changing coverage?
 
 ## References {.smaller .backup .scrollable}
 
