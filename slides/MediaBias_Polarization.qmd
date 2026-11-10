@@ -97,11 +97,14 @@ format:
 ## The Puzzle {.smaller}
 
 - Polarization is understood as a common feature of politics across the world
-- Big Question: Is it a cause or a consequence of democratic backsliding?
-  * Theory runs both ways: polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]; incumbents deepen polarization strategically [@somer_etal_2021]
+- Media bias is understood to be an important driver of polarization
+  * [@MartinYurukoglu2017; @kubin2021role]
+- Big Question: What are the consequences of media bias and political polarization on the relationship between citizens and government?
+  * Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
+  * Incumbents may deepen polarization strategically [@somer_etal_2021]
 - Most research is on the US (+ a few others)
-- Cross-national evidence linking polarization to backsliding is largely correlational and slow-moving [cites]
-- Can we measure polarization systematically across countries and over time to answer the big question? 
+- Significant challenges in the measurement of bias and polarization [@puglisi2015empirical; @prior2013media]
+- Can we measure media bias and polarization systematically across countries and over time to answer the big question? 
 
 ::: notes
 - general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
@@ -113,12 +116,16 @@ format:
 
 ## Existing work on the US {.smaller .literature-detail}
 
-- **Substantive debate:** is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]. The field has since shifted from ideology to affect [@iyengar_etal_2019]
+- **Substantive debate:** 
+  * To what extent is there a causal link between more partisan messages and changing attitudes? [@prior2013media] 
+  * Is mass polarization real or confined to elites? [@fiorina_abrams_2008; @abramowitz_saunders_2008]
+- **Measures of bias:**
+  * TV news: visibility of partisan actors [@kim2022measuring]
+  * Newspaper: similarity of language to Republican or Democrat [@gentzkow2010what]
 - **Measures of polarization:**
   * Legislative: distance between parties on roll-call ideal points [@poole_rosenthal_1985; @mccarty_etal_2006]
-  * Public opinion: issue-position distributions; party feeling thermometers [cites]
+  * Public opinion: issue-position distributions; party feeling thermometers [@lelkes2016review]
   * Speech: partisanship of congressional speech [@gentzkow_etal_2019]
-  * Media:....Gentzow, Shapiro, Taddy
 - **Key findings:**
   * Roll-call polarization has risen steadily since the 1970s [@mccarty_etal_2006]
   * Affective polarization has risen; mass ideological polarization remains contested [@iyengar_etal_2019]
@@ -135,10 +142,11 @@ format:
 
 ## Existing comparative work {.smaller}
 
+- **Media-system partisanship:** expert surveys on alignment and intensity of partisanship across media outlets [@popescu2011european]
 - **Party-system ideological polarization:** spread of party positions from voter or expert placements [@dalton_2008, UNC expert project]
 - **Mass affective polarization:** CSES like–dislike scores [@reiljan_2020; @wagner2021affective]; V-Dem "political polarization", near-global [@vdem]
   * Twelve OECD countries over four decades: US shows the largest increase [@boxell_etal_2024]
-- **Relational measures:** mass partisan polarization over parties [cite]
+- **Relational measures:** mass partisan polarization over parties [@lauka2018mass]
 - **Common limits:**
   * Election-year or annual frequency
   * Survey coverage thin outside democracies
@@ -152,14 +160,13 @@ format:
 
 ## A common political reference {.smaller}
 
-- Polarization requires a political dimension and an object of comparison
-- Party and ideological scales vary across countries and over time
+- Bias and polarization require a political dimension and an object of comparison
+  * Party and ideological scales vary across countries and over time
 - We use the **national incumbent government** as a common reference
-  * Support and opposition can organize conflict in fluid party systems and autocracies
-  * This connects to accounts of “pernicious” polarization [@somer_etal_2021]
-- News can reveal conflict around the incumbent at a finer time scale
-- The measurement question is what an article's positive or negative content refers to
-- Distinguishing those signals also lets us study **news selection and framing across outlets**
+  * Support and opposition can organize conflict
+- News media can reveal conflict around the incumbent at a finer time scale
+- The measurement question then centers on what an article's positive or negative content refers to
+  * Distinguishing those signals also lets us study **news selection and framing across outlets**
 
 ::: notes
 The national incumbent is a proposed common political reference. Its relationship to societal polarization requires validation. Incumbent identity can change within a country series.
