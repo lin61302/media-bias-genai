@@ -8,6 +8,7 @@ input hashes and exact chart values; methodological detail stays in slide notes.
 from __future__ import annotations
 
 import csv
+import argparse
 import hashlib
 import json
 from pathlib import Path
@@ -29,6 +30,11 @@ FEB = "#68789a"
 MAR = "#c28428"
 GRID = "#e3e7eb"
 
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--senegal-p-only", action="store_true",
+                    help="Update only the Senegal P figure and its manifest entry.")
+args = parser.parse_args()
+
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -36,6 +42,11 @@ def digest(path: Path) -> str:
 
 def save(fig, stem: str) -> list[dict]:
     outputs = []
+    if args.senegal_p_only and stem != "14_senegal_polarization_application":
+        plt.close(fig)
+        return [{"path": str((FIG / f"{stem}.{ext}").relative_to(ROOT)),
+                 "sha256": digest(FIG / f"{stem}.{ext}")}
+                for ext in ("png", "svg", "pdf")]
     for ext in ("png", "svg", "pdf"):
         path = FIG / f"{stem}.{ext}"
         metadata = {"Creator": "Frozen aggregate presentation figure"} if ext == "pdf" else None
@@ -148,8 +159,8 @@ for r in rows:
                    - float(r[f"{field}_two_sided"])) < 1e-12
 x = np.arange(len(rows))
 fig, ax = plt.subplots(figsize=(13.5, 5.2))
-fig.subplots_adjust(left=.085, right=.975, top=.82, bottom=.19)
-ax.axvspan(3.7, 4.3, color="#f2e7d7", zorder=0)
+fig.subplots_adjust(left=.085, right=.975, top=.82, bottom=.13)
+ax.axvspan(3.5, 4.5, color="#f2e7d7", zorder=0)
 ax.axvline(5.5, color="#6d7782", linestyle=":", linewidth=1.4)
 clean(ax, grid="y")
 for field, color, label in [("align", "#0072b2", "Political alignment"),
@@ -157,18 +168,25 @@ for field, color, label in [("align", "#0072b2", "Political alignment"),
                             ("frame", "#009e73", "Framing")]:
     ax.plot(x, [float(r[f"{field}_two_sided"]) for r in rows], marker="o",
             linewidth=2.7, markersize=6, color=color, label=label)
-pvals = [float(r["align_two_sided"]) for r in rows]
 ax.set_ylim(0, .13)
 ax.set_yticks([0, .04, .08, .12])
 ax.set_ylabel("P index", fontsize=16)
 ax.set_xticks(x)
-ax.set_xticklabels([f"{month}\nn={r['eligible_articles']}" for month, r in zip(
-    ["Oct 2023", "Nov", "Dec", "Jan 2024", "Feb", "Mar", "Apr", "May", "Jun"], rows)], fontsize=12)
+ax.set_xticklabels(["Oct 2023", "Nov", "Dec", "Jan 2024", "Feb", "Mar", "Apr", "May", "Jun"], fontsize=12)
 ax.legend(loc="lower center", bbox_to_anchor=(.5, 1.06), ncol=3, frameon=False, fontsize=15)
-ax.annotate("0.110", (4, pvals[4]), xytext=(3.15, .116), fontsize=14, color="#0072b2",
-            fontweight="bold", arrowprops={"arrowstyle":"-", "color":"#0072b2"})
-ax.annotate("0.016", (5, pvals[5]), xytext=(4.7, .052), fontsize=14, color="#0072b2",
-            fontweight="bold", arrowprops={"arrowstyle":"-", "color":"#0072b2"})
+# Monthly aggregates cannot locate a response within a month. The February
+# band groups its two events; March marks the election month, and the dotted
+# April boundary distinguishes the change of incumbent.
+event_arrow = {"arrowstyle": "-", "color": "#6d7782", "linewidth": 1.1}
+ax.annotate("Feb 3: election postponed\nFeb 15: court overturns delay",
+            xy=(3.85, .119), xytext=(2.25, .105), ha="center", va="center",
+            fontsize=14, linespacing=1.4, arrowprops=event_arrow)
+ax.annotate("March 24\nPresidential election",
+            xy=(5, .022), xytext=(6.7, .065), ha="center", va="center",
+            fontsize=14, linespacing=1.4, arrowprops=event_arrow)
+ax.annotate("April 2\nFaye takes office",
+            xy=(5.5, .109), xytext=(6.9, .109), ha="center", va="center",
+            fontsize=14, linespacing=1.4, arrowprops=event_arrow)
 polar_outputs = save(fig, "14_senegal_polarization_application")
 
 # 3. Same source, different governments: keep positive and negative separately.
@@ -246,9 +264,20 @@ manifest = {
                         "P_framing": float(r["frame_two_sided"])} for r in rows],
             "P_axis_display_range": [0, .13], "P_theoretical_range": [0, 1],
             "incumbent_boundary": "Faye inaugurated April 2, 2024; same external chronology as the existing Senegal slide notes.",
+            "event_annotations": {
+                "source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
+                "source_locator": "UN Secretary-General report S/2024/521, paragraph 18 (page 5)",
+                "events": [
+                    {"date": "2024-02-03", "label": "Election postponed", "display_month": "2024-02"},
+                    {"date": "2024-02-15", "label": "Court overturns delay", "display_month": "2024-02"},
+                    {"date": "2024-03-24", "label": "Presidential election", "display_month": "2024-03"},
+                    {"date": "2024-04-02", "label": "Faye takes office", "display_boundary": "March–April"},
+                ],
+                "interpretation": "External chronology provides context for monthly aggregates; it neither recodes articles nor identifies within-month or causal effects.",
+            },
             "limits": ["Shares and P measure model-coded news content, not attitudes or behavior among citizens.",
                        "Changing source mix, reported actions, genre, repeated reporting and model sensitivity remain possible contributors.",
-                       "No minimum-count filter; n shown for every month. Zeros stay in all sign-share denominators.",
+                       "No minimum-count filter; counts remain in the values table and separate-share figure. Zeros stay in all sign-share denominators.",
                        "A low P can reflect rare directional coverage or predominantly one-sided coverage; inspect separate sign shares."],
         },
         "kyiv_government_framing": {
@@ -264,5 +293,8 @@ manifest = {
     },
 }
 (DATA / "14_presentation_revision_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
-print(json.dumps({"figures": list(manifest["figures"]),
-                  "outputs": [x["path"] for k in manifest["figures"].values() for x in k["outputs"]]}, indent=2))
+updated = (["senegal_polarization_application"] if args.senegal_p_only
+           else list(manifest["figures"]))
+print(json.dumps({"figures": updated,
+                  "outputs": [x["path"] for key in updated
+                              for x in manifest["figures"][key]["outputs"]]}, indent=2))

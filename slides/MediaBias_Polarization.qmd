@@ -258,11 +258,13 @@ Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/
   <div><span class="step-number">2</span><h3>What happened?</h3><p>The main reported action.<br>Who did what to whom?</p></div>
   <div><span class="step-number">3</span><h3>How is it evaluated?</h3><p>Political alignment<br>Reputational effect<br>Framing</p></div>
 </div>
-<p class="slide-takeaway">Use the supplied article. Keep the three judgments separate.</p>
+<p class="slide-takeaway">Article title and text, with country of publication, publication date and source.</p>
 ```
 
 ::: notes
 The fields and fixed rules are defined in ../prompts/civic_20261020_complete_v1.txt and ../docs/codebook.md. Government is selected once for all three dimensions. Publication country is the default for domestic government-relevant affairs; a foreign government can be selected under the focus rule. Incumbent identity refers to the article date. The entity target need not be the evaluated government.
+
+Input check, November 10: the current production builder sends article title and body segments, publication country, publication date and source domain. It sets incumbent_context to null; it does not map an incumbent leader, ruling party or coalition into the request. All 997 requests in a checked production packet and all 266 November 2 validation requests had null context. The prompt permits this optional field, but its synthetic examples do not establish production use. Incumbent affiliation must be established from article evidence. Source domain records provenance, not an assumed outlet ideology. See ../docs/codebook.md for the checked builder and input scope.
 
 One prioritized action is selected from title/lead/substantive focus rather than from maximum apparent polarization. The three judgments share the selected government, but need not agree in sign. Explicit action and entity fields let us distinguish a change in reported conduct from a change in narrator evaluation. Some saved reputation evidence attaches to the broader episode; that attachment needs validation. One selected action is not a full event inventory.
 
@@ -278,9 +280,9 @@ The first two steps establish what the judgments refer to. This is why action se
 
 | Judgment | Review agrees | Uncertain | Change proposed |
 |---|---:|---:|---:|
-| Political alignment | **78%** · 135 | 28 | 10 |
-| Reputational effect | **76%** · 131 | 37 | 5 |
-| Framing | **90%** · 155 | 14 | 4 |
+| Political alignment | **78%** | 16% | 6% |
+| Reputational effect | **76%** | 21% | 3% |
+| Framing | **90%** | 8% | 2% |
 
 Most labels are zero. Positive and negative cases need closer checking.
 
@@ -341,11 +343,13 @@ UN chronology S/2024/521 para 18: Sall postponed the election February 3, parlia
 ```
 
 ::: notes
-This restores the P plot next to the Senegal sign-share series, on a separate slide. It uses the same October 2023–June 2024 window and the same November 8 frozen sample. Each line is P for one of the three judgments. The previous slide shows positive and negative shares separately; this plot combines them. Zeros remain in each sign-share denominator. Small monthly n values remain visible, with no arbitrary count threshold. The dotted April boundary marks the new incumbent.
+This P plot uses the same October 2023–June 2024 window and November 8 frozen sample as the preceding sign-share plot. Each line is P for one of the three judgments. Zeros remain in each sign-share denominator, with no arbitrary count threshold. Event annotations replace numeric callouts and monthly sample counts; exact values and denominators remain in the source data. The April boundary marks the new incumbent.
 
 P = 4 × p_positive × p_negative. It rises when both directions are common. Salience, meaning the share with either positive or negative coding, is S = p_positive + p_negative. P is not salience alone: for S > 0 it equals S² times the balance of the two directions, where balance B = 4p_positive p_negative / S². A one-sided corpus can have high S and low P. The theoretical P range is 0–1; the displayed axis runs 0–0.13 to show these observed values. These are article shares, not unique events or audience exposure.
 
 Political-alignment P falls from approximately 0.110 in February to 0.016 in March. Alignment salience falls from 33.6% to 15.0%. Reputation and framing P remain much lower because positive and negative judgments do not coexist as frequently; read their separate sign shares on the preceding slide. The next two slides examine which actors and actions help account for the changing composition of coverage.
+
+Event chronology: Sall announced the postponement on February 3; the Constitutional Council overturned it on February 15; voting took place on March 24; Faye was inaugurated on April 2. These dates contextualize monthly measures and do not identify daily changes or causal effects. Source: UN S/2024/521, paragraph 18, https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf.
 
 This is an empirical application to polarization in news content, not evidence that citizens became less polarized. Source mix, reported events, genres, repeated reporting and model sensitivity remain possible contributors. The evaluated government is Senegal, with domestic and international source origins included. Connecting this news measure to elite or mass polarization requires independent political or attitudinal evidence. Data, formulas, exact monthly values and hashes: figures/data/14_presentation_revision_manifest.json; ../scripts/build_presentation_revision_figures.py.
 :::

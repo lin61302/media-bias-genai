@@ -15,7 +15,7 @@
       "sha256": "29dfc3ffbced6a31488b6e3e6e74e0c3a09a91c8dd7ba5f02f76fd159bf4fc13"
     }
   ],
-  "script_sha256": "9d187c9bd747252e19950409418ef7131bf49cbc015d19465d7b588b292a1651",
+  "script_sha256": "8f5dac292a4be13f35c2a87ed7eff3cf27d29e7f3b372295a1c9dc9e8fc52386",
   "global_definitions": {
     "unit": "Article records with one primary selected action, not unique real-world events.",
     "eligible": "Evaluated government and primary action identified; all three political labels numeric. Unknown/uncodable excluded upstream.",
@@ -115,15 +115,15 @@
       "outputs": [
         {
           "path": "slides/figures/14_senegal_polarization_application.png",
-          "sha256": "06d3d732fe26c8fe68953512cee88bc4c00f43325d511d7e883c77ac5971bda4"
+          "sha256": "ec32cf07872d206336d206d2b3614d0bb101f3bd52cdae559770fef4c8d56afd"
         },
         {
           "path": "slides/figures/14_senegal_polarization_application.svg",
-          "sha256": "382b7f164ebaf5d2c8a79f06b7d683d180e5cb9827cbed2bdc85f1e6679c8fdc"
+          "sha256": "acd06f210a7b80acb323b5a1110a8a171982fc1d547c1044a16645d965406dbe"
         },
         {
           "path": "slides/figures/14_senegal_polarization_application.pdf",
-          "sha256": "8a90115ae81b5036a9188d18ee8c15377361ceabc2311ef0ba5978043f1e6f2f"
+          "sha256": "02a5e96b69da3c4d7532793ff2cfb1ee9e311683e422a1b9cdd9f5d488ea2c84"
         }
       ],
       "evaluated_government": "SEN",
@@ -231,10 +231,37 @@
         1
       ],
       "incumbent_boundary": "Faye inaugurated April 2, 2024; same external chronology as the existing Senegal slide notes.",
+      "event_annotations": {
+        "source": "https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf",
+        "source_locator": "UN Secretary-General report S/2024/521, paragraph 18 (page 5)",
+        "events": [
+          {
+            "date": "2024-02-03",
+            "label": "Election postponed",
+            "display_month": "2024-02"
+          },
+          {
+            "date": "2024-02-15",
+            "label": "Court overturns delay",
+            "display_month": "2024-02"
+          },
+          {
+            "date": "2024-03-24",
+            "label": "Presidential election",
+            "display_month": "2024-03"
+          },
+          {
+            "date": "2024-04-02",
+            "label": "Faye takes office",
+            "display_boundary": "March–April"
+          }
+        ],
+        "interpretation": "External chronology provides context for monthly aggregates; it neither recodes articles nor identifies within-month or causal effects."
+      },
       "limits": [
         "Shares and P measure model-coded news content, not attitudes or behavior among citizens.",
         "Changing source mix, reported actions, genre, repeated reporting and model sensitivity remain possible contributors.",
-        "No minimum-count filter; n shown for every month. Zeros stay in all sign-share denominators.",
+        "No minimum-count filter; counts remain in the values table and separate-share figure. Zeros stay in all sign-share denominators.",
         "A low P can reflect rare directional coverage or predominantly one-sided coverage; inspect separate sign shares."
       ]
     },

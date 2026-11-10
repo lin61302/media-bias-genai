@@ -8,6 +8,8 @@ The input uses `title_translated` and `maintext_translated` exactly, including E
 
 Deterministic S1/S2 segment labels are evidence anchors rather than linguistic sentence counts. Synthetic examples in the prompt illustrate coding rules; they are not sampled observations.
 
+**Request metadata, checked November 10, 2026.** Current production sends the article identifier, title (`T`), body segments (`S1…Sn`), `publication_country`, `publication_date` and `source_domain`. The optional `incumbent_context` field is serialized as `null`: no mapped incumbent leader, ruling party or coalition is added. The production preparation call (`current_pipeline/civic_pipeline/prepare_monthly.py`, line 302) supplies no incumbent argument to the record builder (`prompt_contract.py`, line 212), which defaults it to `None`. A complete production packet accepted on November 10 contained 997 null contexts; the complete November 2 validation file contained 266. Both request files matched their retained hashes. This verifies the checked builder and files, not every historical request. Source domain is provenance only; affiliation must be supported by the article evidence. Allowing context in the prompt is distinct from supplying it in production.
+
 Publication country records provenance and can differ from the government being evaluated. `gov` permits recognized ISO-3 codes and the project code `XKX`; `ALL` is reserved for publication provenance. Foreign government entities are classified relative to `gov`. Courts, legislatures, local officials, and security institutions are not automatically national incumbent members. Affiliation must be supported by supplied text or time-appropriate context.
 
 ## Output fields
