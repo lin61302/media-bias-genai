@@ -22,7 +22,7 @@
   "scripts": [
     {
       "path": "scripts/build_media_freedom_outlet_variation.py",
-      "sha256": "0a9746f42faead6584a32303f6d90abd5a2a66e1e6d3aa36adc3f678649d3d51"
+      "sha256": "973b2e9dc16fbc67bcfa8ed06e271ff02617649a26e2ffbd9d97467f2ad3e3d4"
     },
     {
       "path": "scripts/build_domestic_media_freedom.py",
@@ -90,7 +90,8 @@
     "small_samples": "Retain all outlets in both figures. Gray open dots identify outlet total n<30, or countries containing such an outlet. CSVs separately report calculations after removing outlets with total n<30; this is a sensitivity check, not a change to the main sample.",
     "statistics": "Sample SD uses ddof=1; quartiles use linear interpolation; IQR=Q3-Q1. All numerical CSV rates and SDs use 0-to-1 units; multiply by100 for percentages or percentage points.",
     "boxplot": "Box=Q1 toQ3; line=median; whiskers=endmost observations within1.5IQR; diamond=mean; all observations shown as country/domain-stable jittered dots.",
-    "labels": "Low/Middle/High are relative groups based on each country's mean2022\u20132025 V-Dem v2x_freexp_altinf, with fixed24/23/24countries. They are not absolute classifications of media freedom."
+    "labels": "Low/Middle/High are relative groups based on each country's mean2022\u20132025 V-Dem v2x_freexp_altinf, with fixed24/23/24countries. They are not absolute classifications of media freedom.",
+    "slide_rendering": "The compact16x7inch source-level rendering uses identical outlet points, boxes, means and panel limits. It omits the standalone title/notes and outlet counts because the host slide supplies those labels."
   },
   "limitations": [
     "Between-outlet dispersion pooled within a freedom group combines within-country and between-country differences; the supplement isolates variation among the observed outlets within each country.",
@@ -139,6 +140,16 @@
       "path": "slides/figures/20_media_freedom_within_country_variation.svg",
       "sha256": "4e588d796a497748ef158ee7413d88fd36b9780d2598a3724e31cefd2fd3ec36",
       "bytes": 145585
+    },
+    {
+      "path": "slides/figures/20_media_freedom_outlet_variation_slide.png",
+      "sha256": "db321d3ed454c1f361cfffb3308ef874779fce634019de98a5494be49db9615c",
+      "bytes": 559964
+    },
+    {
+      "path": "slides/figures/20_media_freedom_outlet_variation_slide.svg",
+      "sha256": "51120cba591212096ff2c4cf6cc22da83c43fca3a3135d6c2aae640c52bc6e6c",
+      "bytes": 472348
     }
   ]
 }

@@ -535,6 +535,33 @@ Reproducible counts and comparison: figures/data/18_nicaragua_outlet_counts.csv,
 :::
 
 
+## Coverage varies across outlets {.clean-slide .figure-slide .outlet-variation-slide}
+
+::: {.outlet-variation-scope}
+Domestic coverage · 401 outlets · January 2022–December 2025
+:::
+
+![](figures/20_media_freedom_outlet_variation_slide.png){width="100%"}
+
+::: {.outlet-variation-key}
+Groups: media freedom. Box: middle 50%; line: median; diamond: mean. Open circles: fewer than 30 articles. Panel scales differ.
+:::
+
+**Negative coverage varies more across low-freedom outlets.**
+
+::: notes
+This is the outlet-level companion to the preceding country averages. Each point is one exact source domain's negative or positive count divided by its total eligible articles across its observed months in January 2022–December 2025. The same frozen November 4 domestic sample is used: publication country equals evaluated-government country, all three judgments codable, and action/government identified. Retain the same 3,282 country-months with at least 30 articles and all 1,650,617 eligible articles. Zero labels remain in each denominator. There are 401 outlets: 151 in low, 127 in middle and 123 in high media-freedom groups, based on the same fixed V-Dem country groups. One outlet receives one observation in this plot; these means are not the earlier equal-country monthly lines.
+
+Boxes contain the middle 50% of outlet rates, with medians marked by lines and means by diamonds. Whiskers end at the most extreme observed values within 1.5 IQR of the box; every point is shown. Gray open circles mark 14 outlets with fewer than 30 eligible articles over the entire period; these remain in the main calculation. For example, the high-group 100% negative-framing point has only one eligible article. Vertical scales differ by panel. The negative row is above, positive below. Alignment is inferred from reported actors' actions; it is not narrator endorsement. Reputational implication and framing retain their separate definitions.
+
+Negative outlet SDs, low/middle/high in percentage points: alignment 8.39/4.45/5.53; reputational implication 15.90/5.77/8.71; framing 16.16/5.88/11.42. Low has the greatest dispersion on all three negative dimensions. Positive reputation and framing instead have greater outlet dispersion in High. For negative framing, Low's mean is 10.38% versus High's 7.53%, but its median is lower: 3.25% versus 4.49%. A larger upper tail raises the observed mean; the typical Low outlet is not more negative.
+
+After excluding outlets with fewer than 30 articles, negative framing exceeds an illustrative 20% cutoff in 26/146 Low outlets (17.8%), 5/125 Middle (4.0%) and 5/116 High (4.3%). Low remains at 21/139 (15.1%) without Nicaragua. The cutoff is descriptive, not a definition of bias or polarization. A separate country supplement shows that within-country outlet discrepancies also extend beyond Nicaragua. The sample-qualified within-country negative-framing SD medians are 4.82/2.16/3.15 percentage points; Low is 4.40 without Nicaragua.
+
+This is between-outlet variation, not volatility over time. Outlets may cover different months, events, actors or genres, and collection gaps can matter. A high spread does not establish polarized camps or causal effects of press freedom. The question is whether recurring differences survive comparisons of the same events and periods. Reproduction: ../scripts/build_media_freedom_outlet_variation.py. Data and checks: figures/data/20_media_freedom_outlet_rates.csv and 20_media_freedom_variation_manifest.json. Country supplement remains available in figures/20_media_freedom_within_country_variation.png.
+:::
+
+
 ## Discussion {.clean-slide .discussion-slide}
 
 ::: {.discussion-question}

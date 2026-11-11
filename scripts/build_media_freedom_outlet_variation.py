@@ -140,19 +140,24 @@ def tick(value, _):
     return f"{value*100:.1f}".rstrip("0").rstrip(".") + "%"
 
 
-def make_figure(outlets, country, within=False):
-    fig, axes = plt.subplots(2, 3, figsize=(16, 10.1))
-    fig.subplots_adjust(left=.065, right=.985, top=.80, bottom=.22, hspace=.38, wspace=.24)
-    fig.text(.065, .95, "Variation between outlets within countries" if within else "Variation in coverage across media outlets",
-             fontsize=24, weight="bold")
-    fig.text(.065, .91, "Domestic coverage of the incumbent · January 2022–December 2025", fontsize=14)
-    fig.text(.065, .875, "One point per country: spread of its outlets’ coverage rates" if within else
-             "One point per outlet: sign count divided by its total articles in the eligible sample", fontsize=12.5)
+def make_figure(outlets, country, within=False, slide=False):
+    if slide and within:
+        raise ValueError("The slide variant is only for the source-level distribution")
+    fig, axes = plt.subplots(2, 3, figsize=(16, 7.0) if slide else (16, 10.1))
+    if slide:
+        fig.subplots_adjust(left=.075, right=.985, top=.90, bottom=.075, hspace=.29, wspace=.27)
+    else:
+        fig.subplots_adjust(left=.065, right=.985, top=.80, bottom=.22, hspace=.38, wspace=.24)
+        fig.text(.065, .95, "Variation between outlets within countries" if within else "Variation in coverage across media outlets",
+                 fontsize=24, weight="bold")
+        fig.text(.065, .91, "Domestic coverage of the incumbent · January 2022–December 2025", fontsize=14)
+        fig.text(.065, .875, "One point per country: spread of its outlets’ coverage rates" if within else
+                 "One point per outlet: sign count divided by its total articles in the eligible sample", fontsize=12.5)
     for row, sign in enumerate(SIGN_ORDER):
         for col, axis in enumerate(base.AXES):
             ax = axes[row, col]
             if row == 0:
-                ax.set_title(base.TITLES[axis], loc="left", fontsize=17, weight="bold", pad=17)
+                ax.set_title(base.TITLES[axis], loc="left", fontsize=19 if slide else 17, weight="bold", pad=17)
             panel_values = []
             for position, group in enumerate(base.GROUPS, start=1):
                 if within:
@@ -183,7 +188,8 @@ def make_figure(outlets, country, within=False):
             group_counts = ([len(country.loc[(country.population == "all_outlets") & (country.group == g) &
                                            (country.dimension == axis) & (country.sign == sign) & (country.outlets >= 2)])
                              for g in base.GROUPS] if within else [int((outlets.group == g).sum()) for g in base.GROUPS])
-            ax.set_xticks([1, 2, 3], [f"{g.capitalize()}\n(n={n})" for g, n in zip(base.GROUPS, group_counts)])
+            ax.set_xticks([1, 2, 3], [g.capitalize() if slide else f"{g.capitalize()}\n(n={n})"
+                                    for g, n in zip(base.GROUPS, group_counts)])
             ax.set_xlim(.52, 3.48)
             ax.set_ylim(0, max(panel_values)*1.10 if max(panel_values) else .01)
             ax.yaxis.set_major_formatter(FuncFormatter(
@@ -194,9 +200,11 @@ def make_figure(outlets, country, within=False):
                 ax.spines[edge].set_visible(False)
             ax.spines["left"].set_color("#cbd1d7")
             ax.spines["bottom"].set_color("#cbd1d7")
-            ax.tick_params(axis="both", labelsize=11)
+            ax.tick_params(axis="both", labelsize=16 if slide else 11)
             if col == 0:
-                ax.set_ylabel(f"{sign.capitalize()}: outlet SD (pp)" if within else f"{sign.capitalize()} share", fontsize=12)
+                ax.set_ylabel(f"{sign.capitalize()}: outlet SD (pp)" if within else f"{sign.capitalize()} share", fontsize=16 if slide else 12)
+    if slide:
+        return fig
     fig.text(.065, .125, "Boxes: middle 50%; line: median; diamond: mean. Every point is shown. Vertical scales differ across panels.", fontsize=11)
     fig.text(.065, .090, "Gray open points: countries containing an outlet with fewer than 30 articles." if within else
              "Gray open points: 14 outlets with fewer than 30 articles; these remain in the boxes and statistics.", fontsize=11)
@@ -208,22 +216,37 @@ def make_figure(outlets, country, within=False):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check-only", action="store_true")
+    parser.add_argument("--slide-only", action="store_true", help="Render only the slide PNG/SVG and update the manifest; preserve existing figures and CSV bytes")
     args = parser.parse_args()
     outlets, stats, country, spread_stats, checks = calculate()
     if args.check_only:
         print(json.dumps(checks, indent=2))
         return
     outputs = []
+    preserved = {}
     for suffix, frame in (("outlet_rates", outlets), ("outlet_distribution_stats", stats),
                           ("within_country_outlet_spread", country), ("within_country_spread_stats", spread_stats)):
         path = DATA / f"20_media_freedom_{suffix}.csv"
-        frame.to_csv(path, index=False, na_rep="", float_format="%.12g", lineterminator="\n")
+        if args.slide_only:
+            preserved[path] = base.sha(path)
+        else:
+            frame.to_csv(path, index=False, na_rep="", float_format="%.12g", lineterminator="\n")
         outputs.append(path)
     plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12, "text.color": "#202b36",
                          "axes.labelcolor": "#202b36", "xtick.color": "#49545f", "ytick.color": "#49545f",
                          "svg.fonttype": "none", "svg.hashsalt": "outlet-variation-nov4-v1"})
-    outputs += base.save_figure(make_figure(outlets, country), FIGURES, "20_media_freedom_outlet_variation")
-    outputs += base.save_figure(make_figure(outlets, country, within=True), FIGURES, "20_media_freedom_within_country_variation")
+    if args.slide_only:
+        for stem in ("20_media_freedom_outlet_variation", "20_media_freedom_within_country_variation"):
+            for extension in ("png", "svg"):
+                path = FIGURES / f"{stem}.{extension}"
+                preserved[path] = base.sha(path)
+                outputs.append(path)
+    else:
+        outputs += base.save_figure(make_figure(outlets, country), FIGURES, "20_media_freedom_outlet_variation")
+        outputs += base.save_figure(make_figure(outlets, country, within=True), FIGURES, "20_media_freedom_within_country_variation")
+    outputs += base.save_figure(make_figure(outlets, country, slide=True), FIGURES, "20_media_freedom_outlet_variation_slide")
+    for path, before in preserved.items():
+        assert base.sha(path) == before, f"Slide-only rendering changed {path}"
     manifest = {
         "title": "Variation in negative and positive domestic coverage across media outlets",
         "snapshot": "2026-11-04T13:38:01.213139+00:00", "period": ["2022-01", "2025-12"],
@@ -240,6 +263,7 @@ def main():
             "statistics": "Sample SD uses ddof=1; quartiles use linear interpolation; IQR=Q3-Q1. All numerical CSV rates and SDs use 0-to-1 units; multiply by100 for percentages or percentage points.",
             "boxplot": "Box=Q1 toQ3; line=median; whiskers=endmost observations within1.5IQR; diamond=mean; all observations shown as country/domain-stable jittered dots.",
             "labels": "Low/Middle/High are relative groups based on each country's mean2022–2025 V-Dem v2x_freexp_altinf, with fixed24/23/24countries. They are not absolute classifications of media freedom.",
+            "slide_rendering": "The compact16x7inch source-level rendering uses identical outlet points, boxes, means and panel limits. It omits the standalone title/notes and outlet counts because the host slide supplies those labels.",
         },
         "limitations": [
             "Between-outlet dispersion pooled within a freedom group combines within-country and between-country differences; the supplement isolates variation among the observed outlets within each country.",
