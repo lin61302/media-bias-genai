@@ -1,0 +1,106 @@
+{
+  "title": "Country sensitivity of domestic negative framing by media freedom",
+  "snapshot": "2026-11-04T13:38:01.213139+00:00",
+  "period": [
+    "2022-01",
+    "2025-12"
+  ],
+  "scope": "publication_country == evaluated government",
+  "inputs": {
+    "country_month_counts": {
+      "path": "slides/figures/data/16_media_freedom_country_month.csv",
+      "sha256": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d"
+    },
+    "fixed_country_groups": {
+      "path": "slides/figures/data/16_media_freedom_groups.csv",
+      "sha256": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+    },
+    "reference_monthly_series": {
+      "path": "slides/figures/data/16_media_freedom_monthly_series.csv",
+      "sha256": "4058f61320afab8487dea2d08bab56ae62251ebda279ba14c118824ffab446ae"
+    },
+    "extraction_provenance": {
+      "path": "slides/figures/data/16_media_freedom_extraction_provenance.json",
+      "sha256": "7550f1b3169e51920a3bedfc2b374d79d74bd52ed8de7b6e700d131cf8cd4589"
+    }
+  },
+  "script": {
+    "path": "scripts/check_media_freedom_country_sensitivity.py",
+    "sha256": "42d8f815b301f294cc1ad70ce0092d0ab9333585b642a8298ef82d41fc2b8562"
+  },
+  "methods": {
+    "eligibility": "Identified government/action and numeric -1/0/+1 labels; zeros retained. Domestic country-month n >= 30.",
+    "country_mean": "Mean of that country's negative-framing shares over its eligible months. Pooled count share is separately labeled.",
+    "group_mean": "Each month's equal-country mean, then arithmetic mean across all 48 months. No smoothing in sensitivity summaries.",
+    "monthly_weight": "1 / number of eligible countries in the fixed group in that month; zero contribution when ineligible.",
+    "country_contribution": "Mean across all 48 months of monthly country share times its monthly weight; reported in percentage points.",
+    "leave_one_out": "Remove one country from all months; recompute its group's equal-country means. Remaining memberships, threshold and months stay fixed; no regrouping.",
+    "comparison": "Low minus high group mean, in percentage points. Monthly rank counts use unsmoothed means and strict greater-than comparisons.",
+    "share_units": "Fractions from 0 to 1 unless the column ends in _pp; multiply fractions by 100 for percentages."
+  },
+  "diagnostics": {
+    "baseline": {
+      "low_mean_negative_framing_share": 0.0722600115021944,
+      "middle_mean_negative_framing_share": 0.0436946089109982,
+      "high_mean_negative_framing_share": 0.06126943468929964,
+      "low_minus_high_gap_pp": 1.0990576812894752,
+      "low_above_high_months": 42,
+      "low_highest_months": 42,
+      "high_above_low_months": 6,
+      "months_compared": 48
+    },
+    "without_nicaragua": {
+      "removed_country": "NIC",
+      "country_name": "Nicaragua",
+      "group": "low",
+      "removed_eligible_months": 48,
+      "removed_articles": 5335,
+      "low_mean_negative_framing_share": 0.05164038236191611,
+      "middle_mean_negative_framing_share": 0.0436946089109982,
+      "high_mean_negative_framing_share": 0.06126943468929964,
+      "low_minus_high_gap_pp": -0.9629052327383536,
+      "low_above_high_months": 4,
+      "low_highest_months": 3,
+      "high_above_low_months": 44,
+      "months_compared": 48,
+      "gap_change_from_full_sample_pp": -2.061962914027829
+    },
+    "mean_of_monthly_country_medians": {
+      "low": 0.029101667568383182,
+      "middle": 0.03100907730864451,
+      "high": 0.05084743018968554
+    },
+    "country_contributions_sum_to_group_means": true,
+    "reference_monthly_means_checked": 144,
+    "maximum_reference_absolute_error": 4.975186929101483e-14,
+    "countries_whose_removal_reverses_low_high_gap": [
+      "NIC"
+    ],
+    "minimum_leave_one_out_gap_pp": -0.9629052327383536,
+    "maximum_leave_one_out_gap_pp": 1.4730241564619488
+  },
+  "limits": [
+    "A sensitivity diagnostic, not a preferred estimator or a reason to discard a country.",
+    "These counts cannot identify which outlets, genres, events or coding decisions explain a country's rate.",
+    "Equal-country weighting answers a different question from pooling all articles. Within country-months, included articles remain pooled across sources.",
+    "Fixed media-freedom groups are descriptive; no causal effect or population-representative country coverage is established."
+  ],
+  "outputs": [
+    {
+      "path": "slides/figures/data/16_media_freedom_country_sensitivity.csv",
+      "rows": 71,
+      "sha256": "a95ee32c5a0370661c6a370c6fe3e38f1f10ee71fdba7b7e1cbf0b3a7efb7165"
+    },
+    {
+      "path": "slides/figures/data/16_media_freedom_leave_one_country_out.csv",
+      "rows": 71,
+      "sha256": "2a80dbf77389f1089f8952a8cdd13553feae94d1c95ad0c5439a4e5f11a237bc"
+    }
+  ],
+  "operations": {
+    "network_calls": 0,
+    "model_calls": 0,
+    "database_calls": 0,
+    "article_text_access": false
+  }
+}

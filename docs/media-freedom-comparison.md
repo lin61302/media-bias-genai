@@ -29,6 +29,22 @@ These summarize the **48 monthly equal-country means**, not pooled article share
 
 On the same 3,282 country-months, restricting to domestic sources lowers average negative framing by **0.76 percentage points for the low group, 0.68 for the middle group, and 0.44 for the high group**. The ordering persists. Foreign and international reporting therefore do not fully account for the low group's higher framing share in this corpus. This does not identify which remaining political, editorial or collection differences explain it.
 
+### Country composition matters
+
+The framing contrast is **sensitive to Nicaragua's sampled coverage**. Nicaragua's mean monthly negative-framing share is **54.05%**, with 5,335 eligible domestic articles and all 48 months above the threshold. Each eligible country receives equal monthly weight, so a country with fewer articles can materially affect its group's mean.
+
+Removing Nicaragua as a diagnostic reduces the low group's average from **7.23% to 5.16%**, below the high group's unchanged **6.13%**. The low group then has the highest framing mean in only **3 of 48 months**. This is not a reason to exclude Nicaragua or assume a coding error. It demonstrates that the displayed average does not describe a pattern shared by most low-freedom countries.
+
+The [country summaries](../slides/figures/data/16_media_freedom_country_sensitivity.csv) and [leave-one-country-out checks](../slides/figures/data/16_media_freedom_leave_one_country_out.csv) reproduce this diagnostic across all 71 countries. Run `python scripts/check_media_freedom_country_sensitivity.py` to rebuild them. The groups remain fixed; removing a country never reallocates the others to different terciles.
+
+### Interpretation
+
+Higher negative alignment means more articles about actions opposing the incumbent, not more criticism by journalists. Higher negative reputational implication means more selected actions coded as reflecting badly on the government, not worse measured government performance. Negative framing concerns critical language in the title or narration.
+
+Consequently, a source can report an opposition action or damaging government conduct without adding its own critical evaluation. Another article can use critical language without selecting an action coded as opposing the government. These separate objects explain why the three shares need not move together. The graph does not hold the reported event or action constant.
+
+One hypothesis is that sampled outlets in different settings differ in their mix of routine reporting and explicit criticism. Another is that the sources, article sections or stories collected differ. Both remain hypotheses. The country sensitivity points to inspecting particular countries and outlets before interpreting the pattern as a feature of their broader media environments. The middle group also has the lowest framing share, so the three-group pattern is not a monotonic relationship between freedom and criticism.
+
 ## Reproduction
 
 With Python, pandas, NumPy and matplotlib installed, run from the repository root:
