@@ -98,8 +98,8 @@ format:
 ## Motivation {.smaller}
 
 -   Polarization is understood as a common feature of politics across the world
--   Media bias is understood to be an important driver of polarization
-    -   [@MartinYurukoglu2017; @kubin2021role]
+-   Media bias is understood to be an important source of polarization
+    -   [@MartinYurukoglu2017; @kubin2021role, @levendusky_2013]
 -   **Big Question:** What are the consequences of media bias and political polarization for the relationship between citizens and government?
     -   Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
     -   Incumbents may deepen polarization strategically [@somer_etal_2021]
@@ -110,7 +110,6 @@ format:
 -   general dependence on policy scales derived from legislative voting behavior or public opinion data. legislative policy scales only available for a handful of countries.
 -   Orhan (2022): affective polarization across 53 countries correlates with backsliding; ideological polarization does not. Cross-national, survey based.
 :::
-
 
 ## Existing work on the US {.smaller .literature-detail}
 
@@ -128,7 +127,6 @@ format:
 -   NOMINATE, DW-NOMINATE, etc.: members who serve in many Congresses link the scale across years. Does anyone think they (and the agenda and what makes it to a floor vote) are consistent over time?
 :::
 
-
 ## How existing work measures bias and polarization {.smaller}
 
 -   **Measures of bias:**
@@ -142,7 +140,6 @@ format:
 ::: notes
 This separates the measurement approaches already listed in the literature review from its substantive debates and findings. Citations and claims are unchanged.
 :::
-
 
 ## Existing comparative work {.smaller}
 
@@ -160,7 +157,6 @@ This separates the measurement approaches already listed in the literature revie
 -   Expert codings of polarization may be informed by the same events that define backsliding. This argues for a measure built from a different data source.
 :::
 
-
 ## A common political reference {.smaller}
 
 -   Bias and polarization require a political dimension and an object of comparison
@@ -173,7 +169,6 @@ This separates the measurement approaches already listed in the literature revie
 ::: notes
 The national incumbent is a proposed common political reference. Its relationship to societal polarization requires validation. Incumbent identity can change within a country series.
 :::
-
 
 ## What does “negative” mean? {.sentiment-questions-slide}
 
@@ -189,7 +184,6 @@ The national incumbent is a proposed common political reference. Its relationshi
 ::: notes
 All examples are illustrative. The budget vote and allegation adapt calibration examples 4–5 in ../prompts/civic_20261020_complete_v1.txt. The rescue title comes from example 6. The first example contrasts different aspects of an event; it does not imply that lives can be netted into an overall sentiment score. General event sentiment is underspecified here until the target and purpose are chosen, not inherently purposeless. An accusation remains an allegation rather than established wrongdoing. These questions precede the project's terminology. The red X marks general event valence as outside the project’s measurement target; it does not mean the question is wrong or unimportant. Green checks mark the three government-related questions the project addresses, not the truth or polarity of their answers.
 :::
-
 
 ## Three judgments about the same government {.sentiment-definitions-slide}
 
@@ -216,7 +210,6 @@ Framing uses only the supplied title and narration. The prompt prohibits browsin
 The illustrative combination is +1/−1/0: alignment follows from the anti-government target, negative reputation illustrates an implication for the government’s handling of peaceful dissent, and the base narration is descriptive. In real records, reputation must be supported separately; the short example is not a rule that every dispersal harms the incumbent’s reputation. In the narrator variation, “Police rightly restored order by dispersing the rioters” endorses restricting the identified government opponents. That political context can make the endorsement government-favoring; praise of police in another context would not automatically do so. “Rioters” alone is not an automatic positive framing cue. Peaceful status stays in the reported base case because removing it would make the negative reputation label unsupported without further context. The short slide phrase about legitimacy describes the coded implication, not measured public opinion. Detailed qualifications are retained here rather than repeated on the slide. Zero includes neutral, mixed and insufficient directional evidence; null means not codable. These are intended coding distinctions, not model accuracy results.
 :::
 
-
 ## The classifier and processing {.classifier-slide}
 
 {{< include includes/classifier.qmd >}}
@@ -224,7 +217,6 @@ The illustrative combination is +1/−1/0: alignment follows from the anti-gover
 ::: notes
 The six stages show how articles reach the analysis: collection and cleaning, translation, civic selection, GenAI coding, checks, and analytical views. The event-type and civic-relevance classifiers select the civic material. GenAI then records the actor, action, target and three political judgments. This provides the transition to the source coverage and measurement sections.
 :::
-
 
 ## Source coverage and analytical sample {.publication-coverage-slide .source-scope-slide}
 
@@ -238,7 +230,6 @@ The six stages show how articles reach the analysis: collection and cleaning, tr
 **3,181,113 eligible articles** · **26 international / mixed-country domains** also included.
 :::
 
-
 ::: notes
 The map shows publication provenance in this project's November 8 frozen analytical release: 404 source domains mapped to 71 publication countries. A further 26 international or mixed-country domains are recorded separately, giving 430 domains in total. Map color counts domains, not articles, audience exposure or political direction. Gray indicates no observed mapped source-domain value in the release.
 
@@ -248,7 +239,6 @@ This is observed processed coverage, not a representative country sample or a me
 
 Reproduction: analysis_snapshot.json, figures/data/06_coverage_map.csv, figures/data/06_coverage_by_year.csv and figures/data/06_split_maps_manifest.json; ../scripts/build_coverage_maps.py. Map data and analytical scope are unchanged by this layout revision.
 :::
-
 
 ## Prompting: government, action, evaluation {.clean-slide .prompt-clean-slide}
 
@@ -273,16 +263,15 @@ The model cannot browse, import other reporting, infer outlet ideology, or treat
 The first two steps establish what the judgments refer to. This is why action selection belongs in validation, but its detailed diagnostics are in the appendix. One government and one main action are separate decisions; they are not a single unexplained restriction. The prompt's examples and evidence spans remain part of the method without becoming extra on-screen requirements for the audience.
 :::
 
-
 ## GenAI validation (Astra-assisted) {.clean-slide .validation-main-slide}
 
 **173 articles where human and GenAI selected the same action**
 
-| Judgment | Supported | Defensible | Scope issue | Revise |
-|---|---:|---:|---:|---:|
-| Political alignment | **89.6%** | 0.6% | 1.2% | 8.7% |
-| Reputational implication | **86.1%** | 5.8% | 1.2% | 6.9% |
-| Framing | **93.1%** | 1.7% | 1.2% | 4.0% |
+| Judgment                 | Supported | Defensible | Scope issue | Revise |
+|--------------------------|----------:|-----------:|------------:|-------:|
+| Political alignment      | **89.6%** |       0.6% |        1.2% |   8.7% |
+| Reputational implication | **86.1%** |       5.8% |        1.2% |   6.9% |
+| Framing                  | **93.1%** |       1.7% |        1.2% |   4.0% |
 
 ::: notes
 Every row uses the same 173 articles: political alignment 155 supported, 1 defensible alternatives, 2 unresolved scope, 15 proposed changes; reputational implication 149 supported, 10 defensible alternatives, 2 unresolved scope, 12 proposed changes; framing 161 supported, 3 defensible alternatives, 2 unresolved scope, 7 proposed changes. Percentages are rounded; exact counts and source versions are retained in the documentation. Defensible means the recorded label is one of multiple comparably rule-consistent readings. It does not enter strict support. A proposed change is a reviewer judgment, not an established human-reference error.
@@ -296,7 +285,6 @@ Most labels are zero (132 alignment, 142 reputation, 152 framing). Directional d
 Sources: figures/data/05_label_reassessment_20261110.json, ../docs/label-reassessment-protocol.md and ../docs/validation.md. Original saved results remain in figures/data/05_event_validation_20261110.json. Original model outputs, article text, prompts, production data and the separate action comparison are unchanged.
 :::
 
-
 ## Most eligible articles have zero-coded labels {.figure-slide}
 
 ![](figures/07_label_distributions.png){fig-align="center" width="100%"}
@@ -305,7 +293,6 @@ Sources: figures/data/05_label_reassessment_20261110.json, ../docs/label-reasses
 Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2%, reputation 85.6%, framing 92.1%. Framing has 251,573 directional records. The zero class combines neutral, mixed and insufficient directional evidence. It is not an estimate of the share of unbiased articles. Strict narration rules, composition, translation and classification error may all affect the distribution. Reproduction: ../scripts/build_slide_figures.py.
 :::
 
-
 ## Positive alignment, negative reputational implication {.figure-slide}
 
 ![](figures/08_alignment_reputation_joint.png){fig-align="center" width="100%"}
@@ -313,7 +300,6 @@ Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2
 ::: notes
 Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
 :::
-
 
 ## Senegal: coverage shifts across the election crisis {.figure-slide .senegal-series-slide}
 
@@ -333,7 +319,6 @@ Salience here means the prevalence of coded support/opposition within this selec
 UN chronology S/2024/521 para 18: Sall postponed the election February 3, parliament rescheduled February 5, Constitutional Council overturned February 15; election March 24; Faye inaugurated April 2. https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . The dotted line is positioned on April 2, just inside April, and marks the new incumbent. Monthly observations and labels sit at each calendar month's midpoint; small ticks mark month starts. Midpoint placement does not imply an observation on that day. External chronology contextualizes stored coding without recoding it. New plot: ../scripts/build_senegal_directional_shares.py; frozen source: figures/data/09_senegal_monthly_indices.csv; manifest 09_senegal_directional_shares_manifest.json. Original P assets are retained as reproducible background.
 :::
 
-
 ## Application 1: polarization in Senegal coverage {.clean-slide .figure-slide .senegal-p-slide}
 
 ![](figures/14_senegal_polarization_application.png){width="100%"}
@@ -347,7 +332,7 @@ This P plot uses the same October 2023–June 2024 window and November 8 frozen 
 
 Speaking caveat: most articles have day-level publication dates, but not all dates are reliable and observations are not guaranteed every day. The event markers supply historical context; the monthly lines cannot establish a day-by-day response. No daily completeness or date-accuracy audit is claimed here.
 
-P = 4 × p_positive × p_negative. It rises when both directions are common. Salience, meaning the share with either positive or negative coding, is S = p_positive + p_negative. P is not salience alone: for S > 0 it equals S² times the balance of the two directions, where balance B = 4p_positive p_negative / S². A one-sided corpus can have high S and low P. The theoretical P range is 0–1; the displayed axis runs 0–0.13 to show these observed values. These are article shares, not unique events or audience exposure.
+P = 4 × p_positive × p_negative. It rises when both directions are common. Salience, meaning the share with either positive or negative coding, is S = p_positive + p_negative. P is not salience alone: for S \> 0 it equals S² times the balance of the two directions, where balance B = 4p_positive p_negative / S². A one-sided corpus can have high S and low P. The theoretical P range is 0–1; the displayed axis runs 0–0.13 to show these observed values. These are article shares, not unique events or audience exposure.
 
 Political-alignment P falls from approximately 0.110 in February to 0.016 in March. Alignment salience falls from 33.6% to 15.0%. Reputation and framing P remain much lower because positive and negative judgments do not coexist as frequently; read their separate sign shares on the preceding slide. The next two slides examine which actors and actions help account for the changing composition of coverage.
 
@@ -372,7 +357,6 @@ Among 182 negative-alignment February records, top specified actions include urg
 The figure replaces the two tables. Left: selected actor categories and positive/negative political-alignment article counts, February 2024. Right: action shares among all eligible articles, February n = 934 and March n = 874. March voting 201/874 = 23.0%, versus 14/934 = 1.5% in February. 168 of 201 March voting records have zero political alignment. Actor categories are selected, not exhaustive; other_act stays in full denominators. Sources and figure hashes: figures/data/14_presentation_revision_manifest.json; ../scripts/build_presentation_revision_figures.py.
 :::
 
-
 ## Senegal: connecting the labels to reported actions {.clean-slide .story-clean-slide}
 
 ```{=html}
@@ -396,7 +380,6 @@ SEN-05, France24 February 15: https://www.france24.com/en/africa/20240215-senega
 SEN-06, BBC March 24: stored example/link in figures/data/09_senegal_article_examples.json; voting, 0/0/0; retained English translation 421 characters, saved original body 1604 characters. All displayed examples have exact saved-attempt membership and plan/input hashes checked against the frozen audit. Literal evidence matching is not semantic validation. Do not treat selected four examples as representative frequency estimates. Reproducible public short evidence and URLs: 09_senegal_article_examples.json.
 :::
 
-
 ## Zimbabwe: the same incumbent, different framing {.source-series-slide .zimbabwe-series-slide}
 
 ![](figures/13_zimbabwe_framing_shares.png){fig-align="center" width="100%"}
@@ -414,7 +397,6 @@ The direct positive case is Chronicle September 14: https://www.chronicle.co.zw/
 
 Possible contributors include different events, genres, repeated stories, access, source selection, supplied text completeness and model sensitivity. The next slide offers one same-event comparison, not an adjustment of the aggregate gap. Scripts/build_zimbabwe_source_comparison.py verifies hashes and can reconcile all three frozen private caches; public aggregates and sign denominators are in 13_zimbabwe_monthly_framing.csv, 13_zimbabwe_source_summary.json and13_zimbabwe_manifest.json. Short article evidence with verified audit membership is in 13_zimbabwe_article_examples.json. No new model coding or production changes.
 :::
-
 
 ## The same court decision, different portrayals {.clean-slide .quote-pair-slide}
 
@@ -440,7 +422,6 @@ ZimLive's current About page identifies Makhwedini Media Trust, a Zimbabwe-regis
 Institutional context is spoken rather than another on-screen paragraph: Chronicle belongs to government-controlled Zimpapers; the EU observer report provides related evidence of favorable incumbent coverage, with different units and dates. Ownership is context, not a causal explanation of this one pair. The framing codes require human confirmation of the link between portraying the opposition and evaluating the government. Do not equate either outlet with a fixed political identity from this pair.
 :::
 
-
 ## Application 2: foreign governments {.foreign-map-questions-slide}
 
 ::: foreign-map-subtitle
@@ -461,7 +442,6 @@ When the evaluated government differs from the country of publication
 :::
 :::::
 
-
 ::: notes
 The evaluated-government map counts 3,181,113 eligible articles across 211 country/territory codes. It differs in unit and scale from the publication-country map: article counts by evaluated government rather than source-domain counts by publication country. It includes domestic, foreign, and international reporting. It does not imply collection of local outlets in 211 sovereign states. Article volume is neither political polarization nor a count of unique events.
 
@@ -471,7 +451,6 @@ Possible designs include a source-by-evaluated-government panel over common mont
 
 Map source: figures/data/06_coverage_map.csv, the same pinned November 8 release in analysis_snapshot.json, and Natural Earth v5.1.2. Reproduction and source hashes: ../scripts/build_coverage_maps.py and figures/data/06_split_maps_manifest.json.
 :::
-
 
 ## One outlet, two governments {.clean-slide .figure-slide}
 
@@ -489,7 +468,6 @@ These pooled comparisons do not hold events, articles, genre, time, translation,
 This is an example for Application 2, not a second lesson on P. Separate positive and negative framing shares show direction directly. Large-scale source–government matching can identify comparisons worth testing.
 :::
 
-
 ## Application 3: press freedom and coverage {.clean-slide .figure-slide .media-freedom-slide}
 
 ![](figures/16_media_freedom_domestic.png){width="100%"}
@@ -506,24 +484,23 @@ Averages of the 48 monthly country means, low/middle/high: negative political al
 The framing contrast is sensitive to country composition. Nicaragua's sampled domestic coverage has a 54.05% mean monthly negative-framing share, based on 5,335 eligible articles across 48 months. Removing Nicaragua as a diagnostic lowers the low-group mean from 7.23% to 5.16%, below the high group's 6.13%. This is not a reason to discard Nicaragua or evidence its coding is wrong; it shows the average is not a general pattern shared by low-freedom countries. Nor is framing monotonic across the three freedom groups: the middle group is lowest. Foreign-source coverage does not fully explain the displayed ordering, but source selection, article genre, event mix, translation and coding differences remain unresolved. A possible distinction between routine reporting of damaging conduct and sharper editorial criticism in particular sampled outlets is a hypothesis, not a mechanism identified here. Examine country and outlet distributions and comparable events before attributing the pattern to media freedom. Reproduction and checks: ../docs/media-freedom-comparison.md and figures/data/16_media_freedom_manifest.json. Erik's supplied original remains archived separately.
 :::
 
-
 ## Nicaragua: framing differs across outlets {.clean-slide .nicaragua-outlets-slide}
 
 Framing toward Nicaragua’s government · Six largest sampled outlets · 2022–2025
 
-| Outlet | Articles | Negative framing | Positive framing |
-|---|---:|---:|---:|
-| Artículo 66 | 1,832 | **71.4%** | 0.2% |
-| La Prensa | 1,445 | **54.3%** | 0.3% |
-| Confidencial | 988 | **65.1%** | 0.0% |
-| Onda Local | 233 | **70.8%** | 0.0% |
-| Nueva Radio Ya | 473 | 0.0% | **17.3%** |
-| Canal 2 | 328 | 0.0% | **8.5%** |
+| Outlet         | Articles | Negative framing | Positive framing |
+|----------------|---------:|-----------------:|-----------------:|
+| Artículo 66    |    1,832 |        **71.4%** |             0.2% |
+| La Prensa      |    1,445 |        **54.3%** |             0.3% |
+| Confidencial   |      988 |        **65.1%** |             0.0% |
+| Onda Local     |      233 |        **70.8%** |             0.0% |
+| Nueva Radio Ya |      473 |             0.0% |        **17.3%** |
+| Canal 2        |      328 |             0.0% |         **8.5%** |
 
 **Including Nicaragua raises the low-freedom negative-framing average: 5.16% → 7.23%.**
 
 ::: notes
-Same January 2022–December 2025 period, November 4 frozen caches and domestic eligibility as Application 3. All 48 Nicaragua months pass the country-month n >= 30 rule. The eight sources contribute 5,335 articles, including 2,909 negative-framing labels. The table shows the six largest sampled outlets (5,299 articles); La Jornada and La Verdad contribute 31 and 5 further articles. These percentages pool articles over the period and include zero-coded labels in each denominator. They describe collected eligible articles, not each outlet's complete published output. Source-month counts reconcile exactly with the preceding figure's Nicaragua counts on all three dimensions.
+Same January 2022–December 2025 period, November 4 frozen caches and domestic eligibility as Application 3. All 48 Nicaragua months pass the country-month n \>= 30 rule. The eight sources contribute 5,335 articles, including 2,909 negative-framing labels. The table shows the six largest sampled outlets (5,299 articles); La Jornada and La Verdad contribute 31 and 5 further articles. These percentages pool articles over the period and include zero-coded labels in each denominator. They describe collected eligible articles, not each outlet's complete published output. Source-month counts reconcile exactly with the preceding figure's Nicaragua counts on all three dimensions.
 
 The bottom line compares averages of the 48 monthly equal-country means, with fixed group membership: 7.226% with Nicaragua, 5.164% excluding it as a diagnostic, a 2.062 percentage-point difference. Nicaragua stays in the plotted line. Its own monthly mean is 54.048%, versus 54.527% pooling its articles. Its mean monthly country weight is 4.22%; it changes a relatively small group gap rather than dominating the weights. The high-group mean is 6.127%. The comparison does not establish a causal effect or justify dropping Nicaragua.
 
@@ -534,16 +511,15 @@ There are elevated country rates in all three relative freedom groups, but none 
 Reproducible counts and comparison: figures/data/18_nicaragua_outlet_counts.csv, 18_nicaragua_outlet_month_counts.csv, 18_nicaragua_provenance_and_summary.json and 18_nicaragua_comparison.json. Check: ../scripts/check_nicaragua_outlets.py. Context: https://www.unesco.org/en/articles/nicaraguan-newspaper-la-prensa-wins-unesco/guillermo-cano-world-press-freedom-prize-2025 ; https://rsf-es.org/nicaragua-el-exilio-es-la-unica-forma-de-supervivencia-para-el-periodismo-independiente/ ; https://nuevaya.com.ni/destacadas/tu-nueva-radio-ya-y-el-pueblo-dedican-serenata-a-comandante-daniel-ortega-en-su-cumpleanos-79/ .
 :::
 
-
 ## Coverage varies across outlets {.clean-slide .figure-slide .outlet-variation-slide}
 
-::: {.outlet-variation-scope}
+::: outlet-variation-scope
 Domestic coverage · 401 outlets · January 2022–December 2025
 :::
 
 ![](figures/20_media_freedom_outlet_variation_slide.png){width="100%"}
 
-::: {.outlet-variation-key}
+::: outlet-variation-key
 Groups: media freedom. Box: middle 50%; line: median; diamond: mean. Open circles: fewer than 30 articles. Panel scales differ.
 :::
 
@@ -561,22 +537,21 @@ After excluding outlets with fewer than 30 articles, negative framing exceeds an
 This is between-outlet variation, not volatility over time. Outlets may cover different months, events, actors or genres, and collection gaps can matter. A high spread does not establish polarized camps or causal effects of press freedom. The question is whether recurring differences survive comparisons of the same events and periods. Reproduction: ../scripts/build_media_freedom_outlet_variation.py. Data and checks: figures/data/20_media_freedom_outlet_rates.csv and 20_media_freedom_variation_manifest.json. Country supplement remains available in figures/20_media_freedom_within_country_variation.png.
 :::
 
-
 ## Discussion {.clean-slide .discussion-slide}
 
-::: {.discussion-question}
+::: discussion-question
 **How can we identify polarization in news coverage?**
 
 Persistent divisions among actors, between outlets, or both?
 :::
 
-::: {.discussion-question}
+::: discussion-question
 **Which kinds of media bias can we identify, and how?**
 
 Which events and actors are selected; how comparable events are framed.
 :::
 
-::: {.discussion-question}
+::: discussion-question
 **How do regime type and press freedom shape what we observe?**
 
 Fewer civic actions, less reporting of them, or different framing?
@@ -596,16 +571,15 @@ The third question concerns the underlying opportunity to report. Regime conditi
 Invite suggestions for comparisons or external evidence that could distinguish these explanations. These are research questions, not causal conclusions from the descriptive figures.
 :::
 
-
 ## Appendix: choosing the same reported action {.clean-slide .backup}
 
 **Three-way comparison · the same 251 reviewable articles**
 
-| Comparison | Same action | Agreement |
-|---|---:|---:|
-| Human–Luna | 179 / 251 | **71.3%** |
-| Human–review reference | 184 / 251 | **73.3%** |
-| Luna–review reference | 221 / 251 | **88.0%** |
+| Comparison             | Same action | Agreement |
+|------------------------|------------:|----------:|
+| Human–Luna             |   179 / 251 | **71.3%** |
+| Human–review reference |   184 / 251 | **73.3%** |
+| Luna–review reference  |   221 / 251 | **88.0%** |
 
 First establish **what was selected**. Then compare its political labels.
 
@@ -619,19 +593,17 @@ The common 251-case comparison includes both coders' interpretable choices and a
 Historical inputs and rules differed: seven text views changed, and 193/266 articles date from 2012–2013. This does not establish Luna's superiority or population accuracy. Excluding changed views gives human–Luna 175/245, human–reference 180/245, and Luna–reference 215/245. Restricting to valid outputs gives 175/247, 180/247, and 217/247, respectively. The initial blind-pass rates on 251 cases were 180/251, 186/251, and 220/251. Assigning either possible anchor to each of the two ambiguous cases gives a common denominator of 253: human–Luna 179–181 matches, human–reference 184–186, and Luna–reference 223. Uncertainty remains visible. Full metrics and provenance: figures/data/05_event_validation_20261110.json and ../docs/validation.md.
 :::
 
-
 ## Appendix: where action choices differ {.clean-slide .backup}
 
-| On the common 251 articles | Articles |
-|---|---:|
-| All three select the same action | **172** |
-| Only Luna matches the review reference | **49** |
-| Only the human matches the review reference | **12** |
-| Human and Luna agree; reference differs | **7** |
-| All three select different actions | **11** |
+| On the common 251 articles                  | Articles |
+|---------------------------------------------|---------:|
+| All three select the same action            |  **172** |
+| Only Luna matches the review reference      |   **49** |
+| Only the human matches the review reference |   **12** |
+| Human and Luna agree; reference differs     |    **7** |
+| All three select different actions          |   **11** |
 
-Among both choosing an action: **173 / 213 agree (81.2%)**.<br>
-Including explicit no-action choices: **184 / 264 agree (69.7%)**.
+Among both choosing an action: **173 / 213 agree (81.2%)**.<br> Including explicit no-action choices: **184 / 264 agree (69.7%)**.
 
 ::: notes
 The five groups partition 251 cases and reproduce all three pairwise rates: human–Luna 172 + 7 = 179; human–reference 172 + 12 = 184; Luna–reference 172 + 49 = 221. Shared choices that differ from the reference remain included. The full 264 interpretable human–Luna pairs include 173 shared actual actions, 40 different actual actions, 11 shared NONE choices, and 40 one-sided action/NONE choices. Two ambiguous anchors remain outside this observed-pair comparison; their alternative assignments are documented. Structural-output and changed-text filters are separate diagnostics. All four structural failures are retained here because their actions are interpretable.
@@ -639,19 +611,18 @@ The five groups partition 251 cases and reproduce all three pairwise rates: huma
 The historical review's 121 Luna-preferred and 44 human-preferred cases mix selection and extraction quality and are no longer the main action result; see the historical validation archive. Agreement on action identity can coexist with a preference for a more complete extraction. The new three-way comparison measures identity only.
 :::
 
-
 ## Appendix: other fields after choosing the same action {.clean-slide .backup}
 
 **173 shared actions · compare each field where both values are available**
 
-| Recorded field | Human–Luna matches |
-|---|---:|
-| Main action category | 109 / 173 · **63.0%** |
-| All action categories | 100 / 173 · **57.8%** |
-| Actor category | 108 / 157 · **68.8%** |
-| Exact actor wording | 48 / 154 · **31.2%** |
-| Prior action triggering this action | 9 / 20 · **45.0%** |
-| Evaluated government | 5 / 13 · **38.5%** |
+| Recorded field                      |    Human–Luna matches |
+|-------------------------------------|----------------------:|
+| Main action category                | 109 / 173 · **63.0%** |
+| All action categories               | 100 / 173 · **57.8%** |
+| Actor category                      | 108 / 157 · **68.8%** |
+| Exact actor wording                 |  48 / 154 · **31.2%** |
+| Prior action triggering this action |    9 / 20 · **45.0%** |
+| Evaluated government                |    5 / 13 · **38.5%** |
 
 ::: notes
 Main action category means the first tag; all action categories compares the exact tag set, not string ordering. Actor category extracts the existing A–W code. Exact actor wording means literal equality, not semantic entity accuracy. Case and spacing normalization raises the match rate to 57/154 (37.0%). Short aliases can identify the same entity.
@@ -661,14 +632,13 @@ Missing or uncodable values are not credited as matches and are excluded from ea
 No complete independent third set of these fields exists, so a three-way field table cannot be supplied. Source-based review and historical tag assessments answer different questions.
 :::
 
-
 ## Appendix: checking positive and negative labels {.clean-slide .backup}
 
-| Label supported | All labels | Only +1 / −1 labels |
-|---|---:|---:|
-| Political alignment | 155 / 173 · **89.6%** | 28 / 41 · **68.3%** |
+| Label supported          |            All labels | Only +1 / −1 labels |
+|--------------------------|----------------------:|--------------------:|
+| Political alignment      | 155 / 173 · **89.6%** | 28 / 41 · **68.3%** |
 | Reputational implication | 149 / 173 · **86.1%** | 16 / 31 · **51.6%** |
-| Framing | 161 / 173 · **93.1%** | 12 / 21 · **57.1%** |
+| Framing                  | 161 / 173 · **93.1%** | 12 / 21 · **57.1%** |
 
 Most labels are zero. Defensible alternatives remain in the denominators.
 
@@ -681,7 +651,6 @@ Examples of why review matters: the Mexican union-arrest article adds a narrator
 
 Sources: figures/data/05_label_reassessment_20261110.json and ../docs/validation.md. The original results remain separately available in figures/data/05_event_validation_20261110.json.
 :::
-
 
 ## Appendix: what stronger research claims require {.validation-slide .backup}
 
@@ -700,7 +669,6 @@ The progression is measurement validity, comparative coverage, then the link to 
 
 Representative human-reference accuracy of the three current labels remains unmeasured. The historical human field cannot serve as three independent labels. Dependent AI review helps select disagreements for adjudication but does not establish performance. Review government/action/entity extraction, narrator attribution and translation, with explicit sampling of minority directional labels. Study sensitivity to source mix, repeated reporting, prompt version, zero codes and the action-based eligibility rule. Preserve unknown/not codable separately. Documentation: ../docs/validation.md and ../docs/codebook.md.
 :::
-
 
 ## References {.smaller .backup .scrollable}
 
