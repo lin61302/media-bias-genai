@@ -1,0 +1,170 @@
+{
+  "title": "Negative domestic coverage with alternative outlet-volume weights",
+  "snapshot": "2026-11-04T13:38:01.213139+00:00",
+  "period": [
+    "2022-01",
+    "2025-12"
+  ],
+  "inputs": {
+    "outlet_counts": {
+      "path": "slides/figures/data/19_media_freedom_outlet_month_counts.csv",
+      "sha256": "b9b93faf3879ae1a328b0ff20b753f0e0fe7c605921efd3710053aed1a6e2edd"
+    },
+    "extraction": {
+      "path": "slides/figures/data/19_media_freedom_outlet_extraction.json",
+      "sha256": "e089969e3ff7569bfa867b2d7bfd8a767bbbbc8a778243627b61c719b9ae3d65"
+    },
+    "country_counts": {
+      "path": "slides/figures/data/16_media_freedom_country_month.csv",
+      "sha256": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d"
+    },
+    "groups": {
+      "path": "slides/figures/data/16_media_freedom_groups.csv",
+      "sha256": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+    },
+    "baseline": {
+      "path": "slides/figures/data/16_media_freedom_monthly_series.csv",
+      "sha256": "4058f61320afab8487dea2d08bab56ae62251ebda279ba14c118824ffab446ae"
+    },
+    "nicaragua": {
+      "path": "slides/figures/data/18_nicaragua_outlet_month_counts.csv",
+      "sha256": "905cc28235f2923430204a9ae8f14733f0ca2291e150620681d039f6891919f0"
+    }
+  },
+  "scripts": [
+    {
+      "path": "scripts/build_media_freedom_outlet_weights.py",
+      "sha256": "32b636f99f6b0dd38c6b1b25ca26080f3eb9c1b86ad18025189490b6c393a56c"
+    },
+    {
+      "path": "scripts/build_domestic_media_freedom.py",
+      "sha256": "d4d5082f71757ae0882f757aa7b40c9bc345e64f7404f87e55da518212d3fe1f"
+    },
+    {
+      "path": "scripts/build_media_freedom_signs.py",
+      "sha256": "2670c1da634e621694dadbc8726dfb90e4eaee6ff292b6604d12100eb0db40ab"
+    }
+  ],
+  "checks": {
+    "all_ten_counts_reconcile_to_every_baseline_domestic_country_month": true,
+    "all_384_nicaragua_outlet_month_cells_reconcile": true,
+    "eligible_country_months": 3282,
+    "eligible_articles": 1650617,
+    "eligible_nonempty_outlet_months": 16176,
+    "exact_domains": 401,
+    "median_eligible_outlet_month_count_k": 40.0,
+    "same_country_month_support_all_methods": true,
+    "weights_normalized_within_country_month": true,
+    "three_signs_sum_to_one": true,
+    "article_reference_max_absolute_errors": {
+      "align_negative_share": 4.898720318280425e-13,
+      "align_negative_share_centered3": 4.910932771551302e-13,
+      "rep_negative_share": 4.811706588725428e-13,
+      "rep_negative_share_centered3": 4.83252327043715e-13,
+      "frame_negative_share": 4.975186929101483e-14,
+      "frame_negative_share_centered3": 4.984901380566953e-14
+    }
+  },
+  "diagnostics": {
+    "article_reference": {
+      "low_framing_above_high_months": 42,
+      "low_framing_highest_months": 42,
+      "nicaragua_mean_monthly_negative_framing": 0.5404825492623945
+    },
+    "equal_outlet_reference": {
+      "low_framing_above_high_months": 45,
+      "low_framing_highest_months": 45,
+      "nicaragua_mean_monthly_negative_framing": 0.4161401465672488
+    },
+    "sqrt": {
+      "low_framing_above_high_months": 45,
+      "low_framing_highest_months": 45,
+      "nicaragua_mean_monthly_negative_framing": 0.48595683894273717
+    },
+    "saturating": {
+      "low_framing_above_high_months": 45,
+      "low_framing_highest_months": 45,
+      "nicaragua_mean_monthly_negative_framing": 0.5100994501700089
+    },
+    "saturating_k_half": {
+      "low_framing_above_high_months": 44,
+      "low_framing_highest_months": 44,
+      "nicaragua_mean_monthly_negative_framing": 0.49354524124433224
+    },
+    "saturating_k_double": {
+      "low_framing_above_high_months": 44,
+      "low_framing_highest_months": 44,
+      "nicaragua_mean_monthly_negative_framing": 0.5224579092098519
+    }
+  },
+  "plot_y_maxima": {
+    "align": 0.15000000000000002,
+    "rep": 0.17500000000000002,
+    "frame": 0.1
+  },
+  "methods": {
+    "outlet_share": "Sign count / all eligible articles from that exact source domain in that country-month; zero labels remain.",
+    "sqrt": "Unnormalized outlet score sqrt(n). Normalize within each country-month, then average the outlet shares with these weights.",
+    "saturating": "Unnormalized outlet score n/(n+k), k=40. Normalize within each country-month. k is the median of all 16,176 nonempty outlet-month counts on the common eligible support; one fixed k for all countries, months and labels.",
+    "k_interpretation": "Reference tuning scale chosen from counts only. Half the limiting unnormalized score at n=k. No fitted correlation, audience reach or optimality claim. k/2=20 and 2k=80 are exported sensitivity settings.",
+    "same_support": "3,282 country-months with n>=30, 1,650,617 articles. Every nonempty outlet-month included, even n=1. Absent outlets are missing, never zero-coded.",
+    "country_group_stage": "Equal-country arithmetic means each month within unchanged 24/23/24 V-Dem groups. Countries do not receive square-root or saturating weights.",
+    "centered3": "Full 48-month calendar, centered three-month arithmetic mean with all three required. No interpolation; first and last smoothed points missing.",
+    "summary": "Arithmetic mean of 48 unsmoothed monthly group means, not pooled article shares or means of country-period means.",
+    "references": "Article weighting and equal active outlet weighting are retained only in CSVs, not shown as either new alternative.",
+    "extraction_receipt": "Immutable upstream receipt predates the user's correction. Its downstream_weighting field describes the initial request, not the final plotted methods. This manifest specifies the final methods."
+  },
+  "limitations": [
+    "Volume weights do not estimate audience exposure or repair omitted outlets, genres, domains or collection gaps.",
+    "Saturation bounds the raw score, not an outlet's normalized share. One observed outlet still has weight one.",
+    "Square-root scores grow without bound. Saturating weights are not uniformly more equal than square-root weights for every count pair.",
+    "No uncertainty intervals or causal effects are estimated. No model, provider or database calls were made for this analysis."
+  ],
+  "outputs": [
+    {
+      "path": "slides/figures/data/19_media_freedom_outlet_weights.csv",
+      "sha256": "ac3b5b1aff5017a1a6c2f0dc8a746c32ad808f4db06bd7325932005a3e3d40af",
+      "bytes": 2144907
+    },
+    {
+      "path": "slides/figures/data/19_media_freedom_weighted_country_month.csv",
+      "sha256": "5b59f4a227e7234404570e9f7ddbe0989b8bc9a0b0e8963bc272daaab8cc2857",
+      "bytes": 3473400
+    },
+    {
+      "path": "slides/figures/data/19_media_freedom_weighted_monthly.csv",
+      "sha256": "57b1e6046be93135a94a65fb3bd14b279dcdb992f01851d33f92c7237cb5b525",
+      "bytes": 351973
+    },
+    {
+      "path": "slides/figures/data/19_media_freedom_weighted_summary.csv",
+      "sha256": "73dfe83173acbfbfc7a108aefed1bd06e5232e04e58759390ec3b3b9d0139570",
+      "bytes": 3068
+    },
+    {
+      "path": "slides/figures/data/19_media_freedom_weighted_country_summary.csv",
+      "sha256": "fa623627e4a85c0abdcbf1976573231e535c3423f1a760aaaa4e25da332d2153",
+      "bytes": 69993
+    },
+    {
+      "path": "slides/figures/19_media_freedom_sqrt_outlets.png",
+      "sha256": "c528366a95580146872e3b06774e2132fb93749eddf610a98d96e420f3ec627a",
+      "bytes": 425178
+    },
+    {
+      "path": "slides/figures/19_media_freedom_sqrt_outlets.svg",
+      "sha256": "96f1f4bb76eae4f1f11e4f369bfe965275a316e1be1d10791fc51b87b3799b37",
+      "bytes": 39590
+    },
+    {
+      "path": "slides/figures/19_media_freedom_saturating_outlets.png",
+      "sha256": "5187f139962ee56aa938b4ae83258eaab11fc262ca8698e334fcd50496affa72",
+      "bytes": 414298
+    },
+    {
+      "path": "slides/figures/19_media_freedom_saturating_outlets.svg",
+      "sha256": "333649def2a4d37b8c18c11bed3f53959e977b7ff06e41fc5ac8b899e452f446",
+      "bytes": 39599
+    }
+  ]
+}

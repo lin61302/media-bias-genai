@@ -7,6 +7,7 @@ This comparison asks whether the patterns in negative coverage remain when a new
 - [Domestic-only plot](../slides/figures/16_media_freedom_domestic.png) ([SVG](../slides/figures/16_media_freedom_domestic.svg))
 - [All-origin and domestic plots on matching scales](../slides/figures/16_media_freedom_scope_comparison.png)
 - [Positive domestic coverage](../slides/figures/17_media_freedom_positive.png), [negative and positive shares on matching scales](../slides/figures/17_media_freedom_sign_comparison.png), and [all nonzero coverage](../slides/figures/17_media_freedom_directional.png)
+- Negative coverage with [square-root outlet weights](../slides/figures/19_media_freedom_sqrt_outlets.png) and [saturating outlet weights](../slides/figures/19_media_freedom_saturating_outlets.png)
 - [Country-month counts, all signs](../slides/figures/data/16_media_freedom_country_month.csv)
 - [Monthly plotted values](../slides/figures/data/16_media_freedom_monthly_series.csv), [country participation](../slides/figures/data/16_media_freedom_contributing_countries.csv), and [fixed groups](../slides/figures/data/16_media_freedom_groups.csv)
 - [Comparison using identical country-months](../slides/figures/data/16_media_freedom_same_support.csv)
@@ -105,6 +106,46 @@ The middle group has the lowest period-average S on all three dimensions. The hi
 S measures how often a direction is coded; it does not measure disagreement between outlets or citizens. The separate shares reveal whether both directions appear or one dominates. The supplemental tables also retain `P = 4 × positive share × negative share`, calculated **within each country-month before taking equal-country monthly means**. Multiplying the two group-average shares instead would create a different quantity and can imply two-sided coverage by combining countries with opposing, one-sided patterns. Neither quantity establishes polarization between outlets or among the public.
 
 The [monthly values](../slides/figures/data/17_media_freedom_sign_monthly.csv), [period summaries](../slides/figures/data/17_media_freedom_sign_summary.csv) and [methods manifest](../slides/figures/data/17_media_freedom_sign_manifest.json) accompany the figures. Run `python scripts/build_media_freedom_signs.py` to rebuild them from the frozen local aggregates, without model or database calls.
+
+## Two alternatives to article and equal-outlet weights
+
+The two supplemental figures change **outlet weights within each country-month**. Countries still receive equal weight in their freedom-group line. They use exactly the original domestic support: 1,650,617 articles, 3,282 country-months, and 16,176 nonempty outlet-months. Every nonempty outlet-month participates, including those with one article. An absent outlet-month is missing, not zero-coded coverage.
+
+For outlet `o` in country `c` and month `t`, let `n` be its eligible article count and `p` its negative count divided by `n`. Calculate a weighted mean of outlet shares within that country-month:
+
+$$
+q_{ct}=\frac{\sum_o f(n_{oct})p_{oct}}{\sum_o f(n_{oct})}.
+$$
+
+Then average `q` equally across the available countries in each fixed freedom group. The same weights apply to every dimension and sign; positive and zero labels remain in the denominator.
+
+**Square-root weights:** $f(n)=\sqrt n$. A tenfold difference in collected article count becomes a 3.16-fold difference in outlet weight. Larger samples still matter, but less than proportionally. This is a sensitivity choice, not an optimality claim.
+
+**Saturating weights:** $f(n)=n/(n+k)$, with **k = 40**. Forty is the median nonempty outlet-month count on the eligible support, chosen from counts without examining labels. An outlet with 40 articles receives half the limiting raw score; additional articles add diminishing weight. The raw score approaches one, but this is not a hard cap on an outlet's normalized share. One observed outlet still receives the entire country-month weight.
+
+A mathematical motivation for saturation is the effective sample size of correlated observations, $n/[1+(n-1)\rho]$. This follows the standard within-cluster design effect described by [Campbell, Elbourne and Altman (2004)](https://www.bmj.com/content/328/7441/702.full). Under a common within-outlet correlation scenario, normalizing these effective counts gives the saturating form with $k=(1-\rho)/\rho$. **We have not estimated that correlation.** The median-based `k` is a reference tuning setting, not fitted precision or audience influence. Smaller `k` approaches equal active-outlet weights; larger `k` approaches article-count weights. Square-root scores grow without bound; neither alternative is uniformly more equal than the other at every count range.
+
+### What changes?
+
+Values below average the 48 monthly equal-country means. Column order is **low / middle / high** media freedom.
+
+| Weighting within country-month | Negative alignment | Negative reputational implication | Negative framing |
+| --- | --- | --- | --- |
+| Original article counts | 7.89 / 7.03 / 10.61% | 10.71 / 7.76 / 13.09% | 7.23 / 4.37 / 6.13% |
+| Square root | 8.01 / 6.84 / 10.49% | 11.03 / 7.61 / 13.05% | 7.60 / 4.33 / 6.20% |
+| Saturating, k = 40 | 7.99 / 6.85 / 10.49% | 10.95 / 7.60 / 13.05% | 7.48 / 4.30 / 6.18% |
+
+The main ordering persists under both alternatives. The low group has the highest negative-framing share in 45 of 48 unsmoothed months under each, compared with 42 under the original article weights. This is descriptive robustness to these volume transformations, not a significance test or evidence of national representativeness.
+
+Nicaragua's average monthly negative framing falls from **54.05%** with article weights to **48.60%** with square-root weights and **51.01%** with saturating weights. Nevertheless, the low group's mean increases slightly because the reweighting changes every country's outlet mix, not Nicaragua alone. The result should not be interpreted as simply discounting one country. Equal countries means Nicaragua retains its original monthly country weight.
+
+Changing the saturation setting to `k = 20` gives negative-framing group means of **7.63 / 4.29 / 6.22%**; `k = 80` gives **7.38 / 4.32 / 6.16%**. The ordering also persists in these checks. They are reported to expose the tuning choice, not to select the setting that produces a preferred result.
+
+These methods reduce the influence of collected article volume. Neither measures audience reach or corrects missing outlets, news/opinion selection, domain changes or collection gaps. A small collected sample can reflect a small outlet, incomplete scraping or few eligible stories; volume alone cannot distinguish these. The national-media-environment claim still requires an outlet inventory and suitable external audience information.
+
+For discussion: **Should an outlet's contribution reflect its audience, its amount of reporting, or the distinct editorial perspective it adds? What external benchmark would let us make that choice?**
+
+Run `python scripts/build_media_freedom_outlet_weights.py` to reproduce both PNG/SVG figures. The [outlet counts](../slides/figures/data/19_media_freedom_outlet_month_counts.csv), [normalized outlet weights](../slides/figures/data/19_media_freedom_outlet_weights.csv), [country-month shares](../slides/figures/data/19_media_freedom_weighted_country_month.csv), [monthly group values](../slides/figures/data/19_media_freedom_weighted_monthly.csv), [summary](../slides/figures/data/19_media_freedom_weighted_summary.csv) and [methods/checks](../slides/figures/data/19_media_freedom_weighted_manifest.json) are included. The CSVs also retain original article weighting, equal active-outlet weighting and the two alternative `k` settings as references. The [upstream extraction receipt](../slides/figures/data/19_media_freedom_outlet_extraction.json) is immutable: its `downstream_weighting` field records the initial request before the choice of saturation; the final calculation manifest specifies the plotted methods.
 
 ## Reproduction
 
