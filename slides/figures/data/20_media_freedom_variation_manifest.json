@@ -1,0 +1,144 @@
+{
+  "title": "Variation in negative and positive domestic coverage across media outlets",
+  "snapshot": "2026-11-04T13:38:01.213139+00:00",
+  "period": [
+    "2022-01",
+    "2025-12"
+  ],
+  "inputs": {
+    "outlet_counts": {
+      "path": "slides/figures/data/19_media_freedom_outlet_month_counts.csv",
+      "sha256": "b9b93faf3879ae1a328b0ff20b753f0e0fe7c605921efd3710053aed1a6e2edd"
+    },
+    "country_counts": {
+      "path": "slides/figures/data/16_media_freedom_country_month.csv",
+      "sha256": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d"
+    },
+    "groups": {
+      "path": "slides/figures/data/16_media_freedom_groups.csv",
+      "sha256": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+    }
+  },
+  "scripts": [
+    {
+      "path": "scripts/build_media_freedom_outlet_variation.py",
+      "sha256": "0a9746f42faead6584a32303f6d90abd5a2a66e1e6d3aa36adc3f678649d3d51"
+    },
+    {
+      "path": "scripts/build_domestic_media_freedom.py",
+      "sha256": "d4d5082f71757ae0882f757aa7b40c9bc345e64f7404f87e55da518212d3fe1f"
+    }
+  ],
+  "checks": {
+    "eligible_country_months": 3282,
+    "eligible_articles": 1650617,
+    "eligible_nonempty_outlet_months": 16176,
+    "exact_domains": 401,
+    "domains_assigned_to_multiple_countries": 0,
+    "outlets_total_n_below_30": 14,
+    "outlets_by_group": {
+      "high": 123,
+      "low": 151,
+      "middle": 127
+    },
+    "small_outlets_by_group": {
+      "high": 7,
+      "low": 5,
+      "middle": 2
+    },
+    "outlet_article_totals_reconcile": true,
+    "country_counts_reconcile_all_nine_labels_and_n": true,
+    "country_supplement_N": {
+      "high": 24,
+      "low": 24,
+      "middle": 23
+    },
+    "negative_framing_tail_n_ge_30": [
+      {
+        "group": "low",
+        "outlets": 146,
+        "above_20_percent": 26,
+        "fraction_above": 0.1780821917808219
+      },
+      {
+        "group": "middle",
+        "outlets": 125,
+        "above_20_percent": 5,
+        "fraction_above": 0.04
+      },
+      {
+        "group": "high",
+        "outlets": 116,
+        "above_20_percent": 5,
+        "fraction_above": 0.04310344827586207
+      }
+    ],
+    "low_without_nicaragua_n_ge_30": {
+      "outlets": 139,
+      "above_20_percent": 21,
+      "fraction_above": 0.1510791366906475,
+      "countries_with_two_outlets": 23,
+      "median_within_country_outlet_sd": 0.0440150108923874
+    }
+  },
+  "methods": {
+    "selection": "Publication country equals evaluated-government country. Fixed 71-country groups. Retain country-months with n>=30, then all their nonempty outlet-months without a further monthly threshold.",
+    "point": "One exact source domain, not a corporate parent or ownership family. Each domain belongs to one publication country in this extract.",
+    "outlet_rate": "Sum of sign counts across the outlet's eligible observed months / sum of all its articles over those same months. A pooled period share, not a mean of monthly rates. Zero labels remain in the denominator.",
+    "main_distribution": "Equal weight per outlet. Boxplot and summary mean/SD describe the outlet distribution; they do not reproduce equal-country monthly group means in figures16/19.",
+    "within_country": "Calculate sample SD (ddof=1) of the pooled outlet rates within each country; countries with fewer than two outlets have undefined SD and are excluded from this plot. Each retained country has equal weight in the supplement.",
+    "small_samples": "Retain all outlets in both figures. Gray open dots identify outlet total n<30, or countries containing such an outlet. CSVs separately report calculations after removing outlets with total n<30; this is a sensitivity check, not a change to the main sample.",
+    "statistics": "Sample SD uses ddof=1; quartiles use linear interpolation; IQR=Q3-Q1. All numerical CSV rates and SDs use 0-to-1 units; multiply by100 for percentages or percentage points.",
+    "boxplot": "Box=Q1 toQ3; line=median; whiskers=endmost observations within1.5IQR; diamond=mean; all observations shown as country/domain-stable jittered dots.",
+    "labels": "Low/Middle/High are relative groups based on each country's mean2022\u20132025 V-Dem v2x_freexp_altinf, with fixed24/23/24countries. They are not absolute classifications of media freedom."
+  },
+  "limitations": [
+    "Between-outlet dispersion pooled within a freedom group combines within-country and between-country differences; the supplement isolates variation among the observed outlets within each country.",
+    "Outlets do not necessarily cover the same months or events; pooled rates reflect their observed time and story mix.",
+    "Small samples can create extreme rates. Source domains, genre inclusion and collection gaps are not audited here.",
+    "Higher dispersion does not mechanically cause a higher mean; a few high-rate outlets can raise both. Negative coverage alone does not establish media bias.",
+    "No population inference, uncertainty intervals, audience weights, temporal-volatility estimates or causal effects are claimed."
+  ],
+  "outputs": [
+    {
+      "path": "slides/figures/data/20_media_freedom_outlet_rates.csv",
+      "sha256": "8e30cf1234e7bd710777ec874e4827157980e76bfc5b6b45a511ed0e02faa018",
+      "bytes": 93086
+    },
+    {
+      "path": "slides/figures/data/20_media_freedom_outlet_distribution_stats.csv",
+      "sha256": "2bf66633c6aae6539bf2f5ba564e8a4d8053a17c92e98988ff7b36841b2aa836",
+      "bytes": 8830
+    },
+    {
+      "path": "slides/figures/data/20_media_freedom_within_country_outlet_spread.csv",
+      "sha256": "e0369e435a55d8a82a916e21e4a86dc2759ec0bfdc92cd3d130ac667f80a2ef8",
+      "bytes": 236489
+    },
+    {
+      "path": "slides/figures/data/20_media_freedom_within_country_spread_stats.csv",
+      "sha256": "77fb8dd35ca6c84eb172e8d2482a4805b64c29caa0b9ba1b5a6223c99c52ef5a",
+      "bytes": 8980
+    },
+    {
+      "path": "slides/figures/20_media_freedom_outlet_variation.png",
+      "sha256": "9c4f24d14f43de41d791d6a0ad7a3033e617552cdffca2539d44f7e0f75e3360",
+      "bytes": 669905
+    },
+    {
+      "path": "slides/figures/20_media_freedom_outlet_variation.svg",
+      "sha256": "a9681baf30a57fa321f742cf1eb0c9fbbd888deb1ac6d9a22df06f1074befdb5",
+      "bytes": 476269
+    },
+    {
+      "path": "slides/figures/20_media_freedom_within_country_variation.png",
+      "sha256": "ef6b773f2f05aa68a1be945d6500db79a50df2a2fbb7a5ed6ca8d549d4fcc4c1",
+      "bytes": 422088
+    },
+    {
+      "path": "slides/figures/20_media_freedom_within_country_variation.svg",
+      "sha256": "4e588d796a497748ef158ee7413d88fd36b9780d2598a3724e31cefd2fd3ec36",
+      "bytes": 145585
+    }
+  ]
+}

@@ -535,18 +535,38 @@ Reproducible counts and comparison: figures/data/18_nicaragua_outlet_counts.csv,
 :::
 
 
-## Discussion {.clean-slide}
+## Discussion {.clean-slide .discussion-slide}
 
-- Is the classification system understandable?
-- Suggestions for our classification pipeline or validation?
-- What are our most compelling and feasible avenues of investigation?
+::: {.discussion-question}
+**How can we identify polarization in news coverage?**
 
-::: {.funding-ack style="margin-top: 2em; font-size: 24px;"}
+Persistent divisions among actors, between outlets, or both?
+:::
+
+::: {.discussion-question}
+**Which kinds of media bias can we identify, and how?**
+
+Which events and actors are selected; how comparable events are framed.
+:::
+
+::: {.discussion-question}
+**How do regime type and press freedom shape what we observe?**
+
+Fewer civic actions, less reporting of them, or different framing?
+:::
+
+::: {.funding-ack style="margin-top: 1.4em; font-size: 24px;"}
 Supported by the **Penn MEDIATED Research Grant Program**.
 :::
 
 ::: notes
-Invite feedback on whether the classification distinctions are understandable, how the pipeline and validation should improve, and which research applications are most compelling and feasible. Refer to the empirical examples when discussing a concrete next design. Detailed measurement and action-selection diagnostics are available in the appendix.
+The first question asks what evidence would establish polarization, and at which level. Opposing actions can indicate real political contention without showing persistent divisions between outlets or citizens. Repeated differences between outlets covering comparable events are a stronger starting point for a claim about a polarized media environment. P and directional shares alone do not establish that pattern.
+
+The second question separates selection from framing: which events and actors enter coverage, whose voices appear, and how the narrator presents comparable events. Differences in negative shares are not sufficient to establish bias. Selection needs a defensible event or coverage benchmark; framing comparisons should distinguish news from opinion, quoted speakers from the narrator, and different selected actions within the same event.
+
+The third question concerns the underlying opportunity to report. Regime conditions may shape whether civic action occurs, what forms it takes and whether it can be observed. Press freedom may shape which actions are reported and how. These processes can be related. A lower negative-alignment share could reflect fewer oppositional actions, less coverage of them, or a larger denominator of other stories. Lower reputational or framing shares concern different judgments and need not follow automatically. The corpus alone cannot separate these mechanisms or identify unreported events. Independent event evidence, matched events and source/collection audits would help; external event datasets can themselves depend on media reports.
+
+Invite suggestions for comparisons or external evidence that could distinguish these explanations. These are research questions, not causal conclusions from the descriptive figures.
 :::
 
 

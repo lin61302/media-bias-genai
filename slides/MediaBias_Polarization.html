@@ -638,6 +638,9 @@ margin: 7px 0;
 .reveal .slides section.polarization-slide .polarization-takeaway { margin-top: 16px; font-size: 25px; }
 </style>
   <style type="text/css">
+.reveal .slides section.discussion-slide .discussion-question { margin: 25px 0; font-size: 28px; }
+.reveal .slides section.discussion-slide .discussion-question p { margin: 6px 0; line-height: 1.3; }
+.reveal .slides section.discussion-slide .discussion-question strong { font-size: 31px; }
 .reveal .slides section.validation-slide table, .reveal .slides section.agenda-slide table { width: 100%; font-size: 27px; }
 .validation-slide td, .agenda-slide td { line-height: 1.3; }
 .validation-slide td:first-child, .agenda-slide td:first-child { width: 46%; font-weight: 500; color: var(--accent); }
@@ -2237,18 +2240,28 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section class="slide level2 clean-slide center">
+<section class="slide level2 clean-slide discussion-slide center">
 <h2>Discussion</h2>
-<ul>
-<li>Is the classification system understandable?</li>
-<li>Suggestions for our classification pipeline or validation?</li>
-<li>What are our most compelling and feasible avenues of investigation?</li>
-</ul>
-<div class="funding-ack" style="margin-top: 2em; font-size: 24px;">
+<div class="discussion-question">
+<p><strong>How can we identify polarization in news coverage?</strong></p>
+<p>Persistent divisions among actors, between outlets, or both?</p>
+</div>
+<div class="discussion-question">
+<p><strong>Which kinds of media bias can we identify, and how?</strong></p>
+<p>Which events and actors are selected; how comparable events are framed.</p>
+</div>
+<div class="discussion-question">
+<p><strong>How do regime type and press freedom shape what we observe?</strong></p>
+<p>Fewer civic actions, less reporting of them, or different framing?</p>
+</div>
+<div class="funding-ack" style="margin-top: 1.4em; font-size: 24px;">
 <p>Supported by the <strong>Penn MEDIATED Research Grant Program</strong>.</p>
 </div>
 <aside class="notes">
-<p>Invite feedback on whether the classification distinctions are understandable, how the pipeline and validation should improve, and which research applications are most compelling and feasible. Refer to the empirical examples when discussing a concrete next design. Detailed measurement and action-selection diagnostics are available in the appendix.</p>
+<p>The first question asks what evidence would establish polarization, and at which level. Opposing actions can indicate real political contention without showing persistent divisions between outlets or citizens. Repeated differences between outlets covering comparable events are a stronger starting point for a claim about a polarized media environment. P and directional shares alone do not establish that pattern.</p>
+<p>The second question separates selection from framing: which events and actors enter coverage, whose voices appear, and how the narrator presents comparable events. Differences in negative shares are not sufficient to establish bias. Selection needs a defensible event or coverage benchmark; framing comparisons should distinguish news from opinion, quoted speakers from the narrator, and different selected actions within the same event.</p>
+<p>The third question concerns the underlying opportunity to report. Regime conditions may shape whether civic action occurs, what forms it takes and whether it can be observed. Press freedom may shape which actions are reported and how. These processes can be related. A lower negative-alignment share could reflect fewer oppositional actions, less coverage of them, or a larger denominator of other stories. Lower reputational or framing shares concern different judgments and need not follow automatically. The corpus alone cannot separate these mechanisms or identify unreported events. Independent event evidence, matched events and source/collection audits would help; external event datasets can themselves depend on media reports.</p>
+<p>Invite suggestions for comparisons or external evidence that could distinguish these explanations. These are research questions, not causal conclusions from the descriptive figures.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

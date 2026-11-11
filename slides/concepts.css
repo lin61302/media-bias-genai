@@ -1,4 +1,7 @@
 /* Styles scoped to current content slides. */
+.reveal .slides section.discussion-slide .discussion-question { margin: 25px 0; font-size: 28px; }
+.reveal .slides section.discussion-slide .discussion-question p { margin: 6px 0; line-height: 1.3; }
+.reveal .slides section.discussion-slide .discussion-question strong { font-size: 31px; }
 .reveal .slides section.validation-slide table, .reveal .slides section.agenda-slide table { width: 100%; font-size: 27px; }
 .validation-slide td, .agenda-slide td { line-height: 1.3; }
 .validation-slide td:first-child, .agenda-slide td:first-child { width: 46%; font-weight: 500; color: var(--accent); }

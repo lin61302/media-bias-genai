@@ -147,6 +147,40 @@ For discussion: **Should an outlet's contribution reflect its audience, its amou
 
 Run `python scripts/build_media_freedom_outlet_weights.py` to reproduce both PNG/SVG figures. The [outlet counts](../slides/figures/data/19_media_freedom_outlet_month_counts.csv), [normalized outlet weights](../slides/figures/data/19_media_freedom_outlet_weights.csv), [country-month shares](../slides/figures/data/19_media_freedom_weighted_country_month.csv), [monthly group values](../slides/figures/data/19_media_freedom_weighted_monthly.csv), [summary](../slides/figures/data/19_media_freedom_weighted_summary.csv) and [methods/checks](../slides/figures/data/19_media_freedom_weighted_manifest.json) are included. The CSVs also retain original article weighting, equal active-outlet weighting and the two alternative `k` settings as references. The [upstream extraction receipt](../slides/figures/data/19_media_freedom_outlet_extraction.json) is immutable: its `downstream_weighting` field records the initial request before the choice of saturation; the final calculation manifest specifies the plotted methods.
 
+## Variation between outlets
+
+The [outlet-distribution figure](../slides/figures/20_media_freedom_outlet_variation.png) shows negative and positive shares separately for all three dimensions. Each dot is one exact source domain's sign count divided by its eligible article count across its observed months in 2022–2025. There are **401 outlets: 151 low, 127 middle and 123 high** media freedom. The sample retains the same 1,650,617 articles and 3,282 country-months as the domestic time-series figures.
+
+Boxes show the middle 50% of outlets; the line marks the median and the diamond marks the mean. Every outlet is shown, including outliers. Fourteen outlets with fewer than 30 articles over the whole period are marked with gray open circles and retained in the main calculation. The CSVs also report a sensitivity check excluding those outlets. Panel scales differ.
+
+Each outlet receives equal weight in these distribution summaries. They therefore answer a different question from the equal-country monthly group lines. An outlet's own coverage rate does not change when another outlet's weight changes; square-root and saturating weights are relevant when aggregating those rates, not when defining each dot.
+
+### Negative coverage is more dispersed in the low group
+
+Sample standard deviations across outlet shares, in **percentage points**:
+
+| Dimension | Negative: low / middle / high | Positive: low / middle / high |
+| --- | --- | --- |
+| Political alignment | 8.39 / 4.45 / 5.53 | 6.87 / 4.49 / 5.33 |
+| Reputational implication | 15.90 / 5.77 / 8.71 | 4.21 / 3.11 / 5.40 |
+| Framing | 16.16 / 5.88 / 11.42 | 4.90 / 2.65 / 5.86 |
+
+Negative coverage has greater outlet dispersion in the low-freedom group on all three dimensions. The positive side differs: high-freedom outlets have greater dispersion in positive reputational implication and framing. More variation is therefore not a uniform property of low-freedom coverage.
+
+For **negative framing**, the low group's outlet mean is **10.38%**, above the high group's **7.53%**, but its median is **3.25%**, below the high group's **4.49%**. The low group's larger upper tail helps explain the higher mean; it is not the case that its typical outlet is more negative. The middle group's mean and median are 4.42% and 2.34%.
+
+This pattern survives the small-outlet check. After requiring at least 30 articles per outlet over the period, negative framing exceeds an illustrative **20%** cutoff in **26/146 low-group outlets (17.8%)**, compared with **5/125 middle (4.0%)** and **5/116 high (4.3%)**. Excluding Nicaragua as an additional diagnostic leaves **21/139 low-group outlets (15.1%)** above that cutoff. The 20% cutoff describes the tail; it is not a definition of bias or polarization. Small samples matter: one high-group outlet has one article and therefore a 100% negative-framing share. It is marked as a small sample in the plot.
+
+### Differences within the same country
+
+The [country supplement](../slides/figures/20_media_freedom_within_country_variation.png) first calculates the standard deviation of outlet shares within each country, then shows one dot per country. Higher values mean greater differences among that country's sampled outlets. All 71 countries have at least two observed outlets in the main sample. Countries have equal weight in this supplement.
+
+For negative framing, the median within-country outlet SD is **5.48 / 2.16 / 3.54 percentage points** for low/middle/high. Excluding outlets with fewer than 30 articles gives **4.82 / 2.16 / 3.15 points**; the low-group median remains **4.40 points** without Nicaragua. The small-outlet sensitivity leaves 70 countries with at least two outlets. This suggests that the main figure's spread is not solely a difference between countries or solely a Nicaragua result.
+
+The two figures describe different distributions. Pooled group dispersion combines within-country and between-country differences; the supplement focuses on within-country differences. Neither holds the observed months, reported events, article genres or selected actions constant. Greater variation alone does not mathematically imply a higher mean, establish opposing media camps, or identify reporting bias. The combination of a high upper tail and a lower median is the relevant descriptive finding here.
+
+Run `python scripts/build_media_freedom_outlet_variation.py` to rebuild the figures and tables. [Outlet rates and sample sizes](../slides/figures/data/20_media_freedom_outlet_rates.csv), [outlet distribution statistics](../slides/figures/data/20_media_freedom_outlet_distribution_stats.csv), [within-country outlet spread](../slides/figures/data/20_media_freedom_within_country_outlet_spread.csv), [country spread summaries](../slides/figures/data/20_media_freedom_within_country_spread_stats.csv) and [calculation manifest](../slides/figures/data/20_media_freedom_variation_manifest.json) are included. All CSV shares and SDs are fractions; multiply by 100 for percentages or percentage points, respectively.
+
 ## Reproduction
 
 With Python, pandas, NumPy and matplotlib installed, run from the repository root:
