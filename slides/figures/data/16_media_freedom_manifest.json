@@ -1,0 +1,505 @@
+{
+  "title": "Domestic coverage of the incumbent by media freedom",
+  "snapshot": {
+    "audit_cutoff": "2026-11-04T13:38:01.213139+00:00",
+    "public_release_commit": "8ce2764cffe71c66222fb46a98d2f8d18f9d0135"
+  },
+  "inputs": {
+    "country_month_counts": {
+      "path": "slides/figures/data/16_media_freedom_country_month.csv",
+      "sha256": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d"
+    },
+    "extraction_provenance": {
+      "path": "slides/figures/data/16_media_freedom_extraction_provenance.json",
+      "sha256": "7550f1b3169e51920a3bedfc2b374d79d74bd52ed8de7b6e700d131cf8cd4589"
+    },
+    "country_context": {
+      "path": "data/cache/country_context.json",
+      "sha256": "20a7c94a6e4fe998c89ef2be2ff9472468c38409b1cab36ca52947e45e8e7cda"
+    },
+    "source_metadata": {
+      "path": "data/cache/explore-meta.json",
+      "sha256": "e28aa6b9cf6d3b0267b7417cd4d82ae11de84f64120da7ce011082a644669cdc"
+    },
+    "all_origins_reference": {
+      "path": "data/polarization/monthly_polarization_all_countries.csv",
+      "sha256": "9e70e773c22fab5f9d9d365d5344e3669a78afee5a3ac2f7df0f9a6b7775f965",
+      "country_months_checked": 3408,
+      "counts_and_all_nine_margins_match": true
+    }
+  },
+  "script": {
+    "path": "scripts/build_domestic_media_freedom.py",
+    "sha256": "d4d5082f71757ae0882f757aa7b40c9bc345e64f7404f87e55da518212d3fe1f"
+  },
+  "selection": {
+    "input_rows": 19680,
+    "selected_input_rows": 6816,
+    "out_of_period_rows": 0,
+    "outside_71_country_scope_rows_in_period": 12864,
+    "outside_71_country_codes_in_period": [
+      "AFG",
+      "AND",
+      "ARE",
+      "ARG",
+      "ATG",
+      "AUS",
+      "AUT",
+      "BDI",
+      "BEL",
+      "BGR",
+      "BHR",
+      "BHS",
+      "BIH",
+      "BLZ",
+      "BRB",
+      "BRN",
+      "BTN",
+      "BWA",
+      "CAF",
+      "CAN",
+      "CHE",
+      "CHL",
+      "CHN",
+      "CIV",
+      "COG",
+      "COM",
+      "CPV",
+      "CUB",
+      "CYM",
+      "CYP",
+      "CZE",
+      "DEU",
+      "DJI",
+      "DMA",
+      "DNK",
+      "ERI",
+      "ESH",
+      "ESP",
+      "EST",
+      "FIN",
+      "FJI",
+      "FRA",
+      "FSM",
+      "GAB",
+      "GBR",
+      "GGY",
+      "GIN",
+      "GMB",
+      "GNB",
+      "GNQ",
+      "GRC",
+      "GRD",
+      "GRL",
+      "GUY",
+      "HKG",
+      "HRV",
+      "HTI",
+      "IMN",
+      "IRL",
+      "IRN",
+      "ISL",
+      "ISR",
+      "ITA",
+      "JEY",
+      "JOR",
+      "JPN",
+      "KIR",
+      "KNA",
+      "KOR",
+      "KWT",
+      "LAO",
+      "LBN",
+      "LCA",
+      "LSO",
+      "LTU",
+      "LUX",
+      "LVA",
+      "MCO",
+      "MDG",
+      "MDV",
+      "MLT",
+      "MMR",
+      "MNE",
+      "MNG",
+      "MUS",
+      "NLD",
+      "NOR",
+      "NZL",
+      "OMN",
+      "PLW",
+      "PNG",
+      "POL",
+      "PRI",
+      "PRK",
+      "PRT",
+      "PSE",
+      "PYF",
+      "QAT",
+      "ROU",
+      "RUS",
+      "SAU",
+      "SDN",
+      "SGP",
+      "SLE",
+      "SMR",
+      "SOM",
+      "STP",
+      "SUR",
+      "SVK",
+      "SVN",
+      "SWE",
+      "SWZ",
+      "SYC",
+      "SYR",
+      "TCA",
+      "TCD",
+      "TGO",
+      "THA",
+      "TJK",
+      "TKM",
+      "TON",
+      "TTO",
+      "TUV",
+      "TWN",
+      "URY",
+      "USA",
+      "VAT",
+      "VCT",
+      "VEN",
+      "VGB",
+      "VNM",
+      "VUT",
+      "WSM",
+      "YEM"
+    ],
+    "missing_input_cells_by_scope": {
+      "all_origins": 0,
+      "domestic": 0
+    }
+  },
+  "summary": {
+    "all_origins": {
+      "selected_articles": 1744215,
+      "plotted_articles": 1742969,
+      "country_months_at_least_30": 3299
+    },
+    "domestic": {
+      "selected_articles": 1652040,
+      "plotted_articles": 1650617,
+      "country_months_at_least_30": 3282
+    }
+  },
+  "checks": {
+    "all_count_margins_sum_to_n": true,
+    "domestic_is_countwise_subset_of_all_origins": true,
+    "full_calendar_months": 48,
+    "country_groups": {
+      "low": {
+        "fixed_countries": 24,
+        "score_min": 0.029,
+        "score_max": 0.5447500000000001,
+        "countries": [
+          "AGO",
+          "AZE",
+          "BFA",
+          "BGD",
+          "BLR",
+          "DZA",
+          "EGY",
+          "ETH",
+          "HUN",
+          "IND",
+          "IRQ",
+          "KAZ",
+          "KGZ",
+          "KHM",
+          "NIC",
+          "RWA",
+          "SLV",
+          "SRB",
+          "SSD",
+          "TUR",
+          "UGA",
+          "UKR",
+          "UZB",
+          "ZWE"
+        ]
+      },
+      "middle": {
+        "fixed_countries": 23,
+        "score_min": 0.5720000000000001,
+        "score_max": 0.75675,
+        "countries": [
+          "ALB",
+          "ARM",
+          "BEN",
+          "BOL",
+          "CMR",
+          "COD",
+          "ECU",
+          "GTM",
+          "IDN",
+          "LBY",
+          "MAR",
+          "MDA",
+          "MEX",
+          "MKD",
+          "MLI",
+          "MOZ",
+          "MRT",
+          "MYS",
+          "PAK",
+          "PHL",
+          "PRY",
+          "TUN",
+          "TZA"
+        ]
+      },
+      "high": {
+        "fixed_countries": 24,
+        "score_min": 0.76625,
+        "score_max": 0.919,
+        "countries": [
+          "BRA",
+          "COL",
+          "CRI",
+          "DOM",
+          "GEO",
+          "GHA",
+          "HND",
+          "JAM",
+          "KEN",
+          "LBR",
+          "LKA",
+          "MWI",
+          "NAM",
+          "NER",
+          "NGA",
+          "NPL",
+          "PAN",
+          "PER",
+          "SEN",
+          "SLB",
+          "TLS",
+          "XKX",
+          "ZAF",
+          "ZMB"
+        ]
+      }
+    },
+    "all_origins_reference": {
+      "path": "data/polarization/monthly_polarization_all_countries.csv",
+      "sha256": "9e70e773c22fab5f9d9d365d5344e3669a78afee5a3ac2f7df0f9a6b7775f965",
+      "country_months_checked": 3408,
+      "counts_and_all_nine_margins_match": true
+    }
+  },
+  "grouping": {
+    "groups": {
+      "low": {
+        "fixed_countries": 24,
+        "score_min": 0.029,
+        "score_max": 0.5447500000000001,
+        "countries": [
+          "AGO",
+          "AZE",
+          "BFA",
+          "BGD",
+          "BLR",
+          "DZA",
+          "EGY",
+          "ETH",
+          "HUN",
+          "IND",
+          "IRQ",
+          "KAZ",
+          "KGZ",
+          "KHM",
+          "NIC",
+          "RWA",
+          "SLV",
+          "SRB",
+          "SSD",
+          "TUR",
+          "UGA",
+          "UKR",
+          "UZB",
+          "ZWE"
+        ]
+      },
+      "middle": {
+        "fixed_countries": 23,
+        "score_min": 0.5720000000000001,
+        "score_max": 0.75675,
+        "countries": [
+          "ALB",
+          "ARM",
+          "BEN",
+          "BOL",
+          "CMR",
+          "COD",
+          "ECU",
+          "GTM",
+          "IDN",
+          "LBY",
+          "MAR",
+          "MDA",
+          "MEX",
+          "MKD",
+          "MLI",
+          "MOZ",
+          "MRT",
+          "MYS",
+          "PAK",
+          "PHL",
+          "PRY",
+          "TUN",
+          "TZA"
+        ]
+      },
+      "high": {
+        "fixed_countries": 24,
+        "score_min": 0.76625,
+        "score_max": 0.919,
+        "countries": [
+          "BRA",
+          "COL",
+          "CRI",
+          "DOM",
+          "GEO",
+          "GHA",
+          "HND",
+          "JAM",
+          "KEN",
+          "LBR",
+          "LKA",
+          "MWI",
+          "NAM",
+          "NER",
+          "NGA",
+          "NPL",
+          "PAN",
+          "PER",
+          "SEN",
+          "SLB",
+          "TLS",
+          "XKX",
+          "ZAF",
+          "ZMB"
+        ]
+      }
+    },
+    "quantile_edges": [
+      0.029,
+      0.5538333333333334,
+      0.7630833333333333,
+      0.919
+    ],
+    "context_provenance": {
+      "created_at": "2026-11-04T21:28:14.011610+00:00",
+      "regions_url": "https://unstats.un.org/unsd/methodology/m49/overview",
+      "regions_sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb",
+      "vdem_source": "https://www.v-dem.net/media/datasets/V-Dem-CD-v16_csv.zip",
+      "vdem_archive_sha256": "bc43a8bfb840cace35dd8544ccf8362a154056f44064c18eca480567acce64c6",
+      "vdem_version": 16,
+      "vdem_citation": "Coppedge et al. (2026), V-Dem Country-Date Dataset v16, https://doi.org/10.23696/vdemds26",
+      "context_license": "V-Dem values and adaptations: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/",
+      "democracy_definition": "V-Dem electoral democracy index v2x_polyarchy, 0\u20131, higher values indicate more electoral democracy. Last dated observation per country-year.",
+      "score_year_rule": "Article years 2021\u20132025 use that year; 2026 uses 2025 as explicitly marked latest available context, never a measured 2026 score.",
+      "bins": "Display bands only: 0\u2013<0.25, 0.25\u2013<0.5, 0.5\u2013<0.75, 0.75\u20131. These are not V-Dem Regimes of the World categories.",
+      "explicit_region_additions": [
+        "XKX: Europe / Southern Europe",
+        "TWN: Asia / Eastern Asia"
+      ]
+    }
+  },
+  "methods": {
+    "period": [
+      "2022-01",
+      "2025-12"
+    ],
+    "eligible_denominator": "Identified government and action; all three labels numeric -1/0/+1. Zeros retained; uncodable excluded.",
+    "domestic_filter": "publication_country == evaluated government; supplied by upstream count export",
+    "country_identity": "Evaluated-government country, equal to publication country in domestic scope",
+    "source_scope": "71 distinct non-null source countries in pinned Nov4 source metadata; ALL origins excluded by domestic equality filter upstream",
+    "country_year_values": "Last dated V-Dem Country-Date v16 observation in each year, as recorded in country_context.json",
+    "group_rule": "Fixed terciles of arithmetic mean v2x_freexp_altinf across four years 2022-2025; pandas qcut; 24/23/24 countries",
+    "country_month_share": "negative label count / n for each of three dimensions",
+    "threshold": "n >= 30 applied after each scope restriction; the identical rule is applied to all three dimensions",
+    "monthly_mean": "Arithmetic mean of eligible country-month shares within each fixed freedom group; no article-volume weighting across countries",
+    "within_country": "Articles pooled across included sources; sources with more included articles receive more weight within country-month",
+    "smoothing": "After monthly group means, centered 3-calendar-month arithmetic mean requiring all three values; first and last month omitted from thick line",
+    "missing_months": "Complete 48-month calendar. Omitted input cells are noncontributing, not zero shares; no interpolation or bridging of missing group means",
+    "common_support": "Both scopes have n >= 30 in the same country-month; both group means use those identical country sets; difference = domestic minus all origins",
+    "common_support_difference_unit": "Fraction, multiply by 100 for percentage points",
+    "group_sizes": "24/23/24 are fixed group membership, not monthly contributing country counts",
+    "plot_units": "Negative shares formatted as percentages; no polarization index",
+    "panel_y_maxima_shared_across_scopes": {
+      "align": 0.15000000000000002,
+      "rep": 0.2,
+      "frame": 0.125
+    }
+  },
+  "limits": [
+    "Reconstructed counterpart following the supplied caption; not a numerical replication of Erik's image without his code and monthly values.",
+    "All-origins counts independently reconcile to the frozen public CSV; article-level domestic filtering requires the upstream extraction receipt.",
+    "Source, event, genre, translation and model-label composition remain uncontrolled. This is not a causal estimate of media freedom.",
+    "Fixed 2022-2025 mean groups conceal within-period institutional changes. Media freedom is not a categorical regime label.",
+    "Country participation may vary by month. The common-support comparison addresses this scope difference, not selection of outlets or stories."
+  ],
+  "outputs": [
+    {
+      "path": "slides/figures/data/16_media_freedom_groups.csv",
+      "bytes": 3889,
+      "sha256": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+    },
+    {
+      "path": "slides/figures/data/16_media_freedom_monthly_series.csv",
+      "bytes": 64652,
+      "sha256": "4058f61320afab8487dea2d08bab56ae62251ebda279ba14c118824ffab446ae"
+    },
+    {
+      "path": "slides/figures/data/16_media_freedom_contributing_countries.csv",
+      "bytes": 38127,
+      "sha256": "44b300fff194da292ac5e98e62834b5d679c47389ac366d9fee8f9d50e58b5d8"
+    },
+    {
+      "path": "slides/figures/data/16_media_freedom_same_support.csv",
+      "bytes": 59783,
+      "sha256": "7b57e58df5a2704a34a55ffc7eb603520bdc18c8a7863cab5d6c1a4bf3f657cf"
+    },
+    {
+      "path": "slides/figures/16_media_freedom_domestic.png",
+      "bytes": 384411,
+      "sha256": "849475936a1461984316c9ad27f77762fd5ae3cf8cf4ab32a85350bc6c5e85fb"
+    },
+    {
+      "path": "slides/figures/16_media_freedom_domestic.svg",
+      "bytes": 40826,
+      "sha256": "2dbd9b5186d8e99ea2b23c4a9dde9f8739a334c648d0d7a2febde653b59bad34"
+    },
+    {
+      "path": "slides/figures/16_media_freedom_scope_comparison.png",
+      "bytes": 562731,
+      "sha256": "71be2fc566e8a4a63b521892d4220be3904aa92f6125c06b33da9f901c0c0d36"
+    },
+    {
+      "path": "slides/figures/16_media_freedom_scope_comparison.svg",
+      "bytes": 69752,
+      "sha256": "3fd89d3ab723efd2e65da55424c26e37738bc6817e9c432473536d297e0ebf9b"
+    }
+  ],
+  "operations": {
+    "network_calls": 0,
+    "downloaded_context_files": [],
+    "model_calls": 0,
+    "database_calls": 0,
+    "pdf_outputs": 0
+  },
+  "software": {
+    "pandas": "3.1.1",
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.2"
+  }
+}

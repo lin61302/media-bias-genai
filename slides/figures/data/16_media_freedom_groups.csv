@@ -1,0 +1,72 @@
+country,country_name,freedom_2022,freedom_2023,freedom_2024,freedom_2025,mean_freedom_2022_2025,group,fixed_group_countries
+NIC,Nicaragua,0.043,0.033,0.022,0.018,0.029,low,24
+BLR,Belarus,0.049,0.03,0.029,0.025,0.03325,low,24
+AZE,Azerbaijan,0.154,0.172,0.118,0.092,0.134,low,24
+SSD,South Sudan,0.094,0.153,0.182,0.155,0.146,low,24
+KHM,Cambodia,0.205,0.166,0.162,0.153,0.1715,low,24
+EGY,Egypt,0.159,0.171,0.178,0.179,0.17175,low,24
+RWA,Rwanda,0.194,0.183,0.154,0.17,0.17525,low,24
+TUR,Türkiye,0.18,0.177,0.183,0.179,0.17975,low,24
+UZB,Uzbekistan,0.209,0.222,0.222,0.234,0.22175,low,24
+ETH,Ethiopia,0.352,0.311,0.245,0.285,0.29825,low,24
+KAZ,Kazakhstan,0.389,0.362,0.359,0.329,0.35975,low,24
+DZA,Algeria,0.412,0.392,0.348,0.367,0.37975,low,24
+SLV,El Salvador,0.404,0.419,0.392,0.356,0.39275,low,24
+UKR,Ukraine,0.471,0.441,0.411,0.418,0.43525,low,24
+SRB,Serbia,0.437,0.448,0.438,0.424,0.43675,low,24
+BGD,Bangladesh,0.383,0.343,0.503,0.527,0.439,low,24
+UGA,Uganda,0.461,0.449,0.443,0.432,0.44625,low,24
+IND,India,0.442,0.422,0.477,0.458,0.44975,low,24
+ZWE,Zimbabwe,0.501,0.495,0.44,0.414,0.4625,low,24
+AGO,Angola,0.484,0.451,0.486,0.497,0.4795,low,24
+BFA,Burkina Faso,0.753,0.58,0.348,0.261,0.4855,low,24
+KGZ,Kyrgyzstan,0.566,0.479,0.479,0.469,0.49825,low,24
+HUN,Hungary,0.507,0.499,0.512,0.493,0.50275,low,24
+IRQ,Iraq,0.548,0.527,0.533,0.571,0.54475,low,24
+LBY,Libya,0.638,0.556,0.558,0.536,0.572,middle,23
+PAK,Pakistan,0.633,0.538,0.559,0.559,0.57225,middle,23
+MOZ,Mozambique,0.647,0.619,0.52,0.518,0.576,middle,23
+CMR,Cameroon,0.597,0.59,0.593,0.532,0.578,middle,23
+MAR,Morocco,0.597,0.597,0.595,0.579,0.592,middle,23
+MYS,Malaysia,0.615,0.622,0.593,0.586,0.604,middle,23
+MLI,Mali,0.677,0.66,0.589,0.49,0.604,middle,23
+COD,Democratic Republic of the Congo,0.669,0.686,0.578,0.599,0.633,middle,23
+TZA,United Republic of Tanzania,0.703,0.683,0.683,0.552,0.65525,middle,23
+MEX,Mexico,0.701,0.663,0.645,0.619,0.657,middle,23
+PHL,Philippines,0.657,0.665,0.676,0.676,0.6685,middle,23
+MRT,Mauritania,0.725,0.704,0.646,0.628,0.67575,middle,23
+ALB,Albania,0.705,0.685,0.693,0.673,0.689,middle,23
+BEN,Benin,0.722,0.697,0.686,0.676,0.69525,middle,23
+MKD,North Macedonia,0.731,0.732,0.658,0.664,0.69625,middle,23
+BOL,Bolivia (Plurinational State of),0.754,0.74,0.726,0.686,0.7265,middle,23
+IDN,Indonesia,0.78,0.725,0.741,0.688,0.7335,middle,23
+GTM,Guatemala,0.636,0.669,0.804,0.839,0.737,middle,23
+MDA,Republic of Moldova,0.864,0.784,0.674,0.652,0.7435,middle,23
+PRY,Paraguay,0.739,0.739,0.751,0.751,0.745,middle,23
+TUN,Tunisia,0.794,0.768,0.751,0.687,0.75,middle,23
+ECU,Ecuador,0.821,0.753,0.742,0.706,0.7555,middle,23
+ARM,Armenia,0.82,0.745,0.73,0.732,0.75675,middle,23
+PER,Peru,0.787,0.776,0.739,0.763,0.76625,high,24
+MWI,Malawi,0.793,0.741,0.784,0.754,0.768,high,24
+GEO,Georgia,0.876,0.85,0.701,0.687,0.7785,high,24
+NER,Niger,0.807,0.803,0.749,0.756,0.77875,high,24
+XKX,Kosovo,0.811,0.819,0.755,0.766,0.78775,high,24
+LKA,Sri Lanka,0.704,0.744,0.857,0.871,0.794,high,24
+PAN,Panama,0.792,0.776,0.804,0.812,0.796,high,24
+ZMB,Zambia,0.841,0.822,0.784,0.778,0.80625,high,24
+TLS,Timor-Leste,0.802,0.805,0.837,0.838,0.8205,high,24
+NPL,Nepal,0.837,0.835,0.832,0.813,0.82925,high,24
+NAM,Namibia,0.818,0.817,0.844,0.859,0.8345,high,24
+LBR,Liberia,0.836,0.836,0.836,0.836,0.836,high,24
+SLB,Solomon Islands,0.825,0.84,0.84,0.84,0.83625,high,24
+ZAF,South Africa,0.848,0.833,0.835,0.837,0.83825,high,24
+COL,Colombia,0.84,0.869,0.84,0.81,0.83975,high,24
+SEN,Senegal,0.912,0.874,0.82,0.82,0.8565,high,24
+BRA,Brazil,0.704,0.903,0.923,0.91,0.86,high,24
+NGA,Nigeria,0.845,0.892,0.893,0.849,0.86975,high,24
+HND,Honduras,0.887,0.88,0.867,0.861,0.87375,high,24
+GHA,Ghana,0.89,0.857,0.857,0.896,0.875,high,24
+KEN,Kenya,0.876,0.895,0.897,0.9,0.892,high,24
+DOM,Dominican Republic,0.921,0.921,0.899,0.901,0.9105,high,24
+CRI,Costa Rica,0.924,0.915,0.915,0.915,0.91725,high,24
+JAM,Jamaica,0.919,0.919,0.919,0.919,0.919,high,24

@@ -27,6 +27,7 @@ The [codebook](docs/codebook.md) describes action selection, government identifi
 | [Monthly polarization CSV](data/polarization/) | All available government country-months, three separate scores, shares and article counts |
 | [Analysis notebook](notebooks/01_dashboard_and_measures.ipynb) | Executed examples, figures and reproducible calculations |
 | [Research design](docs/research-design.md) | Research questions, comparisons, and political interpretation |
+| [Media freedom and domestic coverage](docs/media-freedom-comparison.md) | Country-month comparisons with publication country matched to the evaluated government |
 | [Codebook](docs/codebook.md) | Coding definitions and field descriptions |
 | [Data documentation](docs/data-card.md) | Corpus scope, inclusion rules, coverage, and limitations |
 | [Validation](docs/validation.md) | Completed checks and planned human evaluation |
