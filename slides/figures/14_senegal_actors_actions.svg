@@ -6,7 +6,7 @@
   <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
    <cc:Work>
     <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-    <dc:date>2026-11-10T14:27:46.446988</dc:date>
+    <dc:date>2026-11-10T19:55:47.589012</dc:date>
     <dc:format>image/svg+xml</dc:format>
     <dc:creator>
      <cc:Agent>
@@ -441,10 +441,10 @@ z
    </g>
   </g>
   <g id="text_38">
-   <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="24.3" y="19.44" transform="rotate(-0 24.3 19.44)">Political alignment by actor · February</text>
+   <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="24.3" y="19.44" transform="rotate(-0 24.3 19.44)">Actor groups · February</text>
   </g>
   <g id="text_39">
-   <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="597.78" y="19.44" transform="rotate(-0 597.78 19.44)">The mix of reported actions changes</text>
+   <text style="font-weight: 700; font-size: 17px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="597.78" y="19.44" transform="rotate(-0 597.78 19.44)">Action tags · February–March</text>
   </g>
   <g id="text_40">
    <text style="font-size: 13px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #19334b" x="24.3" y="414.72" transform="rotate(-0 24.3 414.72)">+1 = actor supports the incumbent   ·   −1 = actor opposes the incumbent</text>

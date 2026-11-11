@@ -356,7 +356,7 @@ Event chronology: Sall announced the postponement on February 3; the Constitutio
 This is an empirical application to polarization in news content, not evidence that citizens became less polarized. Source mix, reported events, genres, repeated reporting and model sensitivity remain possible contributors. The evaluated government is Senegal, with domestic and international source origins included. Connecting this news measure to elite or mass polarization requires independent political or attitudinal evidence. Data, formulas, exact monthly values and hashes: figures/data/14_presentation_revision_manifest.json; ../scripts/build_presentation_revision_figures.py.
 :::
 
-## Senegal: February’s actors and the shift to voting {.clean-slide .figure-slide}
+## Senegal: Actor groups and action tags {.clean-slide .figure-slide}
 
 ![](figures/14_senegal_actors_actions.png){width="100%"}
 

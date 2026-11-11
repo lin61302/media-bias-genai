@@ -33,9 +33,14 @@ MAR = "#c28428"
 GRID = "#e3e7eb"
 
 parser = argparse.ArgumentParser(description=__doc__)
-parser.add_argument("--senegal-p-only", action="store_true",
+selection = parser.add_mutually_exclusive_group()
+selection.add_argument("--senegal-p-only", action="store_true",
                     help="Update only the Senegal P figure and its manifest entry.")
+selection.add_argument("--senegal-actors-only", action="store_true",
+                    help="Update only the Senegal actor/action figure and its manifest entry.")
 args = parser.parse_args()
+selected_stem = ("14_senegal_polarization_application" if args.senegal_p_only else
+                 "14_senegal_actors_actions" if args.senegal_actors_only else None)
 
 
 def digest(path: Path) -> str:
@@ -44,7 +49,7 @@ def digest(path: Path) -> str:
 
 def save(fig, stem: str) -> list[dict]:
     outputs = []
-    if args.senegal_p_only and stem != "14_senegal_polarization_application":
+    if selected_stem and stem != selected_stem:
         plt.close(fig)
         return [{"path": str((FIG / f"{stem}.{ext}").relative_to(ROOT)),
                  "sha256": digest(FIG / f"{stem}.{ext}")}
@@ -145,8 +150,8 @@ ax2.set_xlabel("Share of all eligible articles", labelpad=9, fontsize=13)
 clean(ax2)
 ax2.legend(loc="lower left", bbox_to_anchor=(-.02, 1.015), ncol=2,
            frameon=False, fontsize=12, handlelength=1.1, columnspacing=1.3)
-fig.text(.025, .955, "Political alignment by actor · February", fontsize=17, fontweight="bold")
-fig.text(.615, .955, "The mix of reported actions changes", fontsize=17, fontweight="bold")
+fig.text(.025, .955, "Actor groups · February", fontsize=17, fontweight="bold")
+fig.text(.615, .955, "Action tags · February–March", fontsize=17, fontweight="bold")
 fig.text(.025, .04, "+1 = actor supports the incumbent   ·   −1 = actor opposes the incumbent", fontsize=13)
 fig.text(.965, .04, "February n = 934  ·  March n = 874", fontsize=13, ha="right")
 actor_outputs = save(fig, "14_senegal_actors_actions")
@@ -320,7 +325,7 @@ manifest = {
     },
 }
 (DATA / "14_presentation_revision_manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
-updated = (["senegal_polarization_application"] if args.senegal_p_only
+updated = ([selected_stem.removeprefix("14_")] if selected_stem
            else list(manifest["figures"]))
 print(json.dumps({"figures": updated,
                   "outputs": [x["path"] for key in updated

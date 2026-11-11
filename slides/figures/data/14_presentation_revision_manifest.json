@@ -15,7 +15,7 @@
       "sha256": "29dfc3ffbced6a31488b6e3e6e74e0c3a09a91c8dd7ba5f02f76fd159bf4fc13"
     }
   ],
-  "script_sha256": "020c615db86f15d66669b382bc273c7ad275b77dc6e61209bd48163bf4d52185",
+  "script_sha256": "20ec658db393637de986655363be51ea2568384fe0a051e380cd1658ed6e43b6",
   "global_definitions": {
     "unit": "Article records with one primary selected action, not unique real-world events.",
     "eligible": "Evaluated government and primary action identified; all three political labels numeric. Unknown/uncodable excluded upstream.",
@@ -29,15 +29,15 @@
       "outputs": [
         {
           "path": "slides/figures/14_senegal_actors_actions.png",
-          "sha256": "e0bd00c296fc230c61561393939e99a279c7ef247cb7e1661c46b0b8127f4fcd"
+          "sha256": "0b5fa8e743dd472418bb1a90f2eb64971a79f726cfb790b9de71a69654cf147a"
         },
         {
           "path": "slides/figures/14_senegal_actors_actions.svg",
-          "sha256": "544e3598549b99df4fd81e65f8114ac27391aca65a8595526a84c4f5416b326f"
+          "sha256": "40d5d3afc3dcc371e59c08c2a3383cf450a0ecdb4ba9e0faf1603eeaabad38c2"
         },
         {
           "path": "slides/figures/14_senegal_actors_actions.pdf",
-          "sha256": "6f1a0dbd9acba0252a6be72b7dd72f4cd6f77122e4b21269efcc7987aff8a7f0"
+          "sha256": "572209cc52077564e5b46bc5add54121aab581bd376572b77365d0ef5702a6bf"
         }
       ],
       "evaluated_government": "SEN",
