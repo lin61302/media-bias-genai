@@ -1,0 +1,364 @@
+{
+  "title": "Signs of domestic coverage by media freedom",
+  "snapshot": "2026-11-04T13:38:01.213139+00:00",
+  "period": [
+    "2022-01",
+    "2025-12"
+  ],
+  "inputs": {
+    "counts": {
+      "path": "slides/figures/data/16_media_freedom_country_month.csv",
+      "sha256": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d"
+    },
+    "groups": {
+      "path": "slides/figures/data/16_media_freedom_groups.csv",
+      "sha256": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+    },
+    "negative_reference": {
+      "path": "slides/figures/data/16_media_freedom_monthly_series.csv",
+      "sha256": "4058f61320afab8487dea2d08bab56ae62251ebda279ba14c118824ffab446ae"
+    },
+    "extraction": {
+      "path": "slides/figures/data/16_media_freedom_extraction_provenance.json",
+      "sha256": "7550f1b3169e51920a3bedfc2b374d79d74bd52ed8de7b6e700d131cf8cd4589"
+    }
+  },
+  "scripts": [
+    {
+      "path": "scripts/build_media_freedom_signs.py",
+      "sha256": "2670c1da634e621694dadbc8726dfb90e4eaee6ff292b6604d12100eb0db40ab"
+    },
+    {
+      "path": "scripts/build_domestic_media_freedom.py",
+      "sha256": "d4d5082f71757ae0882f757aa7b40c9bc345e64f7404f87e55da518212d3fe1f"
+    }
+  ],
+  "checks": {
+    "eligible_country_months": 3282,
+    "eligible_articles": 1650617,
+    "group_months": 144,
+    "three_sign_shares_sum_to_one": true,
+    "directional_equals_one_minus_zero": true,
+    "negative_reference_max_absolute_errors": {
+      "align_negative_share": 4.898859096158503e-13,
+      "align_negative_share_centered3": 4.910932771551302e-13,
+      "rep_negative_share": 4.812122922359663e-13,
+      "rep_negative_share_centered3": 4.832662048315228e-13,
+      "frame_negative_share": 4.976574707882264e-14,
+      "frame_negative_share_centered3": 4.9835136017861714e-14
+    },
+    "threshold_and_country_support_match_existing_negative_plot": true,
+    "input_selection": {
+      "input_rows": 19680,
+      "selected_input_rows": 6816,
+      "out_of_period_rows": 0,
+      "outside_71_country_scope_rows_in_period": 12864,
+      "outside_71_country_codes_in_period": [
+        "AFG",
+        "AND",
+        "ARE",
+        "ARG",
+        "ATG",
+        "AUS",
+        "AUT",
+        "BDI",
+        "BEL",
+        "BGR",
+        "BHR",
+        "BHS",
+        "BIH",
+        "BLZ",
+        "BRB",
+        "BRN",
+        "BTN",
+        "BWA",
+        "CAF",
+        "CAN",
+        "CHE",
+        "CHL",
+        "CHN",
+        "CIV",
+        "COG",
+        "COM",
+        "CPV",
+        "CUB",
+        "CYM",
+        "CYP",
+        "CZE",
+        "DEU",
+        "DJI",
+        "DMA",
+        "DNK",
+        "ERI",
+        "ESH",
+        "ESP",
+        "EST",
+        "FIN",
+        "FJI",
+        "FRA",
+        "FSM",
+        "GAB",
+        "GBR",
+        "GGY",
+        "GIN",
+        "GMB",
+        "GNB",
+        "GNQ",
+        "GRC",
+        "GRD",
+        "GRL",
+        "GUY",
+        "HKG",
+        "HRV",
+        "HTI",
+        "IMN",
+        "IRL",
+        "IRN",
+        "ISL",
+        "ISR",
+        "ITA",
+        "JEY",
+        "JOR",
+        "JPN",
+        "KIR",
+        "KNA",
+        "KOR",
+        "KWT",
+        "LAO",
+        "LBN",
+        "LCA",
+        "LSO",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MCO",
+        "MDG",
+        "MDV",
+        "MLT",
+        "MMR",
+        "MNE",
+        "MNG",
+        "MUS",
+        "NLD",
+        "NOR",
+        "NZL",
+        "OMN",
+        "PLW",
+        "PNG",
+        "POL",
+        "PRI",
+        "PRK",
+        "PRT",
+        "PSE",
+        "PYF",
+        "QAT",
+        "ROU",
+        "RUS",
+        "SAU",
+        "SDN",
+        "SGP",
+        "SLE",
+        "SMR",
+        "SOM",
+        "STP",
+        "SUR",
+        "SVK",
+        "SVN",
+        "SWE",
+        "SWZ",
+        "SYC",
+        "SYR",
+        "TCA",
+        "TCD",
+        "TGO",
+        "THA",
+        "TJK",
+        "TKM",
+        "TON",
+        "TTO",
+        "TUV",
+        "TWN",
+        "URY",
+        "USA",
+        "VAT",
+        "VCT",
+        "VEN",
+        "VGB",
+        "VNM",
+        "VUT",
+        "WSM",
+        "YEM"
+      ],
+      "missing_input_cells_by_scope": {
+        "all_origins": 0,
+        "domestic": 0
+      }
+    }
+  },
+  "summary": [
+    {
+      "group": "low",
+      "months": 48,
+      "fixed_group_countries": 24,
+      "contributing_country_months": 1138,
+      "included_articles": 756732,
+      "min_contributing_countries": 22,
+      "max_contributing_countries": 24,
+      "align_negative_share": 0.07888919373805577,
+      "align_zero_share": 0.8421864858985758,
+      "align_positive_share": 0.07892432036336842,
+      "align_directional_share": 0.15781351410142422,
+      "align_P_country_mean": 0.032507178735204596,
+      "rep_negative_share": 0.10708493701004336,
+      "rep_zero_share": 0.8476801862338711,
+      "rep_positive_share": 0.0452348767560855,
+      "rep_directional_share": 0.15231981376612888,
+      "rep_P_country_mean": 0.019992006475224908,
+      "frame_negative_share": 0.0722600115021944,
+      "frame_zero_share": 0.8904767284095065,
+      "frame_positive_share": 0.03726326008829893,
+      "frame_directional_share": 0.10952327159049331,
+      "frame_P_country_mean": 0.012864992155319077
+    },
+    {
+      "group": "middle",
+      "months": 48,
+      "fixed_group_countries": 23,
+      "contributing_country_months": 1081,
+      "included_articles": 491973,
+      "min_contributing_countries": 21,
+      "max_contributing_countries": 23,
+      "align_negative_share": 0.07033267775951385,
+      "align_zero_share": 0.8712710586025266,
+      "align_positive_share": 0.05839626363795946,
+      "align_directional_share": 0.1287289413974733,
+      "align_P_country_mean": 0.01726668302534885,
+      "rep_negative_share": 0.07759632729414302,
+      "rep_zero_share": 0.8878967444541944,
+      "rep_positive_share": 0.03450692825166241,
+      "rep_directional_share": 0.11210325554580546,
+      "rep_P_country_mean": 0.011211398704487853,
+      "frame_negative_share": 0.04369460891099821,
+      "frame_zero_share": 0.929099049550434,
+      "frame_positive_share": 0.027206341538567685,
+      "frame_directional_share": 0.07090095044956589,
+      "frame_P_country_mean": 0.005283228258367007
+    },
+    {
+      "group": "high",
+      "months": 48,
+      "fixed_group_countries": 24,
+      "contributing_country_months": 1063,
+      "included_articles": 401912,
+      "min_contributing_countries": 21,
+      "max_contributing_countries": 24,
+      "align_negative_share": 0.10612503696276308,
+      "align_zero_share": 0.8097025591468979,
+      "align_positive_share": 0.0841724038903389,
+      "align_directional_share": 0.19029744085310196,
+      "align_P_country_mean": 0.040614251730582265,
+      "rep_negative_share": 0.13089345088997886,
+      "rep_zero_share": 0.8287301038926683,
+      "rep_positive_share": 0.04037644521735285,
+      "rep_directional_share": 0.1712698961073317,
+      "rep_P_country_mean": 0.023591298464785897,
+      "frame_negative_share": 0.06126943468929965,
+      "frame_zero_share": 0.905369187931997,
+      "frame_positive_share": 0.03336137737870314,
+      "frame_directional_share": 0.09463081206800278,
+      "frame_P_country_mean": 0.010251697563624622
+    }
+  ],
+  "plot_limits": {
+    "positive_and_negative_shared_y_maxima": {
+      "align": 0.15000000000000002,
+      "rep": 0.17500000000000002,
+      "frame": 0.1
+    },
+    "positive_standalone_y_maxima": {
+      "align": 0.125,
+      "rep": 0.07500000000000001,
+      "frame": 0.07500000000000001
+    },
+    "directional_y_maxima": {
+      "align": 0.225,
+      "rep": 0.225,
+      "frame": 0.15000000000000002
+    }
+  },
+  "methods": {
+    "domestic": "Publication country equals evaluated-government country; same frozen extraction as figure16.",
+    "groups": "Same 71 countries and fixed 2022-2025 V-Dem v16 v2x_freexp_altinf mean terciles: low24, middle23, high24. Read from hash-pinned membership CSV.",
+    "eligibility": "Government/action identified, all three codes numeric -1/0/+1. Country-month n >= 30 after domestic restriction. Zeros retained.",
+    "country_month_sign_share": "Count of that sign / eligible n, separately for alignment, reputation and framing.",
+    "directional_S": "Country-month positive share + negative share = 1 - zero share.",
+    "P_country_mean": "First compute country-month P=4*p_positive*p_negative; then average those P values equally over eligible countries. NEVER multiply group-mean shares.",
+    "monthly_group_mean": "Equal-country arithmetic mean of each country-month statistic. The same country-month support is used for every sign and dimension.",
+    "within_country": "Articles pooled across included outlets; high-volume outlets contribute more within country-month.",
+    "centered3": "Three-calendar-month centered arithmetic mean of the monthly group statistic; require all three months. First and last thick-line values missing; no interpolation.",
+    "summary": "Arithmetic mean of 48 unsmoothed monthly group statistics; not pooled article shares and not means of country-period means.",
+    "units": "Shares and P stored as fractions; plots show percentages. P is provided in CSV only, not plotted.",
+    "membership": "24/23/24 are fixed membership counts; monthly contributor counts and identities are in the monthly CSV.",
+    "zero": "Zero includes neutral, mixed or insufficient directional evidence; zero is distinct from uncodable/excluded."
+  },
+  "limits": [
+    "Descriptive coverage statistics, not causal effects of freedom, representative national media samples or measured public polarization.",
+    "Fixed groups conceal within-period institutional changes. Event, source, genre, translation and classification differences remain uncontrolled.",
+    "A higher directional share may reflect one-sided coverage. Positive and negative series should be examined separately.",
+    "Country sensitivity identified in the negative-framing comparison remains relevant; adding positive shares does not resolve it."
+  ],
+  "outputs": [
+    {
+      "path": "slides/figures/data/17_media_freedom_sign_monthly.csv",
+      "sha256": "1787511a717e7be8f4d1a4fcac1da412e2a88f79441b89219c538817cebbe547",
+      "bytes": 83323
+    },
+    {
+      "path": "slides/figures/data/17_media_freedom_sign_summary.csv",
+      "sha256": "43ecafb05b0151f126d92bb0f1448a33f6b067f65dc3d6da4243d6cd3e8c1bea",
+      "bytes": 1219
+    },
+    {
+      "path": "slides/figures/17_media_freedom_positive.png",
+      "sha256": "c21a2738cfa9000320bbfc24fb9ec6a36af0414e257e59f45896e2ae94503ba3",
+      "bytes": 417281
+    },
+    {
+      "path": "slides/figures/17_media_freedom_positive.svg",
+      "sha256": "83b26f18e57b4eb595f663e35072eb9ab6a0c6078985c300b67d23447f86ea30",
+      "bytes": 38399
+    },
+    {
+      "path": "slides/figures/17_media_freedom_directional.png",
+      "sha256": "828b0225d03d01431e659f6b80dd3687ec32e17fce325a7a1b426cbcc5b3dc4f",
+      "bytes": 366902
+    },
+    {
+      "path": "slides/figures/17_media_freedom_directional.svg",
+      "sha256": "d7637a2023224aa597d7e570681ac8b65006ac05fbbd2059994f42edfaec7bd9",
+      "bytes": 37856
+    },
+    {
+      "path": "slides/figures/17_media_freedom_sign_comparison.png",
+      "sha256": "57ea37e190f8c5c661b7358dba025c3c5848bba0d43cfd8f52a3b6746248b5fd",
+      "bytes": 513750
+    },
+    {
+      "path": "slides/figures/17_media_freedom_sign_comparison.svg",
+      "sha256": "2296ec39032959c05802136db63ea4ce1109adfb9ca9a0637e2d1a3c7eefb7d8",
+      "bytes": 66021
+    }
+  ],
+  "operations": {
+    "network_calls": 0,
+    "database_calls": 0,
+    "model_calls": 0,
+    "pdf_outputs": 0,
+    "existing_figure16_outputs_modified": false
+  },
+  "software": {
+    "pandas": "3.1.1",
+    "numpy": "2.4.6",
+    "matplotlib": "3.11.2"
+  }
+}

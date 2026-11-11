@@ -6,6 +6,7 @@ This comparison asks whether the patterns in negative coverage remain when a new
 
 - [Domestic-only plot](../slides/figures/16_media_freedom_domestic.png) ([SVG](../slides/figures/16_media_freedom_domestic.svg))
 - [All-origin and domestic plots on matching scales](../slides/figures/16_media_freedom_scope_comparison.png)
+- [Positive domestic coverage](../slides/figures/17_media_freedom_positive.png), [negative and positive shares on matching scales](../slides/figures/17_media_freedom_sign_comparison.png), and [all nonzero coverage](../slides/figures/17_media_freedom_directional.png)
 - [Country-month counts, all signs](../slides/figures/data/16_media_freedom_country_month.csv)
 - [Monthly plotted values](../slides/figures/data/16_media_freedom_monthly_series.csv), [country participation](../slides/figures/data/16_media_freedom_contributing_countries.csv), and [fixed groups](../slides/figures/data/16_media_freedom_groups.csv)
 - [Comparison using identical country-months](../slides/figures/data/16_media_freedom_same_support.csv)
@@ -44,6 +45,32 @@ Higher negative alignment means more articles about actions opposing the incumbe
 Consequently, a source can report an opposition action or damaging government conduct without adding its own critical evaluation. Another article can use critical language without selecting an action coded as opposing the government. These separate objects explain why the three shares need not move together. The graph does not hold the reported event or action constant.
 
 One hypothesis is that sampled outlets in different settings differ in their mix of routine reporting and explicit criticism. Another is that the sources, article sections or stories collected differ. Both remain hypotheses. The country sensitivity points to inspecting particular countries and outlets before interpreting the pattern as a feature of their broader media environments. The middle group also has the lowest framing share, so the three-group pattern is not a monotonic relationship between freedom and criticism.
+
+## Positive coverage and the amount of directional coverage
+
+The positive figures use exactly the same domestic country-months, denominators, fixed freedom groups and averaging as the negative figures. A positive label means an actor's action supports the incumbent (`align`), has favorable reputational implications (`rep`), or the evaluated government is framed favorably in the title or narration (`frame`). Positive alignment is not the journalist's endorsement.
+
+| Positive share | Low freedom | Middle freedom | High freedom |
+|---|---:|---:|---:|
+| Political alignment | 7.89% | 5.84% | 8.42% |
+| Reputational implication | 4.52% | 3.45% | 4.04% |
+| Framing | 3.73% | 2.72% | 3.34% |
+
+These summarize the 48 monthly equal-country means. Relative to the low group, the high group has more positive **and** negative alignment. Its higher negative-reputation share is not accompanied by a higher positive-reputation share. For framing, both signs are somewhat more common in the low group. These are differences in observed coded coverage; they are not significance tests or population estimates of all national media.
+
+To distinguish less directional coverage from a change in direction, use `S = positive share + negative share = 1 - zero share`:
+
+| Either-sign share S | Low freedom | Middle freedom | High freedom |
+|---|---:|---:|---:|
+| Political alignment | 15.78% | 12.87% | 19.03% |
+| Reputational implication | 15.23% | 11.21% | 17.13% |
+| Framing | 10.95% | 7.09% | 9.46% |
+
+The middle group has the lowest period-average S on all three dimensions. The high group has the most directional alignment and reputation coverage; the low group has the most directional framing in the full sample. Country composition still matters: removing Nicaragua changes low-group positive framing only from **3.73% to 3.78%**, while its negative framing falls to **5.16%** and its combined S falls from **10.95% to 8.94%**, below the high group's **9.46%**. The modest positive-framing difference is therefore not explained by the same Nicaragua sample that drives the negative-framing contrast.
+
+S measures how often a direction is coded; it does not measure disagreement between outlets or citizens. The separate shares reveal whether both directions appear or one dominates. The supplemental tables also retain `P = 4 × positive share × negative share`, calculated **within each country-month before taking equal-country monthly means**. Multiplying the two group-average shares instead would create a different quantity and can imply two-sided coverage by combining countries with opposing, one-sided patterns. Neither quantity establishes polarization between outlets or among the public.
+
+The [monthly values](../slides/figures/data/17_media_freedom_sign_monthly.csv), [period summaries](../slides/figures/data/17_media_freedom_sign_summary.csv) and [methods manifest](../slides/figures/data/17_media_freedom_sign_manifest.json) accompany the figures. Run `python scripts/build_media_freedom_signs.py` to rebuild them from the frozen local aggregates, without model or database calls.
 
 ## Reproduction
 
