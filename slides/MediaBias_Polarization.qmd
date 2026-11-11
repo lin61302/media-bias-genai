@@ -162,7 +162,6 @@ This separates the measurement approaches already listed in the literature revie
 -   Bias and polarization require a political dimension and an object of comparison
     -   Party and ideological scales vary across countries and over time
 -   We use the **national incumbent government** as a common reference
-    -   Support and opposition can organize conflict
 -   News media can reveal conflict around the incumbent at a finer time scale
 -   The measurement question centers on what it means for articles to have positive or negative coverage of the incumbent
 
