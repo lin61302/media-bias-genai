@@ -886,6 +886,12 @@ margin: 7px 0;
 .reveal .slides section .quote-pair p { font-size: 26px; }
 .reveal .slides section.application-slide > p:last-of-type { font-size: 26px; }
 .reveal .slides section.media-freedom-slide > p:last-of-type { font-size: 23px; }
+.reveal .slides section.nicaragua-outlets-slide > p:first-of-type { font-size: 25px; margin: 16px 0 22px; }
+.reveal .slides section.nicaragua-outlets-slide table { font-size: 28px; margin: 0; }
+.reveal .slides section.nicaragua-outlets-slide table th,
+.reveal .slides section.nicaragua-outlets-slide table td { padding: 14px 20px; }
+.reveal .slides section.nicaragua-outlets-slide table th:first-child { width: 32%; }
+.reveal .slides section.nicaragua-outlets-slide > p:last-of-type { font-size: 25px; margin-top: 26px; }
 .reveal .slides section.clean-slide.backup table { font-size: 26px; }
 .reveal .slides section.clean-slide.backup table th,
 .reveal .slides section.clean-slide.backup table td { padding: 12px 16px; }
@@ -2149,6 +2155,76 @@ display:block!important;
 <p>This reproducible domestic comparison requires publication_country == gov in the frozen records. Period: January 2022–December 2025; November 4, 2026 storage checkpoint, distinct from the November 8 main empirical snapshot. V-Dem v16 v2x_freexp_altinf measures Freedom of Expression and Alternative Sources of Information, not a categorical regime type. The 71 source countries form fixed terciles of their mean 2022–2025 scores: 24 low, 23 middle, 24 high. Require at least 30 eligible domestic articles per country-month; all three labels codable and action/government identified. Zero labels and other_act remain included. Thin lines show equal-country monthly means; thick lines require three complete centered calendar months. Y-axes are percentages and differ across panels. The plotted sample contains 1,650,617 articles and 3,282 country-months. Within country-months articles are pooled across outlets; countries receive equal weight. Group membership is fixed but monthly participation varies.</p>
 <p>Averages of the 48 monthly country means, low/middle/high: negative political alignment 7.89/7.03/10.61%; negative reputational implication 10.71/7.76/13.09%; negative framing 7.23/4.37/6.13%. The first two describe selected reported actions and their implications; framing describes evaluative language. These are marginal article shares, not comparisons of wording conditional on the same event. More negative alignment is not evidence of a more critical journalist, and negative reputation is not observed public opinion or an estimate of actual government performance.</p>
 <p>The framing contrast is sensitive to country composition. Nicaragua’s sampled domestic coverage has a 54.05% mean monthly negative-framing share, based on 5,335 eligible articles across 48 months. Removing Nicaragua as a diagnostic lowers the low-group mean from 7.23% to 5.16%, below the high group’s 6.13%. This is not a reason to discard Nicaragua or evidence its coding is wrong; it shows the average is not a general pattern shared by low-freedom countries. Nor is framing monotonic across the three freedom groups: the middle group is lowest. Foreign-source coverage does not fully explain the displayed ordering, but source selection, article genre, event mix, translation and coding differences remain unresolved. A possible distinction between routine reporting of damaging conduct and sharper editorial criticism in particular sampled outlets is a hypothesis, not a mechanism identified here. Examine country and outlet distributions and comparable events before attributing the pattern to media freedom. Reproduction and checks: ../docs/media-freedom-comparison.md and figures/data/16_media_freedom_manifest.json. Erik’s supplied original remains archived separately.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section class="slide level2 clean-slide nicaragua-outlets-slide center">
+<h2>Nicaragua: framing differs across outlets</h2>
+<p>Framing toward Nicaragua’s government · Six largest sampled outlets · 2022–2025</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Outlet</th>
+<th style="text-align: right;">Articles</th>
+<th style="text-align: right;">Negative framing</th>
+<th style="text-align: right;">Positive framing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Artículo 66</td>
+<td style="text-align: right;">1,832</td>
+<td style="text-align: right;"><strong>71.4%</strong></td>
+<td style="text-align: right;">0.2%</td>
+</tr>
+<tr class="even">
+<td>La Prensa</td>
+<td style="text-align: right;">1,445</td>
+<td style="text-align: right;"><strong>54.3%</strong></td>
+<td style="text-align: right;">0.3%</td>
+</tr>
+<tr class="odd">
+<td>Confidencial</td>
+<td style="text-align: right;">988</td>
+<td style="text-align: right;"><strong>65.1%</strong></td>
+<td style="text-align: right;">0.0%</td>
+</tr>
+<tr class="even">
+<td>Onda Local</td>
+<td style="text-align: right;">233</td>
+<td style="text-align: right;"><strong>70.8%</strong></td>
+<td style="text-align: right;">0.0%</td>
+</tr>
+<tr class="odd">
+<td>Nueva Radio Ya</td>
+<td style="text-align: right;">473</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;"><strong>17.3%</strong></td>
+</tr>
+<tr class="even">
+<td>Canal 2</td>
+<td style="text-align: right;">328</td>
+<td style="text-align: right;">0.0%</td>
+<td style="text-align: right;"><strong>8.5%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Including Nicaragua raises the low-freedom negative-framing average: 5.16% → 7.23%.</strong></p>
+<aside class="notes">
+<p>Same January 2022–December 2025 period, November 4 frozen caches and domestic eligibility as Application 3. All 48 Nicaragua months pass the country-month n &gt;= 30 rule. The eight sources contribute 5,335 articles, including 2,909 negative-framing labels. The table shows the six largest sampled outlets (5,299 articles); La Jornada and La Verdad contribute 31 and 5 further articles. These percentages pool articles over the period and include zero-coded labels in each denominator. They describe collected eligible articles, not each outlet’s complete published output. Source-month counts reconcile exactly with the preceding figure’s Nicaragua counts on all three dimensions.</p>
+<p>The bottom line compares averages of the 48 monthly equal-country means, with fixed group membership: 7.226% with Nicaragua, 5.164% excluding it as a diagnostic, a 2.062 percentage-point difference. Nicaragua stays in the plotted line. Its own monthly mean is 54.048%, versus 54.527% pooling its articles. Its mean monthly country weight is 4.22%; it changes a relatively small group gap rather than dominating the weights. The high-group mean is 6.127%. The comparison does not establish a causal effect or justify dropping Nicaragua.</p>
+<p>Artículo 66, La Prensa and Confidencial supply 79.94% of eligible Nicaragua articles and 94.05% of its negative-framing labels. National press repression can coexist with critical outlet output: UNESCO documents La Prensa’s mostly exiled team, and RSF documents the exile of Confidencial’s director and other independent journalists. The publication-country code identifies source origin, not necessarily the physical newsroom or regulatory environment. Exile and outlet composition are mechanisms to investigate, not proven explanations for every coded label. Nueva Radio Ya’s own account of organizing Ortega’s birthday celebration supplies evidence of supportive positioning, not proof of legal state ownership. Canal 2 is not assigned an ownership category here.</p>
+<p>There are elevated country rates in all three relative freedom groups, but none approaches Nicaragua: Zimbabwe 22.91%, Ethiopia 18.31%, Uganda 16.47% (low); Cameroon 18.88% (middle); Liberia 14.00%, Malawi 13.96%, Zambia 12.35% (high). These are means across qualifying domestic country-months. Country medians are 3.01%, 3.31%, 5.04%; middle 50% intervals are 1.78–6.02%, 2.14–4.47%, 3.26–7.58%. Typical countries overlap substantially; the low group has an unusually long upper tail. Do not equate this between-country spread with variation over time or claim group differences are statistically established.</p>
+<p>Reproducible counts and comparison: figures/data/18_nicaragua_outlet_counts.csv, 18_nicaragua_outlet_month_counts.csv, 18_nicaragua_provenance_and_summary.json and 18_nicaragua_comparison.json. Check: ../scripts/check_nicaragua_outlets.py. Context: https://www.unesco.org/en/articles/nicaraguan-newspaper-la-prensa-wins-unesco/guillermo-cano-world-press-freedom-prize-2025 ; https://rsf-es.org/nicaragua-el-exilio-es-la-unica-forma-de-supervivencia-para-el-periodismo-independiente/ ; https://nuevaya.com.ni/destacadas/tu-nueva-radio-ya-y-el-pueblo-dedican-serenata-a-comandante-daniel-ortega-en-su-cumpleanos-79/ .</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

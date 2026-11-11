@@ -258,6 +258,12 @@
 .reveal .slides section .quote-pair p { font-size: 26px; }
 .reveal .slides section.application-slide > p:last-of-type { font-size: 26px; }
 .reveal .slides section.media-freedom-slide > p:last-of-type { font-size: 23px; }
+.reveal .slides section.nicaragua-outlets-slide > p:first-of-type { font-size: 25px; margin: 16px 0 22px; }
+.reveal .slides section.nicaragua-outlets-slide table { font-size: 28px; margin: 0; }
+.reveal .slides section.nicaragua-outlets-slide table th,
+.reveal .slides section.nicaragua-outlets-slide table td { padding: 14px 20px; }
+.reveal .slides section.nicaragua-outlets-slide table th:first-child { width: 32%; }
+.reveal .slides section.nicaragua-outlets-slide > p:last-of-type { font-size: 25px; margin-top: 26px; }
 .reveal .slides section.clean-slide.backup table { font-size: 26px; }
 .reveal .slides section.clean-slide.backup table th,
 .reveal .slides section.clean-slide.backup table td { padding: 12px 16px; }

@@ -507,6 +507,34 @@ The framing contrast is sensitive to country composition. Nicaragua's sampled do
 :::
 
 
+## Nicaragua: framing differs across outlets {.clean-slide .nicaragua-outlets-slide}
+
+Framing toward Nicaragua’s government · Six largest sampled outlets · 2022–2025
+
+| Outlet | Articles | Negative framing | Positive framing |
+|---|---:|---:|---:|
+| Artículo 66 | 1,832 | **71.4%** | 0.2% |
+| La Prensa | 1,445 | **54.3%** | 0.3% |
+| Confidencial | 988 | **65.1%** | 0.0% |
+| Onda Local | 233 | **70.8%** | 0.0% |
+| Nueva Radio Ya | 473 | 0.0% | **17.3%** |
+| Canal 2 | 328 | 0.0% | **8.5%** |
+
+**Including Nicaragua raises the low-freedom negative-framing average: 5.16% → 7.23%.**
+
+::: notes
+Same January 2022–December 2025 period, November 4 frozen caches and domestic eligibility as Application 3. All 48 Nicaragua months pass the country-month n >= 30 rule. The eight sources contribute 5,335 articles, including 2,909 negative-framing labels. The table shows the six largest sampled outlets (5,299 articles); La Jornada and La Verdad contribute 31 and 5 further articles. These percentages pool articles over the period and include zero-coded labels in each denominator. They describe collected eligible articles, not each outlet's complete published output. Source-month counts reconcile exactly with the preceding figure's Nicaragua counts on all three dimensions.
+
+The bottom line compares averages of the 48 monthly equal-country means, with fixed group membership: 7.226% with Nicaragua, 5.164% excluding it as a diagnostic, a 2.062 percentage-point difference. Nicaragua stays in the plotted line. Its own monthly mean is 54.048%, versus 54.527% pooling its articles. Its mean monthly country weight is 4.22%; it changes a relatively small group gap rather than dominating the weights. The high-group mean is 6.127%. The comparison does not establish a causal effect or justify dropping Nicaragua.
+
+Artículo 66, La Prensa and Confidencial supply 79.94% of eligible Nicaragua articles and 94.05% of its negative-framing labels. National press repression can coexist with critical outlet output: UNESCO documents La Prensa's mostly exiled team, and RSF documents the exile of Confidencial's director and other independent journalists. The publication-country code identifies source origin, not necessarily the physical newsroom or regulatory environment. Exile and outlet composition are mechanisms to investigate, not proven explanations for every coded label. Nueva Radio Ya's own account of organizing Ortega's birthday celebration supplies evidence of supportive positioning, not proof of legal state ownership. Canal 2 is not assigned an ownership category here.
+
+There are elevated country rates in all three relative freedom groups, but none approaches Nicaragua: Zimbabwe 22.91%, Ethiopia 18.31%, Uganda 16.47% (low); Cameroon 18.88% (middle); Liberia 14.00%, Malawi 13.96%, Zambia 12.35% (high). These are means across qualifying domestic country-months. Country medians are 3.01%, 3.31%, 5.04%; middle 50% intervals are 1.78–6.02%, 2.14–4.47%, 3.26–7.58%. Typical countries overlap substantially; the low group has an unusually long upper tail. Do not equate this between-country spread with variation over time or claim group differences are statistically established.
+
+Reproducible counts and comparison: figures/data/18_nicaragua_outlet_counts.csv, 18_nicaragua_outlet_month_counts.csv, 18_nicaragua_provenance_and_summary.json and 18_nicaragua_comparison.json. Check: ../scripts/check_nicaragua_outlets.py. Context: https://www.unesco.org/en/articles/nicaraguan-newspaper-la-prensa-wins-unesco/guillermo-cano-world-press-freedom-prize-2025 ; https://rsf-es.org/nicaragua-el-exilio-es-la-unica-forma-de-supervivencia-para-el-periodismo-independiente/ ; https://nuevaya.com.ni/destacadas/tu-nueva-radio-ya-y-el-pueblo-dedican-serenata-a-comandante-daniel-ortega-en-su-cumpleanos-79/ .
+:::
+
+
 ## Discussion {.clean-slide}
 
 - Is the classification system understandable?

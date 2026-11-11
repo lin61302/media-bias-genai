@@ -38,6 +38,40 @@ Removing Nicaragua as a diagnostic reduces the low group's average from **7.23% 
 
 The [country summaries](../slides/figures/data/16_media_freedom_country_sensitivity.csv) and [leave-one-country-out checks](../slides/figures/data/16_media_freedom_leave_one_country_out.csv) reproduce this diagnostic across all 71 countries. Run `python scripts/check_media_freedom_country_sensitivity.py` to rebuild them. The groups remain fixed; removing a country never reallocates the others to different terciles.
 
+### Nicaragua's outlets
+
+The [outlet counts](../slides/figures/data/18_nicaragua_outlet_counts.csv) and [outlet-month counts](../slides/figures/data/18_nicaragua_outlet_month_counts.csv) use the same frozen caches, period and eligibility as the domestic figure. All 48 Nicaragua months exceed the 30-article threshold. The six largest outlets appear on the slide; the other two contribute 36 articles.
+
+| Outlet | Eligible articles | Negative framing | Positive framing |
+|---|---:|---:|---:|
+| Artículo 66 | 1,832 | 71.4% | 0.2% |
+| La Prensa | 1,445 | 54.3% | 0.3% |
+| Confidencial | 988 | 65.1% | 0.0% |
+| Onda Local | 233 | 70.8% | 0.0% |
+| Nueva Radio Ya | 473 | 0.0% | 17.3% |
+| Canal 2 | 328 | 0.0% | 8.5% |
+
+These are pooled article percentages, including zero-coded labels in the denominator. The displayed group lines instead average countries within each month. The table is not a census of each outlet's published output. Artículo 66, La Prensa and Confidencial supply 79.94% of Nicaragua's eligible articles and 94.05% of its negative-framing labels. Nicaragua's national mean is 54.05% across months, or 54.53% pooling its articles. Including Nicaragua changes the low group's period-average line from 5.164% to 7.226%, a 2.062 percentage-point difference.
+
+The country code does not necessarily locate the newsroom: UNESCO documents La Prensa's mostly exiled staff, and RSF documents Confidencial director Carlos Chamorro's exile. Low national media freedom can coexist with independent journalism produced abroad. This supports investigating exile and outlet composition; it does not establish their causal contribution to these particular rates. [UNESCO, May 2025](https://www.unesco.org/en/articles/nicaraguan-newspaper-la-prensa-wins-unesco/guillermo-cano-world-press-freedom-prize-2025); [RSF, June 2025](https://rsf-es.org/nicaragua-el-exilio-es-la-unica-forma-de-supervivencia-para-el-periodismo-independiente/).
+
+Nueva Radio Ya's own account of organizing Ortega's birthday celebration documents supportive positioning. It does not by itself establish state ownership. [Outlet account, November 2024](https://nuevaya.com.ni/destacadas/tu-nueva-radio-ya-y-el-pueblo-dedican-serenata-a-comandante-daniel-ortega-en-su-cumpleanos-79/).
+
+### How unusual is Nicaragua?
+
+The following distribution gives each country one value: its average monthly negative-framing share across qualifying months. It describes variation **between countries**, not changes over time or uncertainty intervals. Ten countries have fewer than 48 qualifying months; Timor-Leste has only one.
+
+| Freedom group | Countries | Median country | Middle 50% of countries | Highest country rate |
+|---|---:|---:|---:|---:|
+| Low | 24 | 3.01% | 1.78–6.02% | Nicaragua: 54.05% |
+| Low, excluding Nicaragua | 23 | 2.72% | 1.74–5.81% | Zimbabwe: 22.91% |
+| Middle | 23 | 3.31% | 2.14–4.47% | Cameroon: 18.88% |
+| High | 24 | 5.04% | 3.26–7.58% | Liberia: 14.00% |
+
+Elevated rates occur in every group. Ethiopia (18.31%) and Uganda (16.47%) are further low-group cases; Malawi (13.96%) and Zambia (12.35%) are high-group cases. These examples have 48 qualifying months except Ethiopia (47). The groups' central ranges overlap; the middle group is narrower, while the low group has a much longer upper tail. Nicaragua is exceptional rather than representative of the typical low-freedom country. Group membership is relative to these 71 source countries, not a universal categorical judgment about regimes.
+
+Run `python scripts/check_nicaragua_outlets.py` to verify the extraction hashes, reconcile all outlet-month counts with the original country-month export, and regenerate the [comparison summary](../slides/figures/data/18_nicaragua_comparison.json). The [extraction receipt](../slides/figures/data/18_nicaragua_provenance_and_summary.json) retains original filenames; delivered files use the `18_nicaragua_` prefix instead of `nic_`, with identical contents and hashes. No model or database calls are needed.
+
 ### Interpretation
 
 Higher negative alignment means more articles about actions opposing the incumbent, not more criticism by journalists. Higher negative reputational implication means more selected actions coded as reflecting badly on the government, not worse measured government performance. Negative framing concerns critical language in the title or narration.

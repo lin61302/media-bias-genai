@@ -1,0 +1,182 @@
+{
+  "scope": "January 2022–December 2025; November 4 snapshot; publication country equals evaluated government.",
+  "definitions": "Country distributions describe country mean-monthly negative-framing rates on qualifying months, not temporal variance or population uncertainty. Group-line summaries first average eligible countries each month, then the 48 months. Quantiles use linear interpolation. Zeros remain in denominators.",
+  "nicaragua": {
+    "articles": 5335,
+    "negative_articles": 2909,
+    "monthly_negative_pct": 54.048254926239444,
+    "pooled_negative_pct": 54.526710402999065,
+    "top_three_article_share_pct": 79.94376757263355,
+    "top_three_negative_share_pct": 94.05293915434856,
+    "low_group_with_pct": 7.22600115021944,
+    "low_group_without_pct": 5.16403823619161,
+    "difference_pp": 2.0619629140278297
+  },
+  "country_distributions": {
+    "low": {
+      "countries": 24,
+      "median_pct": 3.0063951299862097,
+      "q1_pct": 1.7755445833437882,
+      "q3_pct": 6.019929271910159,
+      "min_pct": 0.7555576599718979,
+      "max_pct": 54.048254926239444,
+      "sd_pp": 11.549712201109188,
+      "top_countries": [
+        {
+          "country": "NIC",
+          "name": "Nicaragua",
+          "negative_framing_pct": 54.048254926239444,
+          "months": 48,
+          "articles": 5335
+        },
+        {
+          "country": "ZWE",
+          "name": "Zimbabwe",
+          "negative_framing_pct": 22.91081703051447,
+          "months": 48,
+          "articles": 21036
+        },
+        {
+          "country": "ETH",
+          "name": "Ethiopia",
+          "negative_framing_pct": 18.31010221772014,
+          "months": 47,
+          "articles": 3842
+        },
+        {
+          "country": "UGA",
+          "name": "Uganda",
+          "negative_framing_pct": 16.47011558498112,
+          "months": 48,
+          "articles": 9577
+        }
+      ]
+    },
+    "middle": {
+      "countries": 23,
+      "median_pct": 3.3088188077990472,
+      "q1_pct": 2.1391226518959323,
+      "q3_pct": 4.472806502360254,
+      "min_pct": 1.437233734606202,
+      "max_pct": 18.88336507847701,
+      "sd_pp": 3.7418283818386557,
+      "top_countries": [
+        {
+          "country": "CMR",
+          "name": "Cameroon",
+          "negative_framing_pct": 18.88336507847701,
+          "months": 48,
+          "articles": 6743
+        },
+        {
+          "country": "ALB",
+          "name": "Albania",
+          "negative_framing_pct": 8.427469275307661,
+          "months": 48,
+          "articles": 21810
+        },
+        {
+          "country": "MAR",
+          "name": "Morocco",
+          "negative_framing_pct": 8.194753167794039,
+          "months": 48,
+          "articles": 8341
+        },
+        {
+          "country": "MOZ",
+          "name": "Mozambique",
+          "negative_framing_pct": 7.368618164671473,
+          "months": 48,
+          "articles": 7303
+        }
+      ]
+    },
+    "high": {
+      "countries": 24,
+      "median_pct": 5.0370217370402575,
+      "q1_pct": 3.257980153322701,
+      "q3_pct": 7.57990309307786,
+      "min_pct": 1.2339951568250467,
+      "max_pct": 13.9957211667872,
+      "sd_pp": 3.6268396700251797,
+      "top_countries": [
+        {
+          "country": "LBR",
+          "name": "Liberia",
+          "negative_framing_pct": 13.9957211667872,
+          "months": 48,
+          "articles": 9572
+        },
+        {
+          "country": "MWI",
+          "name": "Malawi",
+          "negative_framing_pct": 13.958037686707069,
+          "months": 48,
+          "articles": 7512
+        },
+        {
+          "country": "ZMB",
+          "name": "Zambia",
+          "negative_framing_pct": 12.348013639068284,
+          "months": 48,
+          "articles": 12546
+        },
+        {
+          "country": "KEN",
+          "name": "Kenya",
+          "negative_framing_pct": 9.327006283197,
+          "months": 48,
+          "articles": 15577
+        }
+      ]
+    },
+    "low_without_NIC": {
+      "countries": 23,
+      "median_pct": 2.71998567130743,
+      "q1_pct": 1.7400962456440001,
+      "q3_pct": 5.81030326599849,
+      "min_pct": 0.7555576599718979,
+      "max_pct": 22.91081703051447,
+      "sd_pp": 5.945003455790334,
+      "top_countries": [
+        {
+          "country": "ZWE",
+          "name": "Zimbabwe",
+          "negative_framing_pct": 22.91081703051447,
+          "months": 48,
+          "articles": 21036
+        },
+        {
+          "country": "ETH",
+          "name": "Ethiopia",
+          "negative_framing_pct": 18.31010221772014,
+          "months": 47,
+          "articles": 3842
+        },
+        {
+          "country": "UGA",
+          "name": "Uganda",
+          "negative_framing_pct": 16.47011558498112,
+          "months": 48,
+          "articles": 9577
+        },
+        {
+          "country": "BLR",
+          "name": "Belarus",
+          "negative_framing_pct": 7.146744858387981,
+          "months": 48,
+          "articles": 13916
+        }
+      ]
+    }
+  },
+  "input_sha256": {
+    "18_nicaragua_provenance_and_summary.json": "c2b9c25cf6bec6abc82205b16b8e5aed64367034a26f58727d72205e03066cb0",
+    "18_nicaragua_outlet_counts.csv": "d2020876d0e29f2e669a653e062eb2a1680382836e80a1a3df672f694a53d58f",
+    "18_nicaragua_outlet_month_counts.csv": "905cc28235f2923430204a9ae8f14733f0ca2291e150620681d039f6891919f0",
+    "18_nicaragua_action_actor_role_counts.csv": "d9afa7907c3e67891d55083ab4171e5453864be38f186e0ef250dee0977fa4d6",
+    "16_media_freedom_country_month.csv": "af6d0eda1df59818d8c150978ff84508ba4be0bd7d6e3909cfd4e0bd9a6b230d",
+    "16_media_freedom_country_sensitivity.csv": "a95ee32c5a0370661c6a370c6fe3e38f1f10ee71fdba7b7e1cbf0b3a7efb7165",
+    "16_media_freedom_groups.csv": "050b0355857b2859383ac9596a5b2eb1a357f068417d46d96076ca3325d533a9"
+  }
+}
