@@ -277,3 +277,12 @@
 .reveal .slides section .formula-note { margin: 12px 0 0 auto; width: 590px; padding: 10px 16px; border: 1px solid #bdc7d3; border-radius: 6px; background: #fff; text-align: left; }
 .reveal .slides section .formula-note strong { display: block; font-size: 23px; line-height: 1.2; }
 .reveal .slides section .formula-note span { display: block; font-size: 18px; line-height: 1.3; margin-top: 4px; }
+
+/* Application 1: a broad country overview before the Senegal case. */
+.reveal .slides section.polarization-overview-slide .overview-scope,
+.reveal .slides section.polarization-scatter-slide .overview-scope { font-size: 22px; line-height: 1.25; margin: 6px 0 12px; }
+.reveal .slides section.figure-slide.polarization-overview-slide img { max-height: 550px; width: auto; }
+.reveal .slides section.polarization-overview-slide .overview-formula { font-size: 23px; line-height: 1.3; margin: 12px 0 0; }
+.reveal .slides section.polarization-scatter-slide h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.reveal .slides section.figure-slide.polarization-scatter-slide img { max-height: 690px; width: auto; }
+.reveal .slides section.polarization-scatter-slide > p { margin: 0; }

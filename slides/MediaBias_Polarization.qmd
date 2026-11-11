@@ -301,6 +301,50 @@ Fixed January 2019–May 2026 cohort, n = 3,181,113. Zero shares: alignment 82.2
 Fixed January 2019–May 2026 cohort. Among 251,054 positive-alignment records, 52,218 (20.8%) have negative reputational implications. Numeric article-level correlation is approximately 0.339. The table conditions reputation on alignment, with rows summing to 100%. These are model classifications, not a human-reference accuracy test or observed opinion change. Reproduction: ../scripts/build_slide_figures.py.
 :::
 
+## Application 1: polarization across countries {.clean-slide .figure-slide .polarization-overview-slide}
+
+::: overview-scope
+Evaluated governments · All source origins · January 2022–May 2026 · Ukraine excluded
+:::
+
+![](figures/21_polarization_country_ranking.png){width="100%" alt="Seventy evaluated governments ranked by pooled political-alignment P, with reputational-implication and framing P shown alongside. The ranking continues across three columns."}
+
+::: overview-formula
+**P = 4 × p₊ × p₋**. Positive and negative article shares; zero-coded articles stay in the denominator.
+:::
+
+::: notes
+Erik proposed this broad, exploratory opening to Application 1 before the Senegal case. The ranking retains all 70 countries in his supplied figure, arranged in three columns for projection. Read ranks down each column, then continue to the next. Colors identify the three judgments, not regime categories. Senegal is marked to connect the cross-country overview to the subsequent event case.
+
+Reproduced from data/polarization/monthly_polarization_all_countries.csv, the November 4 frozen export, restricted to January 2022–May 2026 and the 71-country publication roster, excluding Ukraine. The plotted country is the evaluated government, with all publication origins included. Total: 1,781,972 eligible articles across 70 evaluated governments. This is not the domestic-only January 2022–December 2025 sample used later in Application 3, nor the November 8 full-corpus descriptive release. There is no country-month minimum-count filter here.
+
+For each government and dimension, sum positive and negative article counts across months, divide each by all eligible article counts including zeros, then calculate P = 4 p_positive p_negative. This is P of the pooled counts, not an average of monthly P. P increases with both the prevalence and balance of the two signs. It is zero if either sign is absent, including consistently one-sided coverage. Pooling can combine different events, actors, sources, periods and incumbents. It does not establish simultaneous opposing camps, persistent outlet disagreement or public polarization.
+
+This opening asks where the patterns differ and why, rather than treating the ranking as a validated ranking of polarized societies. Source mix, article genres, uneven collection and small country samples remain relevant. Timor-Leste contributes only 288 eligible articles. Retaining zero-coded articles affects P and cross-measure correlations.
+
+Erik's supplied figures exclude Ukraine; no substantive reason for that exclusion was documented in the located message. Including it gives 71 governments and 1,873,774 articles. Ukraine has alignment P = 0.171317 and reputation P = 0.009814. The exclusion must remain visible and should be assessed as a sensitivity choice. Source: https://peace-machine.slack.com/archives/C09DRGJN4RK/p1794420151465199 . Reproduction and provenance: ../scripts/build_polarization_overview.py and figures/data/21_polarization_overview_manifest.json.
+:::
+
+## Alignment and reputation across regime types {.clean-slide .figure-slide .polarization-scatter-slide}
+
+![](figures/21_erik_scatter_original.png){width="100%" alt="Erik's scatterplot of pooled alignment P against reputation P for 70 evaluated governments, excluding Ukraine. Regime types use different colors and symbols. The overall Pearson correlation is 0.78 and Spearman correlation is 0.85."}
+
+::: overview-scope
+Evaluated governments · All source origins · One point per country
+:::
+
+::: notes
+The supplied scatterplot is preserved unchanged. Each point is one evaluated government's pooled January 2022–May 2026 score. The horizontal axis is political-alignment P and the vertical axis is reputational-implication P. Points above the equality line have higher reputation P; points below it have higher alignment P. Colors and marker shapes now identify regime categories, unlike the dimension colors in the preceding ranking.
+
+The country scores and overall correlations reproduce from the same export as the preceding slide: Pearson r = 0.7789785079 and Spearman rho = 0.8514565655. Ethiopia has relatively high reputation P; Nicaragua has relatively high alignment P. These differences illustrate that the judgments capture different features of coverage. They do not mean Ethiopia has more negative reputation than Nicaragua: P combines positive and negative shares, and one-sided criticism can produce low P. Likewise the cross-country correlation does not measure article-level agreement between alignment and reputation.
+
+Erik's caption defines regime type as the modal V-Dem Regimes of the World category over 2022–2025: 8 closed autocracies, 32 electoral autocracies and 30 democracies, including one liberal democracy. The underlying country-to-regime file, handling of modal ties and subgroup correlations were not independently reconstructed. The original classifications and annotations are retained as supplied. This exploratory cross-section does not establish a regime effect or control for source selection and the prevalence of zero labels.
+
+With Ukraine included, Pearson r is 0.639605 and Spearman rho is 0.823843. Its exclusion matters, particularly for Pearson correlation; the supplied figure's reason for excluding it was not documented. Keep that sensitivity available in discussion.
+
+Transition: the country totals compress several years of reporting. Senegal lets us examine how the positive and negative shares change over time and then identify the reported actors and actions behind those changes. Source and original figure: https://peace-machine.slack.com/archives/C09DRGJN4RK/p1794420151465199 ; figures/21_erik_scatter_original.png. Reproduced scores and checks: figures/data/21_polarization_overview_manifest.json.
+:::
+
 ## Senegal: coverage shifts across the election crisis {.figure-slide .senegal-series-slide}
 
 ![](figures/09_senegal_directional_shares.png){fig-align="center" width="100%"}
@@ -319,7 +363,7 @@ Salience here means the prevalence of coded support/opposition within this selec
 UN chronology S/2024/521 para 18: Sall postponed the election February 3, parliament rescheduled February 5, Constitutional Council overturned February 15; election March 24; Faye inaugurated April 2. https://documents.un.org/doc/undoc/gen/n24/173/40/pdf/n2417340.pdf . The dotted line is positioned on April 2, just inside April, and marks the new incumbent. Monthly observations and labels sit at each calendar month's midpoint; small ticks mark month starts. Midpoint placement does not imply an observation on that day. External chronology contextualizes stored coding without recoding it. New plot: ../scripts/build_senegal_directional_shares.py; frozen source: figures/data/09_senegal_monthly_indices.csv; manifest 09_senegal_directional_shares_manifest.json. Original P assets are retained as reproducible background.
 :::
 
-## Application 1: polarization in Senegal coverage {.clean-slide .figure-slide .senegal-p-slide}
+## Senegal: polarization and salience {.clean-slide .figure-slide .senegal-p-slide}
 
 ![](figures/14_senegal_polarization_application.png){width="100%"}
 

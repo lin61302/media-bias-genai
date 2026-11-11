@@ -1,0 +1,64 @@
+{
+  "title": "Country polarization overview for Erik's broad introduction",
+  "input": {
+    "path": "data/polarization/monthly_polarization_all_countries.csv",
+    "sha256": "9e70e773c22fab5f9d9d365d5344e3669a78afee5a3ac2f7df0f9a6b7775f965"
+  },
+  "country_roster": {
+    "path": "slides/figures/data/06_coverage_map.csv",
+    "sha256": "acb44e3d53ac56296deb418435b58f36117ff5aedfade71ce800b5daf63add38",
+    "filter": "publication_source_domains > 0",
+    "countries_before_exclusion": 71,
+    "crosscheck": "slides/figures/data/16_media_freedom_groups.csv"
+  },
+  "period": {
+    "first_month": "2022-01",
+    "last_month": "2026-05",
+    "months": 53
+  },
+  "unit": "Evaluated-government country; all countries of publication are included.",
+  "country_month_minimum": null,
+  "method": "Recover integer sign counts as eligible_articles \u00d7 share; pool counts across months; P = 4 \u00d7 negative_count \u00d7 positive_count / eligible_articles\u00b2. Neutral records remain in the denominator.",
+  "rank_order": "Descending political-alignment P; all 70 countries shown in three consecutive panels.",
+  "excluded_countries": {
+    "UKR": "Inherited from Erik's supplied figures; substantive exclusion rationale was not supplied."
+  },
+  "countries": 70,
+  "eligible_articles": 1781972,
+  "alignment_reputation_correlation": {
+    "pearson": 0.7789785079335438,
+    "spearman": 0.8514565654798353
+  },
+  "including_ukraine_sensitivity": {
+    "countries": 71,
+    "eligible_articles": 1873774,
+    "pearson": 0.6396047264209275,
+    "spearman": 0.8238430583501009
+  },
+  "regime_scatter": {
+    "status": "Erik's supplied PNG is preserved unchanged, not regenerated.",
+    "caption_reports": "Modal V-Dem Regimes of the World category, 2022\u201325; 8 closed autocracies, 32 electoral autocracies, 30 democracies (including one liberal democracy).",
+    "limitation": "Underlying country regime assignments, modal tie rule and generation code were not supplied. Local continuous V-Dem press-freedom data do not identify these regime categories. Regime membership and subgroup correlations are therefore caption-reported, not independently verified here."
+  },
+  "original_images": [
+    {
+      "path": "slides/figures/21_erik_rank_original.png",
+      "sha256": "7e449f55659ff8650b16569260e3d4f8b16c2af2c740161aee6951482b0af459"
+    },
+    {
+      "path": "slides/figures/21_erik_scatter_original.png",
+      "sha256": "8b9bdd17d983c9ab1d3288aa003f641b56fa899b537a030c4f7732d5983bc7b1"
+    }
+  ],
+  "outputs": {
+    "csv": "slides/figures/data/21_country_polarization.csv",
+    "csv_sha256": "88582158ab636baf81e626f03204c69ac657a3ae9c7657d415f833eb94f9c71a",
+    "figure_png": "slides/figures/21_polarization_country_ranking.png",
+    "figure_svg": "slides/figures/21_polarization_country_ranking.svg",
+    "png_dimensions": [
+      3800,
+      1600
+    ]
+  },
+  "interpretation": "Descriptive corpus scores, not population estimates or evidence of causal regime effects. P depends on both directional shares and the neutral share; pooling can combine different actors, events and periods."
+}
