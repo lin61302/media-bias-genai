@@ -98,8 +98,7 @@ format:
 ## Motivation {.smaller}
 
 -   Polarization is understood as a common feature of politics across the world
--   Media bias is understood to be an important source of polarization
-    -   [@MartinYurukoglu2017; @kubin2021role; @levendusky_2013]
+-   Media bias is understood to be an important source of polarization [@MartinYurukoglu2017; @kubin2021role; @levendusky_2013]
 -   **Big Question:** What are the consequences of media bias and political polarization for the relationship between citizens and government?
     -   Polarized voters tolerate incumbents' violations [@svolik_2019; @graham_svolik_2020]
     -   Incumbents may deepen polarization strategically [@somer_etal_2021]
